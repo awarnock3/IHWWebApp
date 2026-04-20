@@ -142,3 +142,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# IHW Archive Configuration
+# Root path to the archive data files
+IHW_ARCHIVE_ROOT = '/data/working/IHWv2/data/'

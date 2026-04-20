@@ -132,23 +132,47 @@
                     </tr>
                 </table>
                 
-                {% if file_paths %}
-                <h6>Available Locations:</h6>
-                <ul class="list-group list-group-flush mb-3">
-                    {% for path in file_paths %}
-                    <li class="list-group-item">
-                        <code class="small">/data/working/IHWv2/data/{{ path.dirpath }}/{{ observation.idxfileid.filename }}</code>
-                    </li>
-                    {% endfor %}
-                </ul>
+                {% if archive_available %}
+                    {% if file_paths %}
+                    <h6>Archive Location:</h6>
+                    <ul class="list-group list-group-flush mb-3">
+                        {% for path in file_paths %}
+                        <li class="list-group-item">
+                            <code class="small">{{ path.dirpath }}/{{ observation.idxfileid.filename }}</code>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    
+                    {% if has_fits or has_pds_label %}
+                    <h6>View File Metadata:</h6>
+                    <div class="btn-group mb-3" role="group">
+                        {% if has_fits %}
+                        <a href="{% url 'search:fits-header' observation.pk %}" class="btn btn-sm btn-outline-primary">
+                            📄 FITS Header
+                        </a>
+                        {% endif %}
+                        {% if has_pds_label %}
+                        <a href="{% url 'search:pds-label' observation.pk %}" class="btn btn-sm btn-outline-success">
+                            📋 PDS Label
+                        </a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="alert alert-info mb-0">
+                        <small>
+                            <strong>Note:</strong> File downloads will be implemented in the next phase.
+                        </small>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning mb-0">
+                        <small>
+                            <strong>Archive files not available:</strong> The archive data files are not currently accessible.
+                            File metadata is stored in the database but the physical files are not mounted.
+                        </small>
+                    </div>
                 {% endif %}
-                
-                <div class="alert alert-info mb-0">
-                    <small>
-                        <strong>Note:</strong> File downloads will be implemented in the next phase.
-                        For now, files can be accessed directly at the paths listed above.
-                    </small>
-                </div>
             </div>
         </div>
         {% else %}
@@ -165,8 +189,11 @@
             </div>
             <div class="card-body">
                 <p class="small text-muted">Discipline-specific details will be available in a future update.</p>
-                <a href="{% url 'search:search' %}" class="btn btn-outline-primary btn-sm w-100 mb-2">
-                    ← Back to Search
+                <a href="javascript:history.back()" class="btn btn-primary btn-sm w-100 mb-2">
+                    ← Back to Results
+                </a>
+                <a href="{% url 'search:search' %}" class="btn btn-outline-secondary btn-sm w-100">
+                    🔍 New Search
                 </a>
             </div>
         </div>

@@ -83,11 +83,19 @@ class IhwFiles(models.Model):
         paths = self.get_file_paths()
         return paths.first() if paths.exists() else None
 
-    def get_full_path(self):
-        """Construct full filesystem path for download"""
+    def get_relative_path(self):
+        """Construct relative path (without archive root) for display"""
         primary_path = self.get_primary_path()
         if primary_path:
-            return f"/data/working/IHWv2/data/{primary_path.dirpath}/{self.filename}"
+            return f"{primary_path.dirpath}/{self.filename}"
+        return None
+
+    def get_full_path(self):
+        """Construct full filesystem path for file operations"""
+        from django.conf import settings
+        relative_path = self.get_relative_path()
+        if relative_path:
+            return f"{settings.IHW_ARCHIVE_ROOT}{relative_path}"
         return None
 
 

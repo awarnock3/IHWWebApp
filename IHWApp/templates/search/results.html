@@ -27,6 +27,7 @@
                 <th>Observer</th>
                 <th>Position (RA/Dec)</th>
                 <th>Solar Dist.</th>
+                <th>File Type</th>
                 <th>File</th>
             </tr>
         </thead>
@@ -47,7 +48,14 @@
                 <td>{{ obs.get_solar_distance_display }}</td>
                 <td>
                     {% if obs.has_file %}
-                        <span class="text-success" title="{{ obs.idxfileid.filename }}">✓</span>
+                        <span class="badge bg-info">{{ obs.idxfileid.type }}</span>
+                    {% else %}
+                        <span class="text-muted">—</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if obs.has_file %}
+                        <span class="text-success" title="{{ obs.idxfileid.filename }}">✓ Has file</span>
                     {% else %}
                         <span class="text-muted">—</span>
                     {% endif %}

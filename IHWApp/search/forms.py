@@ -13,24 +13,28 @@ class ObservationSearchForm(forms.Form):
         required=True,
         input_formats=['%Y-%m-%d'],  # Force YYYY-MM-DD format
         widget=forms.DateInput(attrs={
-            'type': 'date',
+            'type': 'text',
             'class': 'form-control',
-            'placeholder': 'YYYY-MM-DD'
+            'placeholder': 'YYYY-MM-DD',
+            'pattern': r'\d{4}-\d{2}-\d{2}',
+            'title': 'Date in YYYY-MM-DD format (e.g., 1986-02-09)',
         }),
         label='Start Date',
-        help_text='Beginning of date range (UTC)'
+        help_text='Format: YYYY-MM-DD (e.g., 1986-02-09)'
     )
     
     end_date = forms.DateField(
         required=True,
         input_formats=['%Y-%m-%d'],  # Force YYYY-MM-DD format
         widget=forms.DateInput(attrs={
-            'type': 'date',
+            'type': 'text',
             'class': 'form-control',
-            'placeholder': 'YYYY-MM-DD'
+            'placeholder': 'YYYY-MM-DD',
+            'pattern': r'\d{4}-\d{2}-\d{2}',
+            'title': 'Date in YYYY-MM-DD format (e.g., 1986-03-15)',
         }),
         label='End Date',
-        help_text='End of date range (UTC)'
+        help_text='Format: YYYY-MM-DD (e.g., 1986-03-15)'
     )
     
     networks = forms.ModelMultipleChoiceField(

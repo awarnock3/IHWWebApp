@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}PDS Label: {{ label_filename }} - International Halley Watch{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'search:search' %}">Search</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'search:observation-detail' observation.pk %}">Observation #{{ observation.pk }}</a></li>
+        <li class="breadcrumb-item active">PDS Label</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-success text-white">
+                <h2 class="h4 mb-0">PDS Label: {{ label_filename }}</h2>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <strong>Observation Date:</strong> {{ observation.date_obs|date:"Y-m-d H:i:s" }} UTC<br>
+                    <strong>Observer:</strong> {{ observation.observer }}<br>
+                    <strong>Total Lines:</strong> {{ total_lines }}
+                </div>
+                
+                <div class="alert alert-info">
+                    <small>
+                        <strong>About PDS Labels:</strong> PDS (Planetary Data System) labels are ASCII text files that describe 
+                        the structure and content of associated data files. They use keyword=value pairs to define data parameters,
+                        file formats, and observational metadata.
+                    </small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h3 class="h5 mb-0">Label Content</h3>
+            </div>
+            <div class="card-body p-0">
+                <div style="overflow-x: auto;">
+                    <pre class="m-0 p-3" style="font-family: 'Courier New', monospace; font-size: 0.85rem; background-color: #f8f9fa;">{% for line in label_lines %}{{ line.line_num|stringformat:"03d" }}. {{ line.text }}
+{% endfor %}</pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-3">
+            <a href="{% url 'search:observation-detail' observation.pk %}" class="btn btn-outline-secondary">
+                ← Back to Observation
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
