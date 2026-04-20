@@ -11,6 +11,7 @@ class ObservationSearchForm(forms.Form):
     """
     start_date = forms.DateField(
         required=True,
+        input_formats=['%Y-%m-%d'],  # Force YYYY-MM-DD format
         widget=forms.DateInput(attrs={
             'type': 'date',
             'class': 'form-control',
@@ -22,6 +23,7 @@ class ObservationSearchForm(forms.Form):
     
     end_date = forms.DateField(
         required=True,
+        input_formats=['%Y-%m-%d'],  # Force YYYY-MM-DD format
         widget=forms.DateInput(attrs={
             'type': 'date',
             'class': 'form-control',
