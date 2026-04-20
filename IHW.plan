@@ -74,3 +74,34 @@ The actual data archives are stored locally at /data/working/IHWv2/data.
 
 Do not write code yet. Ask any clarifying questions you need first.
 
+# Schema
+
+Here are the schema artifacts:
+- @ihwdb2-schema-latest.sql
+- @schema-notes.md
+- @inspectdb_output.py
+
+Read them and produce:
+- A concise entity map.
+- Tables that should become unmanaged Django models.
+- Tables that need custom model logic.
+- Candidate admin screens.
+- Candidate API endpoints.
+- Any naming collisions or normalization problems.
+
+# Build
+
+Implement the first vertical slice only.
+
+Scope:
+- Read-only list view for [entity]
+- Detail page for [entity]
+- Tests for model relationships and view permissions
+
+Constraints:
+- Use Django.
+- Do not alter the database schema.
+- Prefer unmanaged models if the table already exists.
+- Keep changes minimal and reversible.
+- If you need to make assumptions, list them first.
+

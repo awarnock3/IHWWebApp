@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results - International Halley Watch{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h2>Search Results</h2>
+    <p class="text-muted">
+        Showing observations from {{ start_date }} to {{ end_date }}
+        {% if observer_query %}
+            &middot; Observer: "{{ observer_query }}"
+        {% endif %}
+    </p>
+    <p>
+        <strong>{{ total_results|default:0 }}</strong> observation{{ total_results|pluralize }} found
+        <a href="{% url 'search:search' %}" class="btn btn-sm btn-outline-secondary ms-3">New Search</a>
+    </p>
+</div>
+
+{% if observations %}
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Date/Time (UTC)</th>
+                <th>Discipline</th>
+                <th>Observer</th>
+                <th>Position (RA/Dec)</th>
+                <th>Solar Dist.</th>
+                <th>File</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obs in observations %}
+            <tr>
+                <td>
+                    <a href="{% url 'search:observation-detail' obs.pk %}">
+                        {{ obs.date_obs|date:"Y-m-d H:i" }}
+                    </a>
+                </td>
+                <td>
+                    <span class="badge bg-secondary">{{ obs.network.discipline }}</span>
+                    {{ obs.network.name }}
+                </td>
+                <td>{{ obs.observer|truncatewords:3 }}</td>
+                <td class="small">{{ obs.get_position_display }}</td>
+                <td>{{ obs.get_solar_distance_display }}</td>
+                <td>
+                    {% if obs.has_file %}
+                        <span class="text-success" title="{{ obs.idxfileid.filename }}">✓</span>
+                    {% else %}
+                        <span class="text-muted">—</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination -->
+{% if is_paginated %}
+<nav aria-label="Search results pagination">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?{{ request.GET.urlencode }}&page=1">First</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ page_obj.previous_page_number }}">Previous</a>
+        </li>
+        {% endif %}
+        
+        <li class="page-item active">
+            <span class="page-link">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+        </li>
+        
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ page_obj.next_page_number }}">Next</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ page_obj.paginator.num_pages }}">Last</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+{% else %}
+<div class="alert alert-info">
+    <h4 class="alert-heading">No observations found</h4>
+    <p>No observations match your search criteria. Try adjusting your date range or filters.</p>
+    <hr>
+    <a href="{% url 'search:search' %}" class="btn btn-primary">Try Another Search</a>
+</div>
+{% endif %}
+
+{% endblock %}

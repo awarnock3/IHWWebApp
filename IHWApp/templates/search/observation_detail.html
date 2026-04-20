@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block title %}Observation #{{ observation.pk }} - International Halley Watch{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'search:search' %}">Search</a></li>
+        <li class="breadcrumb-item active">Observation #{{ observation.pk }}</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h4 mb-0">Observation Details</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th style="width: 30%;">Observation Date</th>
+                            <td>{{ observation.date_obs|date:"Y-m-d H:i:s" }} UTC</td>
+                        </tr>
+                        <tr>
+                            <th>Discipline</th>
+                            <td>
+                                <span class="badge bg-secondary">{{ observation.network.discipline }}</span>
+                                {{ observation.network.name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Observer</th>
+                            <td>{{ observation.observer }}</td>
+                        </tr>
+                        <tr>
+                            <th>System Code</th>
+                            <td><code>{{ observation.syscode }}</code></td>
+                        </tr>
+                        <tr>
+                            <th>Object</th>
+                            <td>{{ observation.object }}</td>
+                        </tr>
+                        <tr>
+                            <th>Net Number</th>
+                            <td>{{ observation.net_num }}</td>
+                        </tr>
+                        {% if observation.note %}
+                        <tr>
+                            <th>Notes</th>
+                            <td>{{ observation.note }}</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        {% if ephemeris %}
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-info text-white">
+                <h3 class="h5 mb-0">Comet Ephemeris</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Position</h6>
+                        <table class="table table-sm">
+                            <tr>
+                                <th>RA (J2000)</th>
+                                <td>{{ ephemeris.ra|floatformat:4 }}°</td>
+                            </tr>
+                            <tr>
+                                <th>Dec (J2000)</th>
+                                <td>{{ ephemeris.decl|floatformat:4 }}°</td>
+                            </tr>
+                            <tr>
+                                <th>Solar Elongation</th>
+                                <td>{{ ephemeris.theta|floatformat:2 }}°</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Distances</h6>
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Heliocentric (r)</th>
+                                <td>{{ ephemeris.r|floatformat:3 }} AU</td>
+                            </tr>
+                            <tr>
+                                <th>Geocentric (Δ)</th>
+                                <td>{{ ephemeris.delta|floatformat:3 }} AU</td>
+                            </tr>
+                            <tr>
+                                <th>Lunar Distance</th>
+                                <td>{{ ephemeris.moon|floatformat:1 }}°</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if observation.has_file %}
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h3 class="h5 mb-0">Data File</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm mb-3">
+                    <tr>
+                        <th style="width: 30%;">Filename</th>
+                        <td><code>{{ observation.idxfileid.filename }}</code></td>
+                    </tr>
+                    <tr>
+                        <th>File Type</th>
+                        <td>{{ observation.idxfileid.type }}</td>
+                    </tr>
+                    <tr>
+                        <th>File Size</th>
+                        <td>{{ observation.idxfileid.filesize|filesizeformat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Archive Version</th>
+                        <td>{{ observation.idxfileid.arch_ver }}</td>
+                    </tr>
+                    <tr>
+                        <th>MD5 Digest</th>
+                        <td><code class="small">{{ observation.idxfileid.digest }}</code></td>
+                    </tr>
+                </table>
+                
+                {% if file_paths %}
+                <h6>Available Locations:</h6>
+                <ul class="list-group list-group-flush mb-3">
+                    {% for path in file_paths %}
+                    <li class="list-group-item">
+                        <code class="small">/data/working/IHWv2/data/{{ path.dirpath }}/{{ observation.idxfileid.filename }}</code>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                
+                <div class="alert alert-info mb-0">
+                    <small>
+                        <strong>Note:</strong> File downloads will be implemented in the next phase.
+                        For now, files can be accessed directly at the paths listed above.
+                    </small>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-warning">
+            <strong>No data file available</strong> for this observation.
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h3 class="h6 mb-0">Quick Actions</h3>
+            </div>
+            <div class="card-body">
+                <p class="small text-muted">Discipline-specific details will be available in a future update.</p>
+                <a href="{% url 'search:search' %}" class="btn btn-outline-primary btn-sm w-100 mb-2">
+                    ← Back to Search
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
