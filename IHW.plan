@@ -1,0 +1,76 @@
+The International Halley Watch (IHW) archive is a set of files
+collected from 9 different scientific disciplines during the 1985/1986
+apparition of Halley's Coment (P/Halley). The intent of this epic is
+to use the metadata in the archive files to answer some basic
+questions about the comet, hopefully to be useful to scientists
+observing the comet during it's next apparition in 2061. Note that
+P/Halley recently passed it's aphelion point and is on its way back.
+
+I envision the project to have two major components - 1) a database
+holding the metadata from each of the disciplines, constructed in a
+way that all of the disciplines can be searched with a single query
+and 2) a web application front end to the database to provide an easy
+search capability to the user.
+
+The database has been constructed and the schema is stored in the file
+`ihwdb2-schema-latest.sql`. I want to build a webapp with Django on
+top of that existing relational database schema.
+
+First, analyze the schema and produce:
+1. The likely domain entities.
+2. The main relationships and constraints.
+3. The highest-risk legacy/schema issues.
+4. A recommended Django app structure.
+5. A first vertical slice to implement.
+
+This webapp will be primarily intended to answer a number of questions
+related to retrieving data files for the comet based on queries on the
+metadata stored in the various tables in the database.
+
+There are 9 primary disciplines in the database, stored in the
+ihw_network table, and a number of subdisciplines stored in
+ihw_subnets. The metadata describing the various data files are stored
+in the idx_meta_* tables. The highest priority for the webapp will be
+to perform searches across all of the networks, to locate data based
+on date, position and distance from the sun.
+
+I would like to attempt to create these two components in a way that
+might be accessible to scientists in 2061 - a common (and
+well-documented) export form for the database contents, and a
+well-constructed user interface in a language hopefully relevant and
+in use in 2061. I recognize the difficulty in predicting what
+technolgies will be in use in 35 years. The original 1986 archive
+assumed that some database like dBase III would be in use, but that is
+poorly supported today.
+
+There are nine disciplines (or networks) in the archive. Some networks
+also have domain-specific subnetworks. These are listed here:
+- Amateur Observations
+    * Amateur Drawings
+    * Amateur Photography
+    * Amateur Spectra
+    * Amateur Visual
+- Astrometry Observations
+- Infrared Observations
+    * Infrared Magnitudes
+    * Infrared Photometry
+    * Infrared Polarimetry
+    * Infrared Spectra
+- Large-Scale Phenomena
+- Meteor Studies
+    * Meteor Radar Studies
+    * Meteor Visual Studies
+- Near-Nucleas Studies
+- Photometry and Polarimetry Observations
+- Radio Observations
+    * Radio CN Observations
+    * Radio OH Observations
+    * Radio Radar Studies
+    * Radio Spectral Line Studies
+    * Radio UV Studies
+- Spectral Observations
+
+The actual data archives are stored locally at /data/working/IHWv2/data.
+
+Do not write code yet. Ask any clarifying questions you need first.
+
