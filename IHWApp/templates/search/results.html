@@ -172,10 +172,12 @@
 $(document).ready(function() {
     // Preserve search parameters for AJAX requests
     const searchParams = {
-        start_date: '{{ start_date }}',
-        end_date: '{{ end_date }}',
-        networks: '{{ request.GET.networks }}',
-        observer: '{{ request.GET.observer }}'
+        start_date: '{{ start_date|default:"" }}',
+        end_date: '{{ end_date|default:"" }}',
+        networks: '{{ request.GET.networks|default:"" }}',
+        observer: '{{ request.GET.observer|default:"" }}',
+        min_solar_dist: '{{ min_solar_dist|default:"" }}',
+        max_solar_dist: '{{ max_solar_dist|default:"" }}'
     };
     
     // Initialize DataTable with server-side processing
