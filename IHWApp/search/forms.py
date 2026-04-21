@@ -10,7 +10,7 @@ class ObservationSearchForm(forms.Form):
     Search form for observations by date range and optional filters
     """
     start_date = forms.DateField(
-        required=True,
+        required=False,
         input_formats=['%Y-%m-%d'],  # Force YYYY-MM-DD format
         widget=forms.DateInput(attrs={
             'type': 'text',
@@ -19,12 +19,12 @@ class ObservationSearchForm(forms.Form):
             'pattern': r'\d{4}-\d{2}-\d{2}',
             'title': 'Date in YYYY-MM-DD format (e.g., 1986-02-09)',
         }),
-        label='Start Date',
+        label='Start Date (optional)',
         help_text='Format: YYYY-MM-DD (e.g., 1986-02-09)'
     )
     
     end_date = forms.DateField(
-        required=True,
+        required=False,
         input_formats=['%Y-%m-%d'],  # Force YYYY-MM-DD format
         widget=forms.DateInput(attrs={
             'type': 'text',
@@ -33,7 +33,7 @@ class ObservationSearchForm(forms.Form):
             'pattern': r'\d{4}-\d{2}-\d{2}',
             'title': 'Date in YYYY-MM-DD format (e.g., 1986-03-15)',
         }),
-        label='End Date',
+        label='End Date (optional)',
         help_text='Format: YYYY-MM-DD (e.g., 1986-03-15)'
     )
     
@@ -94,11 +94,25 @@ class ObservationSearchForm(forms.Form):
         end_date = cleaned_data.get('end_date')
         min_dist = cleaned_data.get('min_solar_distance')
         max_dist = cleaned_data.get('max_solar_distance')
+        networks = cleaned_data.get('networks')
+        observer = cleaned_data.get('observer')
 
+        # Ensure at least one search criterion is provided
+        has_date = start_date or end_date
+        has_distance = min_dist is not None or max_dist is not None
+        has_filter = networks or observer
+        
+        if not (has_date or has_distance or has_filter):
+            raise forms.ValidationError(
+                "Please provide at least one search criterion: date range, solar distance, network, or observer"
+            )
+
+        # Validate date range if both provided
         if start_date and end_date:
             if start_date > end_date:
                 raise forms.ValidationError("Start date must be before end date")
         
+        # Validate solar distance range if both provided
         if min_dist is not None and max_dist is not None:
             if min_dist > max_dist:
                 raise forms.ValidationError("Minimum solar distance must be less than maximum")

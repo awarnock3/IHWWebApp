@@ -22,10 +22,14 @@ class SearchView(FormView):
         from django.shortcuts import redirect
         from urllib.parse import urlencode
         
-        params = {
-            'start_date': form.cleaned_data['start_date'].isoformat(),
-            'end_date': form.cleaned_data['end_date'].isoformat(),
-        }
+        params = {}
+        
+        # Only add dates if provided
+        if form.cleaned_data.get('start_date'):
+            params['start_date'] = form.cleaned_data['start_date'].isoformat()
+        
+        if form.cleaned_data.get('end_date'):
+            params['end_date'] = form.cleaned_data['end_date'].isoformat()
         
         if form.cleaned_data.get('networks'):
             params['networks'] = ','.join(str(n.id) for n in form.cleaned_data['networks'])
@@ -306,6 +310,8 @@ class SearchResultsView(ListView):
         context['start_date'] = self.request.GET.get('start_date')
         context['end_date'] = self.request.GET.get('end_date')
         context['observer_query'] = self.request.GET.get('observer', '')
+        context['min_solar_dist'] = self.request.GET.get('min_solar_dist')
+        context['max_solar_dist'] = self.request.GET.get('max_solar_dist')
         
         # Add result count
         context['total_results'] = self.get_base_queryset().count()
