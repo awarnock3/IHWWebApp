@@ -402,22 +402,124 @@ class IdxMetaIrsp(models.Model):
 class IdxMetaLspn(models.Model):
     """Large-Scale Phenomena Network metadata (extensive FITS metadata)"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    
+    # Observer and instrument details
     observer = models.CharField(max_length=64, blank=True, null=True)
     emulsion = models.CharField(max_length=25, blank=True, null=True)
     filter_name = models.CharField(max_length=25, blank=True, null=True)
+    filterid = models.CharField(max_length=8, blank=True, null=True)
     exposure = models.FloatField(blank=True, null=True)
-    fov_x = models.FloatField(blank=True, null=True)
-    fov_y = models.FloatField(blank=True, null=True)
     calibration_flag = models.CharField(max_length=1, blank=True, null=True)
     data_quality = models.CharField(max_length=20, blank=True, null=True)
     observatory_id = models.IntegerField(blank=True, null=True)
-    # Many FITS header fields - abbreviated for brevity
-    airm_mid = models.FloatField(blank=True, null=True)
+    
+    # Telescope/Instrument parameters
     aperture = models.FloatField(blank=True, null=True)
-    bitpix = models.SmallIntegerField(blank=True, null=True)
+    fratio = models.FloatField(blank=True, null=True)
+    detector = models.CharField(max_length=32, blank=True, null=True)
+    cameraid = models.CharField(max_length=16, blank=True, null=True)
+    chip_id = models.CharField(max_length=32, blank=True, null=True)
+    instrume = models.CharField(max_length=16, blank=True, null=True)
+    hypsen = models.CharField(max_length=1, blank=True, null=True)
+    
+    # Observatory location
+    lat_obs = models.CharField(max_length=16, blank=True, null=True)
+    long_obs = models.CharField(max_length=16, blank=True, null=True)
+    elev_obs = models.SmallIntegerField(blank=True, null=True)
+    
+    # Observation conditions
+    airm_mid = models.FloatField(blank=True, null=True)
+    apsize = models.FloatField(blank=True, null=True)
+    
+    # Field of view
+    fov_x = models.FloatField(blank=True, null=True)
+    fov_y = models.FloatField(blank=True, null=True)
+    
+    # FITS image array metadata
     naxis = models.SmallIntegerField(blank=True, null=True)
     naxis1 = models.IntegerField(blank=True, null=True)
     naxis2 = models.IntegerField(blank=True, null=True)
+    bitpix = models.SmallIntegerField(blank=True, null=True)
+    bscale = models.FloatField(blank=True, null=True)
+    bzero = models.FloatField(blank=True, null=True)
+    blank = models.FloatField(blank=True, null=True)
+    bunit = models.CharField(max_length=32, blank=True, null=True)
+    
+    # WCS (World Coordinate System) parameters
+    cdelt1 = models.FloatField(blank=True, null=True)
+    cdelt2 = models.FloatField(blank=True, null=True)
+    crval1 = models.FloatField(blank=True, null=True)
+    crval2 = models.FloatField(blank=True, null=True)
+    crpix1 = models.FloatField(blank=True, null=True)
+    crpix2 = models.FloatField(blank=True, null=True)
+    crota1 = models.FloatField(blank=True, null=True)
+    crota2 = models.FloatField(blank=True, null=True)
+    ctype1 = models.CharField(max_length=16, blank=True, null=True)
+    ctype2 = models.CharField(max_length=16, blank=True, null=True)
+    equinox = models.FloatField(blank=True, null=True)
+    
+    # Coordinate headers
+    ra_head = models.FloatField(blank=True, null=True)
+    dec_head = models.FloatField(blank=True, null=True)
+    ra_cpme = models.FloatField(blank=True, null=True)
+    dec_cpme = models.FloatField(blank=True, null=True)
+    
+    # Plate/scan parameters
+    pltscale = models.FloatField(blank=True, null=True)
+    pltsze1 = models.FloatField(blank=True, null=True)
+    pltsze2 = models.FloatField(blank=True, null=True)
+    pltype = models.CharField(max_length=1, blank=True, null=True)
+    scnstpx = models.SmallIntegerField(blank=True, null=True)
+    scnstpy = models.SmallIntegerField(blank=True, null=True)
+    scnstep = models.SmallIntegerField(blank=True, null=True)
+    scnstp = models.SmallIntegerField(blank=True, null=True)
+    scnapr = models.SmallIntegerField(blank=True, null=True)
+    
+    # Image dimensions and origin
+    size = models.CharField(max_length=16, blank=True, null=True)
+    maxcol = models.SmallIntegerField(blank=True, null=True)
+    maxrow = models.SmallIntegerField(blank=True, null=True)
+    orgcol = models.SmallIntegerField(blank=True, null=True)
+    orgrow = models.SmallIntegerField(blank=True, null=True)
+    
+    # Calibration parameters
+    ncalspot = models.SmallIntegerField(blank=True, null=True)
+    ncalwdge = models.SmallIntegerField(blank=True, null=True)
+    cometmax = models.FloatField(blank=True, null=True)
+    skyden = models.SmallIntegerField(blank=True, null=True)
+    skymin = models.FloatField(blank=True, null=True)
+    skyunf = models.CharField(max_length=8, blank=True, null=True)
+    sense = models.CharField(max_length=1, blank=True, null=True)
+    
+    # Data format and type
+    dat_form = models.CharField(max_length=16, blank=True, null=True)
+    dat_type = models.CharField(max_length=16, blank=True, null=True)
+    
+    # Processing dates
+    date_pds = models.CharField(max_length=8, blank=True, null=True)
+    date_prc = models.CharField(max_length=8, blank=True, null=True)
+    date_rec = models.CharField(max_length=8, blank=True, null=True)
+    date_rel = models.CharField(max_length=8, blank=True, null=True)
+    date_wrt = models.CharField(max_length=8, blank=True, null=True)
+    
+    # Comments
+    cmts_anl = models.CharField(max_length=80, blank=True, null=True)
+    cmts_log = models.CharField(max_length=80, blank=True, null=True)
+    cmts_obs = models.CharField(max_length=80, blank=True, null=True)
+    cmts_prc = models.CharField(max_length=80, blank=True, null=True)
+    cmts_log_alt = models.CharField(max_length=80, blank=True, null=True)
+    log_cmts = models.CharField(max_length=80, blank=True, null=True)
+    obs_cmts = models.CharField(max_length=80, blank=True, null=True)
+    
+    # Origin and submitter
+    origin = models.CharField(max_length=32, blank=True, null=True)
+    orging = models.CharField(max_length=32, blank=True, null=True)
+    submittr = models.CharField(max_length=16, blank=True, null=True)
+    
+    # Miscellaneous
+    file_num = models.IntegerField(blank=True, null=True)
+    obslog = models.CharField(max_length=20, blank=True, null=True)
+    spec_evt = models.CharField(max_length=1, blank=True, null=True)
 
     class Meta:
         managed = False
