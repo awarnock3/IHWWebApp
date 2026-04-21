@@ -60,7 +60,50 @@ Nothing currently in progress.
 
 ### High Priority
 
+#### UI Improvements for Database-Only Mode
+These features enhance the UI without requiring archive files, making the interface fully functional with just the database.
+
+##### Results Table Enhancements
+- [ ] **Add subnet badge to search results**
+  - Show both network and subnet badges in results table
+  - Replace descriptive text with compact badges
+  - Add hover tooltips showing full network/subnet names
+  - Example: Badges "AMSN" and "AMV" with hover "Amateur Studies" / "Visual Observations"
+  
+- [ ] **Client-side column filtering**
+  - Add filter controls to each column header in results table
+  - Allow filtering by network, subnet, observer, date range, etc.
+  - Filter without re-executing database query
+  - Use JavaScript for instant filtering of visible results
+  - Preserve filters across pagination
+  - Consider using DataTables.js or similar library
+
+##### Search Form Enhancements
+- [ ] **Add solar distance search filter**
+  - Add distance range inputs (min/max in AU)
+  - Query against ephemeris data (ihw_ephemeris.r field)
+  - Combine with existing date/observer/network filters
+  - Help text: "Distance from Sun in Astronomical Units (AU)"
+  - Consider preset ranges: "Perihelion (< 1 AU)", "All observations"
+
+##### Metadata Display Enhancements
+- [ ] **Show ALL metadata fields initially (expansive approach)**
+  - Display every non-null field from metadata tables
+  - Don't hide any fields based on assumptions
+  - Create comprehensive view first
+  - Add notes/issue markers for fields we decide to omit later
+  - This allows us to see what's actually available before filtering
+  - Update field_labels dict to cover all possible fields
+  - **IMPORTANT:** Many fields currently missing from models:
+    - IdxMetaLspn: 71 of 88 fields missing (FITS header fields like CRVAL1, CRPIX1, WCS, etc.)
+    - Need to add all fields to see what data actually exists
+    - Then decide which are useful vs noise
+  - Consider grouping fields by category in display (Instrument, WCS, Processing, etc.)
+  - Add "Show All Fields" / "Show Summary" toggle
+
 #### File Downloads
+**Note:** Lower priority than UI enhancements above. Archive files not always available.
+
 - [ ] Create FileDownloadView with proper Content-Type headers
 - [ ] Support FITS files (.fit, .fits)
 - [ ] Support other file types (PDS labels, catalogs, etc.)
@@ -140,6 +183,76 @@ Nothing currently in progress.
 - [ ] Keyboard navigation shortcuts
 - [ ] Print-friendly observation detail pages
 - [ ] Observation comparison view (side-by-side)
+
+---
+
+## 📝 Implementation Notes
+
+### Client-Side Filtering (Search Results)
+**Approach Options:**
+1. **DataTables.js** (Recommended)
+   - Full-featured table plugin with built-in filtering, sorting, pagination
+   - Works with server-side or client-side data
+   - Large community, well-documented
+   - ~50KB minified
+
+2. **Custom JavaScript**
+   - Lighter weight
+   - More control over UI/UX
+   - More work to implement
+   - Need to handle pagination interaction
+
+3. **Hybrid Approach**
+   - Filter current page results immediately (JavaScript)
+   - Add "Apply Filter to All Results" button (server-side)
+   - Best of both worlds but more complex
+
+**Considerations:**
+- Results already paginated (50 per page)
+- Client-side filtering only affects visible results
+- May want to show "Showing X of Y results (Z filtered)" message
+- Preserve filter state in URL parameters or localStorage
+
+### Solar Distance Search
+**Implementation:**
+- Add range inputs to search form (min_distance, max_distance)
+- Join query with ihw_ephemeris table
+- Match observation date to ephemeris date (already have for_date() method)
+- Filter on ihw_ephemeris.r field (AU from Sun)
+- Useful ranges:
+  - Perihelion: < 1.0 AU
+  - Inner solar system: < 2.0 AU
+  - All observations: 0.5 - 6.0 AU (typical range for Halley)
+- Add preset buttons for common ranges
+- Handle ephemeris data gaps gracefully
+
+### Subnet Badge Display
+**Design:**
+- Network badge: `bg-secondary` (existing)
+- Subnet badge: `bg-info` or `bg-primary` (new)
+- Both with Bootstrap tooltips
+- Example: `<span class="badge bg-secondary" data-bs-toggle="tooltip" title="Amateur Studies">AMSN</span>`
+- Space-efficient: removes verbose text, keeps table compact
+- Mobile-friendly: tooltips work on touch devices
+
+### Comprehensive Metadata Display
+**Phased Approach:**
+1. **Phase 1:** Add ALL missing fields to models (71 fields for LSPN, others TBD)
+2. **Phase 2:** Display all non-null fields without filtering
+3. **Phase 3:** Group by category (Instrument, WCS Coordinates, Processing, Comments)
+4. **Phase 4:** Add toggle for "Summary" vs "All Fields" view
+5. **Phase 5:** User feedback - decide what to hide by default
+
+**Field Categories (LSPN example):**
+- **Instrument:** aperture, fratio, detector, cameraid, chip_id
+- **Observation:** exposure, filter_name, emulsion, fov_x, fov_y
+- **WCS (World Coordinate System):** crval1, crval2, crpix1, crpix2, crota1, crota2, cdelt1, cdelt2
+- **Image Data:** naxis, naxis1, naxis2, bitpix, bscale, bzero, blank
+- **Processing:** bunit, dat_form, dat_type, scaling info
+- **Location:** lat_obs, long_obs, elev_obs, equinox
+- **Calibration:** ncalspot, ncalwdge, cometmax, skyden, skymin
+- **Metadata:** date_pds, date_prc, date_rec, date_rel, date_wrt
+- **Comments:** cmts_anl, cmts_log, cmts_obs, cmts_prc, obs_cmts, log_cmts
 
 ---
 
