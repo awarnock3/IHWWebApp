@@ -6,6 +6,8 @@ All models have managed=False to preserve legacy database
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
+from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 import os
 
 
@@ -1791,9 +1793,10 @@ def format_metadata_value(field_name, value, metadata_obj):
     if field_name == 'observatory_id' and value:
         try:
             obs = ApxIhwObscodes.objects.get(id=value)
-            if obs.location:
-                return f"{obs.observatory} ({obs.location})"
-            return obs.observatory
+            obs_name = f"{obs.observatory} ({obs.location})" if obs.location else obs.observatory
+            # Create link to observatory detail page
+            url = reverse('search:observatory-detail', kwargs={'observatory_id': value})
+            return format_html('<a href="{}">{}</a>', url, obs_name)
         except ApxIhwObscodes.DoesNotExist:
             return f"Observatory #{value}"
     

@@ -563,3 +563,37 @@ class FileViewerView(TemplateView):
         context['is_binary'] = False
         
         return context
+
+
+class ObservatoryDetailView(DetailView):
+    """Display details for a specific observatory from apx_ihw_obscodes"""
+    model = None  # We'll import ApxIhwObscodes dynamically
+    template_name = 'search/observatory_detail.html'
+    context_object_name = 'observatory'
+    
+    def get_object(self):
+        from core.models import ApxIhwObscodes
+        try:
+            return ApxIhwObscodes.objects.get(pk=self.kwargs['observatory_id'])
+        except ApxIhwObscodes.DoesNotExist:
+            raise Http404("Observatory not found")
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        # Count observations from this observatory
+        observatory_id = self.kwargs['observatory_id']
+        
+        # Count from various metadata tables that reference this observatory
+        from core.models import IdxMetaLspn, IdxMetaNnsn
+        
+        lspn_count = IdxMetaLspn.objects.filter(observatory_id=observatory_id).count()
+        nnsn_count = IdxMetaNnsn.objects.filter(observatory_id=observatory_id).count()
+        
+        context['observation_counts'] = {
+            'lspn': lspn_count,
+            'nnsn': nnsn_count,
+            'total': lspn_count + nnsn_count,
+        }
+        
+        return context

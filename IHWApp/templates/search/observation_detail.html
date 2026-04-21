@@ -151,7 +151,7 @@
                                 {% for label, value in fields %}
                                 <tr>
                                     <th style="width: 45%;">{{ label }}</th>
-                                    <td>{{ value }}</td>
+                                    <td>{{ value|safe }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

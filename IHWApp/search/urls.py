@@ -12,4 +12,5 @@ urlpatterns = [
     path('observation/<int:pk>/', views.ObservationDetailView.as_view(), name='observation-detail'),
     path('observation/<int:pk>/fits-header/', views.FitsHeaderView.as_view(), name='fits-header'),
     path('observation/<int:pk>/pds-label/', views.PdsLabelView.as_view(), name='pds-label'),
+    path('observatory/<int:observatory_id>/', views.ObservatoryDetailView.as_view(), name='observatory-detail'),
 ]
