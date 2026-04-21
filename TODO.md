@@ -132,6 +132,99 @@ These features enhance the UI without requiring archive files, making the interf
 
 ### Medium Priority
 
+#### REST API Development
+**Status:** Design phase
+**Framework:** Django REST Framework (DRF) recommended
+
+**Core Endpoints:**
+- [ ] **Search API**
+  - `GET /api/v1/observations/` - List/search observations with filtering
+    - Query params: start_date, end_date, network, subnet, observer, min_distance, max_distance
+    - Pagination support (limit/offset or cursor-based)
+    - Returns: observation list with basic fields + links to detail endpoints
+  - `GET /api/v1/observations/{id}/` - Single observation details
+  - `GET /api/v1/observations/{id}/metadata/` - Discipline-specific metadata
+  - `GET /api/v1/observations/{id}/ephemeris/` - Ephemeris data for observation date
+  - `GET /api/v1/observations/{id}/files/` - List associated files
+
+- [ ] **FITS/PDS API**
+  - `GET /api/v1/observations/{id}/fits-header/` - FITS header as JSON
+  - `GET /api/v1/observations/{id}/pds-label/` - PDS label as JSON
+  - Raw text versions available with `Accept: text/plain` header
+
+- [ ] **Reference Data APIs**
+  - `GET /api/v1/networks/` - List all networks
+  - `GET /api/v1/subnets/` - List all subnets (filterable by network)
+  - `GET /api/v1/observatories/` - List observatories
+  - `GET /api/v1/observatories/{id}/` - Observatory details
+  - `GET /api/v1/observers/` - List unique observers (searchable)
+
+- [ ] **Ephemeris API**
+  - `GET /api/v1/ephemeris/` - Query ephemeris by date range
+  - `GET /api/v1/ephemeris/{date}/` - Single date ephemeris
+  - Returns: heliocentric distance, geocentric distance, phase angle, etc.
+
+- [ ] **Statistics API**
+  - `GET /api/v1/stats/summary/` - Overall dataset statistics
+  - `GET /api/v1/stats/by-network/` - Observation counts by network
+  - `GET /api/v1/stats/by-date/` - Timeline data (observations per day/month)
+
+**API Features:**
+- [ ] Authentication (optional - API key or OAuth2 for rate limiting)
+- [ ] Rate limiting (e.g., 100 requests/hour for unauthenticated)
+- [ ] CORS support for browser-based clients
+- [ ] API versioning (`/api/v1/`)
+- [ ] OpenAPI/Swagger documentation
+- [ ] Response format: JSON (with option for CSV export on search endpoints)
+- [ ] Error handling: Standard HTTP codes + error detail objects
+- [ ] Filtering, sorting, pagination standards across all list endpoints
+- [ ] Field selection: `?fields=id,date,observer` to limit response size
+- [ ] Expansion: `?expand=metadata,ephemeris` to include related data
+
+**Implementation Notes:**
+- Use Django REST Framework serializers for all models
+- Implement ViewSets for consistent CRUD operations
+- Add URL router configuration (`urls.py`)
+- Consider read-only API initially (no POST/PUT/DELETE)
+- Archive file downloads via API only when archive available
+- Document all endpoints in OpenAPI format
+- Add rate limiting with `django-ratelimit` or DRF throttling
+- Consider ETags/caching headers for performance
+- Add HATEOAS links for discoverability
+
+**Use Cases:**
+- Automated data analysis pipelines
+- External visualization tools
+- Mobile apps
+- Third-party integrations
+- Bulk data extraction for research
+- Monitoring/alerting systems
+
+**Example Response Format:**
+```json
+{
+  "count": 69094,
+  "next": "/api/v1/observations/?page=2",
+  "previous": null,
+  "results": [
+    {
+      "id": 324005,
+      "date": "1985-12-07T00:00:00Z",
+      "network": "AMSN",
+      "subnet": "AMV",
+      "observer": "John Doe",
+      "files_count": 2,
+      "has_metadata": true,
+      "links": {
+        "self": "/api/v1/observations/324005/",
+        "metadata": "/api/v1/observations/324005/metadata/",
+        "files": "/api/v1/observations/324005/files/"
+      }
+    }
+  ]
+}
+```
+
 #### Enhanced Metadata Display
 - [ ] Add unit conversion (distances in km/AU, wavelengths in nm/µm)
 - [ ] Make observatory_id clickable (link to observatory details)
@@ -157,7 +250,8 @@ These features enhance the UI without requiring archive files, making the interf
 ### Low Priority
 
 #### Documentation Improvements
-- [ ] Add API documentation (if REST API built)
+- [ ] OpenAPI/Swagger API documentation
+- [ ] API client examples (Python, JavaScript, curl)
 - [ ] User guide with screenshots
 - [ ] Developer setup guide
 - [ ] Database schema diagram
