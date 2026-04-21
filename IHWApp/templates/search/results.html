@@ -2,6 +2,55 @@
 
 {% block title %}Search Results - International Halley Watch{% endblock %}
 
+{% block extra_css %}
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+<style>
+    /* Custom DataTables styling */
+    .dataTables_wrapper .dataTables_filter input {
+        margin-left: 0.5em;
+    }
+    
+    .dataTables_wrapper .dataTables_length select {
+        margin: 0 0.5em;
+    }
+    
+    /* Column filter inputs */
+    .filter-row input,
+    .filter-row select {
+        width: 100%;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+    }
+    
+    .filter-row th {
+        padding: 0.5rem;
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+    }
+    
+    /* Badge hover enhancement */
+    .badge {
+        cursor: help;
+        transition: opacity 0.2s;
+    }
+    
+    .badge:hover {
+        opacity: 0.85;
+    }
+    
+    /* Loading spinner */
+    .dataTables_processing {
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 1rem 2rem;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="mb-4">
     <h2>Search Results</h2>
@@ -11,99 +60,249 @@
             &middot; Observer: "{{ observer_query }}"
         {% endif %}
     </p>
-    <p>
-        <strong>{{ total_results|default:0 }}</strong> observation{{ total_results|pluralize }} found
+    <p id="result-summary">
+        <strong id="total-count">{{ total_results|default:0 }}</strong> observation<span id="plural-s">{{ total_results|pluralize }}</span> found
         <a href="{% url 'search:search' %}" class="btn btn-sm btn-outline-secondary ms-3">New Search</a>
+        <button id="clear-filters" class="btn btn-sm btn-outline-warning ms-2" style="display:none;">
+            Clear All Filters
+        </button>
     </p>
 </div>
 
-{% if observations %}
 <div class="table-responsive">
-    <table class="table table-hover table-striped">
+    <table id="observations-table" class="table table-hover table-striped" style="width:100%">
         <thead class="table-dark">
             <tr>
                 <th>Date/Time (UTC)</th>
-                <th>Discipline</th>
+                <th>Network</th>
+                <th>Subnet</th>
                 <th>Observer</th>
                 <th>Position (RA/Dec)</th>
                 <th>Solar Dist.</th>
                 <th>File Type</th>
-                <th>File</th>
+                <th>Filename</th>
+            </tr>
+        </thead>
+        <thead class="filter-row">
+            <tr>
+                <th><input type="text" placeholder="Filter date..." class="column-filter" data-column="0"></th>
+                <th><select class="column-filter" data-column="1"><option value="">All Networks</option></select></th>
+                <th><select class="column-filter" data-column="2"><option value="">All Subnets</option></select></th>
+                <th><input type="text" placeholder="Filter observer..." class="column-filter" data-column="3"></th>
+                <th><input type="text" placeholder="Filter position..." class="column-filter" data-column="4"></th>
+                <th><input type="text" placeholder="Min-Max AU..." class="column-filter" data-column="5" title="Format: 0.5-2.0"></th>
+                <th><select class="column-filter" data-column="6"><option value="">All Types</option></select></th>
+                <th><input type="text" placeholder="Filter filename..." class="column-filter" data-column="7"></th>
             </tr>
         </thead>
         <tbody>
-            {% for obs in observations %}
-            <tr>
-                <td>
-                    <a href="{% url 'search:observation-detail' obs.pk %}">
-                        {{ obs.date_obs|date:"Y-m-d H:i" }}
-                    </a>
-                </td>
-                <td>
-                    <span class="badge bg-secondary">{{ obs.network.discipline }}</span>
-                    {{ obs.network.name }}
-                </td>
-                <td>{{ obs.observer|truncatewords:3 }}</td>
-                <td class="small">{{ obs.get_position_display }}</td>
-                <td>{{ obs.get_solar_distance_display }}</td>
-                <td>
-                    {% if obs.has_file %}
-                        <span class="badge bg-info">{{ obs.idxfileid.type }}</span>
-                    {% else %}
-                        <span class="text-muted">—</span>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if obs.has_file %}
-                        <span class="text-success" title="{{ obs.idxfileid.filename }}">✓ Has file</span>
-                    {% else %}
-                        <span class="text-muted">—</span>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
+            <!-- DataTables will populate this via AJAX -->
         </tbody>
     </table>
 </div>
 
-<!-- Pagination -->
-{% if is_paginated %}
-<nav aria-label="Search results pagination">
-    <ul class="pagination justify-content-center">
-        {% if page_obj.has_previous %}
-        <li class="page-item">
-            <a class="page-link" href="?{{ request.GET.urlencode }}&page=1">First</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ page_obj.previous_page_number }}">Previous</a>
-        </li>
-        {% endif %}
-        
-        <li class="page-item active">
-            <span class="page-link">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-            </span>
-        </li>
-        
-        {% if page_obj.has_next %}
-        <li class="page-item">
-            <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ page_obj.next_page_number }}">Next</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ page_obj.paginator.num_pages }}">Last</a>
-        </li>
-        {% endif %}
-    </ul>
-</nav>
-{% endif %}
-
-{% else %}
-<div class="alert alert-info">
-    <h4 class="alert-heading">No observations found</h4>
-    <p>No observations match your search criteria. Try adjusting your date range or filters.</p>
-    <hr>
-    <a href="{% url 'search:search' %}" class="btn btn-primary">Try Another Search</a>
+<!-- Fallback pagination (hidden when DataTables loads) -->
+<div id="fallback-pagination">
+    {% if is_paginated %}
+    <nav aria-label="Search results pagination">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?{{ request.GET.urlencode }}&page=1">First</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+            {% endif %}
+            
+            <li class="page-item active">
+                <span class="page-link">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+            </li>
+            
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ page_obj.paginator.num_pages }}">Last</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 </div>
-{% endif %}
 
+<noscript>
+    <div class="alert alert-warning mt-3">
+        <strong>JavaScript Disabled:</strong> For the best experience with filtering and sorting, please enable JavaScript in your browser.
+    </div>
+</noscript>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Preserve search parameters for AJAX requests
+    const searchParams = {
+        start_date: '{{ start_date }}',
+        end_date: '{{ end_date }}',
+        networks: '{{ request.GET.networks }}',
+        observer: '{{ request.GET.observer }}'
+    };
+    
+    // Initialize DataTable with server-side processing
+    const table = $('#observations-table').DataTable({
+        serverSide: true,
+        processing: true,
+        ajax: {
+            url: '{{ request.path }}',
+            type: 'GET',
+            data: function(d) {
+                // Add search parameters to every request
+                $.extend(d, searchParams);
+                return d;
+            },
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        },
+        columns: [
+            { 
+                data: 'date',
+                name: 'date_obs',
+                orderable: true
+            },
+            { 
+                data: 'network',
+                name: 'network',
+                orderable: true
+            },
+            { 
+                data: 'subnet',
+                name: 'subnet',
+                orderable: true
+            },
+            { 
+                data: 'observer',
+                name: 'observer',
+                orderable: true
+            },
+            { 
+                data: 'position',
+                name: 'position',
+                orderable: false
+            },
+            { 
+                data: 'solar_dist',
+                name: 'solar_dist',
+                orderable: true,
+                type: 'num'
+            },
+            { 
+                data: 'file_type',
+                name: 'file_type',
+                orderable: true
+            },
+            { 
+                data: 'filename',
+                name: 'filename',
+                orderable: false
+            }
+        ],
+        order: [[0, 'desc']], // Default sort by date descending
+        pageLength: 50,
+        lengthMenu: [[10, 25, 50, 100], [10, 25, 50, 100]],
+        language: {
+            search: "Global search:",
+            searchPlaceholder: "Search all columns...",
+            processing: '<i class="fa fa-spinner fa-spin"></i> Loading observations...',
+            info: "Showing _START_ to _END_ of _TOTAL_ observations",
+            infoFiltered: "(filtered from _MAX_ total)",
+            lengthMenu: "Show _MENU_ observations per page"
+        },
+        drawCallback: function(settings) {
+            // Initialize Bootstrap tooltips on badges after each redraw
+            $('[title]').tooltip({
+                trigger: 'hover',
+                placement: 'top'
+            });
+        },
+        initComplete: function() {
+            // Hide fallback pagination
+            $('#fallback-pagination').hide();
+            
+            // Populate network dropdown
+            const networkColumn = this.api().column(1);
+            const networkSelect = $('.column-filter[data-column="1"]');
+            const networks = new Set();
+            
+            // Pre-populate with common networks
+            ['AMSN', 'ASTROM', 'IRSN', 'LSPN', 'MSN', 'NNSN', 'PPSN', 'RSN', 'SSSN'].forEach(net => {
+                networkSelect.append('<option value="' + net + '">' + net + '</option>');
+            });
+            
+            // Populate subnet dropdown (will be filled dynamically)
+            const subnetSelect = $('.column-filter[data-column="2"]');
+            
+            // Populate file type dropdown
+            const fileTypeSelect = $('.column-filter[data-column="6"]');
+            fileTypeSelect.append('<option value="DATA">DATA</option>');
+            fileTypeSelect.append('<option value="BROWSE">BROWSE</option>');
+            fileTypeSelect.append('<option value="CALIB">CALIB</option>');
+        }
+    });
+    
+    // Column filtering
+    $('.column-filter').on('keyup change', function() {
+        const columnIndex = $(this).data('column');
+        const value = $(this).val();
+        
+        table.column(columnIndex).search(value).draw();
+        
+        // Show/hide clear filters button
+        updateClearButton();
+    });
+    
+    // Clear all filters
+    $('#clear-filters').on('click', function() {
+        $('.column-filter').val('');
+        $('.column-filter option:first').prop('selected', true);
+        table.columns().search('').draw();
+        table.search('').draw();
+        updateClearButton();
+    });
+    
+    // Update clear button visibility
+    function updateClearButton() {
+        let hasFilters = false;
+        
+        $('.column-filter').each(function() {
+            if ($(this).val() !== '') {
+                hasFilters = true;
+                return false;
+            }
+        });
+        
+        if (hasFilters || table.search() !== '') {
+            $('#clear-filters').show();
+        } else {
+            $('#clear-filters').hide();
+        }
+    }
+    
+    // Update total count display
+    table.on('draw', function() {
+        const info = table.page.info();
+        $('#total-count').text(info.recordsFiltered);
+        $('#plural-s').text(info.recordsFiltered === 1 ? '' : 's');
+    });
+});
+</script>
 {% endblock %}
