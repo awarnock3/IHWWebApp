@@ -271,8 +271,13 @@ $(document).ready(function() {
                 networkSelect.append('<option value="' + net + '">' + net + '</option>');
             });
             
-            // Populate subnet dropdown (will be filled dynamically)
+            // Populate subnet dropdown
             const subnetSelect = $('.column-filter[data-column="2"]');
+            ['AMDR', 'AMPG', 'AMSP', 'AMV', 'ASTR', 'IHW', 'IRFC', 'IRFT', 'IRIM', 'IRPH', 
+             'IRPOL', 'IRSP', 'LSPN', 'MSNRDR', 'MSNVIS', 'NNSN', 'PFLX', 'PMAG', 'PPOL', 
+             'PSTO', 'RSCN', 'RSOC', 'RSOH', 'RSRDR', 'RSSL', 'RSUV', 'SSSN'].forEach(subnet => {
+                subnetSelect.append('<option value="' + subnet + '">' + subnet + '</option>');
+            });
             
             // Populate file type dropdown
             const fileTypeSelect = $('.column-filter[data-column="6"]');
