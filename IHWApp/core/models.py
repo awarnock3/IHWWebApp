@@ -318,23 +318,44 @@ class IdxMetaAmvis(models.Model):
 
 
 class IdxMetaAstrom(models.Model):
-    """Astrometry Network metadata"""
+    """Astrometry Network metadata - astrometric measurements of comet position"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    ra = models.FloatField(blank=True, null=True)
-    dec = models.FloatField(blank=True, null=True)
-    delta_ra = models.FloatField(blank=True, null=True)
-    delta_dec = models.FloatField(blank=True, null=True)
-    mag = models.FloatField(blank=True, null=True)
-    delta_mag = models.FloatField(blank=True, null=True)
-    uncertainty_a = models.FloatField(blank=True, null=True)
-    uncertainty_b = models.FloatField(blank=True, null=True)
-    position_angle = models.FloatField(blank=True, null=True)
-    ref_cat = models.CharField(max_length=16, blank=True, null=True)
-    method = models.CharField(max_length=2, blank=True, null=True)
-    nref = models.SmallIntegerField(blank=True, null=True)
-    npos = models.SmallIntegerField(blank=True, null=True)
-    rmsa = models.FloatField(blank=True, null=True)
-    rmsd = models.FloatField(blank=True, null=True)
+    
+    # Julian date
+    jd = models.FloatField()
+    
+    # Reported coordinates (as submitted)
+    ra_reported = models.FloatField()
+    dec_reported = models.FloatField()
+    
+    # Reduced coordinates (corrected/refined)
+    ra = models.FloatField()
+    decl = models.FloatField()
+    
+    # Quality and uncertainty
+    acceptance_flag = models.CharField(max_length=1, blank=True, null=True)
+    image_quality = models.CharField(max_length=1, blank=True, null=True)
+    ra_rms = models.FloatField()
+    dec_rms = models.FloatField()
+    utc_corr = models.FloatField(blank=True, null=True)
+    
+    # Observatory location
+    lon_obs = models.FloatField()
+    lat_obs = models.FloatField()
+    lat_calc_flag = models.CharField(max_length=1, blank=True, null=True)
+    
+    # Position offsets (from nucleus?)
+    dxy = models.SmallIntegerField(blank=True, null=True)
+    dz = models.SmallIntegerField(blank=True, null=True)
+    
+    # Magnitude measurements
+    mag_total = models.FloatField(blank=True, null=True)
+    mag_nucleus = models.FloatField(blank=True, null=True)
+    
+    # Observer information
+    filenum = models.IntegerField(blank=True, null=True)
+    obs_code = models.CharField(max_length=3)
+    observer = models.CharField(max_length=24)
     observatory_id = models.IntegerField(blank=True, null=True)
 
     class Meta:
@@ -527,9 +548,63 @@ class IdxMetaLspn(models.Model):
 
 
 class IdxMetaMsnrdr(models.Model):
-    """Meteor Studies Network RDR metadata"""
+    """Meteor Studies Network RDR (Radar) metadata - meteor altitude/duration distributions"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    # Minimal metadata for meteor observations
+    
+    # Shower identification
+    shower = models.CharField(max_length=20, blank=True, null=True)
+    system = models.CharField(max_length=8, blank=True, null=True)
+    limit_sensitiv = models.CharField(max_length=22, blank=True, null=True)
+    direction = models.CharField(max_length=1, blank=True, null=True)
+    
+    # Meteor counts
+    total_count = models.SmallIntegerField(blank=True, null=True)
+    rads_count = models.SmallIntegerField(blank=True, null=True)
+    
+    # Duration bins
+    dur_lt_h = models.SmallIntegerField(blank=True, null=True)
+    dur_gt_h = models.SmallIntegerField(blank=True, null=True)
+    dur_ge_1 = models.SmallIntegerField(blank=True, null=True)
+    dur_gt_1 = models.FloatField(blank=True, null=True)
+    dur_ge_8 = models.SmallIntegerField(blank=True, null=True)
+    dur_gt_8 = models.FloatField(blank=True, null=True)
+    net_time_count = models.FloatField(blank=True, null=True)
+    
+    # Altitude bins (70-350km in 10km increments, plus special ranges)
+    alt_70_80km = models.SmallIntegerField(blank=True, null=True)
+    alt_75_100km = models.SmallIntegerField(blank=True, null=True)
+    alt_lt_90km = models.SmallIntegerField(blank=True, null=True)
+    alt_80_90km = models.SmallIntegerField(blank=True, null=True)
+    alt_90_100km = models.SmallIntegerField(blank=True, null=True)
+    alt_100_110km = models.SmallIntegerField(blank=True, null=True)
+    alt_110_120km = models.SmallIntegerField(blank=True, null=True)
+    alt_120_130km = models.SmallIntegerField(blank=True, null=True)
+    alt_130_140km = models.SmallIntegerField(blank=True, null=True)
+    alt_140_150km = models.SmallIntegerField(blank=True, null=True)
+    alt_150_160km = models.SmallIntegerField(blank=True, null=True)
+    alt_160_170km = models.SmallIntegerField(blank=True, null=True)
+    alt_170_180km = models.SmallIntegerField(blank=True, null=True)
+    alt_180_190km = models.SmallIntegerField(blank=True, null=True)
+    alt_190_200km = models.SmallIntegerField(blank=True, null=True)
+    alt_200_210km = models.SmallIntegerField(blank=True, null=True)
+    alt_210_220km = models.SmallIntegerField(blank=True, null=True)
+    alt_201_225km = models.SmallIntegerField(blank=True, null=True)
+    alt_220_230km = models.SmallIntegerField(blank=True, null=True)
+    alt_230_240km = models.SmallIntegerField(blank=True, null=True)
+    alt_226_250km = models.SmallIntegerField(blank=True, null=True)
+    alt_240_250km = models.SmallIntegerField(blank=True, null=True)
+    alt_250_260km = models.SmallIntegerField(blank=True, null=True)
+    alt_260_270km = models.SmallIntegerField(blank=True, null=True)
+    alt_270_280km = models.SmallIntegerField(blank=True, null=True)
+    alt_280_290km = models.SmallIntegerField(blank=True, null=True)
+    alt_290_300km = models.SmallIntegerField(blank=True, null=True)
+    alt_noname = models.SmallIntegerField(blank=True, null=True)
+    alt_gt_250km = models.SmallIntegerField(blank=True, null=True)
+    alt_300_310km = models.SmallIntegerField(blank=True, null=True)
+    alt_310_320km = models.SmallIntegerField(blank=True, null=True)
+    alt_320_330km = models.SmallIntegerField(blank=True, null=True)
+    alt_330_340km = models.SmallIntegerField(blank=True, null=True)
+    alt_340_350km = models.SmallIntegerField(blank=True, null=True)
     
     class Meta:
         managed = False
@@ -547,12 +622,53 @@ class IdxMetaMsnvis(models.Model):
 
 
 class IdxMetaNnsn(models.Model):
-    """Near-Nucleus Studies Network metadata"""
+    """Near-Nucleus Studies Network metadata - high-resolution nuclear imaging"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    filter_name = models.CharField(max_length=16, blank=True, null=True)
+    
+    # Basic observation parameters
+    filter_name = models.CharField(max_length=25, blank=True, null=True)
     exposure = models.FloatField(blank=True, null=True)
-    data_quality = models.CharField(max_length=20, blank=True, null=True)
+    airmass = models.FloatField(blank=True, null=True)
+    data_quality = models.CharField(max_length=10, blank=True, null=True)
     observatory_id = models.IntegerField(blank=True, null=True)
+    
+    # Image metadata
+    image_lines = models.SmallIntegerField(blank=True, null=True)
+    image_samples = models.SmallIntegerField(blank=True, null=True)
+    pixel_scale = models.FloatField(blank=True, null=True)
+    flux_unit = models.CharField(max_length=20, blank=True, null=True)
+    
+    # Telescope parameters
+    airm_mid = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    apsize = models.FloatField(blank=True, null=True)
+    telefl = models.FloatField(blank=True, null=True)
+    
+    # FITS metadata
+    bitpix = models.SmallIntegerField(blank=True, null=True)
+    bunit = models.CharField(max_length=64, blank=True, null=True)
+    naxis = models.SmallIntegerField(blank=True, null=True)
+    
+    # Image calibration/statistics
+    cometmax = models.IntegerField(blank=True, null=True)
+    skymin = models.IntegerField(blank=True, null=True)
+    
+    # WCS and data format
+    crota1 = models.CharField(max_length=16, blank=True, null=True)
+    dat_form = models.CharField(max_length=16, blank=True, null=True)
+    sense = models.CharField(max_length=3, blank=True, null=True)
+    
+    # Observatory location
+    elev_obs = models.SmallIntegerField(blank=True, null=True)
+    
+    # Processing metadata
+    date_rel = models.CharField(max_length=8, blank=True, null=True)
+    date_wrt = models.CharField(max_length=8, blank=True, null=True)
+    origin = models.CharField(max_length=32, blank=True, null=True)
+    submittr = models.CharField(max_length=24, blank=True, null=True)
+    
+    # Special event flag
+    spec_evt = models.CharField(max_length=1, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -743,14 +859,43 @@ class IdxMetaRsuv(models.Model):
 
 
 class IdxMetaSpectra(models.Model):
-    """Spectroscopy Network metadata"""
+    """Spectroscopy Network metadata - spectroscopic observations"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    spectral_range_lo = models.FloatField(blank=True, null=True)
-    spectral_range_hi = models.FloatField(blank=True, null=True)
-    resolution = models.FloatField(blank=True, null=True)
-    aperture = models.FloatField(blank=True, null=True)
-    syscode = models.CharField(max_length=12, blank=True, null=True)
-    observatory_id = models.IntegerField(blank=True, null=True)
+    
+    # SSN identifier
+    ssn_num = models.IntegerField(blank=True, null=True)
+    
+    # Data format and type
+    dat_form = models.CharField(max_length=10, blank=True, null=True)
+    dat_type = models.CharField(max_length=20, blank=True, null=True)
+    dis_code = models.CharField(max_length=12, blank=True, null=True)
+    calibration = models.CharField(max_length=1, blank=True, null=True)
+    
+    # Spectral characteristics
+    resolution = models.DecimalField(max_digits=10, decimal_places=3, blank=True, null=True)
+    range_lo = models.IntegerField(blank=True, null=True)
+    range_hi = models.IntegerField(blank=True, null=True)
+    
+    # Observation parameters
+    exposure = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    aperture = models.CharField(max_length=80, blank=True, null=True)
+    slit_size = models.CharField(max_length=10, blank=True, null=True)
+    slit_pa = models.DecimalField(max_digits=6, decimal_places=1, blank=True, null=True)
+    airmass = models.DecimalField(max_digits=6, decimal_places=3, blank=True, null=True)
+    elevation = models.DecimalField(max_digits=7, decimal_places=1, blank=True, null=True)
+    
+    # Data dimensions
+    axes = models.SmallIntegerField(blank=True, null=True)
+    axis_1 = models.SmallIntegerField(blank=True, null=True)
+    axis_2 = models.SmallIntegerField(blank=True, null=True)
+    
+    # Offset from nucleus
+    separ_nucl = models.DecimalField(max_digits=8, decimal_places=1, blank=True, null=True)
+    offset_rho = models.DecimalField(max_digits=8, decimal_places=1, blank=True, null=True)
+    offset_theta = models.SmallIntegerField(blank=True, null=True)
+    
+    # Quality
+    quality = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         managed = False
