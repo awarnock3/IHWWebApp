@@ -145,6 +145,11 @@ Nothing currently in progress.
 
 ## 🐛 Known Issues
 
+### ~~RSN Metadata Models~~ (FIXED 2026-04-20)
+- ~~RSN observation pages were failing with SQL column errors~~
+- ~~Fixed by correcting model field definitions to match actual schema~~
+- ~~All 6 RSN subnets now working correctly~~
+
 ### Database Issues (Documented in DATABASE_INCONSISTENCIES.md)
 
 **AMV/AMVIS Subnet (AMSN Visual Observations):**
