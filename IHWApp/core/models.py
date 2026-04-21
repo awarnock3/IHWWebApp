@@ -676,13 +676,32 @@ class IdxMetaNnsn(models.Model):
 
 
 class IdxMetaPflx(models.Model):
-    """Photometry Flux Network metadata"""
+    """Photometry Flux Network metadata - flux measurements"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    lambda_eff = models.FloatField(blank=True, null=True)
-    bandwidth = models.FloatField(blank=True, null=True)
-    aperture = models.FloatField(blank=True, null=True)
-    syscode = models.CharField(max_length=12, blank=True, null=True)
+    
+    # Filter/wavelength parameters
+    filter_name = models.CharField(max_length=10, blank=True, null=True)
+    center_wavelength = models.IntegerField(blank=True, null=True)
+    bandpass = models.IntegerField(blank=True, null=True)
+    
+    # Flux measurement
+    limit_flag = models.CharField(max_length=1, blank=True, null=True)
+    log_flux = models.FloatField(blank=True, null=True)
+    flux_error = models.FloatField(blank=True, null=True)
+    
+    # Observation parameters
+    observing_aperture = models.FloatField(blank=True, null=True)
+    telescope_aperture = models.FloatField(blank=True, null=True)
+    integration_time = models.IntegerField(blank=True, null=True)
+    airmass = models.FloatField(blank=True, null=True)
+    
+    # Offset from nucleus
+    rho = models.IntegerField(blank=True, null=True)
+    theta = models.IntegerField(blank=True, null=True)
+    
+    # Observatory and notes
     observatory_id = models.IntegerField(blank=True, null=True)
+    note_code = models.SmallIntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -690,13 +709,33 @@ class IdxMetaPflx(models.Model):
 
 
 class IdxMetaPmag(models.Model):
-    """Photometry Magnitude Network metadata"""
+    """Photometry Magnitude Network metadata - magnitude measurements"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    lambda_eff = models.FloatField(blank=True, null=True)
-    bandwidth = models.FloatField(blank=True, null=True)
-    aperture = models.FloatField(blank=True, null=True)
-    syscode = models.CharField(max_length=12, blank=True, null=True)
-    observatory_id = models.IntegerField(blank=True, null=True)
+    
+    # PPN identifier
+    ppn_num = models.IntegerField(blank=True, null=True)
+    
+    # Filter/wavelength parameters
+    filter_name = models.CharField(max_length=4, blank=True, null=True)
+    wavelength = models.SmallIntegerField(blank=True, null=True)
+    bandpass = models.SmallIntegerField(blank=True, null=True)
+    
+    # Observation parameters
+    aperture_diam = models.FloatField(blank=True, null=True)
+    duration = models.SmallIntegerField(blank=True, null=True)
+    airmass = models.FloatField(blank=True, null=True)
+    
+    # Magnitude measurement
+    mag_lt = models.CharField(max_length=1, blank=True, null=True)
+    magnitude = models.FloatField(blank=True, null=True)
+    mag_error = models.FloatField(blank=True, null=True)
+    
+    # Offset from nucleus
+    offset_rho = models.SmallIntegerField(blank=True, null=True)
+    offset_theta = models.SmallIntegerField(blank=True, null=True)
+    
+    # Notes
+    note_flag = models.CharField(max_length=1, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -704,13 +743,35 @@ class IdxMetaPmag(models.Model):
 
 
 class IdxMetaPpol(models.Model):
-    """Photometry Polarimetry Network metadata"""
+    """Photometry Polarimetry Network metadata - polarization measurements"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    lambda_eff = models.FloatField(blank=True, null=True)
-    bandwidth = models.FloatField(blank=True, null=True)
-    aperture = models.FloatField(blank=True, null=True)
-    syscode = models.CharField(max_length=12, blank=True, null=True)
-    observatory_id = models.IntegerField(blank=True, null=True)
+    
+    # PPN identifier
+    ppn_num = models.IntegerField(blank=True, null=True)
+    
+    # Filter/wavelength parameters
+    filter_name = models.CharField(max_length=4, blank=True, null=True)
+    wavelength = models.SmallIntegerField(blank=True, null=True)
+    bandpass = models.SmallIntegerField(blank=True, null=True)
+    
+    # Observation parameters
+    aperture_diam = models.FloatField(blank=True, null=True)
+    duration = models.SmallIntegerField(blank=True, null=True)
+    airmass = models.FloatField(blank=True, null=True)
+    
+    # Polarization measurement
+    polariz_type = models.CharField(max_length=2, blank=True, null=True)
+    polarization = models.FloatField(blank=True, null=True)
+    polariz_error = models.FloatField(blank=True, null=True)
+    polariz_angle = models.FloatField(blank=True, null=True)
+    polariz_angle_err = models.FloatField(blank=True, null=True)
+    
+    # Offset from nucleus
+    offset_rho = models.SmallIntegerField(blank=True, null=True)
+    offset_theta = models.SmallIntegerField(blank=True, null=True)
+    
+    # Notes
+    note_flag = models.CharField(max_length=1, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -718,13 +779,36 @@ class IdxMetaPpol(models.Model):
 
 
 class IdxMetaPsto(models.Model):
-    """Photometry Stokes Network metadata"""
+    """Photometry Stokes Network metadata - Stokes parameter measurements"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    lambda_eff = models.FloatField(blank=True, null=True)
-    bandwidth = models.FloatField(blank=True, null=True)
-    aperture = models.FloatField(blank=True, null=True)
-    syscode = models.CharField(max_length=12, blank=True, null=True)
-    observatory_id = models.IntegerField(blank=True, null=True)
+    
+    # PPN identifier
+    ppn_num = models.IntegerField(blank=True, null=True)
+    
+    # Filter/wavelength parameters
+    filter_name = models.CharField(max_length=4, blank=True, null=True)
+    wavelength = models.SmallIntegerField(blank=True, null=True)
+    bandpass = models.SmallIntegerField(blank=True, null=True)
+    
+    # Observation parameters
+    aperture_diam = models.FloatField(blank=True, null=True)
+    duration = models.SmallIntegerField(blank=True, null=True)
+    airmass = models.FloatField(blank=True, null=True)
+    
+    # Stokes parameters (Q/I, U/I, V/I)
+    q_over_i = models.FloatField(blank=True, null=True)
+    q_over_i_err = models.FloatField(blank=True, null=True)
+    u_over_i = models.FloatField(blank=True, null=True)
+    u_over_i_err = models.FloatField(blank=True, null=True)
+    v_over_i = models.FloatField(blank=True, null=True)
+    v_over_i_err = models.FloatField(blank=True, null=True)
+    
+    # Offset from nucleus
+    offset_rho = models.SmallIntegerField(blank=True, null=True)
+    offset_theta = models.SmallIntegerField(blank=True, null=True)
+    
+    # Notes
+    note_flag = models.CharField(max_length=1, blank=True, null=True)
 
     class Meta:
         managed = False
