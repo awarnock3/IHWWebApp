@@ -242,17 +242,25 @@ class IdxMetaAmdr(models.Model):
 class IdxMetaAmpg(models.Model):
     """Amateur Photography Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    
+    # Telescope parameters
     foc_len = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
     fratio = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True)
-    duration = models.SmallIntegerField(blank=True, null=True)
-    emulsion = models.CharField(max_length=64, blank=True, null=True)
-    filter_name = models.CharField(max_length=64, blank=True, null=True)
-    hypersens = models.CharField(max_length=1, blank=True, null=True)
     aperture = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
-    dev_tech = models.CharField(max_length=64, blank=True, null=True)
+    
+    # Field of view
+    fov1 = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    fov2 = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    
+    # Observation parameters
+    duration = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+    emulsion = models.CharField(max_length=14, blank=True, null=True)
+    iso_din = models.CharField(max_length=8, blank=True, null=True)
+    hypersense = models.CharField(max_length=1, blank=True, null=True)
     guiding = models.CharField(max_length=1, blank=True, null=True)
-    lim_magn = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True)
-    image_qual = models.CharField(max_length=1, blank=True, null=True)
+    
+    # Identification
+    idno = models.CharField(max_length=8, blank=True, null=True)
     obs_site_id = models.SmallIntegerField(blank=True, null=True)
 
     class Meta:
@@ -263,19 +271,25 @@ class IdxMetaAmpg(models.Model):
 class IdxMetaAmsp(models.Model):
     """Amateur Spectroscopy Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    spectral_range_lo = models.FloatField(blank=True, null=True)
-    spectral_range_hi = models.FloatField(blank=True, null=True)
-    resolution = models.FloatField(blank=True, null=True)
-    aperture = models.FloatField(blank=True, null=True)
-    focal_len = models.FloatField(blank=True, null=True)
-    dispersion = models.FloatField(blank=True, null=True)
-    duration = models.SmallIntegerField(blank=True, null=True)
-    emulsion = models.CharField(max_length=64, blank=True, null=True)
-    hypersens = models.CharField(max_length=1, blank=True, null=True)
-    dev_tech = models.CharField(max_length=64, blank=True, null=True)
+    
+    # Instrument configuration
+    config = models.CharField(max_length=8, blank=True, null=True)
+    instrument = models.CharField(max_length=4, blank=True, null=True)
+    
+    # Telescope parameters
+    foc_len = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    fratio = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True)
+    aperture = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    
+    # Observation parameters
+    duration = models.DecimalField(max_digits=7, decimal_places=2, blank=True, null=True)
+    emulsion = models.CharField(max_length=14, blank=True, null=True)
+    iso = models.CharField(max_length=8, blank=True, null=True)
+    hypsen = models.CharField(max_length=1, blank=True, null=True)
     guiding = models.CharField(max_length=1, blank=True, null=True)
-    lim_magn = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True)
-    image_qual = models.CharField(max_length=1, blank=True, null=True)
+    
+    # Identification
+    idno = models.CharField(max_length=8, blank=True, null=True)
     obs_site_id = models.SmallIntegerField(blank=True, null=True)
 
     class Meta:
@@ -366,10 +380,20 @@ class IdxMetaAstrom(models.Model):
 class IdxMetaIrim(models.Model):
     """Infrared Imaging Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    lambda_eff = models.FloatField(blank=True, null=True)
-    bandwidth = models.FloatField(blank=True, null=True)
-    aperture = models.FloatField(blank=True, null=True)
-    syscode = models.CharField(max_length=12, blank=True, null=True)
+    
+    # Filter
+    filter = models.CharField(max_length=10)
+    
+    # Image dimensions
+    image_lines = models.SmallIntegerField(blank=True, null=True)
+    image_samples = models.SmallIntegerField(blank=True, null=True)
+    pixel_scale = models.FloatField(blank=True, null=True)
+    
+    # Flux units
+    flux_unit = models.CharField(max_length=20, blank=True, null=True)
+    
+    # System identification
+    syscode = models.CharField(max_length=12)
     observatory_id = models.IntegerField(blank=True, null=True)
 
     class Meta:
@@ -380,10 +404,12 @@ class IdxMetaIrim(models.Model):
 class IdxMetaIrph(models.Model):
     """Infrared Photometry Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    lambda_eff = models.FloatField(blank=True, null=True)
-    bandwidth = models.FloatField(blank=True, null=True)
-    aperture = models.FloatField(blank=True, null=True)
-    syscode = models.CharField(max_length=12, blank=True, null=True)
+    
+    # Photometry type
+    irphot_type = models.CharField(max_length=12)
+    
+    # System identification
+    syscode = models.CharField(max_length=12)
     observatory_id = models.IntegerField(blank=True, null=True)
 
     class Meta:
@@ -612,9 +638,32 @@ class IdxMetaMsnrdr(models.Model):
 
 
 class IdxMetaMsnvis(models.Model):
-    """Meteor Studies Network Visual metadata"""
+    """Meteor Studies Network Visual metadata - visual meteor observations"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    # Minimal metadata for meteor visual observations
+    
+    # Shower identification
+    shower = models.CharField(max_length=20, blank=True, null=True)
+    
+    # Observation site
+    site_num = models.SmallIntegerField(blank=True, null=True)
+    site_name = models.CharField(max_length=20, blank=True, null=True)
+    
+    # Observer information
+    obs_num = models.SmallIntegerField(blank=True, null=True)
+    observer_id = models.IntegerField(blank=True, null=True)
+    
+    # Meteor counts
+    total_meteor_count = models.SmallIntegerField(blank=True, null=True)
+    count_shower = models.SmallIntegerField(blank=True, null=True)
+    count_noshower = models.SmallIntegerField(blank=True, null=True)
+    
+    # Observing conditions
+    mag_limit = models.FloatField(blank=True, null=True)
+    cloud_cover = models.SmallIntegerField(blank=True, null=True)
+    
+    # Source file references
+    source_fileid = models.IntegerField(blank=True, null=True)
+    source_filepathid = models.IntegerField(blank=True, null=True)
     
     class Meta:
         managed = False
