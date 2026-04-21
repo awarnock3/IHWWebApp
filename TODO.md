@@ -1,7 +1,7 @@
 # IHW Django Archive - TODO List
 
-**Last Updated:** 2026-04-20  
-**Current Phase:** Phase 7 - File Downloads
+**Last Updated:** 2026-04-21  
+**Current Phase:** Phase 9 - Metadata Display Enhancements
 
 ---
 
@@ -47,6 +47,23 @@
 - [x] Dynamic metadata fetch in ObservationDetailView
 - [x] Formatted field name display (snake_case → Title Case)
 - [x] Tested with AMV, LSPN, IRSP observations
+
+### Phase 7: Search Enhancements
+- [x] Solar distance search filter with min/max AU inputs
+- [x] Query against ephemeris data (ihw_ephemeris.r field)
+- [x] Combined with existing date/observer/network filters
+- [x] All search fields now optional (requires at least one criterion)
+- [x] Help text and preset ranges (Perihelion < 1 AU, Near perihelion 0.5-1.5 AU)
+- [x] DataTables AJAX integration for solar distance filtering
+
+### Phase 8: Documentation System
+- [x] Documentation files listing page (/documentation/)
+- [x] DataTables integration for filtering and sorting
+- [x] Generic file viewer with text/binary detection
+- [x] Full file display (no truncation) in <pre> blocks
+- [x] Combined path+filename display
+- [x] MD5 digest display
+- [x] Archive availability detection
 
 ---
 
@@ -97,15 +114,7 @@ These features enhance the UI without requiring archive files, making the interf
 
 **Documentation:** See DATATABLES_IMPLEMENTATION.md for full technical details
 
-##### Search Form Enhancements
-- [ ] **Add solar distance search filter**
-  - Add distance range inputs (min/max in AU)
-  - Query against ephemeris data (ihw_ephemeris.r field)
-  - Combine with existing date/observer/network filters
-  - Help text: "Distance from Sun in Astronomical Units (AU)"
-  - Consider preset ranges: "Perihelion (< 1 AU)", "All observations"
-
-##### Metadata Display Enhancements
+##### Metadata Display Enhancements (IN PROGRESS 🚧)
 - [ ] **Show ALL metadata fields initially (expansive approach)**
   - Display every non-null field from metadata tables
   - Don't hide any fields based on assumptions
