@@ -2,9 +2,9 @@
 Search views for IHW archive
 """
 from django.views.generic import FormView, ListView, DetailView, TemplateView
-from django.db.models import Q, F, OuterRef, Subquery
+from django.db.models import Q, F, OuterRef, Subquery, Exists
 from django.http import Http404, HttpResponse, JsonResponse
-from core.models import IdxMetaCommon, IhwEphemeris
+from core.models import IdxMetaCommon, IhwEphemeris, IhwFiles, IhwFileFilepath, IhwFilepath
 from core.fits_utils import read_fits_header, format_header_for_display, get_header_summary
 from core.archive_utils import is_archive_available, find_fits_header_file, find_pds_label_file
 from .forms import ObservationSearchForm
@@ -32,6 +32,12 @@ class SearchView(FormView):
         
         if form.cleaned_data.get('observer'):
             params['observer'] = form.cleaned_data['observer']
+        
+        if form.cleaned_data.get('min_solar_distance') is not None:
+            params['min_solar_dist'] = str(form.cleaned_data['min_solar_distance'])
+        
+        if form.cleaned_data.get('max_solar_distance') is not None:
+            params['max_solar_dist'] = str(form.cleaned_data['max_solar_distance'])
         
         return redirect('/search/results/?' + urlencode(params))
 
@@ -72,6 +78,33 @@ class SearchResultsView(ListView):
         observer = self.request.GET.get('observer')
         if observer:
             queryset = queryset.filter(observer__icontains=observer)
+        
+        # Solar distance filter (optional)
+        min_solar_dist = self.request.GET.get('min_solar_dist')
+        max_solar_dist = self.request.GET.get('max_solar_dist')
+        
+        if min_solar_dist or max_solar_dist:
+            # Need to join with ephemeris table for filtering
+            from django.db.models import Exists, OuterRef
+            
+            ephemeris_filter = IhwEphemeris.objects.filter(
+                date=OuterRef('date_obs__date'),
+                comet='Halley'
+            )
+            
+            if min_solar_dist:
+                try:
+                    ephemeris_filter = ephemeris_filter.filter(r__gte=float(min_solar_dist))
+                except (ValueError, TypeError):
+                    pass
+            
+            if max_solar_dist:
+                try:
+                    ephemeris_filter = ephemeris_filter.filter(r__lte=float(max_solar_dist))
+                except (ValueError, TypeError):
+                    pass
+            
+            queryset = queryset.filter(Exists(ephemeris_filter))
         
         return queryset
     
@@ -413,5 +446,105 @@ class PdsLabelView(TemplateView):
         context['observation'] = observation
         context['label_filename'] = os.path.basename(label_path)
         context['total_lines'] = len(lines)
+        
+        return context
+
+
+class AboutView(TemplateView):
+    """About page for IHW Archive"""
+    template_name = 'about.html'
+
+
+class DocumentationView(ListView):
+    """Display all documentation files from the archive"""
+    model = IhwFiles
+    template_name = 'documentation.html'
+    context_object_name = 'documents'
+    
+    def get_queryset(self):
+        """Get all files where type='DOCUMENT'"""
+        # Get documents with their paths
+        queryset = IhwFiles.objects.filter(type='DOCUMENT').select_related('subnet')
+        
+        # Annotate with file paths
+        documents = []
+        for doc in queryset:
+            # Get all paths for this file
+            paths = IhwFileFilepath.objects.filter(fileid=doc).select_related('filepathid')
+            if paths.exists():
+                # Use the first path (most files have only one)
+                doc.dirpath = paths.first().filepathid.dirpath
+            else:
+                doc.dirpath = ''
+            documents.append(doc)
+        
+        return documents
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['total_documents'] = len(context['documents'])
+        context['archive_available'] = is_archive_available()
+        return context
+
+
+class FileViewerView(TemplateView):
+    """Generic file viewer for documentation and other text files"""
+    template_name = 'file_viewer.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        # Check if archive is available
+        if not is_archive_available():
+            raise Http404("Archive files are not available")
+        
+        # Get file by ID
+        try:
+            file_obj = IhwFiles.objects.select_related('subnet').get(pk=kwargs['file_id'])
+        except IhwFiles.DoesNotExist:
+            raise Http404("File not found")
+        
+        # Get full path
+        full_path = file_obj.get_full_path()
+        if not full_path or not os.path.exists(full_path):
+            raise Http404("File not found in archive")
+        
+        # Try to read the file
+        try:
+            # Try common text encodings
+            for encoding in ['utf-8', 'ascii', 'latin-1']:
+                try:
+                    with open(full_path, 'r', encoding=encoding, errors='replace') as f:
+                        content = f.read()
+                    break
+                except UnicodeDecodeError:
+                    continue
+            else:
+                # If all encodings fail, read as binary and show hex
+                with open(full_path, 'rb') as f:
+                    binary_content = f.read(1024)  # First 1KB
+                context['is_binary'] = True
+                context['binary_preview'] = binary_content.hex()
+                context['file'] = file_obj
+                context['filename'] = os.path.basename(full_path)
+                context['full_path'] = full_path
+                return context
+            
+            # Split into lines for display
+            lines = content.split('\n')
+            context['file_lines'] = [
+                {'line_num': i + 1, 'text': line}
+                for i, line in enumerate(lines[:1000])  # Limit to first 1000 lines
+            ]
+            context['total_lines'] = len(lines)
+            context['truncated'] = len(lines) > 1000
+            
+        except Exception as e:
+            raise Http404(f"Error reading file: {e}")
+        
+        context['file'] = file_obj
+        context['filename'] = os.path.basename(full_path)
+        context['full_path'] = full_path
+        context['is_binary'] = False
         
         return context

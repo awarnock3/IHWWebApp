@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}About - International Halley Watch{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <h1 class="mb-4">About the International Halley Watch Archive</h1>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="h4 text-primary">Mission Overview</h2>
+                <p class="lead">
+                    The International Halley Watch (IHW) was an unprecedented global scientific collaboration 
+                    to observe Comet 1P/Halley during its 1985-1986 apparition—the first time the comet 
+                    could be studied with modern astronomical instruments.
+                </p>
+                <p>
+                    Organized by NASA and the International Astronomical Union (IAU), the IHW coordinated 
+                    observations from professional astronomers, amateur observers, and space missions around 
+                    the world. This archive preserves those observations for future generations, particularly 
+                    for comparison when Halley returns in <strong>2061</strong>.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="h5 text-primary">📊 Archive Contents</h3>
+                        <ul>
+                            <li><strong>69,094 observations</strong> from September 1985 to June 1986</li>
+                            <li><strong>9 scientific disciplines</strong> (networks)</li>
+                            <li><strong>24 specialized subnets</strong></li>
+                            <li><strong>Hundreds of observers</strong> worldwide</li>
+                            <li>FITS data files, PDS labels, and metadata</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="h5 text-primary">🔬 Scientific Networks</h3>
+                        <ul class="small">
+                            <li><strong>AMSN</strong> - Amateur Studies Network</li>
+                            <li><strong>ASTROM</strong> - Astrometry Network</li>
+                            <li><strong>IRSN</strong> - Infrared Studies Network</li>
+                            <li><strong>LSPN</strong> - Large-Scale Phenomena Network</li>
+                            <li><strong>MSN</strong> - Meteor Studies Network</li>
+                            <li><strong>NNSN</strong> - Near-Nucleus Studies Network</li>
+                            <li><strong>PPSN</strong> - Photometry & Polarimetry Network</li>
+                            <li><strong>RSN</strong> - Radio Science Network</li>
+                            <li><strong>SSSN</strong> - Spectroscopy & Spectrophotometry Network</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="h5 text-primary">🌍 Historical Context</h3>
+                <p>
+                    Comet Halley has been observed since at least 240 BCE, with documented appearances 
+                    every 75-76 years. The 1985-1986 apparition was the first opportunity to study 
+                    the comet with:
+                </p>
+                <ul>
+                    <li>CCD cameras and modern photographic equipment</li>
+                    <li>Radio telescopes and infrared detectors</li>
+                    <li>Space-based observations (including flybys by Giotto, Vega 1 & 2, and others)</li>
+                    <li>International coordination through standardized data formats</li>
+                </ul>
+                <p>
+                    The IHW established protocols for observation, data reduction, and archiving that 
+                    became models for future international collaborations in planetary science.
+                </p>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="h5 text-primary">🗂️ Data Formats</h3>
+                <p>
+                    This archive uses standard formats from the era:
+                </p>
+                <ul>
+                    <li><strong>FITS</strong> (Flexible Image Transport System) - Industry-standard astronomical data format</li>
+                    <li><strong>PDS</strong> (Planetary Data System) - NASA's long-term archive format for planetary missions</li>
+                    <li><strong>ASCII tables</strong> - Human-readable tabular data</li>
+                </ul>
+                <p class="mb-0">
+                    All data files include comprehensive metadata describing observation conditions, 
+                    instrument parameters, and calibration information.
+                </p>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="h5 text-primary">🎯 Using This Archive</h3>
+                <p>This web interface provides:</p>
+                <ul>
+                    <li><strong>Search by date range</strong> - Find observations during specific periods</li>
+                    <li><strong>Filter by discipline</strong> - Focus on specific types of observations</li>
+                    <li><strong>Solar distance filtering</strong> - Study observations at particular heliocentric distances</li>
+                    <li><strong>Observer search</strong> - Find contributions from specific researchers or observatories</li>
+                    <li><strong>Interactive results</strong> - Sort, filter, and explore observations with DataTables</li>
+                    <li><strong>FITS header viewer</strong> - Examine detailed metadata without downloading files</li>
+                    <li><strong>PDS label viewer</strong> - Review data descriptions and formats</li>
+                </ul>
+                <p class="mb-0">
+                    The interface works in "database-only mode" even when archive files are not mounted, 
+                    making it useful for discovering what data exists before requesting specific files.
+                </p>
+            </div>
+        </div>
+        
+        <div class="card mb-4 border-info">
+            <div class="card-body">
+                <h3 class="h5 text-info">📚 Additional Resources</h3>
+                <ul class="mb-0">
+                    <li>
+                        <a href="{% url 'documentation' %}">Documentation Files</a> - 
+                        Technical documentation, catalogs, and guides from the original IHW archive
+                    </li>
+                    <li>
+                        <a href="https://pds-smallbodies.astro.umd.edu/" target="_blank" rel="noopener">PDS Small Bodies Node</a> - 
+                        Official planetary data archive
+                    </li>
+                    <li>
+                        <a href="https://en.wikipedia.org/wiki/International_Halley_Watch" target="_blank" rel="noopener">IHW on Wikipedia</a> - 
+                        Historical background and mission details
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card bg-light">
+            <div class="card-body">
+                <h3 class="h5 text-secondary">🚀 Looking Ahead to 2061</h3>
+                <p class="mb-0">
+                    When Comet Halley returns in 2061, this archive will enable direct comparison 
+                    with new observations. Changes in the comet's brightness, structure, and activity 
+                    over the 75-year orbital period will provide unique insights into cometary evolution. 
+                    This archive ensures that the work of thousands of observers in 1985-1986 will 
+                    continue to contribute to science for decades to come.
+                </p>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4 mb-4">
+            <a href="{% url 'search:search' %}" class="btn btn-primary">
+                🔍 Search the Archive
+            </a>
+            <a href="{% url 'documentation' %}" class="btn btn-outline-secondary">
+                📄 View Documentation
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -5,13 +5,23 @@
 {% block content %}
 <div class="row">
     <div class="col-lg-8 mx-auto">
+        <!-- Navigation Links -->
+        <div class="mb-3 text-center">
+            <a href="{% url 'about' %}" class="btn btn-sm btn-outline-info me-2">
+                ℹ️ About the IHW Archive
+            </a>
+            <a href="{% url 'documentation' %}" class="btn btn-sm btn-outline-secondary">
+                📄 Documentation Files
+            </a>
+        </div>
+        
         <div class="card shadow-sm">
             <div class="card-header bg-primary text-white">
                 <h2 class="h4 mb-0">Search the Archive</h2>
             </div>
             <div class="card-body">
                 <p class="text-muted mb-4">
-                    Search for observations by date range. Optionally filter by discipline or observer name.
+                    Search for observations by date range. Optionally filter by discipline, observer name, or solar distance.
                 </p>
                 
                 <form method="post" id="searchForm">
@@ -23,6 +33,7 @@
                     </div>
                     {% endif %}
                     
+                    <!-- Date Range -->
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="{{ form.start_date.id_for_label }}" class="form-label">
@@ -47,6 +58,38 @@
                         </div>
                     </div>
                     
+                    <!-- Solar Distance Range -->
+                    <div class="mb-3">
+                        <label class="form-label">Solar Distance Range (optional)</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="{{ form.min_solar_distance.id_for_label }}" class="form-label small">
+                                    {{ form.min_solar_distance.label }}
+                                </label>
+                                {{ form.min_solar_distance }}
+                                {% if form.min_solar_distance.errors %}
+                                <div class="text-danger small">{{ form.min_solar_distance.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ form.max_solar_distance.id_for_label }}" class="form-label small">
+                                    {{ form.max_solar_distance.label }}
+                                </label>
+                                {{ form.max_solar_distance }}
+                                {% if form.max_solar_distance.errors %}
+                                <div class="text-danger small">{{ form.max_solar_distance.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-text">
+                            Distance from Sun in Astronomical Units (AU). 
+                            <a href="#" class="quick-distance" data-min="0" data-max="1">Perihelion (&lt; 1 AU)</a> &middot;
+                            <a href="#" class="quick-distance" data-min="0.5" data-max="1.5">Near perihelion (0.5-1.5 AU)</a> &middot;
+                            <a href="#" class="quick-distance" data-min="" data-max="">All distances</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Disciplines -->
                     <div class="mb-3">
                         <label class="form-label">{{ form.networks.label }}</label>
                         <div class="form-text mb-2">{{ form.networks.help_text }}</div>
@@ -67,6 +110,7 @@
                         {% endif %}
                     </div>
                     
+                    <!-- Observer -->
                     <div class="mb-3">
                         <label for="{{ form.observer.id_for_label }}" class="form-label">
                             {{ form.observer.label }}
@@ -107,6 +151,13 @@ $(document).ready(function() {
         e.preventDefault();
         $('#id_start_date').val($(this).data('start'));
         $('#id_end_date').val($(this).data('end'));
+    });
+    
+    // Quick distance range links
+    $('.quick-distance').click(function(e) {
+        e.preventDefault();
+        $('#id_min_solar_distance').val($(this).data('min'));
+        $('#id_max_solar_distance').val($(this).data('max'));
     });
 });
 </script>

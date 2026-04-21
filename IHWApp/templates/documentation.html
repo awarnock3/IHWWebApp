@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}Documentation Files - International Halley Watch{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h2>📄 Archive Documentation Files</h2>
+    <p class="text-muted">
+        Technical documentation, catalogs, and guides from the International Halley Watch archive.
+        <strong>{{ total_documents }}</strong> document{{ total_documents|pluralize }} found.
+    </p>
+    <p>
+        <a href="{% url 'search:search' %}" class="btn btn-sm btn-outline-primary">
+            🔍 Search Observations
+        </a>
+        <a href="{% url 'about' %}" class="btn btn-sm btn-outline-info ms-2">
+            ℹ️ About the Archive
+        </a>
+    </p>
+    {% if not archive_available %}
+    <div class="alert alert-warning">
+        <strong>Archive Not Mounted:</strong> File paths are shown but files cannot be viewed. 
+        This interface shows what documentation exists in the database.
+    </div>
+    {% endif %}
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Filename</th>
+                <th>Path</th>
+                <th>Network</th>
+                <th>Subnet</th>
+                <th>Size</th>
+                <th>MD5</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in documents %}
+            <tr>
+                <td>
+                    {% if archive_available %}
+                        <a href="{% url 'file-viewer' doc.pk %}" title="View file contents">
+                            {{ doc.filename }}
+                        </a>
+                    {% else %}
+                        {{ doc.filename }}
+                    {% endif %}
+                </td>
+                <td class="small text-muted font-monospace">
+                    {{ doc.dirpath }}
+                </td>
+                <td>
+                    {% if doc.subnet and doc.subnet.discipline %}
+                        <span class="badge bg-primary" 
+                              aria-label="Network: {{ doc.subnet.discipline.name }}"
+                              title="{{ doc.subnet.discipline.name }}">
+                            {{ doc.subnet.discipline.discipline }}
+                        </span>
+                    {% else %}
+                        <span class="text-muted">—</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if doc.subnet %}
+                        <span class="badge bg-secondary" 
+                              aria-label="Subnet: {{ doc.subnet.subnet_name|default:doc.subnet.subnet }}"
+                              title="{{ doc.subnet.subnet_name|default:doc.subnet.subnet }}">
+                            {{ doc.subnet.subnet }}
+                        </span>
+                    {% else %}
+                        <span class="text-muted">—</span>
+                    {% endif %}
+                </td>
+                <td class="text-end">
+                    {% if doc.filesize %}
+                        {% if doc.filesize < 1024 %}
+                            {{ doc.filesize }} B
+                        {% elif doc.filesize < 1048576 %}
+                            {{ doc.filesize|filesizeformat }}
+                        {% else %}
+                            {{ doc.filesize|filesizeformat }}
+                        {% endif %}
+                    {% else %}
+                        <span class="text-muted">—</span>
+                    {% endif %}
+                </td>
+                <td class="small font-monospace">
+                    <span title="{{ doc.md5digest }}">
+                        {{ doc.md5digest|slice:":8" }}...
+                    </span>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center text-muted py-4">
+                    No documentation files found in the archive.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if documents %}
+<div class="alert alert-info mt-4">
+    <h5 class="alert-heading">About Documentation Files</h5>
+    <p class="mb-0">
+        These files include technical documentation, instrument descriptions, calibration guides, 
+        and data format specifications from the original IHW archive. Some files may be in 
+        legacy formats (ASCII text, early word processor formats, etc.). Files that cannot be 
+        displayed as text may indicate format issues that need correction in the archive.
+    </p>
+</div>
+{% endif %}
+
+{% endblock %}
