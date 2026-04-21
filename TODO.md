@@ -413,6 +413,18 @@ These features enhance the UI without requiring archive files, making the interf
 - [ ] Data quality feedback system
 - [ ] Citation export (BibTeX, etc.)
 
+### Documentation Search Enhancement
+- [ ] **Full-text search index for documentation files**
+  - Create separate `ihw_document_index` table with:
+    - `fileid` (FK to ihw_files)
+    - `content` (TEXT with MySQL FULLTEXT index)
+    - `last_indexed` (timestamp)
+  - Index 177 documentation files during ingest
+  - Preserve original files on filesystem (don't move to database)
+  - Enable fast search via MySQL FULLTEXT queries
+  - Maintains archive integrity while adding search capability
+  - Optional enhancement - current DataTables filtering works well
+
 ### Bulk Operations
 - [ ] Batch download (zip multiple files)
 - [ ] Bulk metadata export
