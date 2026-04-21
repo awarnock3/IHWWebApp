@@ -103,6 +103,32 @@
         </div>
         {% endif %}
         
+        {% if discipline_metadata %}
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-warning text-dark">
+                <h3 class="h5 mb-0">Observation Metadata</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm table-striped">
+                    <tbody>
+                        {% for label, value in discipline_metadata %}
+                        <tr>
+                            <th style="width: 40%;">{{ label }}</th>
+                            <td>{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="alert alert-info mb-0 mt-3">
+                    <small>
+                        <strong>Note:</strong> This metadata is extracted from discipline-specific observations 
+                        and may include instrument parameters, wavelengths, magnitudes, and other measurements.
+                    </small>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
         {% if observation.has_file %}
         <div class="card shadow-sm">
             <div class="card-header bg-success text-white">

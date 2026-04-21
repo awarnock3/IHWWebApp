@@ -5,6 +5,8 @@ All models have managed=False to preserve legacy database
 """
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
+import os
 
 
 class IhwNetwork(models.Model):
@@ -209,3 +211,536 @@ class IdxMetaCommon(models.Model):
     def has_file(self):
         """Check if observation has associated data file"""
         return self.idxfileid is not None
+
+
+# ============================================================================
+# Discipline-Specific Metadata Models
+# ============================================================================
+# Each idx_meta_* table contains specialized metadata for observations
+# from a specific network/subnet. All link to IdxMetaCommon via meta_common_id
+# ============================================================================
+
+class IdxMetaAmdr(models.Model):
+    """Amateur Drawing Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    scale = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    aperture = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    instrument = models.CharField(max_length=4, blank=True, null=True)
+    fratio = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True)
+    power_1 = models.SmallIntegerField(blank=True, null=True)
+    power_2 = models.SmallIntegerField(blank=True, null=True)
+    power_3 = models.SmallIntegerField(blank=True, null=True)
+    duration = models.SmallIntegerField(blank=True, null=True)
+    lim_magn = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True)
+    obs_site_id = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_amdr'
+
+
+class IdxMetaAmpg(models.Model):
+    """Amateur Photography Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    foc_len = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    fratio = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True)
+    duration = models.SmallIntegerField(blank=True, null=True)
+    emulsion = models.CharField(max_length=64, blank=True, null=True)
+    filter_name = models.CharField(max_length=64, blank=True, null=True)
+    hypersens = models.CharField(max_length=1, blank=True, null=True)
+    aperture = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    dev_tech = models.CharField(max_length=64, blank=True, null=True)
+    guiding = models.CharField(max_length=1, blank=True, null=True)
+    lim_magn = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True)
+    image_qual = models.CharField(max_length=1, blank=True, null=True)
+    obs_site_id = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_ampg'
+
+
+class IdxMetaAmsp(models.Model):
+    """Amateur Spectroscopy Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    spectral_range_lo = models.FloatField(blank=True, null=True)
+    spectral_range_hi = models.FloatField(blank=True, null=True)
+    resolution = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    focal_len = models.FloatField(blank=True, null=True)
+    dispersion = models.FloatField(blank=True, null=True)
+    duration = models.SmallIntegerField(blank=True, null=True)
+    emulsion = models.CharField(max_length=64, blank=True, null=True)
+    hypersens = models.CharField(max_length=1, blank=True, null=True)
+    dev_tech = models.CharField(max_length=64, blank=True, null=True)
+    guiding = models.CharField(max_length=1, blank=True, null=True)
+    lim_magn = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True)
+    image_qual = models.CharField(max_length=1, blank=True, null=True)
+    obs_site_id = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_amsp'
+
+
+class IdxMetaAmvis(models.Model):
+    """Amateur Visual Observations (AMV/AMVIS) Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    mag_gt = models.CharField(max_length=1, blank=True, null=True)
+    magnitude = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True)
+    mag_comment = models.CharField(max_length=1, blank=True, null=True)
+    mag_est_method = models.CharField(max_length=1, blank=True, null=True)
+    chart = models.CharField(max_length=8, blank=True, null=True)
+    coma_maj = models.DecimalField(max_digits=6, decimal_places=1, blank=True, null=True)
+    coma_min = models.DecimalField(max_digits=6, decimal_places=1, blank=True, null=True)
+    degree_cond = models.SmallIntegerField(blank=True, null=True)
+    tail_len = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    tail_pos_ang = models.SmallIntegerField(blank=True, null=True)
+    aperture = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    instrument = models.CharField(max_length=4, blank=True, null=True)
+    fratio = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True)
+    power = models.SmallIntegerField(blank=True, null=True)
+    lim_mag = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True)
+    lim_mag_comment = models.CharField(max_length=5, blank=True, null=True)
+    dark_adapt = models.CharField(max_length=1, blank=True, null=True)
+    obs_site_id = models.SmallIntegerField(blank=True, null=True)
+    elevation = models.SmallIntegerField(blank=True, null=True)
+    special_event_flag = models.CharField(max_length=1, blank=True, null=True)
+    instrument_full = models.CharField(max_length=14, blank=True, null=True)
+    tail_len_2 = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    tail_pos_ang_2 = models.SmallIntegerField(blank=True, null=True)
+    tail_len_3 = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    tail_pos_ang_3 = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_amvis'
+
+
+class IdxMetaAstrom(models.Model):
+    """Astrometry Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    ra = models.FloatField(blank=True, null=True)
+    dec = models.FloatField(blank=True, null=True)
+    delta_ra = models.FloatField(blank=True, null=True)
+    delta_dec = models.FloatField(blank=True, null=True)
+    mag = models.FloatField(blank=True, null=True)
+    delta_mag = models.FloatField(blank=True, null=True)
+    uncertainty_a = models.FloatField(blank=True, null=True)
+    uncertainty_b = models.FloatField(blank=True, null=True)
+    position_angle = models.FloatField(blank=True, null=True)
+    ref_cat = models.CharField(max_length=16, blank=True, null=True)
+    method = models.CharField(max_length=2, blank=True, null=True)
+    nref = models.SmallIntegerField(blank=True, null=True)
+    npos = models.SmallIntegerField(blank=True, null=True)
+    rmsa = models.FloatField(blank=True, null=True)
+    rmsd = models.FloatField(blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_astrom'
+
+
+class IdxMetaIrim(models.Model):
+    """Infrared Imaging Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    lambda_eff = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    syscode = models.CharField(max_length=12, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_irim'
+
+
+class IdxMetaIrph(models.Model):
+    """Infrared Photometry Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    lambda_eff = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    syscode = models.CharField(max_length=12, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_irph'
+
+
+class IdxMetaIrpol(models.Model):
+    """Infrared Polarimetry Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    lambda_eff = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    syscode = models.CharField(max_length=12, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_irpol'
+
+
+class IdxMetaIrsp(models.Model):
+    """Infrared Spectroscopy Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    spectral_range_lo = models.FloatField(blank=True, null=True)
+    spectral_range_hi = models.FloatField(blank=True, null=True)
+    resolution = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    syscode = models.CharField(max_length=12, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_irsp'
+
+
+class IdxMetaLspn(models.Model):
+    """Large-Scale Phenomena Network metadata (extensive FITS metadata)"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    observer = models.CharField(max_length=64, blank=True, null=True)
+    emulsion = models.CharField(max_length=25, blank=True, null=True)
+    filter_name = models.CharField(max_length=25, blank=True, null=True)
+    exposure = models.FloatField(blank=True, null=True)
+    fov_x = models.FloatField(blank=True, null=True)
+    fov_y = models.FloatField(blank=True, null=True)
+    calibration_flag = models.CharField(max_length=1, blank=True, null=True)
+    data_quality = models.CharField(max_length=20, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+    # Many FITS header fields - abbreviated for brevity
+    airm_mid = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    bitpix = models.SmallIntegerField(blank=True, null=True)
+    naxis = models.SmallIntegerField(blank=True, null=True)
+    naxis1 = models.IntegerField(blank=True, null=True)
+    naxis2 = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_lspn'
+
+
+class IdxMetaMsnrdr(models.Model):
+    """Meteor Studies Network RDR metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    # Minimal metadata for meteor observations
+    
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_msnrdr'
+
+
+class IdxMetaMsnvis(models.Model):
+    """Meteor Studies Network Visual metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    # Minimal metadata for meteor visual observations
+    
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_msnvis'
+
+
+class IdxMetaNnsn(models.Model):
+    """Near-Nucleus Studies Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    filter_name = models.CharField(max_length=16, blank=True, null=True)
+    exposure = models.FloatField(blank=True, null=True)
+    data_quality = models.CharField(max_length=20, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_nnsn'
+
+
+class IdxMetaPflx(models.Model):
+    """Photometry Flux Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    lambda_eff = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    syscode = models.CharField(max_length=12, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_pflx'
+
+
+class IdxMetaPmag(models.Model):
+    """Photometry Magnitude Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    lambda_eff = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    syscode = models.CharField(max_length=12, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_pmag'
+
+
+class IdxMetaPpol(models.Model):
+    """Photometry Polarimetry Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    lambda_eff = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    syscode = models.CharField(max_length=12, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_ppol'
+
+
+class IdxMetaPsto(models.Model):
+    """Photometry Stokes Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    lambda_eff = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    syscode = models.CharField(max_length=12, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_psto'
+
+
+class IdxMetaRscn(models.Model):
+    """Radio Science Continuum Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    frequency = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_rscn'
+
+
+class IdxMetaRsoc(models.Model):
+    """Radio Science Occultation Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    frequency = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_rsoc'
+
+
+class IdxMetaRsoh(models.Model):
+    """Radio Science OH Line Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    frequency = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_rsoh'
+
+
+class IdxMetaRsrdr(models.Model):
+    """Radio Science RDR Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    frequency = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_rsrdr'
+
+
+class IdxMetaRssl(models.Model):
+    """Radio Science Spectral Line Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    frequency = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    line_id = models.CharField(max_length=16, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_rssl'
+
+
+class IdxMetaRsuv(models.Model):
+    """Radio Science UV Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    lambda_eff = models.FloatField(blank=True, null=True)
+    bandwidth = models.FloatField(blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_rsuv'
+
+
+class IdxMetaSpectra(models.Model):
+    """Spectroscopy Network metadata"""
+    meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
+    spectral_range_lo = models.FloatField(blank=True, null=True)
+    spectral_range_hi = models.FloatField(blank=True, null=True)
+    resolution = models.FloatField(blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    syscode = models.CharField(max_length=12, blank=True, null=True)
+    observatory_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'idx_meta_spectra'
+
+
+# ============================================================================
+# Helper Functions
+# ============================================================================
+
+def get_discipline_metadata_model(observation):
+    """
+    Get the discipline-specific metadata model class for an observation.
+    
+    Args:
+        observation: IdxMetaCommon instance
+        
+    Returns:
+        Model class or None if no metadata table exists for this discipline
+    """
+    # Map subnet codes to model classes
+    SUBNET_TO_MODEL = {
+        'AMDR': IdxMetaAmdr,
+        'AMPG': IdxMetaAmpg,
+        'AMSP': IdxMetaAmsp,
+        'AMV': IdxMetaAmvis,
+        'AMVIS': IdxMetaAmvis,  # Alternative name for AMV
+        'ASTROM': IdxMetaAstrom,
+        'IRIM': IdxMetaIrim,
+        'IRPH': IdxMetaIrph,
+        'IRPOL': IdxMetaIrpol,
+        'IRSP': IdxMetaIrsp,
+        'LSPN': IdxMetaLspn,
+        'MSNRDR': IdxMetaMsnrdr,
+        'MSNVIS': IdxMetaMsnvis,
+        'NNSN': IdxMetaNnsn,
+        'PFLX': IdxMetaPflx,
+        'PMAG': IdxMetaPmag,
+        'PPOL': IdxMetaPpol,
+        'PSTO': IdxMetaPsto,
+        'RSCN': IdxMetaRscn,
+        'RSOC': IdxMetaRsoc,
+        'RSOH': IdxMetaRsoh,
+        'RSRDR': IdxMetaRsrdr,
+        'RSSL': IdxMetaRssl,
+        'RSUV': IdxMetaRsuv,
+        'SPECTRA': IdxMetaSpectra,
+    }
+    
+    # Get subnet from observation's file
+    if observation.idxfileid and observation.idxfileid.subnet:
+        subnet_code = observation.idxfileid.subnet.subnet.upper()
+        return SUBNET_TO_MODEL.get(subnet_code)
+    
+    return None
+
+
+def get_discipline_metadata(observation):
+    """
+    Fetch discipline-specific metadata for an observation.
+    
+    Args:
+        observation: IdxMetaCommon instance
+        
+    Returns:
+        Model instance or None if no metadata exists
+    """
+    model_class = get_discipline_metadata_model(observation)
+    if model_class:
+        try:
+            return model_class.objects.get(meta_common=observation)
+        except model_class.DoesNotExist:
+            return None
+    return None
+
+
+def format_metadata_fields(metadata_obj):
+    """
+    Convert metadata object into formatted display dictionary.
+    
+    Args:
+        metadata_obj: Discipline-specific metadata model instance
+        
+    Returns:
+        List of (field_label, field_value) tuples for display
+    """
+    if not metadata_obj:
+        return []
+    
+    # Skip these system/FK fields
+    skip_fields = {'id', 'meta_common', 'meta_common_id'}
+    
+    # Field name formatting: snake_case to Title Case with units
+    field_labels = {
+        'spectral_range_lo': 'Spectral Range (Low)',
+        'spectral_range_hi': 'Spectral Range (High)',
+        'lambda_eff': 'Effective Wavelength (λ)',
+        'mag_gt': 'Magnitude >',
+        'mag_comment': 'Magnitude Comment',
+        'mag_est_method': 'Magnitude Estimation Method',
+        'coma_maj': 'Coma Major Axis',
+        'coma_min': 'Coma Minor Axis',
+        'degree_cond': 'Observing Conditions',
+        'tail_len': 'Tail Length',
+        'tail_pos_ang': 'Tail Position Angle',
+        'lim_mag': 'Limiting Magnitude',
+        'lim_mag_comment': 'Limiting Magnitude Comment',
+        'dark_adapt': 'Dark Adapted',
+        'obs_site_id': 'Observatory Site ID',
+        'observatory_id': 'Observatory ID',
+        'foc_len': 'Focal Length',
+        'fratio': 'F-Ratio',
+        'dev_tech': 'Development Technique',
+        'image_qual': 'Image Quality',
+        'lim_magn': 'Limiting Magnitude',
+        'special_event_flag': 'Special Event',
+        'instrument_full': 'Instrument',
+        'ra': 'Right Ascension',
+        'dec': 'Declination',
+        'delta_ra': 'RA Error',
+        'delta_dec': 'Dec Error',
+        'delta_mag': 'Magnitude Error',
+        'uncertainty_a': 'Uncertainty A',
+        'uncertainty_b': 'Uncertainty B',
+        'position_angle': 'Position Angle',
+        'ref_cat': 'Reference Catalog',
+        'fov_x': 'Field of View X',
+        'fov_y': 'Field of View Y',
+        'calibration_flag': 'Calibration',
+        'data_quality': 'Data Quality',
+        'airm_mid': 'Airmass (mid)',
+        'naxis': 'Number of Axes',
+        'naxis1': 'X-Axis Size',
+        'naxis2': 'Y-Axis Size',
+        'line_id': 'Spectral Line',
+    }
+    
+    result = []
+    for field in metadata_obj._meta.get_fields():
+        if field.name in skip_fields:
+            continue
+            
+        value = getattr(metadata_obj, field.name, None)
+        if value is not None and value != '':
+            # Format field name
+            label = field_labels.get(field.name, field.name.replace('_', ' ').title())
+            result.append((label, value))
+    
+    return result

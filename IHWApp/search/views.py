@@ -91,6 +91,8 @@ class ObservationDetailView(DetailView):
     context_object_name = 'observation'
     
     def get_context_data(self, **kwargs):
+        from core.models import get_discipline_metadata, format_metadata_fields
+        
         context = super().get_context_data(**kwargs)
         
         # Add ephemeris data
@@ -109,6 +111,11 @@ class ObservationDetailView(DetailView):
                 base_path = os.path.splitext(full_path)[0]
                 context['has_fits'] = find_fits_header_file(base_path) is not None
                 context['has_pds_label'] = find_pds_label_file(base_path) is not None
+        
+        # Fetch discipline-specific metadata
+        metadata_obj = get_discipline_metadata(self.object)
+        if metadata_obj:
+            context['discipline_metadata'] = format_metadata_fields(metadata_obj)
         
         return context
 
