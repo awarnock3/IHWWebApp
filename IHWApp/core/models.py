@@ -516,9 +516,16 @@ class IdxMetaPsto(models.Model):
 class IdxMetaRscn(models.Model):
     """Radio Science Continuum Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    frequency = models.FloatField(blank=True, null=True)
+    image_lines = models.IntegerField(blank=True, null=True)
+    image_samples = models.IntegerField(blank=True, null=True)
+    scaling_factor = models.FloatField(blank=True, null=True)
+    offset_val = models.FloatField(blank=True, null=True)
+    cent_freq = models.FloatField(blank=True, null=True)
     bandwidth = models.FloatField(blank=True, null=True)
-    observatory_id = models.IntegerField(blank=True, null=True)
+    beamsize = models.FloatField(blank=True, null=True)
+    beam_elong = models.FloatField(blank=True, null=True)
+    beam_rotation = models.FloatField(blank=True, null=True)
+    dat_type = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -528,9 +535,18 @@ class IdxMetaRscn(models.Model):
 class IdxMetaRsoc(models.Model):
     """Radio Science Occultation Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    frequency = models.FloatField(blank=True, null=True)
+    image_lines = models.IntegerField(blank=True, null=True)
+    image_samples = models.IntegerField(blank=True, null=True)
+    scaling_factor = models.FloatField(blank=True, null=True)
+    offset_val = models.FloatField(blank=True, null=True)
+    derived_max = models.FloatField(blank=True, null=True)
+    derived_min = models.FloatField(blank=True, null=True)
+    cent_freq = models.FloatField(blank=True, null=True)
     bandwidth = models.FloatField(blank=True, null=True)
-    observatory_id = models.IntegerField(blank=True, null=True)
+    beamsize = models.FloatField(blank=True, null=True)
+    beam_elong = models.FloatField(blank=True, null=True)
+    beam_rotation = models.FloatField(blank=True, null=True)
+    dat_type = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -540,9 +556,19 @@ class IdxMetaRsoc(models.Model):
 class IdxMetaRsoh(models.Model):
     """Radio Science OH Line Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    frequency = models.FloatField(blank=True, null=True)
+    spectrum_rows = models.IntegerField(blank=True, null=True)
+    scaling_factor = models.FloatField(blank=True, null=True)
+    offset_val = models.FloatField(blank=True, null=True)
+    derived_max = models.FloatField(blank=True, null=True)
+    derived_min = models.FloatField(blank=True, null=True)
+    velo_min = models.FloatField(blank=True, null=True)
+    velo_interval = models.FloatField(blank=True, null=True)
+    cent_freq = models.FloatField(blank=True, null=True)
     bandwidth = models.FloatField(blank=True, null=True)
-    observatory_id = models.IntegerField(blank=True, null=True)
+    beamsize = models.FloatField(blank=True, null=True)
+    beam_elong = models.FloatField(blank=True, null=True)
+    beam_rotation = models.FloatField(blank=True, null=True)
+    dat_type = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -552,9 +578,23 @@ class IdxMetaRsoh(models.Model):
 class IdxMetaRsrdr(models.Model):
     """Radio Science RDR Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    frequency = models.FloatField(blank=True, null=True)
+    rhc_rows = models.IntegerField(blank=True, null=True)
+    rhc_scaling_factor = models.FloatField(blank=True, null=True)
+    rhc_offset = models.FloatField(blank=True, null=True)
+    rhc_freq_min = models.FloatField(blank=True, null=True)
+    rhc_freq_interval = models.FloatField(blank=True, null=True)
+    rhc_derived_max = models.FloatField(blank=True, null=True)
+    rhc_derived_min = models.FloatField(blank=True, null=True)
+    lhc_rows = models.IntegerField(blank=True, null=True)
+    lhc_scaling_factor = models.FloatField(blank=True, null=True)
+    lhc_offset = models.FloatField(blank=True, null=True)
+    lhc_freq_min = models.FloatField(blank=True, null=True)
+    lhc_freq_interval = models.FloatField(blank=True, null=True)
+    lhc_derived_max = models.FloatField(blank=True, null=True)
+    lhc_derived_min = models.FloatField(blank=True, null=True)
+    cent_freq = models.FloatField(blank=True, null=True)
     bandwidth = models.FloatField(blank=True, null=True)
-    observatory_id = models.IntegerField(blank=True, null=True)
+    dat_type = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -564,10 +604,19 @@ class IdxMetaRsrdr(models.Model):
 class IdxMetaRssl(models.Model):
     """Radio Science Spectral Line Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    frequency = models.FloatField(blank=True, null=True)
+    spectrum_rows = models.IntegerField(blank=True, null=True)
+    scaling_factor = models.FloatField(blank=True, null=True)
+    offset_val = models.FloatField(blank=True, null=True)
+    derived_max = models.FloatField(blank=True, null=True)
+    derived_min = models.FloatField(blank=True, null=True)
+    velo_min = models.FloatField(blank=True, null=True)
+    velo_interval = models.FloatField(blank=True, null=True)
+    cent_freq = models.FloatField(blank=True, null=True)
     bandwidth = models.FloatField(blank=True, null=True)
-    line_id = models.CharField(max_length=16, blank=True, null=True)
-    observatory_id = models.IntegerField(blank=True, null=True)
+    beamsize = models.FloatField(blank=True, null=True)
+    beam_elong = models.FloatField(blank=True, null=True)
+    beam_rotation = models.FloatField(blank=True, null=True)
+    dat_type = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -577,9 +626,14 @@ class IdxMetaRssl(models.Model):
 class IdxMetaRsuv(models.Model):
     """Radio Science UV Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    lambda_eff = models.FloatField(blank=True, null=True)
+    spectrum_rows = models.IntegerField(blank=True, null=True)
+    spectrum_cols = models.IntegerField(blank=True, null=True)
+    freq_min = models.FloatField(blank=True, null=True)
+    freq_interval = models.FloatField(blank=True, null=True)
+    scaling_factor = models.FloatField(blank=True, null=True)
+    cent_freq = models.FloatField(blank=True, null=True)
     bandwidth = models.FloatField(blank=True, null=True)
-    observatory_id = models.IntegerField(blank=True, null=True)
+    dat_type = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -730,6 +784,39 @@ def format_metadata_fields(metadata_obj):
         'naxis1': 'X-Axis Size',
         'naxis2': 'Y-Axis Size',
         'line_id': 'Spectral Line',
+        # Radio Science Network fields
+        'image_lines': 'Image Lines',
+        'image_samples': 'Image Samples',
+        'scaling_factor': 'Scaling Factor',
+        'offset_val': 'Offset Value',
+        'cent_freq': 'Center Frequency',
+        'beamsize': 'Beam Size',
+        'beam_elong': 'Beam Elongation',
+        'beam_rotation': 'Beam Rotation',
+        'dat_type': 'Data Type',
+        'derived_max': 'Derived Maximum',
+        'derived_min': 'Derived Minimum',
+        'spectrum_rows': 'Spectrum Rows',
+        'spectrum_cols': 'Spectrum Columns',
+        'velo_min': 'Velocity Minimum',
+        'velo_interval': 'Velocity Interval',
+        'freq_min': 'Frequency Minimum',
+        'freq_interval': 'Frequency Interval',
+        # RHC/LHC polarization fields (RSRDR)
+        'rhc_rows': 'RHC Rows',
+        'rhc_scaling_factor': 'RHC Scaling Factor',
+        'rhc_offset': 'RHC Offset',
+        'rhc_freq_min': 'RHC Frequency Min',
+        'rhc_freq_interval': 'RHC Frequency Interval',
+        'rhc_derived_max': 'RHC Derived Max',
+        'rhc_derived_min': 'RHC Derived Min',
+        'lhc_rows': 'LHC Rows',
+        'lhc_scaling_factor': 'LHC Scaling Factor',
+        'lhc_offset': 'LHC Offset',
+        'lhc_freq_min': 'LHC Frequency Min',
+        'lhc_freq_interval': 'LHC Frequency Interval',
+        'lhc_derived_max': 'LHC Derived Max',
+        'lhc_derived_min': 'LHC Derived Min',
     }
     
     result = []
