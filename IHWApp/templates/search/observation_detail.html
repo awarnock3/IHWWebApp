@@ -2,6 +2,39 @@
 
 {% block title %}Observation #{{ observation.pk }} - International Halley Watch{% endblock %}
 
+{% block extra_css %}
+<!-- jQuery UI CSS -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<style>
+    .ui-accordion .ui-accordion-header {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 0.75rem 1rem;
+        margin-top: 0.25rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .ui-accordion .ui-accordion-header:hover {
+        background: #e9ecef;
+    }
+    .ui-accordion .ui-accordion-header.ui-state-active {
+        background: #0d6efd;
+        color: white;
+        border-color: #0d6efd;
+    }
+    .ui-accordion .ui-accordion-content {
+        border: 1px solid #dee2e6;
+        border-top: none;
+        padding: 0;
+    }
+    .metadata-count {
+        float: right;
+        font-size: 0.85em;
+        opacity: 0.8;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <nav aria-label="breadcrumb" class="mb-4">
     <ol class="breadcrumb">
@@ -103,26 +136,34 @@
         </div>
         {% endif %}
         
-        {% if discipline_metadata %}
+        {% if metadata_categories %}
         <div class="card shadow-sm mb-4">
-            <div class="card-header bg-warning text-dark">
-                <h3 class="h5 mb-0">Observation Metadata</h3>
+            <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                <h3 class="h5 mb-0">Observation Metadata ({{ metadata_field_count }} fields)</h3>
+                <button id="toggle-all-metadata" class="btn btn-sm btn-outline-dark">Expand All</button>
             </div>
             <div class="card-body">
-                <table class="table table-sm table-striped">
-                    <tbody>
-                        {% for label, value in discipline_metadata %}
-                        <tr>
-                            <th style="width: 40%;">{{ label }}</th>
-                            <td>{{ value }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div id="metadata-accordion">
+                    {% for category, fields in metadata_categories.items %}
+                    <h3>{{ category }} <span class="metadata-count">({{ fields|length }})</span></h3>
+                    <div>
+                        <table class="table table-sm table-striped mb-0">
+                            <tbody>
+                                {% for label, value in fields %}
+                                <tr>
+                                    <th style="width: 45%;">{{ label }}</th>
+                                    <td>{{ value }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endfor %}
+                </div>
                 <div class="alert alert-info mb-0 mt-3">
                     <small>
-                        <strong>Note:</strong> This metadata is extracted from discipline-specific observations 
-                        and may include instrument parameters, wavelengths, magnitudes, and other measurements.
+                        <strong>Note:</strong> Metadata is organized by category. Click a category header to expand/collapse. 
+                        Only populated fields are shown. Use "Expand All" to view all categories at once.
                     </small>
                 </div>
             </div>
@@ -226,4 +267,44 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block extra_js %}
+<!-- jQuery (required for jQuery UI) -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- jQuery UI -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Initialize accordion with all panels collapsed
+    $("#metadata-accordion").accordion({
+        collapsible: true,
+        active: false,
+        heightStyle: "content",
+        icons: {
+            header: "ui-icon-circle-arrow-e",
+            activeHeader: "ui-icon-circle-arrow-s"
+        }
+    });
+    
+    // Toggle all panels
+    let allExpanded = false;
+    $("#toggle-all-metadata").click(function() {
+        if (allExpanded) {
+            // Collapse all
+            $("#metadata-accordion").accordion("option", "active", false);
+            $(this).text("Expand All");
+            allExpanded = false;
+        } else {
+            // Expand all by activating each panel
+            let numPanels = $("#metadata-accordion").find("h3").length;
+            for (let i = 0; i < numPanels; i++) {
+                $("#metadata-accordion").accordion("option", "active", i);
+            }
+            $(this).text("Collapse All");
+            allExpanded = true;
+        }
+    });
+});
+</script>
 {% endblock %}

@@ -1211,3 +1211,592 @@ def format_metadata_fields(metadata_obj):
             result.append((label, value))
     
     return result
+
+
+def get_comprehensive_field_labels():
+    """
+    Returns comprehensive field label mapping for all 334+ metadata fields.
+    """
+    return {
+        # Common observation fields
+        'observer': 'Observer',
+        'syscode': 'System Code',
+        'observatory_id': 'Observatory',
+        
+        # Instrument/Telescope parameters
+        'instrument': 'Instrument',
+        'instrume': 'Instrument Name',
+        'config': 'Configuration',
+        'aperture': 'Aperture (cm)',
+        'fratio': 'F-Ratio',
+        'foc_len': 'Focal Length (m)',
+        'telefl': 'Telescope Focal Length',
+        'detector': 'Detector',
+        'cameraid': 'Camera ID',
+        'chip_id': 'CCD Chip ID',
+        
+        # Observation parameters
+        'exposure': 'Exposure Time (s)',
+        'duration': 'Duration (s)',
+        'integration_time': 'Integration Time (s)',
+        'airmass': 'Airmass',
+        'airm_mid': 'Airmass (midpoint)',
+        'elevation': 'Elevation (deg)',
+        'apsize': 'Aperture Size (arcsec)',
+        'observing_aperture': 'Observing Aperture',
+        'telescope_aperture': 'Telescope Aperture',
+        'aperture_diam': 'Aperture Diameter',
+        
+        # Filter/wavelength
+        'filter': 'Filter',
+        'filter_name': 'Filter',
+        'filterid': 'Filter ID',
+        'emulsion': 'Film/Emulsion',
+        'iso': 'ISO Speed',
+        'iso_din': 'ISO/DIN Rating',
+        'hypsen': 'Hypersensitized',
+        'hypersense': 'Hypersensitized',
+        'center_wavelength': 'Center Wavelength (Å)',
+        'wavelength': 'Wavelength (Å)',
+        'bandpass': 'Bandpass (Å)',
+        'bandwidth': 'Bandwidth',
+        
+        # Field of view
+        'fov_x': 'FOV Width (arcmin)',
+        'fov_y': 'FOV Height (arcmin)',
+        'fov1': 'FOV Dimension 1 (deg)',
+        'fov2': 'FOV Dimension 2 (deg)',
+        
+        # Quality/flags
+        'data_quality': 'Data Quality',
+        'image_qual': 'Image Quality',
+        'calibration': 'Calibration Status',
+        'calibration_flag': 'Calibration Flag',
+        'quality': 'Quality',
+        'acceptance_flag': 'Acceptance Flag',
+        'image_quality': 'Image Quality',
+        'note_flag': 'Note Flag',
+        'note_code': 'Note Code',
+        'spec_evt': 'Special Event',
+        
+        # FITS image metadata
+        'naxis': 'FITS: Number of Axes',
+        'naxis1': 'FITS: Width (pixels)',
+        'naxis2': 'FITS: Height (pixels)',
+        'bitpix': 'FITS: Bits per Pixel',
+        'bscale': 'FITS: Scaling Factor',
+        'bzero': 'FITS: Zero Offset',
+        'blank': 'FITS: Blank Value',
+        'bunit': 'FITS: Brightness Unit',
+        
+        # WCS (World Coordinate System)
+        'cdelt1': 'WCS: RA Pixel Scale (deg/pix)',
+        'cdelt2': 'WCS: Dec Pixel Scale (deg/pix)',
+        'crval1': 'WCS: RA Reference Value (deg)',
+        'crval2': 'WCS: Dec Reference Value (deg)',
+        'crpix1': 'WCS: Reference Pixel X',
+        'crpix2': 'WCS: Reference Pixel Y',
+        'crota1': 'WCS: Rotation Angle 1 (deg)',
+        'crota2': 'WCS: Rotation Angle 2 (deg)',
+        'ctype1': 'WCS: Coordinate Type 1',
+        'ctype2': 'WCS: Coordinate Type 2',
+        'equinox': 'WCS: Equinox',
+        
+        # Coordinates
+        'ra': 'Right Ascension (deg)',
+        'decl': 'Declination (deg)',
+        'dec': 'Declination (deg)',
+        'ra_reported': 'RA (reported)',
+        'dec_reported': 'Dec (reported)',
+        'ra_head': 'RA (header)',
+        'dec_head': 'Dec (header)',
+        'ra_cpme': 'RA (computed)',
+        'dec_cpme': 'Dec (computed)',
+        'ra_rms': 'RA RMS Error',
+        'dec_rms': 'Dec RMS Error',
+        'jd': 'Julian Date',
+        'utc_corr': 'UTC Correction',
+        
+        # Observatory location
+        'lat_obs': 'Observatory Latitude',
+        'long_obs': 'Observatory Longitude',
+        'lon_obs': 'Observatory Longitude',
+        'elev_obs': 'Observatory Elevation (m)',
+        'lat_calc_flag': 'Latitude Calculation Flag',
+        
+        # Offset from nucleus
+        'offset_rho': 'Radial Offset (arcsec)',
+        'offset_theta': 'Position Angle (deg)',
+        'rho': 'Offset Distance',
+        'theta': 'Position Angle',
+        'separ_nucl': 'Nuclear Separation',
+        'dxy': 'XY Offset',
+        'dz': 'Z Offset',
+        
+        # Magnitude measurements
+        'magnitude': 'Magnitude',
+        'mag_total': 'Total Magnitude',
+        'mag_nucleus': 'Nuclear Magnitude',
+        'mag_error': 'Magnitude Error',
+        'mag_lt': 'Magnitude Limit Flag',
+        'lim_mag': 'Limiting Magnitude',
+        'lim_magn': 'Limiting Magnitude',
+        'mag_limit': 'Limiting Magnitude',
+        
+        # Flux/photometry
+        'log_flux': 'Log Flux',
+        'flux_error': 'Flux Error',
+        'limit_flag': 'Limit Flag',
+        'flux_unit': 'Flux Units',
+        
+        # Polarimetry
+        'polarization': 'Polarization (%)',
+        'polariz_error': 'Polarization Error',
+        'polariz_angle': 'Polarization Angle (deg)',
+        'polariz_angle_err': 'Pol. Angle Error',
+        'polariz_type': 'Polarization Type',
+        
+        # Stokes parameters
+        'q_over_i': 'Q/I',
+        'q_over_i_err': 'Q/I Error',
+        'u_over_i': 'U/I',
+        'u_over_i_err': 'U/I Error',
+        'v_over_i': 'V/I',
+        'v_over_i_err': 'V/I Error',
+        
+        # Spectroscopy
+        'ssn_num': 'SSN Number',
+        'resolution': 'Spectral Resolution',
+        'resolut': 'Resolution',
+        'res_unit': 'Resolution Unit',
+        'res_code': 'Resolution Code',
+        'range_lo': 'Wavelength Min (Å)',
+        'range_hi': 'Wavelength Max (Å)',
+        'spectral_range_lo': 'Spectral Range Min (Å)',
+        'spectral_range_hi': 'Spectral Range Max (Å)',
+        'slit_size': 'Slit Size',
+        'slit_pa': 'Slit Position Angle (deg)',
+        'slit_width': 'Slit Width',
+        'slit_height': 'Slit Height',
+        'dis_code': 'Dispersion Code',
+        'axes': 'Number of Axes',
+        'axis_1': 'Axis 1 Dimension',
+        'axis_2': 'Axis 2 Dimension',
+        'spectrum_notes': 'Spectrum Notes',
+        
+        # Astrometry
+        'obs_code': 'Observatory Code',
+        'filenum': 'File Number',
+        'nref': 'Number of Reference Stars',
+        'npos': 'Number of Positions',
+        'ref_cat': 'Reference Catalog',
+        'method': 'Reduction Method',
+        'rmsa': 'RMS RA',
+        'rmsd': 'RMS Dec',
+        'uncertainty_a': 'Uncertainty Semi-major (arcsec)',
+        'uncertainty_b': 'Uncertainty Semi-minor (arcsec)',
+        'position_angle': 'Position Angle (deg)',
+        
+        # Plate/scan parameters
+        'pltscale': 'Plate Scale (arcsec/mm)',
+        'pltsze1': 'Plate Size 1 (mm)',
+        'pltsze2': 'Plate Size 2 (mm)',
+        'pltype': 'Plate Type',
+        'scnstpx': 'Scan Step X (μm)',
+        'scnstpy': 'Scan Step Y (μm)',
+        'scnstep': 'Scan Step (μm)',
+        'scnstp': 'Scan Step',
+        'scnapr': 'Scan Aperture',
+        'pixel_scale': 'Pixel Scale (arcsec/pixel)',
+        
+        # Image dimensions
+        'image_lines': 'Image Lines',
+        'image_samples': 'Image Samples',
+        'size': 'Image Size',
+        'maxcol': 'Max Column',
+        'maxrow': 'Max Row',
+        'orgcol': 'Origin Column',
+        'orgrow': 'Origin Row',
+        
+        # Calibration
+        'ncalspot': 'N Calibration Spots',
+        'ncalwdge': 'N Calibration Wedges',
+        'cometmax': 'Comet Maximum (DN)',
+        'skyden': 'Sky Density',
+        'skymin': 'Sky Minimum',
+        'skyunf': 'Sky Uniformity',
+        'sense': 'Sensitivity',
+        
+        # Data format
+        'dat_form': 'Data Format',
+        'dat_type': 'Data Type',
+        
+        # Processing dates
+        'date_pds': 'PDS Archive Date',
+        'date_prc': 'Processing Date',
+        'date_rec': 'Received Date',
+        'date_rel': 'Release Date',
+        'date_wrt': 'Written Date',
+        
+        # Comments (multiple types)
+        'cmts_anl': 'Analysis Comments',
+        'cmts_log': 'Log Comments',
+        'cmts_obs': 'Observer Comments',
+        'cmts_prc': 'Processing Comments',
+        'cmts_log_alt': 'Alternate Log Comments',
+        'log_cmts': 'Log Comments',
+        'obs_cmts': 'Observer Comments',
+        
+        # Origin/submitter
+        'origin': 'Origin',
+        'orging': 'Original Ingestor',
+        'submittr': 'Submitter',
+        'file_num': 'File Number',
+        'obslog': 'Observation Log',
+        'obs_site_id': 'Observation Site ID',
+        'ppn_num': 'PPN Number',
+        'idno': 'ID Number',
+        
+        # Meteor-specific
+        'shower': 'Meteor Shower',
+        'system': 'Detection System',
+        'limit_sensitiv': 'Sensitivity Limit',
+        'direction': 'Direction',
+        'total_count': 'Total Count',
+        'rads_count': 'Radiant Count',
+        'total_meteor_count': 'Total Meteor Count',
+        'count_shower': 'Shower Meteors',
+        'count_noshower': 'Sporadic Meteors',
+        'cloud_cover': 'Cloud Cover',
+        'site_num': 'Site Number',
+        'site_name': 'Site Name',
+        'obs_num': 'Observer Number',
+        'observer_id': 'Observer ID',
+        'source_fileid': 'Source File ID',
+        'source_filepathid': 'Source Filepath ID',
+        
+        # Meteor duration bins
+        'dur_lt_h': 'Duration < 0.5s',
+        'dur_gt_h': 'Duration > 0.5s',
+        'dur_ge_1': 'Duration ≥ 1s',
+        'dur_gt_1': 'Duration > 1s',
+        'dur_ge_8': 'Duration ≥ 8s',
+        'dur_gt_8': 'Duration > 8s',
+        'net_time_count': 'Net Time Count',
+        
+        # Meteor altitude bins (many fields!)
+        'alt_70_80km': '70-80 km',
+        'alt_75_100km': '75-100 km',
+        'alt_lt_90km': '< 90 km',
+        'alt_80_90km': '80-90 km',
+        'alt_90_100km': '90-100 km',
+        'alt_100_110km': '100-110 km',
+        'alt_110_120km': '110-120 km',
+        'alt_120_130km': '120-130 km',
+        'alt_130_140km': '130-140 km',
+        'alt_140_150km': '140-150 km',
+        'alt_150_160km': '150-160 km',
+        'alt_160_170km': '160-170 km',
+        'alt_170_180km': '170-180 km',
+        'alt_180_190km': '180-190 km',
+        'alt_190_200km': '190-200 km',
+        'alt_200_210km': '200-210 km',
+        'alt_210_220km': '210-220 km',
+        'alt_201_225km': '201-225 km',
+        'alt_220_230km': '220-230 km',
+        'alt_230_240km': '230-240 km',
+        'alt_226_250km': '226-250 km',
+        'alt_240_250km': '240-250 km',
+        'alt_250_260km': '250-260 km',
+        'alt_260_270km': '260-270 km',
+        'alt_270_280km': '270-280 km',
+        'alt_280_290km': '280-290 km',
+        'alt_290_300km': '290-300 km',
+        'alt_gt_250km': '> 250 km',
+        'alt_300_310km': '300-310 km',
+        'alt_310_320km': '310-320 km',
+        'alt_320_330km': '320-330 km',
+        'alt_330_340km': '330-340 km',
+        'alt_340_350km': '340-350 km',
+        'alt_noname': 'Altitude (unspecified)',
+        
+        # Radio science
+        'scaling_factor': 'Scaling Factor',
+        'offset_val': 'Offset Value',
+        'cent_freq': 'Center Frequency (MHz)',
+        'bandwidth': 'Bandwidth (MHz)',
+        'beamsize': 'Beam Size (arcmin)',
+        'beam_elong': 'Beam Elongation',
+        'beam_rotation': 'Beam Rotation (deg)',
+        'derived_max': 'Derived Maximum',
+        'derived_min': 'Derived Minimum',
+        'spectrum_rows': 'Spectrum Rows',
+        'spectrum_cols': 'Spectrum Columns',
+        'velo_min': 'Velocity Min (km/s)',
+        'velo_interval': 'Velocity Interval (km/s)',
+        'freq_min': 'Frequency Min (MHz)',
+        'freq_interval': 'Frequency Interval (MHz)',
+        
+        # RHC/LHC (Right/Left Hand Circular polarization)
+        'rhc_rows': 'RHC Spectrum Rows',
+        'rhc_scaling_factor': 'RHC Scaling Factor',
+        'rhc_offset': 'RHC Offset',
+        'rhc_freq_min': 'RHC Frequency Min (MHz)',
+        'rhc_freq_interval': 'RHC Frequency Interval (MHz)',
+        'rhc_derived_max': 'RHC Maximum',
+        'rhc_derived_min': 'RHC Minimum',
+        'lhc_rows': 'LHC Spectrum Rows',
+        'lhc_scaling_factor': 'LHC Scaling Factor',
+        'lhc_offset': 'LHC Offset',
+        'lhc_freq_min': 'LHC Frequency Min (MHz)',
+        'lhc_freq_interval': 'LHC Frequency Interval (MHz)',
+        'lhc_derived_max': 'LHC Maximum',
+        'lhc_derived_min': 'LHC Minimum',
+        
+        # Amateur network
+        'guiding': 'Guiding',
+        'dev_tech': 'Development Technique',
+        'power_1': 'Magnification (primary)',
+        'power_2': 'Magnification (secondary)',
+        'power_3': 'Magnification (tertiary)',
+        
+        # Infrared
+        'lambda_eff': 'Effective Wavelength (μm)',
+        'irphot_type': 'IR Photometry Type',
+        
+        # Miscellaneous
+        'syscode': 'System Code',
+    }
+
+
+
+def categorize_metadata_fields(metadata_obj):
+    """
+    Categorize metadata fields into logical groups for organized display.
+    
+    Args:
+        metadata_obj: Discipline-specific metadata model instance
+        
+    Returns:
+        OrderedDict of {category_name: [(field_name, field_label, field_value), ...]}
+    """
+    from collections import OrderedDict
+    
+    if not metadata_obj:
+        return OrderedDict()
+    
+    # Skip these system/FK fields
+    skip_fields = {'id', 'meta_common', 'meta_common_id'}
+    
+    # Get comprehensive field labels
+    field_labels = get_comprehensive_field_labels()
+    
+    # Define field categories
+    categories = OrderedDict([
+        ('Instrument & Telescope', [
+            'instrument', 'instrume', 'config', 'aperture', 'fratio', 'foc_len',
+            'telefl', 'detector', 'cameraid', 'chip_id'
+        ]),
+        ('Observation Parameters', [
+            'exposure', 'duration', 'integration_time', 'airmass', 'airm_mid',
+            'elevation', 'apsize', 'observing_aperture', 'telescope_aperture',
+            'aperture_diam', 'observer', 'obs_code', 'obs_num', 'observer_id'
+        ]),
+        ('Filter & Wavelength', [
+            'filter', 'filter_name', 'filterid', 'emulsion', 'iso', 'iso_din',
+            'hypsen', 'hypersense', 'center_wavelength', 'wavelength', 'bandpass',
+            'bandwidth', 'lambda_eff'
+        ]),
+        ('Field of View', [
+            'fov_x', 'fov_y', 'fov1', 'fov2'
+        ]),
+        ('Image Metadata', [
+            'naxis', 'naxis1', 'naxis2', 'bitpix', 'bscale', 'bzero', 'blank', 'bunit',
+            'image_lines', 'image_samples', 'size', 'maxcol', 'maxrow', 'orgcol',
+            'orgrow', 'pixel_scale', 'pltscale', 'pltsze1', 'pltsze2', 'pltype'
+        ]),
+        ('WCS Coordinates', [
+            'cdelt1', 'cdelt2', 'crval1', 'crval2', 'crpix1', 'crpix2',
+            'crota1', 'crota2', 'ctype1', 'ctype2', 'equinox'
+        ]),
+        ('Coordinates & Position', [
+            'ra', 'decl', 'dec', 'ra_reported', 'dec_reported', 'ra_head', 'dec_head',
+            'ra_cpme', 'dec_cpme', 'ra_rms', 'dec_rms', 'jd', 'utc_corr',
+            'lon_obs', 'lat_obs', 'long_obs', 'elev_obs', 'lat_calc_flag'
+        ]),
+        ('Offset from Nucleus', [
+            'offset_rho', 'offset_theta', 'rho', 'theta', 'separ_nucl', 'dxy', 'dz'
+        ]),
+        ('Photometry & Magnitude', [
+            'magnitude', 'mag_total', 'mag_nucleus', 'mag_error', 'mag_lt',
+            'lim_mag', 'lim_magn', 'mag_limit', 'log_flux', 'flux_error',
+            'limit_flag', 'flux_unit'
+        ]),
+        ('Polarimetry & Stokes', [
+            'polarization', 'polariz_error', 'polariz_angle', 'polariz_angle_err',
+            'polariz_type', 'q_over_i', 'q_over_i_err', 'u_over_i', 'u_over_i_err',
+            'v_over_i', 'v_over_i_err'
+        ]),
+        ('Spectroscopy', [
+            'ssn_num', 'resolution', 'resolut', 'res_unit', 'res_code', 'range_lo',
+            'range_hi', 'spectral_range_lo', 'spectral_range_hi', 'slit_size',
+            'slit_pa', 'slit_width', 'slit_height', 'dis_code', 'axes', 'axis_1',
+            'axis_2', 'spectrum_notes'
+        ]),
+        ('Astrometry', [
+            'filenum', 'nref', 'npos', 'ref_cat', 'method', 'rmsa', 'rmsd',
+            'uncertainty_a', 'uncertainty_b', 'position_angle'
+        ]),
+        ('Scan Parameters', [
+            'scnstpx', 'scnstpy', 'scnstep', 'scnstp', 'scnapr'
+        ]),
+        ('Calibration', [
+            'calibration', 'calibration_flag', 'ncalspot', 'ncalwdge', 'cometmax',
+            'skyden', 'skymin', 'skyunf', 'sense'
+        ]),
+        ('Quality & Flags', [
+            'data_quality', 'image_qual', 'quality', 'acceptance_flag',
+            'image_quality', 'note_flag', 'note_code', 'spec_evt'
+        ]),
+        ('Data Format', [
+            'dat_form', 'dat_type'
+        ]),
+        ('Processing Dates', [
+            'date_pds', 'date_prc', 'date_rec', 'date_rel', 'date_wrt'
+        ]),
+        ('Comments', [
+            'cmts_anl', 'cmts_log', 'cmts_obs', 'cmts_prc', 'cmts_log_alt',
+            'log_cmts', 'obs_cmts'
+        ]),
+        ('Origin & Submitter', [
+            'origin', 'orging', 'submittr', 'file_num', 'obslog', 'obs_site_id',
+            'observatory_id', 'ppn_num', 'idno', 'syscode'
+        ]),
+        ('Meteor Shower Data', [
+            'shower', 'system', 'limit_sensitiv', 'direction', 'total_count',
+            'rads_count', 'total_meteor_count', 'count_shower', 'count_noshower',
+            'cloud_cover', 'site_num', 'site_name', 'source_fileid', 'source_filepathid'
+        ]),
+        ('Meteor Duration Bins', [
+            'dur_lt_h', 'dur_gt_h', 'dur_ge_1', 'dur_gt_1', 'dur_ge_8', 'dur_gt_8',
+            'net_time_count'
+        ]),
+        ('Meteor Altitude Distribution', [
+            'alt_70_80km', 'alt_75_100km', 'alt_lt_90km', 'alt_80_90km', 'alt_90_100km',
+            'alt_100_110km', 'alt_110_120km', 'alt_120_130km', 'alt_130_140km',
+            'alt_140_150km', 'alt_150_160km', 'alt_160_170km', 'alt_170_180km',
+            'alt_180_190km', 'alt_190_200km', 'alt_200_210km', 'alt_210_220km',
+            'alt_201_225km', 'alt_220_230km', 'alt_230_240km', 'alt_226_250km',
+            'alt_240_250km', 'alt_250_260km', 'alt_260_270km', 'alt_270_280km',
+            'alt_280_290km', 'alt_290_300km', 'alt_gt_250km', 'alt_300_310km',
+            'alt_310_320km', 'alt_320_330km', 'alt_330_340km', 'alt_340_350km',
+            'alt_noname'
+        ]),
+        ('Radio Science', [
+            'scaling_factor', 'offset_val', 'cent_freq', 'bandwidth', 'beamsize',
+            'beam_elong', 'beam_rotation', 'derived_max', 'derived_min',
+            'spectrum_rows', 'spectrum_cols', 'velo_min', 'velo_interval',
+            'freq_min', 'freq_interval'
+        ]),
+        ('Radio - RHC Polarization', [
+            'rhc_rows', 'rhc_scaling_factor', 'rhc_offset', 'rhc_freq_min',
+            'rhc_freq_interval', 'rhc_derived_max', 'rhc_derived_min'
+        ]),
+        ('Radio - LHC Polarization', [
+            'lhc_rows', 'lhc_scaling_factor', 'lhc_offset', 'lhc_freq_min',
+            'lhc_freq_interval', 'lhc_derived_max', 'lhc_derived_min'
+        ]),
+        ('Amateur Network', [
+            'guiding', 'dev_tech', 'power_1', 'power_2', 'power_3'
+        ]),
+        ('Infrared', [
+            'irphot_type'
+        ]),
+    ])
+    
+    # Collect all fields with values
+    field_data = {}
+    for field in metadata_obj._meta.get_fields():
+        if field.name in skip_fields:
+            continue
+        value = getattr(metadata_obj, field.name, None)
+        if value is not None and value != '':
+            field_data[field.name] = value
+    
+    # Organize fields into categories
+    result = OrderedDict()
+    categorized_fields = set()
+    
+    for category_name, field_names in categories.items():
+        category_fields = []
+        for field_name in field_names:
+            if field_name in field_data:
+                label = field_labels.get(field_name, field_name.replace('_', ' ').title())
+                category_fields.append((field_name, label, field_data[field_name]))
+                categorized_fields.add(field_name)
+        
+        if category_fields:
+            result[category_name] = category_fields
+    
+    # Add any uncategorized fields to "Other"
+    uncategorized = []
+    for field_name, value in field_data.items():
+        if field_name not in categorized_fields:
+            label = field_labels.get(field_name, field_name.replace('_', ' ').title())
+            uncategorized.append((field_name, label, value))
+    
+    if uncategorized:
+        result['Other'] = uncategorized
+    
+    return result
+
+
+def format_metadata_value(field_name, value, metadata_obj):
+    """
+    Format metadata field value for display, potentially resolving foreign keys.
+    
+    Args:
+        field_name: Name of the field
+        value: Raw field value
+        metadata_obj: Metadata model instance
+        
+    Returns:
+        Formatted string value
+    """
+    # Handle foreign keys by looking up related objects
+    if field_name == 'observatory_id' and value:
+        # Could look up observatory name from IhwObservatory if that table exists
+        # For now, just return the ID
+        return f"Observatory #{value}"
+    
+    if field_name == 'observer_id' and value:
+        return f"Observer #{value}"
+    
+    # Format boolean fields
+    if isinstance(value, bool):
+        return 'Yes' if value else 'No'
+    
+    # Format single-character flags
+    if field_name in ['calibration_flag', 'hypsen', 'hypersense', 'guiding', 'dark_adapt']:
+        if value == 'Y' or value == 'y':
+            return 'Yes'
+        elif value == 'N' or value == 'n':
+            return 'No'
+        elif value == 'U':
+            return 'Unknown'
+        return str(value)
+    
+    # Format numeric values with appropriate precision
+    if isinstance(value, float):
+        # Coordinates and angles - 4 decimal places
+        if any(s in field_name for s in ['ra', 'dec', 'lat', 'lon', 'crval', 'cdelt']):
+            return f"{value:.4f}"
+        # Wavelengths, flux - 3 decimal places
+        elif any(s in field_name for s in ['wavelength', 'flux', 'mag']):
+            return f"{value:.3f}"
+        # Other floats - 2 decimal places
+        else:
+            return f"{value:.2f}"
+    
+    # Return string representation for everything else
+    return str(value)

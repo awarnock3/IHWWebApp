@@ -329,7 +329,7 @@ class ObservationDetailView(DetailView):
     context_object_name = 'observation'
     
     def get_context_data(self, **kwargs):
-        from core.models import get_discipline_metadata, format_metadata_fields
+        from core.models import get_discipline_metadata, categorize_metadata_fields, format_metadata_value
         
         context = super().get_context_data(**kwargs)
         
@@ -350,10 +350,21 @@ class ObservationDetailView(DetailView):
                 context['has_fits'] = find_fits_header_file(base_path) is not None
                 context['has_pds_label'] = find_pds_label_file(base_path) is not None
         
-        # Fetch discipline-specific metadata
+        # Fetch discipline-specific metadata and categorize
         metadata_obj = get_discipline_metadata(self.object)
         if metadata_obj:
-            context['discipline_metadata'] = format_metadata_fields(metadata_obj)
+            categorized = categorize_metadata_fields(metadata_obj)
+            # Format values for display
+            formatted_categories = {}
+            for category, fields in categorized.items():
+                formatted_fields = []
+                for field_name, label, value in fields:
+                    formatted_value = format_metadata_value(field_name, value, metadata_obj)
+                    formatted_fields.append((label, formatted_value))
+                formatted_categories[category] = formatted_fields
+            
+            context['metadata_categories'] = formatted_categories
+            context['metadata_field_count'] = sum(len(fields) for fields in formatted_categories.values())
         
         return context
 
