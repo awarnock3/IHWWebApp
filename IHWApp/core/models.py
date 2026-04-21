@@ -1098,7 +1098,8 @@ def get_discipline_metadata_model(observation):
         'RSRDR': IdxMetaRsrdr,
         'RSSL': IdxMetaRssl,
         'RSUV': IdxMetaRsuv,
-        'SPECTRA': IdxMetaSpectra,
+        'SSSN': IdxMetaSpectra,  # Spectroscopy & Spectrophotometry
+        'SPECTRA': IdxMetaSpectra,  # Alternative
     }
     
     # Get subnet from observation's file
