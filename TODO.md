@@ -1,7 +1,7 @@
 # IHW Django Archive - TODO List
 
 **Last Updated:** 2026-04-21  
-**Current Phase:** Phase 9 - Metadata Display Enhancements
+**Current Phase:** Phase 10 - Metadata Display Implementation
 
 ---
 
@@ -65,6 +65,49 @@
 - [x] MD5 digest display
 - [x] Archive availability detection
 
+### Phase 9: Metadata Model Completeness ✅
+**Status:** All 14 incomplete models updated with 266 missing fields
+**Commits:** f9fa0d6, fd1637b, dcc8f3c, a24f530
+
+**Summary:**
+- Audited all 25 idx_meta_* tables against database schema
+- Identified 266 missing fields across 14 incomplete models
+- Systematically added all fields in priority order
+- Tested all models with real observation data
+
+**Models Updated:**
+
+1. **IdxMetaLspn** (3,248 obs) - 71 fields added
+   - Complete FITS header metadata (WCS, image dimensions, calibration)
+   - Plate/scan parameters, processing dates, comments
+   - Model now 100% complete: 88 fields
+
+2. **High-Volume Tables** - 108 fields added
+   - IdxMetaAstrom (8,329 obs): Complete rewrite, 23 fields
+   - IdxMetaSpectra (3,371 obs): 19 fields added, slit parameters
+   - IdxMetaNnsn (3,523 obs): 23 fields added, image metadata
+   - IdxMetaMsnrdr (6,962 obs): 47 fields added, altitude distributions
+
+3. **PPN Photometry/Polarimetry** - 57 fields added
+   - IdxMetaPflx (18,547 obs): Flux measurements, 13 fields
+   - IdxMetaPmag (3,890 obs): Magnitudes, 13 fields
+   - IdxMetaPpol (801 obs): Polarimetry, 15 fields
+   - IdxMetaPsto (132 obs): Stokes parameters, 16 fields
+
+4. **Remaining Networks** - 30 fields added
+   - IdxMetaMsnvis (1,624 obs): Visual meteors, 12 fields
+   - IdxMetaAmsp (45 obs): Complete rewrite, 14 fields
+   - IdxMetaAmpg (2,170 obs): Complete rewrite, 14 fields
+   - IdxMetaIrim (106 obs): Complete rewrite, 9 fields
+   - IdxMetaIrph (240 obs): Complete rewrite, 5 fields
+
+**Results:**
+- ✅ All 25 metadata models now complete and match database schema
+- ✅ 334 total fields across 14 updated models
+- ✅ 52,988 observations now have complete metadata access
+- ✅ Field name mismatches corrected (decl vs dec, iso_din vs filter_name, etc.)
+- ✅ All models tested and working with real data
+
 ---
 
 ## 🚧 In Progress
@@ -114,20 +157,41 @@ These features enhance the UI without requiring archive files, making the interf
 
 **Documentation:** See DATATABLES_IMPLEMENTATION.md for full technical details
 
-##### Metadata Display Enhancements (IN PROGRESS 🚧)
-- [ ] **Show ALL metadata fields initially (expansive approach)**
-  - Display every non-null field from metadata tables
-  - Don't hide any fields based on assumptions
-  - Create comprehensive view first
-  - Add notes/issue markers for fields we decide to omit later
-  - This allows us to see what's actually available before filtering
-  - Update field_labels dict to cover all possible fields
-  - **IMPORTANT:** Many fields currently missing from models:
-    - IdxMetaLspn: 71 of 88 fields missing (FITS header fields like CRVAL1, CRPIX1, WCS, etc.)
-    - Need to add all fields to see what data actually exists
-    - Then decide which are useful vs noise
-  - Consider grouping fields by category in display (Instrument, WCS, Processing, etc.)
-  - Add "Show All Fields" / "Show Summary" toggle
+##### Metadata Display Enhancements (READY TO IMPLEMENT 🎯)
+**Status:** All models complete, ready to update display logic
+
+**Now that all 266 missing fields have been added:**
+- [ ] **Update ObservationDetailView** to fetch all discipline metadata
+  - All 25 models now complete with full field sets
+  - Can now display comprehensive metadata
+  
+- [ ] **Group fields by category** for better organization
+  - Instrument/Telescope (aperture, focal length, detector)
+  - WCS/Coordinates (CRVAL, CRPIX, CDELT, CROTA)
+  - Image Metadata (NAXIS, BITPIX, dimensions)
+  - Processing (dates, origin, submitter)
+  - Calibration (sky values, comet max, standards)
+  - Comments (observer, processing, analysis notes)
+  - Measurements (magnitudes, fluxes, polarization)
+  
+- [ ] **Update field_labels dict** to cover all 334 fields
+  - Add human-readable labels for technical terms
+  - Add tooltips for FITS header fields (CRVAL1 → "WCS: RA reference value")
+  
+- [ ] **Add "Show All" / "Show Summary" toggle**
+  - Summary view: ~10-15 key fields per discipline
+  - All view: Complete field set (may be 80+ fields for LSPN)
+  - Use JavaScript to toggle visibility
+  
+- [ ] **Display only non-null fields**
+  - Many fields are optional and may be NULL
+  - Show only fields with actual data
+  - Indicate how many fields are hidden (e.g., "45 of 88 fields shown")
+  
+- [ ] **Add field descriptions** for complex metadata
+  - WCS parameters need explanation
+  - Altitude bins for meteor data
+  - Stokes parameters for polarimetry
 
 #### File Downloads
 **Note:** Lower priority than UI enhancements above. Archive files not always available.
