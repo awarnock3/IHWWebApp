@@ -138,9 +138,8 @@
         
         {% if metadata_categories %}
         <div class="card shadow-sm mb-4">
-            <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+            <div class="card-header bg-warning text-dark">
                 <h3 class="h5 mb-0">Observation Metadata ({{ metadata_field_count }} fields)</h3>
-                <button id="toggle-all-metadata" class="btn btn-sm btn-outline-dark">Expand All</button>
             </div>
             <div class="card-body">
                 <div id="metadata-accordion">
@@ -163,7 +162,7 @@
                 <div class="alert alert-info mb-0 mt-3">
                     <small>
                         <strong>Note:</strong> Metadata is organized by category. Click a category header to expand/collapse. 
-                        Only populated fields are shown. Use "Expand All" to view all categories at once.
+                        Only populated fields are shown.
                     </small>
                 </div>
             </div>
@@ -284,25 +283,6 @@ $(document).ready(function() {
         icons: {
             header: "ui-icon-circle-arrow-e",
             activeHeader: "ui-icon-circle-arrow-s"
-        }
-    });
-    
-    // Toggle all panels
-    let allExpanded = false;
-    $("#toggle-all-metadata").click(function() {
-        if (allExpanded) {
-            // Collapse all
-            $("#metadata-accordion").accordion("option", "active", false);
-            $(this).text("Expand All");
-            allExpanded = false;
-        } else {
-            // Expand all by activating each panel
-            let numPanels = $("#metadata-accordion").find("h3").length;
-            for (let i = 0; i < numPanels; i++) {
-                $("#metadata-accordion").accordion("option", "active", i);
-            }
-            $(this).text("Collapse All");
-            allExpanded = true;
         }
     });
 });

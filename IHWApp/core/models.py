@@ -9,6 +9,29 @@ from django.conf import settings
 import os
 
 
+class ApxIhwObscodes(models.Model):
+    """IHW Observatory Codes - Observatory metadata and locations"""
+    system = models.CharField(max_length=10)
+    observatory = models.CharField(max_length=40)
+    location = models.CharField(max_length=40, blank=True, null=True)
+    instrument = models.CharField(max_length=60, blank=True, null=True)
+    lon = models.FloatField(blank=True, null=True)
+    lat = models.FloatField(blank=True, null=True)
+    subdiscipline = models.IntegerField(blank=True, null=True)
+    telescope = models.CharField(max_length=40, blank=True, null=True)
+    aperture = models.FloatField(blank=True, null=True)
+    
+    class Meta:
+        managed = False
+        db_table = 'apx_ihw_obscodes'
+        db_table_comment = 'IHW Observatory codes and metadata'
+    
+    def __str__(self):
+        if self.location:
+            return f"{self.observatory} ({self.location})"
+        return self.observatory
+
+
 class IhwNetwork(models.Model):
     """Master list of 9 IHW Network disciplines"""
     netnum = models.IntegerField()
@@ -1622,7 +1645,7 @@ def categorize_metadata_fields(metadata_obj):
         ('Coordinates & Position', [
             'ra', 'decl', 'dec', 'ra_reported', 'dec_reported', 'ra_head', 'dec_head',
             'ra_cpme', 'dec_cpme', 'ra_rms', 'dec_rms', 'jd', 'utc_corr',
-            'lon_obs', 'lat_obs', 'long_obs', 'elev_obs', 'lat_calc_flag'
+            'elev_obs', 'lat_calc_flag'
         ]),
         ('Offset from Nucleus', [
             'offset_rho', 'offset_theta', 'rho', 'theta', 'separ_nucl', 'dxy', 'dz'
@@ -1670,7 +1693,7 @@ def categorize_metadata_fields(metadata_obj):
         ]),
         ('Origin & Submitter', [
             'origin', 'orging', 'submittr', 'file_num', 'obslog', 'obs_site_id',
-            'observatory_id', 'ppn_num', 'idno', 'syscode'
+            'observatory_id', 'lon_obs', 'lat_obs', 'long_obs', 'ppn_num', 'idno', 'syscode'
         ]),
         ('Meteor Shower Data', [
             'shower', 'system', 'limit_sensitiv', 'direction', 'total_count',
@@ -1765,9 +1788,13 @@ def format_metadata_value(field_name, value, metadata_obj):
     """
     # Handle foreign keys by looking up related objects
     if field_name == 'observatory_id' and value:
-        # Could look up observatory name from IhwObservatory if that table exists
-        # For now, just return the ID
-        return f"Observatory #{value}"
+        try:
+            obs = ApxIhwObscodes.objects.get(id=value)
+            if obs.location:
+                return f"{obs.observatory} ({obs.location})"
+            return obs.observatory
+        except ApxIhwObscodes.DoesNotExist:
+            return f"Observatory #{value}"
     
     if field_name == 'observer_id' and value:
         return f"Observer #{value}"
