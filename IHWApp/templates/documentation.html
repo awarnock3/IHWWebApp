@@ -2,6 +2,25 @@
 
 {% block title %}Documentation Files - International Halley Watch{% endblock %}
 
+{% block extra_css %}
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+<style>
+    .table-responsive {
+        margin-bottom: 2rem;
+    }
+    
+    .badge:hover {
+        opacity: 0.85;
+    }
+    
+    /* Prevent tooltips from breaking layout */
+    .dataTables_wrapper {
+        overflow-x: visible !important;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="mb-4">
     <h2>📄 Archive Documentation Files</h2>
@@ -26,11 +45,10 @@
 </div>
 
 <div class="table-responsive">
-    <table class="table table-hover table-striped">
+    <table id="docs-table" class="table table-hover table-striped" style="width:100%">
         <thead class="table-dark">
             <tr>
-                <th>Filename</th>
-                <th>Path</th>
+                <th>File Path</th>
                 <th>Network</th>
                 <th>Subnet</th>
                 <th>Size</th>
@@ -40,17 +58,14 @@
         <tbody>
             {% for doc in documents %}
             <tr>
-                <td>
+                <td class="font-monospace small">
                     {% if archive_available %}
                         <a href="{% url 'file-viewer' doc.pk %}" title="View file contents">
-                            {{ doc.filename }}
+                            {{ doc.dirpath }}/{{ doc.filename }}
                         </a>
                     {% else %}
-                        {{ doc.filename }}
+                        {{ doc.dirpath }}/{{ doc.filename }}
                     {% endif %}
-                </td>
-                <td class="small text-muted font-monospace">
-                    {{ doc.dirpath }}
                 </td>
                 <td>
                     {% if doc.subnet and doc.subnet.discipline %}
@@ -76,26 +91,18 @@
                 </td>
                 <td class="text-end">
                     {% if doc.filesize %}
-                        {% if doc.filesize < 1024 %}
-                            {{ doc.filesize }} B
-                        {% elif doc.filesize < 1048576 %}
-                            {{ doc.filesize|filesizeformat }}
-                        {% else %}
-                            {{ doc.filesize|filesizeformat }}
-                        {% endif %}
+                        {{ doc.filesize|filesizeformat }}
                     {% else %}
                         <span class="text-muted">—</span>
                     {% endif %}
                 </td>
                 <td class="small font-monospace">
-                    <span title="{{ doc.md5digest }}">
-                        {{ doc.md5digest|slice:":8" }}...
-                    </span>
+                    {{ doc.digest }}
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="6" class="text-center text-muted py-4">
+                <td colspan="5" class="text-center text-muted py-4">
                     No documentation files found in the archive.
                 </td>
             </tr>
@@ -104,16 +111,28 @@
     </table>
 </div>
 
-{% if documents %}
-<div class="alert alert-info mt-4">
-    <h5 class="alert-heading">About Documentation Files</h5>
-    <p class="mb-0">
-        These files include technical documentation, instrument descriptions, calibration guides, 
-        and data format specifications from the original IHW archive. Some files may be in 
-        legacy formats (ASCII text, early word processor formats, etc.). Files that cannot be 
-        displayed as text may indicate format issues that need correction in the archive.
-    </p>
-</div>
-{% endif %}
+{% endblock %}
 
+{% block extra_js %}
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Initialize DataTable
+    $('#docs-table').DataTable({
+        pageLength: 25,
+        lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+        order: [[0, 'asc']],  // Sort by file path initially
+        columnDefs: [
+            { orderable: true, targets: [0, 3, 4] },  // File path, size, MD5
+            { orderable: false, targets: [1, 2] }    // Network and subnet badges
+        ]
+    });
+    
+    // Initialize Bootstrap tooltips
+    $('[title]').tooltip();
+});
+</script>
 {% endblock %}

@@ -538,14 +538,10 @@ class FileViewerView(TemplateView):
                 context['full_path'] = full_path
                 return context
             
-            # Split into lines for display
+            # Split into lines for counting
             lines = content.split('\n')
-            context['file_lines'] = [
-                {'line_num': i + 1, 'text': line}
-                for i, line in enumerate(lines[:1000])  # Limit to first 1000 lines
-            ]
+            context['file_content'] = content
             context['total_lines'] = len(lines)
-            context['truncated'] = len(lines) > 1000
             
         except Exception as e:
             raise Http404(f"Error reading file: {e}")
