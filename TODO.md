@@ -63,20 +63,39 @@ Nothing currently in progress.
 #### UI Improvements for Database-Only Mode
 These features enhance the UI without requiring archive files, making the interface fully functional with just the database.
 
-##### Results Table Enhancements
-- [ ] **Add subnet badge to search results**
-  - Show both network and subnet badges in results table
-  - Replace descriptive text with compact badges
-  - Add hover tooltips showing full network/subnet names
-  - Example: Badges "AMSN" and "AMV" with hover "Amateur Studies" / "Visual Observations"
+##### Results Table Enhancements (COMPLETE ✅)
+**Status:** Implemented with DataTables.js (commit fbe8118)
+
+**Completed Features:**
+- ✅ **Network and subnet badges** - Accessible badges with aria-label and tooltips
+  - Network badge (blue): Shows discipline code (e.g., "AMSN")
+  - Subnet badge (gray): Shows subnet code (e.g., "AMV")
+  - Hover tooltips with full names
+  - Screen reader support with aria-label
   
-- [ ] **Client-side column filtering**
-  - Add filter controls to each column header in results table
-  - Allow filtering by network, subnet, observer, date range, etc.
-  - Filter without re-executing database query
-  - Use JavaScript for instant filtering of visible results
-  - Preserve filters across pagination
-  - Consider using DataTables.js or similar library
+- ✅ **Server-side filtering** - Filters apply to entire result set (69K+ observations)
+  - Global search across observer, network, subnet
+  - Individual column filters for 8 columns
+  - Network dropdown (9 networks pre-populated)
+  - Subnet text filter
+  - Observer case-insensitive search
+  - Solar distance range filter (format: "min-max" e.g., "0.5-2.0")
+  - File type dropdown (DATA/BROWSE/CALIB/METADATA)
+  - Date and filename text filters
+  
+- ✅ **Column sorting** - Click headers to sort ascending/descending
+  - Date, Network, Subnet, Observer, Solar Distance, File Type
+  
+- ✅ **Performance optimization** - Fixed ephemeris N+1 query problem
+  - Before: ~100 queries per page
+  - After: 1 query per page using Django subquery annotations
+  
+- ✅ **Progressive enhancement** - Graceful degradation for non-JS users
+  - Fallback Django pagination visible when JavaScript disabled
+  - Clear All Filters button
+  - Dynamic observation count updates
+
+**Documentation:** See DATATABLES_IMPLEMENTATION.md for full technical details
 
 ##### Search Form Enhancements
 - [ ] **Add solar distance search filter**
