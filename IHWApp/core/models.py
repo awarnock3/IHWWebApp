@@ -103,7 +103,7 @@ class IhwFiles(models.Model):
 
 class IhwFileFilepath(models.Model):
     """Junction table linking files to their directory locations"""
-    fileid = models.ForeignKey(IhwFiles, models.DO_NOTHING, db_column='fileid')
+    fileid = models.ForeignKey(IhwFiles, models.DO_NOTHING, db_column='fileid', primary_key=True)
     filepathid = models.ForeignKey(IhwFilepath, models.DO_NOTHING, db_column='filepathid')
 
     class Meta:

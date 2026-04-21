@@ -469,12 +469,14 @@ class DocumentationView(ListView):
         # Annotate with file paths
         documents = []
         for doc in queryset:
-            # Get all paths for this file
-            paths = IhwFileFilepath.objects.filter(fileid=doc).select_related('filepathid')
-            if paths.exists():
-                # Use the first path (most files have only one)
-                doc.dirpath = paths.first().filepathid.dirpath
-            else:
+            # Get the directory path for this file
+            try:
+                filepath_link = IhwFileFilepath.objects.filter(fileid=doc.fileid).select_related('filepathid').first()
+                if filepath_link:
+                    doc.dirpath = filepath_link.filepathid.dirpath
+                else:
+                    doc.dirpath = ''
+            except Exception:
                 doc.dirpath = ''
             documents.append(doc)
         
