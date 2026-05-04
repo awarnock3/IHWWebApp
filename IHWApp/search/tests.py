@@ -6,6 +6,7 @@ from django.urls import reverse
 from datetime import date
 from search.forms import ObservationSearchForm
 from unittest.mock import patch, MagicMock
+from types import SimpleNamespace
 
 
 class ObservationSearchFormTest(TestCase):
@@ -126,3 +127,51 @@ class SearchViewTest(TestCase):
         # Should re-render form with errors, not redirect
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'search/search.html')
+
+
+def mock_metadata_model(count):
+    manager = MagicMock()
+    manager.filter.return_value.count.return_value = count
+    return SimpleNamespace(objects=manager)
+
+
+class ObservatoryDetailViewTest(TestCase):
+    """Tests for observatory detail counts"""
+
+    def setUp(self):
+        self.client = Client()
+        self.observatory = SimpleNamespace(
+            id=42,
+            observatory='Test Observatory',
+            location='Test Location',
+            system='TEST',
+            lat=None,
+            lon=None,
+            telescope=None,
+            aperture=None,
+            instrument=None,
+            subdiscipline=None,
+        )
+
+    @patch('core.models.ApxIhwObscodes.objects.get')
+    @patch('core.models.IdxMetaPflx', new=mock_metadata_model(7))
+    @patch('core.models.IdxMetaNnsn', new=mock_metadata_model(0))
+    @patch('core.models.IdxMetaLspn', new=mock_metadata_model(5))
+    @patch('core.models.IdxMetaIrsp', new=mock_metadata_model(0))
+    @patch('core.models.IdxMetaIrpol', new=mock_metadata_model(0))
+    @patch('core.models.IdxMetaIrph', new=mock_metadata_model(4))
+    @patch('core.models.IdxMetaIrim', new=mock_metadata_model(0))
+    @patch('core.models.IdxMetaAstrom', new=mock_metadata_model(3))
+    def test_observatory_detail_shows_all_populated_network_counts(self, mock_get):
+        mock_get.return_value = self.observatory
+
+        response = self.client.get(reverse('search:observatory-detail', kwargs={'observatory_id': 42}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'This observatory contributed')
+        self.assertContains(response, '19')
+        self.assertContains(response, 'Astrometry (ASTROM)')
+        self.assertContains(response, 'Infrared Photometry (IRPH)')
+        self.assertContains(response, 'Large-Scale Phenomena (LSPN)')
+        self.assertContains(response, 'Photometry Flux (PFLX)')
+        self.assertNotContains(response, 'Near-Nucleus Studies (NNSN)')

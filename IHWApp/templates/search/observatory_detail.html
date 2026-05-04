@@ -86,18 +86,12 @@
             <div class="card-body">
                 <p>This observatory contributed <strong>{{ observation_counts.total }}</strong> observations to the IHW archive:</p>
                 <ul class="list-group">
-                    {% if observation_counts.lspn > 0 %}
+                    {% for network in observation_counts.by_network %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Large-Scale Phenomena (LSPN)
-                        <span class="badge bg-primary rounded-pill">{{ observation_counts.lspn }}</span>
+                        {{ network.label }} ({{ network.code }})
+                        <span class="badge bg-primary rounded-pill">{{ network.count }}</span>
                     </li>
-                    {% endif %}
-                    {% if observation_counts.nnsn > 0 %}
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Near-Nucleus Studies (NNSN)
-                        <span class="badge bg-primary rounded-pill">{{ observation_counts.nnsn }}</span>
-                    </li>
-                    {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>

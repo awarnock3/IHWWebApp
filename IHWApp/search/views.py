@@ -584,16 +584,42 @@ class ObservatoryDetailView(DetailView):
         # Count observations from this observatory
         observatory_id = self.kwargs['observatory_id']
         
-        # Count from various metadata tables that reference this observatory
-        from core.models import IdxMetaLspn, IdxMetaNnsn
-        
-        lspn_count = IdxMetaLspn.objects.filter(observatory_id=observatory_id).count()
-        nnsn_count = IdxMetaNnsn.objects.filter(observatory_id=observatory_id).count()
-        
+        # Count from all metadata tables that store observatory IDs
+        from core.models import (
+            IdxMetaAstrom,
+            IdxMetaIrim,
+            IdxMetaIrph,
+            IdxMetaIrpol,
+            IdxMetaIrsp,
+            IdxMetaLspn,
+            IdxMetaNnsn,
+            IdxMetaPflx,
+        )
+
+        observatory_sources = [
+            ('ASTROM', 'Astrometry', IdxMetaAstrom),
+            ('IRIM', 'Infrared Imaging', IdxMetaIrim),
+            ('IRPH', 'Infrared Photometry', IdxMetaIrph),
+            ('IRPOL', 'Infrared Polarimetry', IdxMetaIrpol),
+            ('IRSP', 'Infrared Spectroscopy', IdxMetaIrsp),
+            ('LSPN', 'Large-Scale Phenomena', IdxMetaLspn),
+            ('NNSN', 'Near-Nucleus Studies', IdxMetaNnsn),
+            ('PFLX', 'Photometry Flux', IdxMetaPflx),
+        ]
+
+        network_counts = []
+        for code, label, model in observatory_sources:
+            count = model.objects.filter(observatory_id=observatory_id).count()
+            if count > 0:
+                network_counts.append({
+                    'code': code,
+                    'label': label,
+                    'count': count,
+                })
+
         context['observation_counts'] = {
-            'lspn': lspn_count,
-            'nnsn': nnsn_count,
-            'total': lspn_count + nnsn_count,
+            'by_network': network_counts,
+            'total': sum(item['count'] for item in network_counts),
         }
         
         return context

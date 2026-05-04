@@ -445,9 +445,6 @@ class IdxMetaIrph(models.Model):
 class IdxMetaIrpol(models.Model):
     """Infrared Polarimetry Network metadata"""
     meta_common = models.ForeignKey(IdxMetaCommon, models.DO_NOTHING, db_column='meta_common_id')
-    lambda_eff = models.FloatField(blank=True, null=True)
-    bandwidth = models.FloatField(blank=True, null=True)
-    aperture = models.FloatField(blank=True, null=True)
     syscode = models.CharField(max_length=12, blank=True, null=True)
     observatory_id = models.IntegerField(blank=True, null=True)
 
