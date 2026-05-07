@@ -25,5 +25,5 @@ urlpatterns = [
     path('about/', AboutView.as_view(), name='about'),
     path('documentation/', DocumentationView.as_view(), name='documentation'),
     path('file/<int:file_id>/', FileViewerView.as_view(), name='file-viewer'),
-    path('', RedirectView.as_view(url='/search/', permanent=False)),
+    path('', RedirectView.as_view(pattern_name='search:search', permanent=False)),
 ]

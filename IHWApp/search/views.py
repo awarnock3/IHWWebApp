@@ -4,6 +4,8 @@ Search views for IHW archive
 from django.views.generic import FormView, ListView, DetailView, TemplateView
 from django.db.models import Q, F, OuterRef, Subquery, Exists
 from django.http import Http404, HttpResponse, JsonResponse
+from django.shortcuts import redirect
+from django.urls import reverse
 from core.models import IdxMetaCommon, IhwEphemeris, IhwFiles, IhwFileFilepath, IhwFilepath
 from core.fits_utils import read_fits_header, format_header_for_display, get_header_summary
 from core.archive_utils import is_archive_available, find_fits_header_file, find_pds_label_file
@@ -19,7 +21,6 @@ class SearchView(FormView):
     
     def form_valid(self, form):
         # Redirect to results with query parameters
-        from django.shortcuts import redirect
         from urllib.parse import urlencode
         
         params = {}
@@ -43,7 +44,7 @@ class SearchView(FormView):
         if form.cleaned_data.get('max_solar_distance') is not None:
             params['max_solar_dist'] = str(form.cleaned_data['max_solar_distance'])
         
-        return redirect('/search/results/?' + urlencode(params))
+        return redirect(f"{reverse('search:results')}?{urlencode(params)}")
 
 
 class SearchResultsView(ListView):
@@ -274,7 +275,7 @@ class SearchResultsView(ListView):
                 filename = ''
             
             # Detail link
-            detail_url = f'/search/observation/{obs.pk}/'
+            detail_url = reverse('search:observation-detail', args=[obs.pk])
             date_link = f'<a href="{detail_url}">{obs.date_obs.strftime("%Y-%m-%d %H:%M")}</a>'
             
             data.append({

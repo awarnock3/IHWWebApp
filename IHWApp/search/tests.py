@@ -110,13 +110,13 @@ class SearchViewTest(TestCase):
             'end_date': '1986-02-28'
         })
         self.assertEqual(response.status_code, 302)
-        self.assertIn('/search/results/', response.url)
+        self.assertIn(reverse('search:results'), response.url)
     
     def test_home_redirects_to_search(self):
         """Test that homepage redirects to search"""
         response = self.client.get('/')
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, '/search/')
+        self.assertEqual(response.url, reverse('search:search'))
     
     def test_invalid_form_shows_errors(self):
         """Test that invalid form data shows errors"""
