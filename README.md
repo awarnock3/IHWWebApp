@@ -61,7 +61,7 @@ The example layout below uses `/var/www/ihwapp` as the app root and serves the s
 Use these files as the starting point:
 
 - `.env.example` for required Django and MariaDB environment variables
-- `deploy/apache/ihwapp.conf` for the Apache virtual host
+- `deploy/apache/ihwapp.conf` for the initial Apache HTTP virtual host
 
 Deployment checklist:
 
@@ -74,14 +74,14 @@ sudo rsync -a --delete \
   --exclude 'venv/' \
   --exclude '__pycache__/' \
   --exclude 'IHWApp/staticfiles/' \
-  /path/to/IHWDjango/ /var/www/ihwapp/
+  /path/to/IHWWebApp/ /var/www/ihwapp/
 
 sudo python3 -m venv /var/www/ihwapp/venv
 sudo /var/www/ihwapp/venv/bin/pip install --upgrade pip
 sudo /var/www/ihwapp/venv/bin/pip install -r /var/www/ihwapp/requirements.txt
 
-sudo install -d -m 0750 /etc/ihwapp
-sudo install -m 0640 /var/www/ihwapp/.env.example /etc/ihwapp/ihwapp.env
+sudo install -d -o root -g www-data -m 0750 /etc/ihwapp
+sudo install -o root -g www-data -m 0640 /var/www/ihwapp/.env.example /etc/ihwapp/ihwapp.env
 sudo editor /etc/ihwapp/ihwapp.env
 
 sudo install -m 0644 /var/www/ihwapp/deploy/apache/ihwapp.conf /etc/apache2/sites-available/ihwapp.conf
@@ -109,3 +109,19 @@ Required values in `/etc/ihwapp/ihwapp.env`:
 - `IHW_ARCHIVE_ROOT=/data/working/IHWv2/data/`
 
 The Apache config redirects `/` to `/ihwapp/`, mounts static files at `/ihwapp/static/`, and sends Django traffic through `WSGIScriptAlias /ihwapp ...`. If Apache will terminate TLS, set the `DJANGO_SECURE_SSL_REDIRECT` and `DJANGO_SECURE_HSTS_*` values in the env file to match that setup.
+
+### HTTPS virtual host note
+
+The bundled `deploy/apache/ihwapp.conf` file is the starting point for the HTTP `*:80` site. Public HTTPS traffic is served by a separate `*:443` SSL virtual host. In the current production-style setup, Let's Encrypt `certbot` created that SSL vhost in:
+
+```bash
+/etc/apache2/sites-enabled/ihwapp-le-ssl.conf
+```
+
+That SSL vhost must repeat the same application routing as the HTTP vhost:
+
+- `RedirectMatch 302 ^/$ /ihwapp/`
+- `Alias /ihwapp/static/ ...`
+- `WSGIDaemonProcess`, `WSGIProcessGroup`, and `WSGIScriptAlias /ihwapp ...`
+
+If the HTTPS vhost does not include those directives, Apache may serve a directory listing for `/var/www/ihwapp`, the default site, or a 404 for `/ihwapp` even though the `*:80` site is configured correctly.

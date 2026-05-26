@@ -18,7 +18,14 @@ else
 fi
 
 "${SUDO[@]}" apt-get update
-"${SUDO[@]}" apt-get install -y libapache2-mod-wsgi-py3
+"${SUDO[@]}" apt-get install -y \
+    build-essential \
+    default-libmysqlclient-dev \
+    libapache2-mod-wsgi-py3 \
+    pkg-config \
+    python3-dev \
+    python3-venv \
+    rsync
 
 "${SUDO[@]}" install -d "$DEPLOY_ROOT"
 "${SUDO[@]}" rsync -a --delete \
@@ -41,10 +48,12 @@ fi
 "${SUDO[@]}" "$VENV_ROOT/bin/pip" install --upgrade pip
 "${SUDO[@]}" "$VENV_ROOT/bin/pip" install -r "$DEPLOY_ROOT/requirements.txt"
 
-"${SUDO[@]}" install -d -m 0750 "$ENV_DIR"
+"${SUDO[@]}" install -d -o root -g www-data -m 0750 "$ENV_DIR"
 if [[ ! -f "$ENV_FILE" ]]; then
-    "${SUDO[@]}" install -m 0640 "$ENV_EXAMPLE_SRC" "$ENV_FILE"
+    "${SUDO[@]}" install -o root -g www-data -m 0640 "$ENV_EXAMPLE_SRC" "$ENV_FILE"
 fi
+"${SUDO[@]}" chown root:www-data "$ENV_FILE"
+"${SUDO[@]}" chmod 0640 "$ENV_FILE"
 
 "${SUDO[@]}" install -m 0644 "$APACHE_SITE_SRC" "$APACHE_SITE_DEST"
 "${SUDO[@]}" a2enmod wsgi headers rewrite
