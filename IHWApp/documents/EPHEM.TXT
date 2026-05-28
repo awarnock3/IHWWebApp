@@ -1,0 +1,228 @@
+***** File EPHEM.TXT                                                          
+                                                                              
+                                                                              
+EPHEMERIS                                                                     
+                                                                              
+                                                                              
+     The geocentric ephemeris for 0h UT each day has been calculated by the   
+Astrometry Network from the following set of osculating orbital elements      
+(Astrometry Network orbit no. 61).  The orbital solution was fit to 7469      
+astrometric observations over the interval from 1835 August 21 to 1989 January
+9 with a weighted rms residual = 1.2 arcsec. Full planetary and               
+nongravitational perturbations have been taken into account at each time step 
+in the ephemeris computations.  The angular elements are referred to the      
+ecliptic plane and the equinox of 1950.                                       
+                                                                              
+                                                                              
+Epoch of Osculation              1986 Feb. 19.0 TDT (ET)                      
+                                                                              
+Time of Perihelion Passage       1986 Feb.  9.45895 TDT (ET)                  
+                                                                              
+Perihelion Distance              0.5871036 AU                                 
+                                                                              
+Eccentricity                     0.9672769                                    
+                                                                              
+Argument of Perihelion           111.84656 deg.                               
+                                                                              
+Longitude of Ascending Node       58.14339 deg.                               
+                                                                              
+Inclination                      162.23925 deg.                               
+                                                                              
+                                                                              
+     Nongravitational Parameters and center-of-light/center-of-mass offset:   
+                                                                              
+                                                                              
+  Radial component, A1          +3.883 E-10 AU/(day)**2                       
+                                                                              
+  Transverse component, A2      +1.554 E-10 AU/(day)**2                       
+                                                                              
+  So (see explanation below)     851 km                                       
+                                                                              
+                                                                              
+     The nongravitational acceleration model (Style II) is described in the   
+following reference:                                                          
+                                                                              
+  Marsden, B.G., Sekanina, Z., and Yeomans, D.K.  Comets and                  
+  nongravitational forces. V.  In Astronomical journal, v. 78, 1973,          
+  p. 211 - 225.                                                               
+                                                                              
+     Because of rather systematic trends in comet Halley's orbit residuals    
+during March - April 1986, it was necessary to model an observation bias to   
+obtain solutions that fit the observations to the level of the data noise     
+itself.  However, it is not entirely clear whether the effect is instrumental 
+or an actual displacement of the comet's photometric center from its center of
+mass.  The comet's center of mass was assumed to be offset a distance (S)     
+radially toward the Sun from the observed center of light.  This measurement  
+bias, S, varies as the inverse square of the heliocentric distance (r) and the
+expression was normalized to a heliocentric distance of one AU (i.e. at r= 1  
+AU, S = So).                                                                  
+                                                                              
+          S = So/r2                                                           
+                                                                              
+     This measurement bias was assumed operative during all three apparitions 
+included in the orbit solution.  The value of the parameter So resulting from 
+solution No. 61 is 851 km.                                                    
+                                                                              
+     The following osculating orbital elements are consistent with orbit No.  
+61 for comet Halley.  Using these orbital elements and the export version of  
+the Astrometry Network's Two-Body Ephemeris Generation program, users can     
+generate their own ephemeris information.  If care is taken to use the set of 
+orbital elements with the epoch of osculation closest to the desired ephemeris
+dates, the Two-Body program can generate ephemeris information that is        
+equivalent to corresponding information in the perturbed ephemeris (to        
+approximately the one arc second level of accuracy).  Each set of orbital     
+elements is in the same order as the elements listed above - the only         
+differences being that the epochs of osculation and dates of perihelion       
+passage time are given as Julian dates rather than calendar dates.  The second
+line of each element set contains the calendar date corresponding to the epoch
+directly above it on the first line.                                          
+                                                                              
+                                                                              
+                                                                              
+                 *** P/HALLEY TWO-BODY ELEMENTS ***                           
+                                                                              
+                                                                              
+                                                                              
+2445200.5 2446470.32863 0.5852278 0.9675859 111.82385 58.10886 162.25637      
+1982 AUG 19.0                                                                 
+                                                                              
+2445310.5 2446470.45296 0.5858829 0.9675453 111.80417 58.10083 162.25872      
+1982 DEC 7.0                                                                  
+                                                                              
+2445430.5 2446470.57072 0.5864306 0.9675064 111.79191 58.09832 162.25950      
+1983 APR 6.0                                                                  
+                                                                              
+2445540.5 2446470.69050 0.5869451 0.9674637 111.78220 58.09763 162.25970      
+1983 JUL 25.0                                                                 
+                                                                              
+2445680.5 2446470.79138 0.5872224 0.9674243 111.78673 58.10574 162.25698      
+1983 DEC 12.0                                                                 
+                                                                              
+2445840.5 2446470.88815 0.5874794 0.9673746 111.79348 58.11507 162.25353      
+1984 MAY 20.0                                                                 
+                                                                              
+2445990.5 2446470.94022 0.5874862 0.9673322 111.80837 58.12618 162.24895      
+1984 OCT 17.0                                                                 
+                                                                              
+2446070.5 2446470.95080 0.5873858 0.9673142 111.82000 58.13272 162.24593      
+1985 JAN 5.0                                                                  
+                                                                              
+2446190.5 2446470.96022 0.5872995 0.9672880 111.83062 58.13796 162.24307      
+1985 MAY 5.0                                                                  
+                                                                              
+2446185.5 2446470.95983 0.5873038 0.9672895 111.83011 58.13774 162.24321      
+1985 APR 30.0                                                                 
+                                                                              
+2446275.5 2446470.96216 0.5871911 0.9672652 111.84044 58.14134 162.24063      
+1985 JUL 29.0                                                                 
+                                                                              
+2446330.5 2446470.96064 0.5871307 0.9672605 111.84482 58.14232 162.23958      
+1985 SEP 22.0                                                                 
+                                                                              
+2446375.5 2446470.95982 0.5871094 0.9672624 111.84616 58.14247 162.23925      
+1985 NOV 6.0                                                                  
+                                                                              
+2446420.5 2446470.95925 0.5871015 0.9672710 111.84644 58.14247 162.23920      
+1985 DEC 21.0                                                                 
+                                                                              
+2446515.5 2446470.95901 0.5871055 0.9672780 111.84688 58.14343 162.23928      
+1986 MAR 26.0                                                                 
+                                                                              
+2446625.5 2446470.95965 0.5871410 0.9672928 111.85290 58.14647 162.24019      
+1986 JUL 14.0                                                                 
+                                                                              
+2446730.5 2446470.96823 0.5871630 0.9673312 111.86639 58.15668 162.24171      
+1986 OCT 27.0                                                                 
+                                                                              
+2446820.5 2446470.98321 0.5870762 0.9673555 111.87354 58.16592 162.24268      
+1987 JAN 25.0                                                                 
+                                                                              
+2446935.5 2446471.01007 0.5869611 0.9673842 111.88703 58.18176 162.24389      
+1987 MAY 20.0                                                                 
+                                                                              
+2447040.5 2446471.05245 0.5866979 0.9674136 111.89612 58.19769 162.24481      
+1987 SEP 2.0                                                                  
+                                                                              
+2447145.5 2446471.10491 0.5863577 0.9674421 111.90371 58.21398 162.24552      
+1987 DEC 16.0                                                                 
+                                                                              
+2447220.5 2446471.15008 0.5859881 0.9674632 111.90348 58.22335 162.24584      
+1988 FEB 29.0                                                                 
+                                                                              
+2447325.5 2446471.19641 0.5855362 0.9674834 111.89906 58.23058 162.24603      
+1988 JUN 13.0                                                                 
+                                                                              
+2447435.5 2446471.27010 0.5849150 0.9675144 111.89678 58.24318 162.24627      
+1988 OCT 1.0                                                                  
+                                                                              
+2447525.5 2446471.30900 0.5843262 0.9675342 111.88097 58.24162 162.24626      
+1988 DEC 30.0                                                                 
+                                                                              
+2447640.5 2446471.34163 0.5836317 0.9675556 111.86132 58.23841 162.24624      
+1989 APR 24.0                                                                 
+                                                                              
+2447765.5 2446471.33194 0.5829334 0.9675705 111.83024 58.22380 162.24622      
+1989 AUG 27.0                                                                 
+                                                                              
+                                                                              
+                                                                              
+D.K. Yeomans                                                                  
+Discipline Specialist for Astrometry                                          
+Jet Propulsion Laboratory                                                     
+4800 Oak Grove Dr.                                                            
+Pasadena, CA 91109                                                            
+                                                                              
+-------------------------                                                     
+                                                                              
+                                                                              
+                                                                              
+                              APPENDIX                                        
+                                                                              
+                    OBSNTERP Interpolation Program                            
+                                                                              
+                                                                              
+     The Fortran source code OBSNTERP.FOR is an interactive, seven-point      
+Lagrange interpolation program that will return ephemeris data for periodic   
+comet Halley over the interval November 26, 1981 through June 23, 1989, when  
+it is run on the table EPHEM.TAB (in the EPHEM directory).  VAX/VMS and MS-DOS
+executables of OBSNTERP are called VAXNTERP.EXE and PCNTERP.EXE, respectively;
+like OBSNTERP.FOR, they are stored in the \SOFTWARE\OBSNTERP directory of this
+disc.  To run the program, type PCNTERP <carriage return> (or VAXNTERP <cr>)  
+and respond to the prompts.  You can speed up the interpolation time by       
+shortening the data table to include only the interval that you require and by
+requesting output for dates in chronological order.  The information in the   
+data table was generated with IHW orbit number 61, which was based upon 7469  
+astrometric positions over the interval August 21, 1835 through January 9,    
+1989.   (Each line of the table is a fixed width of 110 characters plus <CR>  
+<LF>.)                                                                        
+                                                                              
+     The definition of each output quantity is given below:                   
+                                                                              
+Date:    Calendar date and Julian date (times in these ephemerides are        
+         universal times).                                                    
+RA, DEC: Geocentric right ascension and declination referred to the           
+         mean equator and equinox of 1950.0 - light time corrections          
+         have been applied.                                                   
+DELTA:   Geocentric distance of comet in AU.                                  
+DELDOT:  Geocentric velocity of comet in km/sec.                              
+R:       Heliocentric distance of comet in AU.                                
+RDOT:    Heliocentric velocity of comet in km/sec.                            
+THETA:   Sun-Earth-Comet angle in degrees.                                    
+BETA:    Sun-Comet-Earth angle in degrees.                                    
+MOON:    Comet-Earth-Moon angle in degrees.                                   
+PSANG:   Position angle of extended Sun-Comet vector.                         
+PSAMV:   Position angle of minus comet velocity vector.                       
+                                                                              
+(Position angles are measured east from north.)                               
+                                                                              
+                                                                              
+Ravenel N. Wimberly                                                           
+Astrometry Team Member                                                        
+Jet Propulsion Laboratory                                                     
+4800 Oak Grove Dr.                                                            
+Pasadena, CA 91109                                                            
+                                                                              
+                                                                              
+[NOTE:  this write-up by R. N. Wimberly was slightly edited to reflect the    
+fact that executable versions of OBSNTERP.FOR were generated at NASA/GSFC and 
+deposited on this disc.  -- M. B. Niedner, Jr.]                               

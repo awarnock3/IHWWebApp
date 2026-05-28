@@ -1,0 +1,260 @@
+***** File PDS_IHW.TXT                                                        
+                                                                              
+                                                                              
+                               PDS LABELS                                     
+                                                                              
+                                                                              
+     The International Halley Watch agreed early in the project that all data 
+would be submitted from the individual Disciplines to the Lead Center using   
+the FITS format (Wells et al., 1981).  When the decision was made to          
+distribute this information on CD-ROM, it was determined that the data had to 
+have even broader accessibility.  For this reason the original FITS files,    
+with contiguous headers and data, were split into separate files              
+distinguishable by their filename extensions (.HDR for headers).  The file    
+sizes were preserved as multiples of 2880 bytes, allowing the original FITS   
+byte stream to be recovered by concatenating the appropriate header and       
+datafile.                                                                     
+                                                                              
+     In addition, detached (PDS) labels were constructed to allow parallel    
+definition of the data files for the Planetary Data System (PDS). The SPIDS   
+(Standards for the Preparation and Interchange of Data Sets, Martin, T. Z., et
+al, Document D-4683, Jet Propulsion Laboratory, California Institute of       
+Technology, Pasadena, CA) document version 1.1 was the primary reference to   
+Bthe Object Description Language (ODL) necessary to create the PDS labels.    
+(We acknowledge R. Borgen and  M. Martin, PDS- JPL, for assisting the IHW     
+through version 2.0 of the ODL that allows for description of HEADER, TEXT,   
+and SPECTRUM.)                                                                
+                                                                              
+     There are five fundamental data objects in this archive: IMAGE, TABLE,   
+TEXT, HEADER, and SPECTRUM.  Our aim was to construct a basic PDS label for   
+each data file on the CD-ROM. These PDS labels contain pointers to the actual 
+data files (or to headers describing data submitted to the archive). There has
+been no effort to duplicate the documentation contained in the full FITS      
+headers because the PDS and FITS headers for a given data file differ only in 
+the filename extension.  Instead we have attempted to use the power of the PDS
+label syntax to fully describe the data structures and thus gain access to the
+powerful software already supported by that group.   A more full explanation  
+of each object is carried in text (.TXT) files HDRFORM, IMAGFORM, SPECFORM,   
+TABLFORM, and TEXTFORM.   In addition, a further description of the PDS       
+detached label is listed in file LBLFORM.TXT.   Each of these files was used  
+as a reference for the SFDU pointers in the VOLDESC.SFD.                      
+                                                                              
+     Most keywords were already in the Planetary Science Data Dictionary but a
+few dealing with the spectral_image_qube were introduced to specifically      
+describe the IHW data.   A listing of these keywrods with definitions follow. 
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                           Keyword Definitions                                
+                                                                              
+     The definitions of the keywords used in the detached PDS labels on the   
+International Halley Watch Arcive CD-ROMs are given below.  Where applicable  
+the definitions are taken from the draft PSDD (Planetary Science Data         
+Dictionary 1990) or the PDS Standards for the Preparation and Interchange of  
+Data Sets (SPIDS) document (Martin et al., 1988). There are some differences  
+from the PDS data dictionary in the definitions used on this CD-ROM, since the
+definitions of some keywords in the current PDS data dictionary do not        
+dBescribe comet data.  In addition, some keywords for processed (UVFITS) data 
+do not exist in the current PDS data dictionary.                              
+                                                                              
+  B                                                                           
+AXES                                                                          
+    The number of independent variables in a data array.                      
+                                                                              
+BAND_STORAGE_TYPE                                                             
+    The arrangement of data in a qube ordered by spectral bands.              
+                                                                              
+BYTES                                                                         
+    The number of bytes containing a data item.                               
+                                                                              
+COLUMNS                                                                       
+    The number of items of information in each row of a data table.           
+                                                                              
+CORE_DESCRIPTION                                                              
+    The dependent variable expressed in a spectral_image_qube.                
+                                                                              
+CORE_ITEMS                                                                    
+    The number of elements along an independent axis.                         
+                                                                              
+CORE_NAME                                                                     
+    Identifying name for avariable along an independent axis.               
+
+                                                                              
+DATA_SET_ID                                                                   
+    A unique alphanumeric identifier for a data set.  It is used as a         
+    primary key in the PDS catalog.                                           
+                                                                              
+DATA_SET_PARAMETER_NAME                                                       
+    The name of the physical parameter represented in an image.  Note         
+    this definition differs from the PDS data dictionary definition.          
+                                                                              
+DATA_TYPE                                                                     
+    The data type of a data item.  Valid values are INTEGER, REAL, DATE,      
+    TIME, and CHARACTER.                                                      
+                                                                              
+DERIVED_MAXIMUM                                                               
+    The maximum value held in a data record.                                  
+                                                                              
+DERIVED_MINIMUM                                                               
+    The minimum value held in a data record.                                  
+                                                                              
+DESCRIPTION                                                                   
+    Text describing an object.  Sometimes this is expressed as a pointer      
+    to another file containing the descriptive text; e.g., FITS header.       
+                                                                              
+ENCODING_TYPE                                                                 
+     Previous pixel compression of 16-bit data; also called first difference. 
+                                                                            
+
+END_OBJECT                                                                    
+    This keyword is used by ODL to indicate the end of a data object          
+    definition.                                                               
+                                                                              
+FILE_RECORDS                                                                  
+    The number of physical records in a data file.                            
+                                                                              
+FORMAT B                                                                      
+    The Fortran 77 representation of the format statement needed to read      
+    a data item.                                                              
+                                                                              
+IMAGE                                                                         
+    The data in an image file, expressed as a pointer to the record           
+    where the data begins.  For example, ^IMAGE = ("filename",3)              
+    indicates that image data begins in record 3 of file "filename".          
+                                                                              
+INTERCHANGE_FORMAT                                                            
+    The type of data stored in a data table, such as ASCII or BINARY.         
+                                                                              
+ITEMS                                                                         
+    Elements held in any arbitrary variable.                                  
+                                                                              
+ITEM_BITS                                                                     
+    Number of bits per item.                                                  
+                                                                              
+ITEM_TYPE                                                                     
+    The data type of an item.                                                 
+                                                                              
+LINES                                                                         
+    The number of lines in an image.                                          
+                                                                              
+LINE_SAMPLES                                                                  
+    The number of samples contained in each image line.                       
+        B                                                                     
+MINIMUM_SAMPLING_PARAMETER                                                    
+    For the spectrum object, the first value along the fastest                
+    varying axis.                                                             
+                                                                              
+NAME                                                                          
+    The name of a column in a table.                                          
+                                                                              
+NOTE                                                                          
+    Descriptive text about a data file, referring to IHW disciplines.         
+                                                                              
+OBJECT                                                                        
+    This keyword specifies the name of a data object.  It is used by ODL      
+    to indicate the start of a data object definition.                        
+                                                                              
+OBSERVATION_TIME                                                              
+    A timBe associated with the midpoint of the International Halley Watch    
+    set of observations.                                                      
+                                                                              
+OBSERVATION_ID                                                                
+    A unique number held to identify each archived measurement gathered by    
+    the International Halley Watch.                                           
+                                                                              
+OFFSET                                                                        
+    A shift in zero point required to properly calculated the reduced         
+    value represented in a FITS data record.                                  
+                                                                              
+PRODUCER_FULL_NAME                                                            
+    The full name of those mainly responsible for production of               
+    a data set.                                                               
+                                                                              
+RECORDS                                                                       
+    The number of records in the object being described; for example,       
+
+    the number of records in a header object.                                 
+                                                                              
+RECORD_BYTES                                                                  
+    The number of bytes in each record of a data file.                        
+                                                                              
+RECORD_TYPE                                                                   
+    The record structure type of a data file.  Valid values are               
+    FIXED_LENGTH, VARIABLE_LENGTH, and STREAM.  Images and data tables        
+    usually have fixed-length records, whereas text files have stream         
+    format records.                                                           
+                                                                              
+ROWS                                                                          
+    The number of logical records in a data table.                            
+                                                                              
+ROW_BYTES                                                                     
+    The number of bytes in each row (i.e., logical record) of a data          
+    table.                                                                    
+                                                                              
+SAMPLE_BITS                                                                   
+    The number of bits of data comprising one sample or pixel in an           
+    image or element in other objects.                                        
+                                                                              
+SAMPLE_TYPE                                                                   
+    The data type of an image sample or pixel.  The table below lists         
+    the values used on this CD-ROM:                                           
+      UNSIGNED_INTEGER   An unsigned integer value.  Samples with a           
+                         length of 16 bits are in most-significant-byte       
+                         first order.                                         
+      MSB_INTEGER        A signed integer with most-significant-byte          
+                         leading as required by FITS format.                  
+      COMPLEX_INTEGER    The value represented in a process step              
+                         (UVFITS) for certain types of radio data.            
+                                                                              
+SAMPLING_PARAMETER_DESCRIPTION                                                
+    Text explanation of independent variable.                                 
+                                                                              
+SAMPLING_PARAMETER_INTERVAL                                                   
+    Smallest uniform change of independent variable.                          
+                                                                              
+SAMPLING_PARAMETER_ITEMS                                                      
+    Number of elements along independent axis.                                
+                                                                              
+SAMPLING_PARAMETER_NAME                                                       
+    Name associated with independent variable.                                
+                                                                              
+SAMPLING_PARAMETER_UNIT                                                       
+    Unit associated with independent variable.                                
+                                                                              
+SCALING_FACTOR                                                                
+    The factor that must be applied to the FITS data record to scale          
+    the values as described by UNIT.                                          
+                                                                              
+START_BYTE                                                                    
+    The byte position of the beginning of a data item within a row of       
+
+    data.                                                                     
+                                                                              
+START_TIME                                                                    
+    The date and time of the beginning of an event, such as data              
+    collection, in PDS standard (UTC) format.                                 
+                                                                              
+TARGET_NAME                                                                   
+    The name of a planetary body, such as a planet or satellite.              
+                                                                              
+TYPE                                                                          
+    The type of header in a data file, such as a VICAR2 label embedded        
+    in the image file.                                                        
+                                                                              
+UNIT                                                                          
+    The units of measure of a data item.                                      
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+REFERENCES                                                                    
+                                                                              
+Martin, T.Z., Martin, M.D., Davis, R.L., Mehlman, R., Braun, M., Johnson      
+M.: October 3, 1988, Standards for the Preparation and Interchange of         
+Data Sets, Version 1.1, JPL D-4683.                                           
+                                                                              
+Wells, D.C., Greisen, E.W., and Harten, R.H.: 1981, Astron. Astrophys.        
+Suppl. Ser. 44, 363.                                                          
+                                                                              
+                                                                              

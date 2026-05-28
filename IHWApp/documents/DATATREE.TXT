@@ -1,0 +1,287 @@
+|--Y1987        |--M04          |--D04          |--NNSN3056.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3072.* (  52 files and 5715696 bytes)                                      
+|               |               |                                                                                                 
+|               |               |               |--AMVIS        |--AMV11541.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11541.* (   3 files and 25680 bytes)                        
+|               |               |                                                                                                 
+|               |               |--D05          |               |--AMV11542.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11544.* (   9 files and 77040 bytes)                        
+|               |               |                                                                                                 
+|               |               |--D06          |               |--AMV11545.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11545.* (   3 files and 25680 bytes)                        
+|               |                                                                                                                 
+|               |               |--D09          |--IRPH0234.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--IRPH0234.* (   4 files and 31184 bytes)                                        
+|               |               |                                                                                                 
+|               |               |--D16          |--AMVIS        |--AMV11546.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11546.* (   3 files and 25680 bytes)                        
+|               |               |                                                                                                 
+|               |               |--D17          |               |--AMV11547.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11547.* (   3 files and 25680 bytes)                        
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6403.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6404.* (   6 files and 14240 bytes)                        
+|               |                                                                                                                 
+|               |               |--D18          |--NNSN3073.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3077.* (  16 files and 3238500 bytes)                                      
+|               |               |                                                                                                 
+|               |               |               |--AMVIS        |--AMV11548.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11549.* (   6 files and 51360 bytes)                        
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6405.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6405.* (   3 files and 7120 bytes)                         
+|               |               |                                                                                                 
+|               |               |--D19          |--AMVIS        |--AMV11550.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11551.* (   6 files and 51360 bytes)                        
+|               |                                                                                                                 
+|               |               |--D20          |--NNSN3078.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3087.* (  31 files and 6473832 bytes)                                      
+|               |               |                                                                                                 
+|               |               |               |--AMVIS        |--AMV11552.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11554.* (   9 files and 77040 bytes)                        
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6406.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6408.* (   9 files and 21360 bytes)                        
+|               |               |                                                                                                 
+|               |               |--D21          |--AMVIS        |--AMV11555.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11560.* (  18 files and 159840 bytes)                       
+|               |               |                                                                                                 
+|               |               |--D22          |               |--AMV11561.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11562.* (   6 files and 51360 bytes)                        
+|               |                                                                                                                 
+|               |               |--D23          |--LSPN3206.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3096.* (  31 files and 5883168 bytes)                                      
+|               |               |                                                                                                 
+|               |               |               |--AMVIS        |--AMV11563.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11566.* (  12 files and 102720 bytes)                       
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6409.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6409.* (   3 files and 7120 bytes)                         
+|               |                                                                                                                 
+|               |               |--D24          |--LSPN3207.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3102.* (  22 files and 3942048 bytes)                                      
+|               |               |                                                                                                 
+|               |               |               |--AMVIS        |--AMV11567.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11571.* (  15 files and 128400 bytes)                       
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6410.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6412.* (   9 files and 21360 bytes)                        
+|               |                                                                                                                 
+|               |               |--D25          |--LSPN3208.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3109.* (  27 files and 4596288 bytes)                                      
+|               |               |                                                                                                 
+|               |               |               |--AMPHOTO      |--AMPG2168.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMPG2169.* (   4 files and 14400 bytes)                        
+|               |               |                                                                                                 
+|               |               |               |--AMVIS        |--AMV11572.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11575.* (  12 files and 102720 bytes)                       
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6413.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6415.* (   9 files and 21360 bytes)                        
+|               |                                                                                                                 
+|               |               |--D26          |--LSPN3210.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--EPHMINFO.* (   3 files and 10632 bytes)                                        
+|               |               |                                                                                                 
+|               |               |               |--AMVIS        |--AMV11576.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11579.* (  12 files and 102720 bytes)                       
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6416.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6417.* (   6 files and 14240 bytes)                        
+|               |               |                                                                                                 
+|               |               |--D27          |--AMVIS        |--AMV11580.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11585.* (  18 files and 154080 bytes)                       
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6418.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6418.* (   3 files and 7120 bytes)                         
+|               |               |                                                                                                 
+|               |               |--D28          |--AMVIS        |--AMV11586.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11589.* (  12 files and 102720 bytes)                       
+|               |                                                                                                                 
+|               |               |--D29          |--SPEC2927.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--SPEC2928.* (   7 files and 37540 bytes)                                        
+|               |               |                                                                                                 
+|               |               |               |--AMVIS        |--AMV11590.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11592.* (   9 files and 77040 bytes)                        
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6419.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6419.* (   3 files and 7120 bytes)                         
+|               |               |                                                                                                 
+|               |               |--D30          |--AMVIS        |--AMV11593.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11594.* (   6 files and 51360 bytes)                        
+|                                                                                                                                 
+|               |--M05          |--NNSN3110.*                                                                                     
+|               |               |    :                                                                                            
+|               |               |--PMAG0722.* (  58 files and 9492888 bytes)                                                      
+|               |                                                                                                                 
+|               |               |--AMVIS        |--AMV11595.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--AMV11619.* (  75 files and 642000 bytes)                                       
+|               |                                                                                                                 
+|               |               |--ASTROM       |--ASTR6420.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--ASTR6423.* (  12 files and 28480 bytes)                                        
+|                                                                                                                                 
+|               |--M06          |--IRPH0235.*                                                                                     
+|               |               |    :                                                                                            
+|               |               |--IRPH0235.* (   4 files and 50192 bytes)                                                        
+|               |                                                                                                                 
+|               |               |--AMVIS        |--AMV11620.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--AMV11633.* (  42 files and 359520 bytes)                                       
+|                                                                                                                                 
+|               |--M11          |--NNSN3126.*                                                                                     
+|               |               |    :                                                                                            
+|               |               |--NNSN3130.* (  16 files and 1686996 bytes)                                                      
+|               |                                                                                                                 
+|               |               |--AMVIS        |--AMV11634.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--AMV11635.* (   6 files and 51360 bytes)                                        
+|                                                                                                                                 
+|               |--M12          |--NNSN3131.*                                                                                     
+|               |               |    :                                                                                            
+|               |               |--SPEC4438.* (  46 files and 2151288 bytes)                                                      
+|               |                                                                                                                 
+|               |               |--AMVIS        |--AMV11636.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--AMV11637.* (   6 files and 51360 bytes)                                        
+|               |                                                                                                                 
+|               |               |--ASTROM       |--ASTR6424.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--ASTR6427.* (  12 files and 28480 bytes)                                        
+|                                                                                                                                 
+|--Y1988        |--M01          |--NNSN3137.*                                                                                     
+|               |               |    :                                                                                            
+|               |               |--NNSN3138.* (   7 files and 679128 bytes)                                                       
+|               |                                                                                                                 
+|               |               |--AMVIS        |--AMV11638.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--AMV11638.* (   3 files and 25680 bytes)                                        
+|               |                                                                                                                 
+|               |--M02          |--D01          |--IRPH0236.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--IRPH0236.* (   4 files and 31184 bytes)                                        
+|               |                                                                                                                 
+|               |               |--D10          |--NNSN3139.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3158.* (  61 files and 17897568 bytes)                                     
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6428.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6428.* (   3 files and 7120 bytes)                         
+|               |                                                                                                                 
+|               |               |--D11          |--NNSN3159.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3170.* (  37 files and 10739808 bytes)                                     
+|               |                                                                                                                 
+|               |               |--D12          |--NNSN3171.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3178.* (  25 files and 7160928 bytes)                                      
+|               |                                                                                                                 
+|               |               |--D13          |--NNSN3179.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3192.* (  43 files and 12529248 bytes)                                     
+|               |                                                                                                                 
+|               |               |--D14          |--NNSN3193.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3217.* (  76 files and 22371300 bytes)                                     
+|               |               |                                                                                                 
+|               |               |               |--AMVIS        |--AMV11639.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11639.* (   3 files and 25680 bytes)                        
+|               |               |                                                                                                 
+|               |               |               |--ASTROM       |--ASTR6429.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--ASTR6430.* (   6 files and 14240 bytes)                        
+|               |                                                                                                                 
+|               |               |--D16          |--NNSN3218.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3238.* (  64 files and 18792288 bytes)                                     
+|               |               |                                                                                                 
+|               |               |               |--AMPHOTO      |--AMPG2170.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMPG2170.* (   2 files and 7200 bytes)                         
+|               |                                                                                                                 
+|               |               |--D17          |--SPEC2929.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--SPEC2930.* (   7 files and 38068 bytes)                                        
+|               |                                                                                                                 
+|               |               |--D23          |--NNSN3239.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--NNSN3244.* (  19 files and 2019960 bytes)                                      
+|               |               |                                                                                                 
+|               |               |               |--AMVIS        |--AMV11640.*                                                     
+|               |               |               |               |    :                                                            
+|               |               |               |               |--AMV11641.* (   6 files and 51360 bytes)                        
+|                                                                                                                                 
+|               |--M03          |--NNSN3245.*                                                                                     
+|               |               |    :                                                                                            
+|               |               |--NNSN3312.* ( 205 files and 44558808 bytes)                                                     
+|               |                                                                                                                 
+|               |               |--ASTROM       |--ASTR6431.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--ASTR6436.* (  18 files and 42720 bytes)                                        
+|                                                                                                                                 
+|               |--M04          |--IRPH0237.*                                                                                     
+|               |               |    :                                                                                            
+|               |               |--PMAG0734.* ( 271 files and 55261796 bytes)                                                     
+|               |                                                                                                                 
+|               |               |--ASTROM       |--ASTR6437.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--ASTR6440.* (  12 files and 28480 bytes)                                        
+|                                                                                                                                 
+|               |--M05          |--NNSN3390.*                                                                                     
+|               |               |    :                                                                                            
+|               |               |--PMAG0744.* ( 139 files and 25484976 bytes)                                                     
+|               |                                                                                                                 
+|               |               |--ASTROM       |--ASTR6441.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--ASTR6456.* (  48 files and 113920 bytes)                                       
+|                                                                                                                                 
+|--Y1989        |--M01          |--NNSN3426.*                                                                                     
+|               |               |    :                                                                                            
+|               |               |--NNSN3457.* (  97 files and 22747716 bytes)                                                     
+|               |                                                                                                                 
+|               |               |--ASTROM       |--ASTR6457.*                                                                     
+|               |               |               |    :                                                                            
+|               |               |               |--ASTR6475.* (  57 files and 135280 bytes)                                       
+|                                                                                                                                 
+|               |--M04          |--NNSN3458.*                                                                                     
+|               |               |    :                                                                                            
+|               |               |--NNSN3523.* ( 199 files and 163788768 bytes)                                                    

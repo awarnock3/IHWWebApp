@@ -1,0 +1,1695 @@
+***** File FITSHDRS.TXT                                                       
+                                                                              
+A selected sample of FITS headers for the nine IHW Disciplines follows:       
+                                                                              
+                                                                              
+                        1.0. ASTROMETRY                                       
+                                                                              
+                                                                              
+Table 1.1.  Header Keyword Information                                        
+                                                                              
+______________________________________                                        
+Keyword and Its Content                                                       
+______________________________________                                        
+                                                                              
+SIMPLE  =                    T                                                
+BITPIX  =                    8                                                
+NAXIS   =                    1                                                
+NAXIS1  =                 2880                                                
+OBJECT  = 'P/HALLEY'                                                          
+FILE-NUM=               102008                                                
+DATE-OBS= '12/ 8/85'                                                          
+TIME-OBS=              0.88403                                                
+DATE-REL= '26/ 9/89'                                                          
+DISCIPLN= 'ASTROMETRY'                                                        
+LONG-OBS= '116/ 8/24'                                                         
+LAT--OBS= '-32/00/30'                                                         
+EQUINOX = 'B1950.0'                                                           
+SYSTEM  = '18070000'                                                          
+OBSERVER= 'CANDY,M.P ET AL.'                                                  
+SUBMITTR= 'WIMBERLY,R.N'                                                      
+SPEC-EVT=                    F                                                
+DAT-FORM= 'ASCII   '                                                          
+COMMENT  ADD. OBS.:    SMITH,P/DOE,J                                          
+COMMENT  NOTES: VERY FAINT IMAGE                                              
+END                                                                           
+______________________________________                                        
+                                                                              
+                                                                              
+     SYSTEM (C) is the system code in which the leading digit (1) identifies  
+the Astrometry Network and the following three digits are a unique code for   
+the reporting observatory (see Table VI).  The trailing four digits are zeroes
+for the Astrometry Network.  OBSERVER (C) gives the name(s) of the            
+observer(s), last name first followed by the initial(s) of their first (and   
+middle) name(s) (see Tables VI and VII).  The observers are separated by a    
+slash (/), whereas ET AL. indicates that additional observers (ADD. OBS.) are 
+listed after the COMMENT keyword.  Problems with the observation or data      
+reduction process also are identified after a keyword COMMENTS.  SUBMITTR (C) 
+is R.N. Wimberly as the person who prepared the original data archive tape and
+submitted it to the IHW Lead Center at JPL.  The SPEC-EVT (L) keyword is not  
+used in the Astrometry Network. DAT-FORM (C) describes the format of the FITS 
+data record, which for Astrometry is to be interpreted as logical records of  
+80 ASCII characters.                                                          
+__________________________________________________________________________    
+                                                                              
+                                                                              
+                                                                              
+                  2.0. INFRARED STUDIES                                       
+                                                                              
+                                                                              
+Table 2.1. Keywords in the FITS Primary Headers(1)                            
+                                                                              
+______________________________________________________________________________
+Keyword             Description                                               
+______________________________________________________________________________
+                                                                              
+SIMPLE              Conformity to FITS format (T = yes, F = no)               
+BITPIX              Number of bits/pixel                                      
+NAXIS               Number of axes in array                                   
+NAXIS1              Data array size, axis 1                                   
+NAXIS2              Data array size, axis 2                                   
+EXTEND              Conformity with (new) extension standard (T = yes, F = no)
+OBJECT              Name of object                                            
+FILE-NUM            File identification number                                
+DATE-OBS            Date of middle of observation (UT) (dd/mm/yy)             
+TIME-OBS            Time of middle of observation (expressed in decimal days  
+                      UT)                                                     
+DATE-REL            Date when observation may be publicly released (dd/mm/yy) 
+DISCIPLN            IHW Discipline (IR STUDIES)                               
+LONG-OBS            East longitude of observatory (0-360 deg)                 
+LAT--OBS            Latitude of observatory (+ = north, - = south)            
+SYSTEM              Observing system code 2NNNXXYY, where 2 denotes the IR    
+                      Studies Network, NNN the IAU observatory code (= 500 if 
+                      not in IAU list), XX the telescope number as collated by
+                      LSPN (if NNN = 500, XX = country code), and YY not used 
+OBSERVER            Observer(s) name(s)                                       
+SUBMITTR            Submitter(s) name(s)                                      
+SPEC-EVT            Special event (T = yes, F = no)                           
+DAT-FORM            Form of data: 'STANDARD' if data records conform to FITS  
+                      standard, 'ASCII' for tables, or 'NODATA' if data were  
+                      not submitted                                           
+DAT-TYPE            Type of data being submitted                              
+OBSVTORY            Name of submitting observatory                            
+LOCATION            Location of submitting observatory                        
+TELESCOP            Telescope identification (size)                           
+INSTRUME            Instrument used                                           
+COMMENT             Cols. 9-80 are a comment                                  
+HISTORY             Cols. 9-80 are a comment                                  
+FILTER              Type of filter used                                       
+APERSIZE            Entrance aperture size (arcsec)                           
+AIRM-AVG            Average airmass of observation                            
+RANGE-SP            Approximate spectral range (microns)                      
+RESOL-SP            Approximate spectral resolution (microns)                 
+DIS-CODE            Filter table number (in filter table files)               
+BSCALE              Scale factor used to convert tape pixel values to true    
+                      values (true = tape * BSCALE + BZERO)                   
+BZERO               Offset applied to tape pixel values to convert to true    
+                      values                                                  
+BUNIT               Data units                                                
+BLANK               Missing pixel filler value                                
+CDELTn              Pixel spacing along axis n of data array                  
+CTYPEn              Units along data axis n                                   
+CRPIXn              Pixel number of nucleus along axis n                      
+PIXSCALE            Pixel size in arcsec                                      
+DATAMIN             Minimum data value in the file                            
+DATAMAX             Maximum data value in the file                            
+END                 End of FITS header                                        
+______________________________________________________________________________
+                                                                              
+(1) Table extension keywords are defined and formatted in each file.          
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                        3.0. LARGE-SCALE PHENOMENA NETWORK                    
+                                                                              
+                                                                              
+Table 3.1.  Sample FITS header for Large-Scale Phenomena                      
+                                                                              
+______________________________________________________________________________
+Keyword    Content                Explanation                                 
+______________________________________________________________________________
+                                                                              
+SIMPLE  =                    T  / BASIC FITS FORMAT                           
+BITPIX  =                   16  / 2-BYTE TWO'S COMPL INTEGERS                 
+NAXIS   =                    2  / NUMBER OF AXES, 2=SINGLE IMAGE, 3=MULTIPLE  
+NAXIS1  =                 4096  / PIXELS PER ROW                              
+NAXIS2  =                 3072  / LINES PER IMAGE                             
+OBJECT  = 'P/HALLEY          '  / NAME OF OBJECT                              
+FILE-NUM=               300691  / NUMBER OF FILE SENT TO JPL, DNNNNN          
+DATE-OBS= '20/03/86          '  / DATE OF MID-EXPOSURE DD/MM/YY               
+TIME-OBS=              0.29028  / TIME OF MID-OBSERVATION, DAY FRACTION       
+DATE-REL= '07/31/90          '  / DATA RELEASE DATE, DD/MM/YY                 
+DISCIPLN= 'LARGE SCALE PHEN  '  / IHW NETWORK                                 
+LONG-OBS= '289/11/07         '  / STATION LONGITUDE DDD/MM/SS                 
+LAT--OBS= '-30/09/55         '  / STATION LATITUDE SDD/MM/SS                  
+SYSTEM  = '38070400          '  / OBSERVING SYSTEM CODE                       
+OBSERVER= 'MILLER,F          '  / NAME OF OBSERVER WHO TOOK PLATE             
+SUBMITTR= 'NIEDNER,M         '  / LSPN SUBMITTER                              
+SPEC-EVT=                    T  / SPECIAL EVENTS FLAG                         
+DAT-FORM= 'STANDARD          '  / STANDARD FITS DATA                          
+DAT-TYPE= 'IMAGE             '  / TYPE OF FITS DATA                           
+LSPNSEQ =               110331  / SEQUENCE # OF PLATE RECEIVED AT LSPN        
+OBSVTORY= 'UNIVERSITY OF MICHIGAN/CTIO             ' / NAME OF OBSERVATORY    
+LOCATION= 'LA SERENA, CHILE  '  / STATION LOCATION - ADDRESS                  
+TELESCOP= 'CURTIS SCHMIDT    '  / TYPE OF TELESCOPE                           
+APERTURE=                0.610  / APERTURE, METERS                            
+FRATIO  =                3.500  / EFFECTIVE TELESCOPE F RATIO                 
+FOV1    =                5.000  / RA FIELD OF VIEW, DEGREES                   
+FOV2    =                5.000  / DEC FIELD OF VIEW, DEGREES                  
+PLTSZE1 =                0.203  / X PLATE SIZE, METERS                        
+PLTSZE2 =                0.203  / Y PLATE SIZE, METERS                        
+PLTSCALE=               96.661  / PLATE SCALE ARC SECONDS PER MM              
+CALAVL  =                    T  / CALIBRATION AVAILABLE                       
+HYPSEN  =                    T  / HYPERSENSITIZATION                          
+EMULSION= 'IIA-O             '  / EMULSION TYPE                               
+FILTER  = 'NONE              '  / TYPE OF FILTER USED                         
+PLTYPE  =                    T  / PLATE TYPE, T=ORIGINAL, F=COPY              
+EXPOSURE=                1200.  / EXPOSURE TIME, SECONDS                      
+HISTORY   OBSLOG  = '29953   '  / ORIGINAL OBSERVATORY PLATE                  
+BSCALE  =                  1.0  / SCALE FACTOR, TRUE = TAPE * BSCALE + BZERO  
+BZERO   =                  0.0  / OFFSET FOR TRUE PIXEL VALUE                 
+BUNIT   = 'DENSITY           '  / UNITS OF PIXEL VALUES                       
+HISTORY   SCNAPR  =   40        / PDS SCAN APERTURE, MICRONS                  
+HISTORY   SCNSTP  =   40        / PDS SCAN STEP, MICRONS                      
+HISTORY   SKYDEN  =  190        / SKY BKGND PDS DENSITY                       
+HISTORY   SKYUNF  = 'EXCL    '  / SKY BKGND POOR/FAIR/GOOD/EXCL               
+CTYPE1  = 'RA---ARC          '  / X AXIS UNITS                                
+CTYPE2  = 'DEC--ARC          '  / Y AXIS UNITS                                
+EQUINOX =               1950.0  / EQINOX OF COORDINATE SYSTEM                 
+RA--CPME=         0.293700E+03  / RA PLATE CENTER MID-EXPOSURE                
+DEC-CPME=        -0.264086E+02  / DEC PLATE CENTER MID-EXPOSURE               
+CRPIX1  =         0.162615E+04  / REF POINT FOR AXIS1, SAMPLES                
+CRPIX2  =         0.148793E+04  / REF POINT FOR AXIS2, LINES                  
+CDELT1  =        -0.107401E-02  / RA PER PIXEL, DEGREES                       
+CDELT2  =        -0.107401E-02  / DEC PER PIXEL, DEGREES                      
+CROTA1  =         0.121025E+00  / ROTATION ANGLE IN RA, DEGREES               
+CROTA2  =         0.121025E+00  / ROTATION ANGLE IN DEC, DEGREES              
+SENSE   =                    T  / SENSE OF ROTATION, T=CCW, F=CW              
+CRVAL1  =         0.293700E+03  / RA AT REFERENCE POINT, DEGREES              
+CRVAL2  =        -0.264086E+02  / DEC AT REFERENCE POINT, DEGREES             
+RA--HEAD=         0.295308E+03  / RA COMET HEAD MID-EXPOSURE                  
+DEC-HEAD=        -0.261628E+02  / DEC COMET HEAD MID-EXPOSURE                 
+DATE-REC= '04/06/87          '  / DATE PLATE WAS RECEIVED AT GSFC, DD/MM/YY   
+HISTORY   DATE-PDS= '20/03/87'  / DATE DIGITIZED DD/MM/YY                     
+HISTORY   DATE-PRC= '13/07/88'  / DATE PROCESSED/CALIBRATED DD/MM/YY          
+QUALITY = '123               '  / QUAL OF PLATE,GUIDING,TRAILS,SEEING,TRANSP  
+END                                                                           
+______________________________________________________________________________
+                                                                              
+                                                                              
+     SYSTEM is a code denoting the observatory and the instrument used to     
+obtain the image, and the location of the observing site.  The archive user is
+referred to the LSPNOBS.TXT file in the DOCUMENT directory of the set of L-SP 
+compressed image discs, HAL_0001 through HAL_0018.  Detailed information      
+associated with each SYSTEM code can be found there, information which is also
+contained in the delimited index LSPNOBS.IDX in the INDEX directory on those  
+same discs.  A file listing observatory information across all IHW disciplines
+is OBSCODES.TXT, which has been deposited in the DOCUMENT directory of these  
+"mixed discs" (HAL_0019--HAL_0023).                                           
+                                                                              
+     SPEC-EVT is a keyword signifying the presence or absence of a "special   
+event", and is either "T" or "F" in value.  In nearly all cases it was the    
+L-SP Discipline Specialist (M. Niedner) who evaluated the imagery and set this
+parameter.  Disconnection events (DEs) in the plasma tail, strong bursts of   
+tail ray generation, and large amplitude bends in the tail, are but a few of  
+the situations meriting a SPEC-EVT = T.  The classification is obviously      
+somewhat subjective and the DS should not be held responsible for database    
+searches of NETLARGE.IDX (resident in the INDEX directory of the compressed   
+image discs) keyed solely to SPEC-EVT; it is a coarse parameter that is meant 
+only to signify possible interest in an image.                                
+                                                                              
+     PLTSCALE should be used with caution.  It does indicate plate scale, but 
+only for original plates or films.  Moreover, it is derived from the focal    
+length of the telescope, not astrometrically, and hence never varies from one 
+original image to the next taken on the same telescope.  In some cases, most  
+notably 35mm film negatives on Kodak Technical Pan 2415, the digital scan was 
+made of a greatly enlarged film copy of the original small frame.  In this    
+case PLTSCALE is not remotely close to the scale of the digital image.   We   
+have provided a rigorous astrometric plate solution for each scanned image,   
+and the true "digital image scale" is contained in other FITS keywords        
+(CDELT1,2 and SCNSTP, described below).                                       
+                                                                              
+     CALAVL is a keyword signifying the existence or absence of calibration   
+data associated with the Halley image.  A value of "T" does not, however,     
+necessarily mean that the calibration information resides on these CD-ROMs,   
+because not all calibration plates were digitized by the L-SP Team.  Refer to 
+the text file CALIB_LS.TXT in the DOCUMENT directory of these "mixed discs"   
+(or to the CALIB.TXT file on the compressed image discs) for a discussion of  
+which calibration data were included in the archive.  The filenames of        
+calibration datafiles in the archive are contained in text tables in          
+CALIB_LS.TXT and in delimited index table CALIB_LS.IDX of directory INDEX.    
+                                                                              
+     PLTYPE designates whether the digitized image was an original plate or   
+film ("T") or a copy ("F") made by either the contributing observer or by the 
+L-SP Team.  In the latter category it should be mentioned that in some cases  
+the observer sent the DS a film copy of sufficient quality for scanning, and  
+in other situations it was necessary to enlarge original small images prior to
+digitization.                                                                 
+                                                                              
+     CRPIX1,2....CRVAL1,2 form a block of "astrometric keywords", the names   
+and meanings of most of which are identical to keywords defined by Wells et   
+al. (1981).  Briefly, CRPIX1 and CRPIX2 fix the location of the upper-left    
+(NE) corner of the scan area relative to the reference position, in numbers of
+samples and lines, respectively.   We have adopted the plate center as the    
+reference position, or "reference pixel" as it is called.  CDELT1 and CDELT2  
+are self-explanatory, but it should be noted that the "classical" plate scale 
+in arcsec/mm can be derived from CDELT1(,2) and SCNSTP (scan step in microns) 
+if one wishes it.                                                             
+                                                                              
+     CROTA1 and CROTA2 were not tightly defined in the original FITS paper    
+(Wells, D.C., et al.,1981), so we wish to be specific here about how the      
+angles are measured.   First, we define CROTA1=CROTA2, always.  The angle(s)  
+refer to the rotation of the X-Y PDS (microdensitometer) coordinate frame     
+relative to the axes of the celestial coordinate system.  The Large-Scale     
+Phenomena Appendix, LS_PHEN.APX (resident in the DOCUMENT\APPENDIX directory),
+contains a pictorial diagram to which the Archive user may wish to refer.  To 
+reasonable accuracy, the +Y scanning axis is in the direction of North at the 
+plate center, for the epoch of 1950.0.  The +X scanning axis is in the        
+approximate direction of due East (again, at the plate center for 1950.0).  As
+a result of the inevitable human error in positioning the plate on the PDS    
+platen, however, there will be a non-zero rotation angle offset (very small)  
+between the two coordinate systems.  When the North direction lies in the     
++X/+Y quadrant, i.e., is rotated in a counterclockwise direction relative to  
+the +Y axis, we say that the rotation angles CROTA1 and CROTA2 are both       
+positive (and the same value).  A positive angle for such a counterclockwise  
+rotation is what is meant by SENSE = T, and we adopt SENSE = T throughout this
+archive. Because of its redundancy, the keyword SENSE is not indexed in       
+NETLARGE.IDX, although it is present in the individual FITS headers.          
+                                                                              
+     CRVAL1 and CRVAL2 are the right ascension and declination of the         
+reference position, which we have made the plate center.  Note that these     
+coordinates are separately given as RA--CPME and DEC-CPME, the formal         
+coordinates of the plate center.                                              
+                                                                              
+     RA--HEAD and DEC-HEAD are the measured (approximate) coordinates of the  
+head center, but are not given in either the FITS headers or the appropriate  
+lines in the index table for those plates which did not contain the head      
+region. Note that the head center coordinates are for reference purposes only 
+and are not to be used for accurate positions of the nucleus; well-saturated, 
+wide-field plates are obviously not suitable for that purpose. QUALITY is a   
+keyword which gives a very subjective assessment of the condition of each     
+scanned image in terms of five categories (plate, guiding, trails, seeing, and
+transparency); the scale is 1-5 (excellent to poor).  Not for all plates was  
+it possible to evaluate each category, and hence the archive user will        
+occasionally come across (for example) QUALITY = '123  '.                     
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                            4.0. NEAR NUCLEUS                                 
+                                                                              
+                                                                              
+Table 4.1. The NNSN Header Keywords                                           
+                                                                              
+______________________________________________________________________________
+                                                                              
+SIMPLE  =                    T /T conforms to standard FITS format            
+BITPIX  =                   16 /16 (or 32)-bit data                           
+NAXIS   =                    2 /number of axes in array                       
+NAXIS1  =                 ____ /number of pixels in X axis (samples)          
+NAXIS2  =                 ____ /number of pixels in Y axis (rows)             
+OBJECT  = 'P/HALLEY'           /object name                                   
+FILE-NUM=               4_____ /file number                                   
+DATE-OBS= '__/__/__'           /mid-UT date of observation (dy/mo/yr)         
+TIME-OBS=               ._____ /mid-UT decimal part of day                    
+DATE-REL= '__/__/__'           /date released to archive (dy/mo/yr)           
+DISCIPLN= 'NEAR NUCLEUS'       /IHW network                                   
+LONG-OBS= '___/__/__'          /observatory east longitude (deg/min/sec)      
+LAT--OBS= '___/__/__'          /observatory latitude (+-deg/min/sec)          
+SYSTEM  = '4_______'           /observing system code                         
+OBSERVER= '__________________' /observer's names (see ADD. OBS.:in COMMENT)   
+SUBMITTR= '__________________' /submitter's names                             
+SPEC-EVT=                    _ /T if jets present (10/85-6/86)                
+DAT-FORM= 'STANDARD'           /type of data                                  
+OBSVTORY= '__________________' /observatory name                              
+ELEV-OBS=                 ____ /elevation of observatory in meters            
+TELESCOP= '__________________' /telescope used                                
+APERTURE=                 _.__ /telescope aperture in meters                  
+TELEFL  =                _.___ /effective focal length in meters              
+PLTSCALE=                __.__ /plate scale in arcsec per mm                  
+CROTA1  =                ___._ /position angle of sample axis, north -> east  
+SENSE   =                    _ /PA counterclockwise (T) or clockwise (F)      
+DETECTOR= '__________________' /detector used                                 
+DIGITIZE= '__________________' /type of digitizer used if not detector        
+APSIZE  =                _.___ /original pixel size of detector/digitizer     
+FILTER  = '______ '            /filter used (see Table IV)                    
+EXPOSURE=               ____._ /exposure duration in seconds                  
+AIRM-MID=                _.___ /calculated airmass at mid-exposure            
+QUALITY = '_________'          /general quality of image                      
+DATE-WRT= '__/__/__'           /date this file written                        
+ORIGIN  = '__________________' /institution sending data to NNSN              
+BUNIT   = '__________________' /intensity  units (note that BSCALE=1, BZERO=0)
+COMETMAX=               ______ /approximate maximum value in comet image      
+SKYMIN  =               ______ /approximate background sky brightness         
+COMMENT (any comments relating to the image contents and additional observers)
+HISTORY (any comments relating to the reduction process)                      
+END                                                                           
+_____________________________________________________________________________ 
+                                                                              
+                                                                              
+     The 250 system codes are specific to any detector, array size, telescope,
+optical configuration and filter, and are of the form 4NNNXXYY, where 4       
+denotes the NNSN, NNN is the IAU observatory code, XX the telescope, and XX   
+the filter/scale/array size configuration. A list of observers are associated 
+with each system code, so more than one observer group may share a system     
+code.                                                                         
+                                                                              
+     The quality rating is only a rough, qualitative guide that includes the  
+effects of seeing, focussing, guiding, the signal-to-noise ratio, and         
+decalibration. The four rating categories are excellent, good, fair, and poor:
+excellent refers to images with no obvious flaws and poor denotes images      
+included only because of the lack of better ones on that day. The user will   
+have to gain some experience to know what to expect from the different grades.
+                                                                              
+     The airmass at mid-exposure (AIRM-MID) is calculated from current epoch  
+topocentric comet coordinates (RA, DEC) and observatory coordinates (LONG,    
+LAT) as:                                                                      
+                                                                              
+     AIRM-MID = sec Z - 0.0018167 (sec Z - 1) - 0.002875 (sec Z - 1)**2       
+                                            - 0.0008083 (sec Z - 1)**3,       
+where the zenith distance Z follows from:                                     
+                                                                              
+      sec Z = 1/[sin(LAT)*sin(DEC) + cos(LAT)*cos(DEC)*cos(local hour angle)].
+                                                                              
+The airmass at the zenith is 1, so it does not include a correction for the   
+local elevation. Also note that there is no correction for apparent and true  
+zenith distance.                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                               5.0. PHOTOMETRY AND POLARIMETRY                
+                                                                              
+                                                                              
+                                                                              
+Table 5.1.  FITS Header Keywords                                              
+                                                                              
+______________________________________________________________________________
+  Item         FITS Keyword  Format       Value/Explanation                   
+______________________________________________________________________________
+                                                                              
+Comet Name      OBJECT       string       'P/HALLEY' for all                  
+                                            files in this archive.            
+File Number     FILE-NUM     I6           '56xxxx'                            
+                                            5 ==> Photometry/Polarimetry      
+                                                  Network                     
+                                            6 ==> P/Halley                    
+                                            xxxx = running number, not in     
+                                                  chronological order         
+Date            DATE-OBS     dd/mm/yy     Date of the observations            
+UT Time         TIME-OBS     F6.5         Decimal fraction of the day at the  
+                                            midpoint of the observations in   
+                                            the table                         
+UT Start Time   TIME-STR     F6.5         Decimal fraction of the day at the  
+                                            start of the observations in the  
+                                            table when available.             
+Our Network     DISCIPLN     string       'PHOTOMETRY' for this Network       
+Observatory     OBSVTORY     string       Name of observatory                 
+   Longitude    LONG-OBS     ddd/mm/ss    Positive, eastward from Greenwich   
+   Latitude     LAT--OBS     sdd/mm/ss    s='+' or '-' for North or South     
+   Elevation    ELEV-OBS     I4           [m]                                 
+   System       SYSTEM       I8           See Sec. 7                          
+   Telescope    TELESCOP     string       A unique identification of the      
+                                            telescope by name or size         
+Type of data    DAT-TYPE     string       'POLARIMETRY', 'STOKES", 'BROADBAND'
+                                            or 'NARROWBAND'. Note the tables  
+                                            that follow 'Fluxes' refers to    
+                                            'NARROWBAND' and 'Magnitudes'     
+                                            refers to 'BROADBAND'             
+Observer(s)     OBSERVER     string       Name(s) of observer(s) (omitted for 
+                                            FES observations with IUE;large   
+                                            team headed by Feldman & Festou)  
+Submitter       SUBMITTR     string       Person who submitted data to the    
+                                            DS.  A blank usually means data   
+                                            were taken from the literature.   
+Comments        COMMENT      string       All comments are character strings  
+                                          (line = 80 characters) following the
+                                          keywords 'COMMENT' and 'HISTORY'    
+                                          and in some cases the following     
+                                          secondary keywords:                 
+                                          'LIT.' => reference from literature 
+                                          'NOTE' => footnote to table         
+                                          'NOTExx' => footnote to line xx     
+                                          'ADD. OBS.' => names of additional  
+                                            observers beyond those above      
+                HISTORY      string       Comments relevant to calibration    
+                                            'STDSTARS' => list of standard sta
+s                                                                             
+                                            used in the reduction. In case of 
+                                            polarimetry standard stars POL-STD
+                                            refers to highly polarized stars, 
+                                            and UNPOL-STD to unpolarized stars
+______________________________________________________________________________
+                                                                              
+                                                                              
+     The FITS tables can take any of four different formats depending on the  
+type of data in the table.  The types of table are known by the following     
+values for the FITS 'DAT-TYPE' keyword: 'BROADBAND', 'NARROWBAND',            
+'POLARIMETRY', and 'STOKES'.  Note that the value 'BROADBAND' is actually used
+to indicate results given in magnitudes rather than fluxes.  It is independent
+of the actual bandwidth of the filters used.  The first few columns in the    
+tables are identical for all types of data and are listed in Table 5.2.       
+Additional entries for DAT-TYPE = 'BROADBAND' are in Table 5.3, for DAT-TYPE =
+'NARROWBAND' in Table 5.4, for DAT-TYPE = 'POLARIMETRY' in Table 5.5, and for 
+DAT-TYPE= 'STOKES' in Table 5.6.                                              
+                                                                              
+                                                                              
+                                                                              
+Table 5.2.  Columns Common to All Types of Data                               
+                                                                              
+______________________________________________________________________________
+Item                 Format    Columns        Explanation                     
+______________________________________________________________________________
+Date and time(UT)     F8.5      1 -   8       Day of month and decimal frac-  
+                                                tion at mid-point of observa- 
+                                                tion                          
+Serial number         I2       10 -  11       Line number in the table        
+                                                Occasional numbers are skipped
+Filter name           A4       13 -  16       Short-hand name                 
+       wavelength     I4       18 -  21       Central wavelength [A]          
+       width          I4       23 -  26       FWHM [A]                        
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+Table 5.3.  Columns for Magnitudes (DAT-TYPE = 'BROADBAND')                   
+                                                                              
+______________________________________________________________________________
+Item                 Format    Columns        Explanation                     
+______________________________________________________________________________
+                                                                              
+Upper limit code      char        28          '<' indicates that the result in
+                                                the following field is a      
+                                                3-sigma limit                 
+Magnitude             F7.3     30 -  36       Reduced magnitude               
+       error          F5.3     38 -  42       One (1) sigma [mag];            
+                                                omitted if previous field is a
+                                                limit                         
+Aperture size         F5.1     44 -  48       Diameter [arcsec]               
+Radial offset         I4       50 -  53       Radial distance between center  
+                                                of aperture and the peak      
+                                                brightness                    
+                                                of the comet [arcsec]         
+Offset direction      I3       55 -  57       Angular direction [deg]         
+                                                (eastward from north)         
+                                                of the radius vector to the   
+                                                center of the aperture from   
+                                                the peak in brightness        
+Integration time      I4       59 -  62       Integration time [s]            
+Airmass               F5.3     64 -  68       Airmass at midpoint in time,    
+                                                usually as quoted by observer 
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+Table 5.4.  Columns for Fluxes in Narrowband Filters (DAT-TYPE = 'NARROWBAND')
+                                                                              
+______________________________________________________________________________
+Item                 Format    Columns        Explanation                     
+______________________________________________________________________________
+                                                                              
+Upper limit code      char        28          '<' indicates that the result in
+                                                the following field is a      
+                                                3-sigma limit                 
+Log Flux              F7.3     30 -  36       Logarithm (base 10) of the flux 
+                                                See Sec. 4 for details        
+        error         F5.3     38 -  42       Error of log10 of flux          
+Aperture size         F5.1     44 -  48       Diameter [arcsec]               
+Radial offset         I4       50 -  53       Radial distance between center  
+                                                of aperture and the peak      
+                                                brightness of the comet       
+                                                [arcsec]                      
+Offset direction      I3       55 -  57       Angular direction [deg]         
+                                                (eastward from north)         
+                                                of the radius vector to the   
+                                                center of the aperture from   
+                                                the peak in brightness        
+Integration time      I4       59 -  62       Integration time [s]            
+Airmass               F5.3     64 -  68       Airmass at midpoint in time     
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+Table 5.5.  Columns for Polarimetry in Percent (DAT-TYPE = 'POLARIMETRY')     
+                                                                              
+______________________________________________________________________________
+Item                 Format    Columns        Explanation                     
+______________________________________________________________________________
+                                                                              
+Polarization type     A2       28 -  29       'CR' => right circular          
+                                              'CL' => left circular           
+                                              'LN' => linear                  
+Polarization value    F5.2     31 -  35       Degree of polarization [%]      
+         error        F5.2     37 -  41       One (1) sigma [%]               
+Position angle        F5.1     43 -  47       For linear polarization, the    
+                                                position angle of the electric
+                                                vector [deg] clockwise from   
+                                                the plane of scattering       
+                                                (-45 to +135)                 
+         error        F4.1     49 -  52       One sigma                       
+Aperture size         F5.1     54 -  58       Diameter [arcsec]               
+Radial offset         I4       60 -  63       Radial distance between center  
+                                                of aperture and the peak      
+                                                brightness of the comet       
+                                                [arcsec]                      
+Offset direction      I3       65 -  67       Angular direction [deg]         
+                                                (eastward from north)         
+                                                of the radius vector to the   
+                                                center of the aperture from   
+                                                the peak in brightness        
+Integration time      I4       69 -  72       Integration time [s]            
+Airmass               F5.3     74 -  78       Airmass at midpoint in time,    
+                                                usually as quoted by observer 
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+Table 5.6.  Columns for Stokes Vectors (DAT-TYPE = 'STOKES')                  
+                                                                              
+______________________________________________________________________________
+Item                 Format    Columns        Explanation                     
+______________________________________________________________________________
+                                                                              
+Q/I                   F7.4     28 -  34       Normalized Stokes parameter Q/I,
+                                                positive for the electric vec-
+                                                tor perpendicular to the plane
+                                                of scattering, negative for   
+                                                the electric vector parallel  
+                                                to the plane [dimensionless]  
+         error        F6.4     36 -  41       One sigma                       
+U/I                   F7.4     43 -  49       Normalized Stokes parameter U/I,
+                                                positive for the electric vec-
+                                                tor 45 deg counterclockwise   
+                                                from positive values of Q,    
+                                                negative for 45 deg clockwise 
+                                                [dimensionless]               
+         error        F6.4     51 -  56       One sigma                       
+V/I                   F7.4     58 -  64       Normalized Stokes parameter V/I,
+                                                positive for left handed as   
+                                                seen by the observer, negative
+                                                for right handed as seen by   
+                                                the observer [dimensionless]  
+         error        F6.4     66 -  71       One sigma                       
+Aperture size         F5.1     73 -  77       Diameter [arcsec]               
+Radial offset         I4       79 -  82       Radial distance between center  
+                                                of aperture and the peak      
+                                                brightness of the comet       
+                                                [arcsec]                      
+Offset direction      I3       84 -  86       Angular direction [deg]         
+                                                (eastward from north)         
+                                                of the radius vector to the   
+                                                center of the aperture from   
+                                                the peak in brightness        
+Integration time      I4       88 -  91       Integration time [s]            
+Airmass               F5.3     93 -  97       Airmass at midpoint in time,    
+                                                usually as quoted by observer 
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                              6.0. RADIO SCIENCE                              
+                                                                              
+                                                                              
+Table 6.1. Keyword Block I                                                    
+                                                                              
+______________________________________________________________________________
+Keyword  Type  Description                                                    
+______________________________________________________________________________
+                                                                              
+SIMPLE    L    Conformity to basic FITS standards                             
+BITPIX    I    Bits per pixel in data record                                  
+NAXIS     I    Number of axes in data record; if NAXIS = 0 then no data record
+NAXIS1    I    Number of pixels in row along first axis; if NAXIS1 = 0 then   
+                 this is Extended FITS Format and GROUP data are present      
+NAXISn    I    Number of pixels along n-th axis in image                      
+OBJECT    C    Name of the object                                             
+                    Examples: 'P/CROMMELIN'                                   
+                              'P/HALLEY'                                      
+                              'P/GIACOBINI-ZINNER'                            
+FILE-NUM  I    6NNNNV - unique, sequential number to identify files sent to   
+                    IHW Lead Center.  Format description:                     
+                    6 = denotes Radio Science Network                         
+                 NNNN = unique 4 digit ID number assigned to each observation 
+                    V = version number (used to keep track of resubmissions)  
+DATE-OBS  C    'DD/MM/YY' - UT date of middle of observation                  
+                    if observations made during several intervals, then these 
+                    intervals will be specified in the HISTORY fields         
+                    described below                                           
+TIME-OBS  R    UT time of middle of observation expressed in decimal days     
+DATE-REL  C    'DD/MM/YY' - date when observations may be publicly released   
+DISCIPLN  C    'RADIO STUDIES' - the Network identification                   
+LONG-OBS  C    'DDD/MM/SS' - east longitude of observatory (0-360 deg)        
+LAT--OBS  C    'sDD/MM/SS' - latitude of observatory                          
+SYSTEM    C    '6OOOCCTT' - system code formatted:                            
+                    6 = Radio Science Network                                 
+                  OOO = IAU number for observatory                            
+                        (OOO = 500 for radio observatories since no IAU number
+                         exists)                                              
+                   CC = identifies country according to LSPN Code             
+                   TT = identifies radio telescope                            
+OBSERVER  C    Name of observer                                               
+                    Format : 'LASTNAME,I'            - 1 author               
+                             'LASTNAME,I/NEXTNAME,J' - 2 authors              
+                             'LASTNAME,I/ET AL.'     - >2 authors             
+                    For more than 2 observers, the names of all additional    
+                    observers are given in special ADD. OBS. comments         
+SUBMITTR  C    Name of submitter of data                                      
+SPEC-EVT  L    Flag for special events as designated by Discipline Specialist 
+DAT-FORM  C    Describes format of FITS data records                          
+               'NODATA  ' - no FITS data records written                      
+               'STANDARD' - data records conform to FITS standard             
+               'ASCII   ' - data records are to be interpreted as logical     
+                            records of 80 ASCII characters (not FITS standard)
+               'HARDCOPY' - data submitted as hardcopy                        
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+Table 6.2. Keyword Block III                                                  
+                                                                              
+______________________________________________________________________________
+Keyword  Type  Description                                                    
+______________________________________________________________________________
+                                                                              
+DIS-CODE  C    'TFESEWEABENC' - describes parameters of the telescope/        
+                                instrument                                    
+               T : Telescope type                                             
+                    S = single antenna                                        
+                    I = interferometer                                        
+                    U = unknown/unclassified                                  
+               FE: Frequency (Center Frequency or Rest Frequency)             
+                    FE=> frequency = F x 10**(E) MHz                          
+                    00=  unknown                                              
+               SE: Spectral resolution                                        
+                    SE=> spectral resolution = S x 10**(E) Hz                 
+                    00=  unknown                                              
+               WE: Bandwidth                                                  
+                    WE=> bandwidth = W x 10**(E) Hz                           
+                    00=  unknown                                              
+               A : Beam description                                           
+                    C = circular                                              
+                    E = ellipitical                                           
+                    O = other                                                 
+                    U = unknown                                               
+               BE: Beam size (geometric mean)                                 
+                    BE=> beam size = B x 10**(E) arcsec                       
+                    00= unknown                                               
+               N : Noise estimate                                             
+                    N => RMS noise = 10**(N) microJansky/beam                 
+                    0 = unknown                                               
+               C : Information provided by observer to Discipline Specialist  
+                    is complete                                               
+                    T = TRUE                                                  
+                    F = FALSE                                                 
+DAT-TYPE  C    'NNSTHP' - describes the data format in Header and Data Records
+               NN: Subnetwork                                                 
+                    OH= OH Subnetwork                                         
+                         Spectral line observations of 18-cm OH               
+                    SL= Spectral Line Subnetwork                              
+                         Spectral line observations (other than 18-cm OH)     
+                    CN= Continuum Subnetwork                                  
+                         Broadband continuum observations                     
+                    OC= Occultation Subnetwork                                
+                         Observation of occultation events                    
+                    RD= Radar Subnetwork                                      
+                         Active experiments                                   
+               S : Search/detection status                                    
+                    S = search - implies nondetection (< 3 sigma)             
+                    D = detection - implies detection (> 3 sigma)             
+                    M = marginal - implies marginal detection (approx. 3      
+                        sigma)                                                
+               T : Type of data in FITS Data Records                          
+                    N = no FITS Data Records                                  
+                    S = Spectrum           => intensity vs frequency          
+                    C = Continuum scan     => intensity vs space              
+                    T = Time series        => intensity vs time               
+                    I = Image              => spatial - spatial image         
+                    D = Dynamic spectrum   => frequency - time image          
+                    F = SV image           => frequency - spatial image       
+                    V = Visibility Function Data                              
+               H : Summary of Data in Header?                                 
+                    T = Summary of data exists in Header History Section      
+                    F = No summary of data in Header History Section          
+               P : Polarization status                                        
+                    I = Intensity data only                                   
+                    P = Polarization data format used                         
+OBSVTORY  C    Abbreviation for Observatory.                                  
+TELESCOP  C    Telescope identifier - usually gives aperture size in meters   
+LOCATION  C    Location of Observatory as given in American Ephemeris         
+INSTRUME  C    'FRONT/BACK' - describes "frontend" and "backend" of receiver  
+               FRONT: Receiver Front End                                      
+                    MASER = Maser Amplifier                                   
+                    FET   = Field Effect Transistor Amplifier                 
+                    PARA  = Parametric Amplifier                              
+                    MIXER = Mixer                                             
+                    SPEC  = Special Front End                                 
+                    UNK   = Unknown Front End                                 
+               BACK  : Receiver Back End                                      
+                    FB    = Filterbank                                        
+                    SEFB  = Filterbank with Spectrum Expander                 
+                    AC    = Autocorrelator                                    
+                    CONT  = Broadband Continuum Receiver                      
+                    SPEC  = Special Back End                                  
+                    AOS   = Acousto-Optical Spectrometer                      
+                    UNK   = Unknown Back End                                  
+CENTFREQ  R    Center frequency of observed bandwidth (Hz)                    
+BANDWIDT  R    Total bandwidth (Hz)                                           
+BEAMSIZE  R    Geometric mean of major and minor axes of Elliptical Gaussian  
+               Beam (deg)                                                     
+BEAMELON  R    Ratio of major beam axis to minor beam axis                    
+BEAMROTA  R    Position angle of major beam axis (deg)                        
+BEAMEFF   R    Beam efficiency - fraction of power received that is in the    
+               Gaussian Main Beam (BEAMEFF = 0.0 if unknown or unspecified)   
+MOLECULE  C    Chemical formula for molecule (follows convention of NBS       
+               interstellar-line list)                                        
+TRANSITN  C    Quantum numbers for transition (follows convention of NBS      
+               interstellar-line list)                                        
+RESTFREQ  R    Rest frequency of line used by observer (Hz)                   
+RES-SPEC  R    Spectral resolution (Hz) - true spectral resolution of the     
+                 spectrometer, NOT the channel spacing                        
+EQUINOX   R    Equinox of RA-DEC information presented in this file           
+RAOFF     R    Pointing offset in RA direction DELTA(RA)*COS(DEC) (deg)       
+DECOFF    R    Pointing Offset in Dec direction DELTA(DEC) (deg)              
+DATE-BEG  C    'DD/MM/YY' - UT date on which observations began               
+DATE-END  C    'DD/MM/YY' - UT date on which observations ended               
+______________________________________________________________________________
+                                                                              
+                                                                              
+     There is a group of COMMENT lines give additional information to be used 
+in the production of the IHW printed archive.                                 
+                                                                              
+     The ADD. OBS. comment gives the names of the full observing team in the  
+case that more than two observers carried out the observations.  More than one
+ADD. OBS. comment may be used to specify teams with many members or long      
+names. The format of the ADD. OBS. comment is: COMMENT   ADD. OBS.            
+NAME,I/NAME2,I/NAME3,I                                                        
+                                                                              
+     The NOTE comment provides information that is to be printed as a footnote
+in the printed archive in the following format:                               
+                                                                              
+COMMENT   NOTE      THIS IS A TEST                                            
+                                                                              
+     Next there are FITS HISTORY keywords provided to incorporate additional  
+information about the observation, such as descriptions of calibration methods
+and sources, details about observing procedures, and comments by the observer 
+and the IHW Discipline Specialist.  Another important use of the HISTORY lines
+is to provide a summary of the data obtained, or in the case of FITS files    
+with no data records, the actual data values reported by the observer.  The   
+general format of the HISTORY lines is:                                       
+                                                                              
+column                                                                        
+1        11        21                                                         
+HISTORY   SUBKEY__  VALUES....                                                
+                                                                              
+where values is a list of values associated with this subkey.  In most cases, 
+the value lists are in a fixed format in order to simplify their use.         
+                                                                              
+     In order to transmit upper limits or a summary of the data that would be 
+appropriate for tabular presentation in the printed archive, we utilize one of
+the following HISTORY keyword formats.  Such summaries of the data will always
+be contained in the first part of the HISTORY keyword section; the presence of
+such a summary shall be indicated in the DAT-TYPE keyword discussed above.  In
+the case where FITS data records accompany the header, USERS OF THE ARCHIVE   
+ARE CAUTIONED THAT THE SUMMARY VALUES ARE ONLY MEANT TO DESCRIBE AND          
+CHARACTERIZE THE DATA ... NOT TO REPLACE THEM.                                
+                                                                              
+     All summary lines follow the same general form:                          
+                                                                              
+HISTORY   SUBKEY    ################  'UNITS   '                              
+                                                                              
+where the # field is a right justified floating point number.                 
+                                                                              
+     Format for Upper Limits:                                                 
+                                                                              
+COMMENT             *SUMMARY OF DATA - UPPER LIMIT                            
+HISTORY   LIMIT                  0.5  'JY/BEAM '                              
+                                                                              
+     Upper limits in the Radio Science Network are always given as 3 standard 
+deviation upper limits.                                                       
+                                                                              
+     Format for Spectral Lines:                                               
+                                                                              
+COMMENT             *SUMMARY OF DATA - SPECTRAL LINE                          
+HISTORY   LINEPEAK               0.5  'JY/BEAM '                              
+HISTORY   ERR-PEAK               0.1  'JY/BEAM '                              
+HISTORY   LINE-VEL              10.0  'M/SEC   '                              
+HISTORY   ERR--VEL             200.2  'M/SEC   '                              
+HISTORY   LINE-WID            2532.0  'M/SEC   '                              
+HISTORY   ERR--WID             130.2  'M/SEC   '                              
+HISTORY   LINEAREA            1243.1  'JY/B*M/S'                              
+HISTORY   ERR-AREA             143.6  'JY/B*M/S'                              
+HISTORY   LINEMEAN              32.1  'M/SEC   '                              
+HISTORY   ERR-MEAN              10.2  'M/SEC   '                              
+                                                                              
+The spectral line summary values LINEPEAK, LINE-VEL, and LINE-WID are         
+determined from gaussian fits to the line profiles.  If one or more parameters
+were fixed in a fit to the data, the assumed values are listed with no errors.
+Spectral lines with hyperfine structure (e.g., HCN) are fitted on the         
+assumption that all hyperfine components have their nominal intensity ratios. 
+                                                                              
+     Format for Continuum Observations:                                       
+                                                                              
+COMMENT             *SUMMARY OF DATA - CONTINUUM                              
+HISTORY   CONTFLUX               0.5  'JY/BEAM '                              
+HISTORY   ERR-FLUX               0.1  'JY/BEAM '                              
+                                                                              
+     Format for Radar Observations:                                           
+                                                                              
+COMMENT             *SUMMARY OF DATA - RADAR                                  
+HISTORY   XSECTION              30.0  'SQUARE KILOMETERS'                     
+HISTORY   ERR-XSEC               6.0  'SQUARE KILOMETERS'                     
+                                                                              
+     Since many radio observations take place over several days, we include   
+the precise observing windows in the HISTORY section according to the format: 
+                                                                              
+COMMENT             *OBSERVING WINDOW SPECIFICATION                           
+HISTORY   N-WINDOW                 #                                          
+HISTORY   WINDOW    'DD/MM/YY' #######     'DD/MM/YY' #######                 
+HISTORY   WINDOW    'DD/MM/YY' #######     'DD/MM/YY' #######                 
+                                                                              
+where N-WINDOW gives the total number of windows for observation and          
+subsequent window lines give the date and time (in decimals as in TIME-OBS) of
+beginning and end of the observing window.  The time fields are right         
+justified floating point numbers.                                             
+                                                                              
+     Radio observers track the comet "blind" and it is important to know the  
+precise position on the sky that they were tracking.  We include a provision  
+in the HISTORY section to specify the two-body elements and observatory       
+position data used to produce the topocentric ephemeris for tracking.         
+                                                                              
+                                                                              
+COMMENT             *ORBITAL ELEMENT SPECIFICATION                            
+HISTORY   ORBELEM                  T     - T if orbital elements are provided 
+HISTORY   LONGEAST      243.11046715     - east longitude of observatory (deg)
+HISTORY   RHO--COS      0.8159113419     - radius*cos(lat) for observatory    
+                                           (units of Earth equatorial radius) 
+HISTORY   RHO--SIN      0.5765085118     - radius*sin(lat) for observatory    
+                                           (units of Earth equatorial radius) 
+HISTORY   ET-UT             53.18439     - Ephemeris Time - UT correction (s) 
+HISTORY   JD           2446471.16128     - Time of Perihelion passage (ET)    
+HISTORY   Q                0.5870959     - Perihelion Distance (AU)           
+HISTORY   E                0.9672671     - Eccentricity                       
+HISTORY   SOMEGA           111.85336     - Arg. of Perihelion (deg)           
+HISTORY   LOMEGA            58.15313     - Long. of Ascending Node (deg)      
+HISTORY   I                162.23779     - Inclination (deg)                  
+                                                                              
+     Another HISTORY keyword specifies the antenna rms pointing errors.       
+                                                                              
+COMMENT             *RMS POINTING ERROR OF TELESCOPE                          
+HISTORY   POINTERR  ################ 'UNITS   '                               
+                                                                              
+     There is a group of keywords to provide information on the calibration   
+process.                                                                      
+                                                                              
+COMMENT             *CALIBRATION METHOD INFORMATION                           
+HISTORY   CALMETH   'DESCRIPTION OF CAL METHOD'                               
+                                                                              
+If the calibration method is unknown, then no line appears.  Current possible 
+values are 'CHOPPER WHEEL', 'NOISE TUBE', 'STANDARDS', 'ABSOLUTE'.            
+                                                                              
+COMMENT             *CALIBRATION STANDARD INFORMATION                         
+HISTORY   CALSRCE   'SOURCE NAME'    ########## 'UNITS   '                    
+                                                                              
+Source (or sources) used to provide principal calibration.  The # field is a  
+right justified floating point number. For planets as the calibrators, the    
+assumed brightness temperature is given; otherwise, the calibrator flux       
+density is given in Jansky.  There may be more than one CALSRCE HISTORY line. 
+                                                                              
+COMMENT             *SYSTEM TEMPERATURE ETC.                                  
+HISTORY   TSYSTEM   ############### '_SB     '                                
+HISTORY   TRCVR     ############### '_SB     '                                
+                                                                              
+Total system temperature (TSYSTEM) and noise temperature of the reciver alone 
+(TRCVR).  '_SB     ' allows single side band measurement ('SSB     ') or      
+double sideband measurement ('DSB     ') to be indicated.  The # field is a   
+right justified floating point number.                                        
+                                                                              
+HISTORY   TAUZENTH  ###############                                           
+                                                                              
+Atmospheric opacity at zenith.  The # field is a right justified floating     
+point number.                                                                 
+                                                                              
+     A block of HISTORY lines contains any extra comments about conditions,   
+data quality, etc. that are sent to the Discipline Specialist by the observer.
+There are generally fewer than eight such comment lines given.                
+                                                                              
+COMMENT             *OBSERVER COMMENTS                                        
+HISTORY   OBSCOMM   ROOM TO REPORT OBSERVER COMMENTS                          
+HISTORY   OBSCOMM   ...                                                       
+HISTORY   OBSCOMM   ...                                                       
+HISTORY   OBSCOMM   MORE ROOM FOR OBSERVER COMMENTS                           
+                                                                              
+     Comments by the Discipline Specialist team on this observation.  There   
+are generally fewer than eight such comment lines given.                      
+                                                                              
+COMMENT             *DISCIPLINE SPECIALIST COMMENTS                           
+HISTORY   DSCOMM    ROOM TO REPORT DISCIPLINE SPECIALIST COMMENTS             
+HISTORY   DSCOMM    ...                                                       
+HISTORY   DSCOMM    ...                                                       
+HISTORY   DSCOMM    MORE ROOM FOR DISCIPLINE SPECIALIST COMMENTS              
+                                                                              
+                                                                              
+                                                                              
+Table 6.3.  Keyword Block VI                                                  
+                                                                              
+______________________________________________________________________________
+Keyword  Type  Description                                                    
+______________________________________________________________________________
+BSCALE    R    Scale factor  data = tape * BSCALE + BZERO                     
+BZERO     R    Zero value                                                     
+BUNIT     C    Units of data                                                  
+               'JY/BEAM ' - for line and continuum data                       
+               'STANDARD DEVIATIONS' - for radar data                         
+BLANK     I    Value for out-of-range data                                    
+CRVALn    R    Value of physical coordinate of nth axis at the reference pixel
+CRPIXn    R    Array location of reference pixel for nth axis                 
+CDELTn    R    Increment in physical coordinate along nth axis                
+CTYPEn    C    Type of physical coordinate                                    
+               'VELO-COM' - frequency coordinate for line work in m/s defined 
+                            to be velocity relative to the comet              
+               'VELO-GEO' - velocity defined relative to center of Earth      
+               'FREQUENCY' - frequency offset of radar echo from expected     
+                             value in units of Hz                             
+               'CIRCULAR POLARIZATION' - axis used to define different states 
+                                         of circular polarization: -1 = LHC;  
+                                         -2 = RHC                             
+               'LINEAR POLARIZATION' - axis used to define linear polarization
+                                       position angle                         
+               'ECHO POLARIZATION' - axis used to define polarization of radar
+                                     echo                                     
+               'RAOFF   ' - spatial coordinate for maps (deg)                 
+               'DECOFF  ' - spatial coordinate for maps (deg)                 
+               'RA      ' - coordinate used for drift scans (deg)             
+               'MAP-TYPE' - coordinate to indicate type of drift scan map:    
+                            0 = map with comet in beam; 1,2 = maps of galactic
+                            background only                                   
+CROTAn    R    Rotation angle of physical coordinate axis n                   
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+                         7.0. SPECTROSCOPY AND SPECTROPHOTOMETRY              
+                                                                              
+                                                                              
+Table 7.0.  Keywords in the FITS headers                                      
+                                                                              
+______________________________________________________________________________
+Keyword   Type  Description                                                   
+______________________________________________________________________________
+                                                                              
+SIMPLE     L    Does the file conform to the FITS format?  If yes, the keyword
+                  is set to T.  Otherwise the keyword is F.  This keyword     
+                  should be set to true for all SSN files.                    
+BITPIX     I    Keyword contains the number of bits in each pixel.  This value
+                  is either 16 or 32 for SSN data.                            
+NAXIS      I    Keyword contains the number of axes in the data: 1-dimensional
+                  spectra have a value of 1, 2-dimensional spectra a value of 
+                  2.                                                          
+NAXISn     I    n is a number in the range of 1 to NAXIS.  Keyword contains   
+                  the length of axis. NAXIS1 is the dimension of the fastest  
+                  varying axis in the data.  NAXIS2 is the second fastest     
+                  varying axis etc.                                           
+EXTEND     L    Does the file contain extensions conforming to the FITS stan- 
+                  dards?  For all SSN data files, EXTEND = F (no extensions). 
+OBJECT     C    Keyword contains the name of the object of the data.          
+FILE-NUM   I    This is a running number of the files sent to the archive. All
+                  values have six places and, for the SSN, begin with 7.  For 
+                  P/Giacobini-Zinner, file numbers are in the range of 700100 
+                  to 700999.                                                  
+DATE-OBS   C    Universal Time [UT] date of middle of data acquisition.  Date 
+                  is given in the FITS standard of day, month, year           
+                  (DD/MM/YY).                                                 
+TIME-OBS   F    Fractional part of day, indicating the UT time of the middle  
+                  of data acquisition.  The keyword has a value ranging from  
+                  0.0 to 0.99999.                                             
+DATE-REL   C    Date the submitter or submitters agree to release their data  
+                  to the public.                                              
+DISCIPLN   C    IHW Discipline.  For the SSN the value is always SPECTROSCOPY.
+LONG-OBS   C    East longitude of observation station.  Keyword value range is
+                  from 00/00/00 to 359/59/59.                                 
+LAT--OBS   C    Latitude of observation station.  Degrees north or south are  
+                  indicated by a preceding '+' or '-', respectively, 0 has no 
+                  sign.                                                       
+SYSTEM     C    Station system code.  Keyword is a number of the form 7nnnttii
+                  where:                                                      
+                  7 = Discipline number (SSN)                                 
+                  nnn = IAU Observatory Number                                
+                  tt = Telescope Number, as assigned by the IHW Large Scale   
+                    Phenomena Network (LSPN)                                  
+                  ii = Instrument/Detector Number, assigned by the SSN, and   
+                    corresponds to DD in DIS-CODE keyword                     
+OBSERVER   C    Name of observer.  If more than two observers, first observer 
+                  listed, followed by ET AL.  Additional observers are listed 
+                  in COMMENT ADD.OBS. keyword.                                
+SUBMITTR   C    Name of person or persons who submitted the data to the IHW SS
+SPEC-EVT   L    If true, some special event occurred during observation.  See 
+                  COMMENTs and HISTORYs for more information.                 
+DAT-FORM   C    Form of the data.  One of: ASCII, STANDARD, HARDCOPY, NODATA. 
+DAT-TYPE   C    Type of data being submitted.  One of: UNKNOWN, REDUCED       
+                  DIGITAL, RAW DIGITAL, PHOTOGRAPHIC, OBJECTIVE PRISM,        
+                  INTERFEROMETRIC, SPACE BORNE.                               
+DIS-CODE   C    This keyword contains a 9-digit integer with the digits define
+                  as DDCCWWWRQ, where:                                        
+                  DD = Detector/Instrument combination.  This is a unique     
+                    number for each combination and has been assigned by the  
+                    SSN.  The value is the same as ii in the SYSTEM code.     
+                  CC = Configuration (grating, grating tilt, filter, aperture 
+                    size, order, etc.) for given telescope and detector/instru
+                    ment combination.                                         
+                  WWW = Wavelength range [Angstrom], included in data.  A     
+                    binary coding scheme is used to specify a unique number   
+                    for a unique set of wavelength regions.  The number is the
+                    sum of all defined values for each spectral region in     
+                    which data are submitted:                                 
+                    1 = <3000                                                 
+                    2 = 3000-3499                                             
+                    4 = 3500-3999                                             
+                    8 = 4000-4999                                             
+                    16 = 5000-5999                                            
+                    32 = 6000-6999                                            
+                    64 = 7000-7999                                            
+                    128 = 8000-10000                                          
+                    256 = >10000                                              
+                                                                              
+                  Example: for 3700-6400 A, WWW = 4+8+16+32 = 60.             
+                                                                              
+                  R = Resolution.  This parameter is based on the spectral    
+                    resolution (FWHM in Angstrom).                            
+                    1 = <= 0.05                                               
+                    2 = > 0.05 - 0.2                                          
+                    3 = > 0.2 - 1                                             
+                    4 = > 1 - 5                                               
+                    5 = > 5 - 10                                              
+                    6 = > 10 - 20                                             
+                    7 = > 20 - 50                                             
+                    8 = > 50 - 100                                            
+                    9 = > 100                                                 
+                                                                              
+                  Q = Quality of the data. We adopted a qualitative judgement 
+                    for this parameter, and the values are the same as the    
+                    QUALITY keyword.                                          
+                    0 = Unknown                                               
+                    1 = Excellent                                             
+                    2 = Very Good                                             
+                    3 = Good                                                  
+                    4 = Fair                                                  
+                    5 = Poor                                                  
+                                                                              
+                The files CODE.* contain a full listing of the discipline     
+                  codes used for P/Giacobini-Zinner, as well as the components
+                  which define the DIS-CODE values.  These files may be read  
+                  into a database program, and used to translate DIS-CODE     
+                  values.                                                     
+                                                                              
+OBSVTORY   C    Name of observatory from which data were obtained.            
+ELEV-OBS   F    Elevation of the observing station [m].                       
+TELESCOP   C    Telescope used for observation.  Where possible, the telescope
+                  name as listed in the Astronomical Almanac has been used.   
+INSTRUME   C    Instrument and detector used to obtain data.                  
+RESOL-SP   C    Approximate spectral resolution of data [Angstrom].           
+RANGE-SP   C    Approximate spectral range of data [Angstrom].                
+EXPOSURE   F    Exposure or integration time [s].                             
+APERSIZE   C    Entrance aperture size or slit width and length of instrument 
+                  or detector [arcsec].                                       
+Airmass    F    One of the following:                                         
+                  AIRM-BEG = Airmass at beginning of observation.             
+                  AIRM-END = Airmass at end of observation.                   
+                  AIRM-MID = Airmass at midpoint of observation.              
+                  AIRM-AVE = Average of airmass of observation.               
+SEPNUC     F    Separation between the comet nucleus and center of slit or    
+                  aperture [arcsec]; see figure below.                        
+ORIENT     F    Position angle of slit or aperture center with respect to the 
+                  comet's nucleus, measured north through east, ranging from  
+                  0 to 360 deg; see figure below.                             
+                                                                              
+                                                                              
+                                          N                                   
+                                  ORIENT  ^                                   
+                                       |  |                                   
+                                       |  |                                   
+                            POSANG     | /|      Tail                         
+                               \    N  |/ |     /                             
+                  E <---        \   ^  (  *=======                            
+                                 \  |   \/ \                                  
+                                  \ |   /   Nucleus                           
+                                 \ \|  /                                      
+                                  \^| /------ SEPNUC                          
+                                   \|/                                        
+                  Slit Center ------\                                         
+                                     \                                        
+                                      \---- Slit                              
+                                       \                                      
+                                                                              
+                         Definition of angles.                                
+                                                                              
+                                                                              
+POSANG     F    Position angle of the slit measured north through east,       
+                  ranging from 0 to 360 deg.  Two-dimensional spectra only    
+                  (figure above).   See COMMENT and HISTORY sections for      
+                  observers' variations of this definition.                   
+PIXSCALE   F    Image scale at detector [arcsec per pixel].  Two-dimensional  
+                  spectra only.                                               
+QUALITY    I    A subjective, qualitative estimate of the data.  Values used: 
+                  UNKNOWN, EXCELLENT, VERY GOOD, GOOD, FAIR, and POOR.        
+CTYPEn     C    n is a number between 1 and NAXIS.  Name of the independent   
+                  variables:                                                  
+                  LAMBDAA = Wavelength [Angstrom].                            
+                  VELOCITY = Velocity [km/s].                                 
+                  PIXELS = Pixel number.                                      
+                  RHO = Projected distance [arcsec].                          
+                  OTHER = Described in a comment.                             
+BUNIT      C    Name of dependent variable:                                   
+                  FLAMBDA = Flux per wavelength [erg/cm2/s/Angstrom].         
+                  FNU = Flux per frequency [erg/cm2/s/Hz].                    
+                  RAYLAMBDA = Flux per wavelength [Rayleighs/Angstrom].       
+                  RELINS = Relative intensity.                                
+                  COUNTS = Counts or count rate [counts/s].                   
+                  DENSITY = Photographic density.                             
+                  OTHER = Described in a comment.                             
+CRVALn     F    Reference point for CTYPEn.                                   
+CRPIXn     F    Reference pixel location corresponding to CRVALn.             
+CDELTn     F    Increment in CTYPEn per pixel.                                
+______________________________________________________________________________
+                                                                              
+                                                                              
+     In addition the FITS headers include a number of HISTORY, COMMENT, and   
+related keywords.  They are listed below.                                     
+                                                                              
+                                                                              
+Table 7.2. HISTORY, COMMENT, and related keywords in the FITS headers         
+                                                                              
+______________________________________________________________________________
+Keyword                         Type  Description                             
+______________________________________________________________________________
+                                                                              
+HISTORY DATE-REC                  C   Date the file was received by the SSN.  
+HISTORY DATE-CMP                  C   Date of completion of the file archiving
+HISTORY REDUCED                   C   Known data reduction steps.             
+HISTORY                           C   Other history if known.                 
+COMMENT ADD.OBS.                  C   Additional observers.                   
+COMMENT NOTE                      C   Some important note on the data         
+                                        extracted from COMMENT or HISTORY     
+                                        fields to appear in the printed       
+                                        archive listing.                      
+COMMENT PROC FILE and ORIG. FILE  C   Comment regarding original file identifi
+                                        cation of the submitted file.  Often  
+                                        file name consists of position of file
+                                        on original submission tape.  Used for
+                                        SSN archiving.                        
+COMMENT REPLACE                   C   A note that this file supercedes another
+                                        file (previous file would have been   
+                                        deleted from the archive).            
+COMMENT                           C   Additional comments about the data.     
+DATAMAX                           F   Maximum value of dependent variable.    
+DATAMIN                           F   Minimum value of dependent variable.    
+BSCALE                            F   Scale factor to convert FITS pixel value
+                                        to true values.  Used to convert FITS 
+                                        data to original data values:         
+                                        DataValue = BZERO + BSCALE*           
+                                        FileDataValue.                        
+BZERO                             F   Offset applied to true pixel values.    
+END                               C   Signals end of FITS header.             
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                    8.0. AMATEUR OBSERVATIONS                                 
+                                                                              
+                                                                              
+Table 8.0.  Keywords for All Types of Data                                    
+                                                                              
+______________________________________________________________________________
+Keyword                          Description                                  
+______________________________________________________________________________
+                                                                              
+SIMPLE  =                    T / THIS IS A FITS FILE                          
+BITPIX  =                    8 / BITS PER PIXEL                               
+NAXIS   =                    0 / NO IMAGE DATA ARRAY PRESENT                  
+EXTEND  =                    T / THERE MAY BE STANDARD EXTENSIONS             
+OBJECT  = 'ooo...oo'           / NAME OF OBJECT                               
+FILE-NUM=               8nnnnn / UNIQUE FILE IDENTIFICATION NO.               
+DATE-OBS= 'dd/mm/yy'           / DATE OF MIDDLE OF OBSERVATION (UT)           
+TIME-OBS=               .ttttt / TIME OF MIDDLE OF OBSERVATION (UT)           
+DATE-REL= 'dd/mm/yy'           / DATE OF PUBLIC RELEASE                       
+DISCIPLN= 'AMATEUR '           / IHW DISCIPLINE                               
+LONG-OBS= 'ddd/mm/ss'          / EAST LONGITUDE OF OBSERVING SITE             
+LAT--OBS= 'sdd/mm/ss'          / LATITUDE OF OBSERVING SITE                   
+SYSTEM  = '8nnnttii'           / OBSERVING SYSTEM CODE                        
+OBSERVER= 'ooo...oo'           / NAME OF OBSERVER                             
+SUBMITTR= 'sss...ss'           / NAME OF SUBMITTER OF DATA                    
+SPEC-EVT=                    s / SPECIAL EVENT FLAG                           
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+Table 8.1.  Keywords for Visual Appearance Descriptions                       
+                                                                              
+______________________________________________________________________________
+Keyword                          Description                                  
+______________________________________________________________________________
+                                                                              
+DAT-FORM= 'ASCII   '           / FORM OF DATA                                 
+DAT-TYPE= 'VISUAL MAG. EST.'   / TYPE OF DATA                                 
+ELEV-OBS=                 eeee / ELEVATION OF OBSERVING SITE (METER)          
+INSTRUME= 'iii...ii'           / TYPE OF INSTRUMENT USED                      
+APERTURE=                a.aaa / APERTURE SIZE (METER)                        
+FRATIO  =                 ff.f / FOCAL RATIO                                  
+POWER   =                  ppp / MAGNIFICATION                                
+ORIGIN  = 'JET PROPULSION LAB' / TAPE WRITING INSTITUTION                     
+COMMENT ccc...cc                                                              
+    :                                                                         
+END                                                                           
+XTENSION= 'TABLE   '           / TABLE EXTENSION                              
+BITPIX  =                    8 / BITS PER PIXEL                               
+NAXIS   =                    2 / 2-D MATRIX                                   
+NAXIS1  =                   71 / NO. OF CHARACTERS PER ROW                    
+NAXIS2  =                    1 / NO. OF ROWS                                  
+PCOUNT  =                    0 / NO RANDOM PARAMETERS                         
+GCOUNT  =                    1 / ONLY ONE GROUP                               
+TFIELDS =                   16 / NO. OF FIELDS PER ROW                        
+TTYPE1  = 'MAG. EST. METHOD'   / VALUES: B=BOBROVNIKOFF, M=MORRIS, S=SIDGWICK 
+TBCOL1  =                    1 / STARTING COLUMN                              
+TFORM1  = 'A1      '           / FORMAT                                       
+TNULL1  = '?       '           / MISSING VALUE                                
+TTYPE2  = 'COMA MAGNITUDE'     / TOTAL MAGNITUDE    (GIVEN AS ALPHANUMERIC    
+TBCOL2  =                    3 / STARTING COLUMN     STRING, SINCE 1ST COL.   
+TFORM2  = 'A5      '           / FORMAT              CAN BE > SIGN, WHICH     
+TNULL2  = '-99.0   '           / MISSING VALUE       IMPLIES UPPER LIMIT)     
+TTYPE3  = 'MAGNITUDE COMMENT'  / INDICATES UNCERTAINTY IF VALUE IS : OR ?     
+TBCOL3  =                    8 / STARTING COLUMN                              
+TFORM3  = 'A1      '           / FORMAT                                       
+TNULL3  = '        '           / MISSING VALUE                                
+TTYPE4  = 'CHART NO.'          / USED FOR COMPARISON STARS  (SEE PRINTED CROM-
+TBCOL4  =                   10 / STARTING COLUMN             MELIN ARCHIVE OR 
+TFORM4  = 'A7      '           / FORMAT                      INT'L. COMET     
+                                                             QTRL. FOR EXPLA- 
+                                                             NATION)          
+TNULL4  = '        '           / MISSING VALUE                                
+TTYPE5  = 'COMA DIAMETER 1'    / CIRCULAR COMA DIAM. (OR MAJOR AXIS,          
+TBCOL5  =                   18 / STARTING COLUMN      ELLIPTICAL COMA)        
+TFORM5  = 'E5.1    '           / FORMAT                                       
+TUNIT5  = 'ARCMIN. '           / UNIT                                         
+TNULL5  = '-99.0   '           / MISSING VALUE                                
+TTYPE6  = 'COMA DIAMETER 2'    / MINOR AXIS, ELLIPTICAL COMA                  
+TBCOL6  =                   24 / STARTING COLUMN                              
+TFORM6  = 'E5.1    '           / FORMAT                                       
+TUNIT6  = 'ARCMIN. '           / UNIT                                         
+TNULL6  = '-99.0   '           / MISSING VALUE (OR CIRCULAR COMA)             
+TTYPE7  = 'DEGREE OF COND.'    / DEGREE OF CONDENSATION                       
+TBCOL7  =                   30 / STARTING COLUMN                              
+TFORM7  = 'I1      '           / FORMAT                                       
+TNULL7  = '        '           / MISSING VALUE                                
+TTYPE8  = 'LENGTH OF TAIL 1'   / TAIL LENGTH (1ST TAIL)                       
+TBCOL8  =                   32 / STARTING COLUMN                              
+TFORM8  = 'E5.2    '           / FORMAT                                       
+TUNIT8  = 'DEGREE  '           / UNIT                                         
+TNULL8  = '-9.00   '           / MISSING VALUE                                
+TTYPE9  = 'P.A. OF TAIL 1'     / POSITION ANGLE OF TAIL (1ST TAIL)            
+TBCOL9  =                   38 / STARTING COLUMN                              
+TFORM9  = 'I3      '           / FORMAT                                       
+TUNIT9  = 'DEGREE  '           / UNIT                                         
+TNULL9  = '-99     '           / MISSING VALUE                                
+TTYPE10 = 'LENGTH OF TAIL 2'   / TAIL LENGTH (2ND TAIL, IF SEEN)              
+TBCOL10 =                   42 / STARTING COLUMN                              
+TFORM10 = 'E5.2    '           / FORMAT                                       
+TUNIT10 = 'DEGREE  '           / UNIT                                         
+TNULL10 = '-9.00   '           / MISSING VALUE                                
+TTYPE11 = 'P.A. OF TAIL 2'     / POSITION ANGLE OF TAIL (2ND TAIL, IF SEEN)   
+TBCOL11 =                   48 / STARTING COLUMN                              
+TFORM11 = 'I3      '           / FORMAT                                       
+TUNIT11 = 'DEGREE  '           / UNIT                                         
+TNULL11 = '-99     '           / MISSING VALUE                                
+TTYPE12 = 'LENGTH OF TAIL 3'   / TAIL LENGTH (3RD TAIL, IF SEEN)              
+TBCOL12 =                   52 / STARTING COLUMN                              
+TFORM12 = 'E5.2    '           / FORMAT                                       
+TUNIT12 = 'DEGREE  '           / UNIT                                         
+TNULL12 = '-9.00   '           / MISSING VALUE                                
+TTYPE13 = 'P.A. OF TAIL 3'     / POSITION ANGLE OF TAIL (3RD TAIL, IF SEEN)   
+TBCOL13 =                   58 / STARTING COLUMN                              
+TFORM13 = 'I3      '           / FORMAT                                       
+TUNIT13 = 'DEGREE  '           / UNIT                                         
+TNULL13 = '-99     '           / MISSING VALUE                                
+TTYPE14 = 'LIMITING MAG.'      / MAGNITUDE OF FAINTEST STAR VISIBLE TO NAKED  
+                                  EYE                                         
+TBCOL14 =                   62 / STARTING COLUMN                              
+TFORM14 = 'E4.1    '           / FORMAT                                       
+TNULL14 = '-9.0    '           / MISSING VALUE                                
+TTYPE15 = 'SKY INTERFERENCE'   / LIGHT INTERFERING WITH OBSERVATION           
+TBCOL15 =                   66 / STARTING COLUMN  (C=CITY LIGHTS, M=MOONLIGHT,
+TFORM15 = 'A4      '           / FORMAT            T=TWILIGHT, Z=ZODIACAL     
+                                                   LIGHT)                     
+TNULL15 = '        '           / MISSING VALUE (NO INTERFERENCE)              
+COMMENT VALUE EQUAL TO : IMPLIES UNCERTAINTY IN FAINTEST STAR MAG.            
+TTYPE16 = 'DARK ADAPTED'       / WAS OBSERVER DARK ADAPTED? (Y=YES, N=NO)     
+TBCOL16 =                   71 / STARTING COLUMN                              
+TFORM16 = 'A1      '           / FORMAT                                       
+TNULL16 = '        '           / MISSING VALUE                                
+END                                                                           
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+Table 8.3.  Keywords for Drawings                                             
+                                                                              
+______________________________________________________________________________
+Keyword                          Description                                  
+______________________________________________________________________________
+                                                                              
+DAT-FORM= 'NODATA  '           / FORM OF DATA (NO DATA RECORDS)               
+DAT-TYPE= 'DRAWING '           / TYPE OF DATA                                 
+ELEV-OBS=                 eeee / ELEVATION OF OBSERVING SITE (METER)          
+INSTRUME= 'iii...ii'           / TYPE OF INSTRUMENT USED                      
+APERTURE=                a.aaa / APERTURE SIZE (METER)                        
+FRATIO  =                 ff.f / FOCAL RATIO                                  
+N-POWER =                    n / NO. OF MAGNIFICATIONS USED                   
+POWER   =                  ppp / MAGNIFICATION                                
+    :                                                                         
+MAG-LIM =                  m.m / MAGNITUDE OF FAINTEST STAR VISIBLE TO NAKED  
+                                   EYE                                        
+PLTSCALE=                ppp.p / PLATE (DRAWING) SCALE (ARCSEC/MM)            
+DURATION=                  ddd / TIME FOR MAKING DRAWING (SECOND)             
+ORIGIN  = 'JET PROPULSION LAB' / TAPE WRITING INSTITUTION                     
+COMMENT ccc...cc                                                              
+    :                                                                         
+END                                                                           
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+Table 8.4.  Keywords for Photographs                                          
+                                                                              
+______________________________________________________________________________
+Keyword                          Description                                  
+______________________________________________________________________________
+                                                                              
+DAT-FORM= 'NODATA  '           / FORM OF DATA (NO DATA RECORDS)               
+DAT-TYPE= 'PHOTOGRAPH'         / TYPE OF DATA                                 
+ELEV-OBS=                 eeee / ELEVATION OF OBSERVING SITE (METER)          
+PRNCPLFL=                p.ppp / PRIMARY, UNMODIFIED INSTR. FOCAL LENGTH      
+                                  (METER)                                     
+TELEFL  =                t.ttt / EFFECTIVE FOCAL LENGTH (METER)               
+APERTURE=                a.aaa / APERTURE SIZE (METER)                        
+FRATIO  =                 ff.f / FOCAL RATIO                                  
+FOVLENGT=                 ff.f / COMPUTED FOV ASSUMING 135 FORMAT (DEGREE)    
+FOVWIDTH=                 ff.f / COMPUTED FOV ASSUMING 135 FORMAT (DEGREE)    
+PLTSCALE=                ppp.p / PLATE SCALE (ARCSEC/MM)                      
+EMULSION= 'eee...ee'           / TYPE OF EMULSION                             
+ISO     = 'aaaa/dd '           / ISO (ASA/DIN)                                
+HYPERED = 'hhh...hh'           / HYPERSENSITIZATION TREATMENT                 
+TEMP-HYP=                   tt / HYPERSENSITIZATION TEMPERATURE (CELSIUS)     
+TIME-HYP=                ttt.t / HYPERSENSITIZATION TIME (HOUR)               
+TEMPEMUL=                   tt / COLD CAMERA TEMPERATURE (CELSIUS)            
+DEVELOPR= 'ddd...dd'           / DEVELOPER USED                               
+TEMP-DEV=                   tt / DEVELOPING TEMPERATURE (CELSIUS)             
+TIME-DEV=                  ttt / DEVELOPING TIME (SECOND)                     
+GUIDING = 'ggg...gg'           / GUIDING METHOD                               
+EXPOSURE=                 eeee / EXPOSURE TIME (SECOND)                       
+IM-ID   = 'iii     '           / IMAGE IDENTIFICATION NO.                     
+IM-TYPE = 'iii...ii'           / TYPE OF IMAGE ON FILE                        
+ORIGIN  = 'JET PROPULSION LAB' / TAPE WRITING INSTITUTION                     
+COMMENT ccc...cc                                                              
+    :                                                                         
+END                                                                           
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+Table 8.5.  Keywords for Spectroscopy                                         
+                                                                              
+______________________________________________________________________________
+Keyword                          Description                                  
+______________________________________________________________________________
+                                                                              
+DAT-FORM= 'NODATA  '           / FORM OF DATA (NO DATA RECORDS)               
+DAT-TYPE= 'SPECTRUM'           / TYPE OF DATA                                 
+ELEV-OBS=                 eeee / ELEVATION OF OBSERVING SITE (METER)          
+INSTRUME= 'iii...ii'           / TYPE OF INSTRUMENT USED                      
+PRNCPLFL=                p.ppp / PRIMARY, UNMODIFIED INSTR. FOCAL LENGTH      
+                                   (METER)                                    
+TELEFL  =                t.ttt / EFFECTIVE FOCAL LENGTH (METER)               
+APERTURE=                a.aaa / APERTURE SIZE (METER)                        
+FRATIO  =                 ff.f / FOCAL RATIO                                  
+EMULSION= 'eee...ee'           / TYPE OF EMULSION                             
+ISO     = 'aaaa/dd '           / ISO (ASA/DIN)                                
+HYPERED = 'hhh...hh'           / HYPERSENSITIZATION TREATMENT                 
+TEMP-HYP=                   tt / HYPERSENSITIZATION TEMPERATURE (CELSIUS)     
+TIME-HYP=                ttt.t / HYPERSENSITIZATION TIME (HOUR)               
+TEMPEMUL=                   tt / COLD CAMERA TEMPERATURE (CELSIUS)            
+DEVELOPR= 'ddd...dd'           / DEVELOPER USED                               
+TEMP-DEV=                   tt / DEVELOPING TEMPERATURE (CELSIUS)             
+TIME-DEV=                  ttt / DEVELOPING TIME (SECOND)                     
+GUIDING = 'ggg...gg'           / GUIDING METHOD                               
+EXPOSURE=                 eeee / EXPOSURE TIME (SECOND)                       
+GRATING =                ggg.g / GRATING CONSTANT (METER)                     
+ORDER   =                    o / BLAZE ORDER                                  
+APDSPRSR=               a.aaaa / DISPERSER APERTURE (METER)                   
+PROJDIST=               p.pppp / PROJECTION DISTANCE (METER)                  
+APEX-ANG=                  aaa / PRISM APEX ANGLE (DEGREE)                    
+GLASSTYP= 'ggg...gg'           / PRISM GLASS TYPE                             
+AP-PRISM=               a.aaaa / PRISM APERTURE (METER)                       
+METHOD  = 'mmm...mm'           / SPECTROSCOPIC METHOD                         
+IM-ID   = 'iii     '           / IMAGE IDENTIFICATION NO.                     
+IM-TYPE = 'iii...ii'           / TYPE OF IMAGE ON FILE                        
+ORIGIN  = 'JET PROPULSION LAB' / TAPE WRITING INSTITUTION                     
+COMMENT ccc...cc                                                              
+    :                                                                         
+END                                                                           
+______________________________________________________________________________
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                           9.0. METEOR STUDIES NETWORK                        
+                                                                              
+                                                                              
+Table 9.1.  Main Header                                                       
+                                                                              
+__________________________________________________________________________    
+KEYWORD              EXPLANATION                FORMAT                        
+__________________________________________________________________________    
+BITPIX   =               8 \ 8-bit characters                                 
+EXTEND   =               T \ Yes, a table                                     
+DAT-FORM = 'ASCII  '                                                          
+OBJECT     Name of meteor shower                'ORIONID' or 'ETA-AQUARID'    
+FILE NUM = File number--Beginning with 9 and                                  
+           followed by a unique 5-digit num-                                  
+           ber                                                                
+DATE-OBS   UT date of middle of observing pe-                                 
+           riod. See notes for shower periods   'DD/MM/YY'                    
+TIME-OBS   UT time of middle of observation.                                  
+           Not significant for meteor observa-                                
+           tions and therefore usually given                                  
+           as 0.0                                                             
+DISCIPLN   IHW Discipline                       'METEOR STUDIES'              
+SYSTEM     Key to finding observing system in                                 
+           discipline/station catalog. Insti-                                 
+           tutes with long-standing observing                                 
+           instruments are listed in Attach-                                  
+           ment C                               '9uuuccnn'                    
+OBSERVER   'Onename,I'                                                        
+   or          or                                                             
+SUBMITTR   'Oneperson,J/Otherperson,K'                                        
+               or                                                             
+           'Firstperson,L/ET AL' if more than                                 
+           two                                                                
+DAT-FORM   'ASCII    ' data are in character                                  
+           form, usually implying tables and                                  
+           BITPIX=8.                                                          
+OBSVTORY   name of submitting observatory       'Tadjik Astrophy Inst'        
+LOCATION   location of submitting observatory   'Dushanbe, USSR'              
+LIM-SENS   threshold sensitivity for obser-                                   
+           vations not cataloged by SYSTEM.                                   
+           Given as limiting magnitude (pho-                                  
+           tographic, visual, or equivalent                                   
+           radio magnitude or electron line     '+8M radio'                   
+           density)                             '10**14 electron/m'           
+QUALITY    estimate of the quality of the ob-                                 
+           servation on a scale of: 1 = poor,                                 
+           to 5 = excellent, with 0 = unknown   2                             
+__________________________________________________________________________    
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+Table 9.2.  Example of EXTENSION Header and Data for Radar Observations       
+                                                                              
+___________________________________________________________________________   
+                                                                              
+XTENSION= 'TABLE   '            / table extension                             
+BITPIX  =                    8  / bits per character                          
+NAXIS   =                    2  / dimensions of table                         
+NAXIS1  =                  100  / characters per line                         
+NAXIS2  =                  193  / hours of observations                       
+PCOUNT  =                    0  / no random parameters                        
+GCOUNT  =                    1  / only one group                              
+TFIELDS =                   35  / fields per line                             
+EXTNAME = 'ORIONIDS 86'         / name of table                               
+COMMENT   Description of the table columns.                                   
+COMMENT   There is one space between each field.                              
+TTYPE1  = 'YR      '            / year                                        
+TBCOL1  =                    1  / starting column                             
+TFORM1  = 'I2      '            / 2-digit integer                             
+TTYPE2  = 'MO      '            / month                                       
+TBCOL2  =                    4  / starting column                             
+TFORM2  = 'I2      '            / 2-digit integer                             
+TTYPE3  = 'DA      '            / UT day                                      
+TBCOL3  =                    7  / starting column                             
+TFORM3  = 'I2      '            / 2-digit integer                             
+TTYPE4  = 'HR      '            / UT hour                                     
+TBCOL4  =                   10  / starting column                             
+TFORM4  = 'I2      '            / 2-digit integer                             
+TTYPE5  = 'TOTAL   '            / total hour count                            
+TBCOL5  =                   13  / starting column                             
+TFORM5  = 'I3      '            / 3-digit integer                             
+TTYPE6  = '>=1sec  '            / count for durations >=1 sec                 
+TBCOL6  =                   17  / starting column                             
+TFORM6  = 'I3      '            / 3-digit integer                             
+TTYPE7  = '>=8sec  '            / count for durations >=8 sec                 
+TBCOL7  =                   21  / starting column                             
+TFORM7  = 'I2      '            / 2-digit integer                             
+TTYPE8  = ' 75     '            / count in 10km range class 70-80 km          
+TBCOL8  =                   24  / starting column                             
+TFORM8  = 'I1      '            / 1-digit integer                             
+TTYPE9  = ' 85     '            / count in 10km range class                   
+TBCOL9  =                   26  / starting column                             
+TFORM9  = 'I2      '            / 2-digit integer                             
+TTYPE10 = ' 95     '            / count in 10km range class                   
+TBCOL10 =                   29  / starting column                             
+TFORM10 = 'I2      '            / 2-digit integer                             
+TTYPE11 = '105     '            / count in 10km range class                   
+TBCOL11 =                   32  / starting column                             
+TFORM11 = 'I2      '            / 2-digit integer                             
+TTYPE12 = '115     '            / count in 10km range class                   
+TBCOL12 =                   35  / starting column                             
+TFORM12 = 'I2      '            / 2-digit integer                             
+TTYPE13 = '125     '            / count in 10km range class                   
+TBCOL13 =                   38  / starting column                             
+TFORM13 = 'I2      '            / 2-digit integer                             
+TTYPE14 = '135     '            / count in 10km range class                   
+TBCOL14 =                   41  / starting column                             
+TFORM14 = 'I2      '            / 2-digit integer                             
+TTYPE15 = '145     '            / count in 10km range class                   
+TBCOL15 =                   44  / starting column                             
+TFORM15 = 'I2      '            / 2-digit integer                             
+TTYPE16 = '155     '            / count in 10km range class                   
+TBCOL16 =                   47  / starting column                             
+TFORM16 = 'I2      '            / 2-digit integer                             
+TTYPE17 = '165     '            / count in 10km range class                   
+TBCOL17 =                   50  / starting column                             
+TFORM17 = 'I2      '            / 2-digit integer                             
+TTYPE18 = '175     '            / count in 10km range class                   
+TBCOL18 =                   53  / starting column                             
+TFORM18 = 'I2      '            / 2-digit integer                             
+TTYPE19 = '185     '            / count in 10km range class                   
+TBCOL19 =                   56  / starting column                             
+TFORM19 = 'I2      '            / 2-digit integer                             
+TTYPE20 = '195     '            / count in 10km range class                   
+TBCOL20 =                   59  / starting column                             
+TFORM20 = 'I2      '            / 2-digit integer                             
+TTYPE21 = '205     '            / count in 10km range class                   
+TBCOL21 =                   62  / starting column                             
+TFORM21 = 'I2      '            / 2-digit integer                             
+TTYPE22 = '215     '            / count in 10km range class                   
+TBCOL22 =                   65  / starting column                             
+TFORM22 = 'I2      '            / 2-digit integer                             
+TTYPE23 = '225     '            / count in 10km range class                   
+TBCOL23 =                   68  / starting column                             
+TFORM23 = 'I2      '            / 2-digit integer                             
+TTYPE24 = '235     '            / count in 10km range class                   
+TBCOL24 =                   71  / starting column                             
+TFORM24 = 'I2      '            / 2-digit integer                             
+TTYPE25 = '245     '            / count in 10km range class                   
+TBCOL25 =                   74  / starting column                             
+TFORM25 = 'I2      '            / 2-digit integer                             
+TTYPE26 = '255     '            / count in 10km range class                   
+TBCOL26 =                   77  / starting column                             
+TFORM26 = 'I2      '            / 2-digit integer                             
+TTYPE27 = '265     '            / count in 10km range class                   
+TBCOL27 =                   80  / starting column                             
+TFORM27 = 'I2      '            / 2-digit integer                             
+TTYPE28 = '275     '            / count in 10km range class                   
+TBCOL28 =                   83  / starting column                             
+TFORM28 = 'I2      '            / 2-digit integer                             
+TTYPE29 = '285     '            / count in 10km range class                   
+TBCOL29 =                   86  / starting column                             
+TFORM29 = 'I2      '            / 2-digit integer                             
+TTYPE30 = '295     '            / count in 10km range class                   
+TBCOL30 =                   89  / starting column                             
+TFORM30 = 'I2      '            / 2-digit integer                             
+TTYPE31 = '305     '            / count in 10km range class                   
+TBCOL31 =                   92  / starting column                             
+TFORM31 = 'I1      '            / 1-digit integer                             
+TTYPE32 = '315     '            / count in 10km range class                   
+TBCOL32 =                   94  / starting column                             
+TFORM32 = 'I1      '            / 1-digit integer                             
+TTYPE33 = '325     '            / count in 10km range class                   
+TBCOL33 =                   96  / starting column                             
+TFORM33 = 'I1      '            / 1-digit integer                             
+TTYPE34 = '335     '            / count in 10km range class                   
+TBCOL34 =                   98  / starting column                             
+TFORM34 = 'I1      '            / 1-digit integer                             
+TTYPE35 = '345     '            / count in 10km range class                   
+TBCOL35 =                  100  / starting column                             
+TFORM35 = 'I1      '            / 1-digit integer                             
+END                                                                           
+__________________________________________________________________________    
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+Table 9.3.  Example of EXTENSION Header and Data for Visual Observations      
+                                                                              
+__________________________________________________________________________    
+                                                                              
+XTENSION= 'TABLE   '            / table extension                             
+BITPIX  =                    8  / bits per character                          
+NAXIS   =                    2  / dimensions of table                         
+NAXIS1  =                   40  / characters per line                         
+NAXIS2  =                  134  / number of lines in the table                
+PCOUNT  =                    0  / no random parameters                        
+GCOUNT  =                    1  / only one group                              
+TFIELDS =                   10  / fields per line                             
+EXTNAME = 'ETA-AQUARIDS85'      / name of table                               
+COMMENT   Description of the table columns.                                   
+TTYPE1  = 'YR      '            / year                                        
+TBCOL1  =                    3  / starting column                             
+TFORM1  = 'I2      '            / 2-digit integer                             
+TTYPE2  = 'MO      '            / month                                       
+TBCOL2  =                    6  / starting column                             
+TFORM2  = 'I2      '            / 2-digit integer                             
+TTYPE3  = 'DAY     '            / UT day & fraction                           
+TBCOL3  =                   10  / starting column                             
+TFORM3  = 'E5.2 '               / 5-DIGIT 2 DECIMAL PLACES                    
+TTYPE4  = 'TIME    '            / total minute count                          
+TBCOL4  =                   16  / starting column                             
+TFORM4  = 'I3                   / 3-digit integer                             
+TTYPE5  = 'OBS     '            / observer number                             
+TBCOL5  =                   20  / starting column                             
+TFORM5  = 'I3      '            / 3-digit integer                             
+TTYPE6  = 'SITE    '            / site number                                 
+TBCOL6  =                   24  / starting column                             
+TFORM6  = 'I3      '            / 3-digit integer                             
+TTYPE7  = 'F-STAR  '            / faintest magnitude visible                  
+TBCOL7  =                   29  / starting column                             
+TFORM7  = 'E3.1    '            / 3-digit 1 decimal place                     
+TTYPE8  = 'CLOUD   '            / cloud cover in %                            
+TBCOL8  =                   33  / starting column                             
+TFORM8  = 'I2      '            / 2-digit integer                             
+TTYPE9  = 'NUM-SH  '            / count shower meteors                        
+TBCOL9  =                   35  / starting column                             
+TFORM9  = 'I3      '            / 3-digit integer                             
+TTYPE10 = 'NUM-NS  '            / count non-shower meteors                    
+TBCOL10 =                   38  / starting column                             
+TFORM10 = 'I3      '            / 3-digit integer                             
+END                                                                           
+______________________________________________________________________________

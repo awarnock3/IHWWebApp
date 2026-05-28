@@ -1,0 +1,16 @@
+***** File PATHTABL.TXT                                                       
+                                                                              
+                                                                              
+                                                                              
+     The PATHTABL.* files document the full volume and subdirectory           
+specification for each datafile on this disc.  The table itself (PATHTABL.IDX)
+is a delimited table, with fields for filename, extension and version number, 
+date and time of observation, volume name, five subdirectory levels, and the  
+full path.                                                                    
+                                                                              
+     The version number is in a separate (numeric) field.  Some CD-ROM drivers
+(such as the Microsoft Extensions under MS-DOS) ignore the version number when
+accessing the disc.  Others (e.g., Unix) append the version number as a       
+required part of the file name.  In any event, the version number is coded on 
+the disc, and is so documented in the path table.  Its value is always "1" on 
+these discs.                                                                  

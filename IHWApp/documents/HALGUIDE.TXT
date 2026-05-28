@@ -1,0 +1,350 @@
+***** File HALGUIDE.TXT                                                       
+                                                                              
+                                                                              
+                        Comet Halley Archive                                  
+              User's Guide to IHW CD-ROM Volumes 19-23                        
+                                                                              
+                                                                              
+                                                                              
+                               Contents                                       
+                                                                              
+                                                                              
+1. Background and Scope of Compact Disc                                       
+2. Accessing the Disc                                                         
+3. Data Products on these Discs                                               
+4. Supplemental Directories                                                   
+5. Filenaming Conventions                                                     
+6. References                                                                 
+                                                                              
+                                                                              
+                                                                              
+1. BACKGROUND AND SCOPE OF COMPACT DISC                                       
+                                                                              
+     This compact disc (CD-ROM), and the series of discs of which it is a     
+part, contains observations of comet P/Halley obtained during the 1985-1986   
+apparition.  The resulting digital archive is the main product of the         
+International Halley Watch (IHW), which was formed in 1981 to mount an        
+international campaign to observe the comet over a long baseline in time.  The
+collection of remote (mostly ground-based) data archived here spans a wide    
+wavelength range and is augmented (on other discs) by measurements made in    
+situ by the spacecraft which encountered the comet in 1986 March.  The remote 
+observations are associated with nine IHW Disciplines:  Astrometry, Infrared  
+Studies, Large-Scale Phenomena (L-SP), Meteor Studies, Near-Nucleus Studies,  
+Photometry and Polarimetry, Radio Studies, Spectroscopy and Spectrophotometry,
+and Amateur Observations.                                                     
+                                                                              
+     The complete IHW digital archive is comprised of four subsets of CD-ROMs 
+containing:                                                                   
+                                                                              
+  o Compressed Halley images from the L-SP Discipline (Volumes 1-18),         
+  o Halley data from all IHW Disciplines (Vols. 19-23),                       
+  o IHW "Trial Run" data of comets P/Crommelin & P/Giacobini-Zinner (Vol. 24),
+  o Halley spacecraft data (Vols. 25-26)                                      
+                                                                              
+The total collection for Halley's Comet contains more than 37,000 independent 
+files and 15 Gbytes of data.  This document is intended as a guide to Volumes 
+19-23.  [CDTREE.TXT and DATATREE.TXT are useful files within the DOCUMENT     
+directory to which the archive user may wish to refer to visualize the        
+structure and content of these discs as he or she reads this document.]       
+                                                                              
+                                                                              
+2. ACCESSING THE DISC                                                         
+                                                                              
+     These discs have been manufactured following the normal specifications   
+for Compact Disc Read Only Memory (CD-ROM) as well as the logical structure   
+outlined by the International Standards Organization (ISO) in the No. 9660    
+document.  A basic system requirement demands that the CD-ROM reader and      
+software driver support this standard.  At this writing (July 1990), primary  
+access to the disc will be using IBM-PC or compatible computers.  However,    
+software support from vendors for the Apple MacIntosh II and some workstations
+(SUN, MicroVAX) is now available.                                             
+                                                                              
+     If you are using a PC style machine, the reader that you bought should   
+include the appropriate hardware (a PC-bus or SCSI controller board and cable)
+and software to address your device.  Software packages should include a      
+device driver for your machine and extensions to DOS that allow the reader to 
+"look" like another random access disk drive; the de facto standard here is   
+the Microsoft Extensions (MSCDEX 2.0 or higher).  Install the specific device 
+driver software as directed by the documentation accompanying the hardware.   
+Usually, this will involve specifying the device driver in a DEVICE= line in  
+the CONFIG.SYS file and invoking the extensions package from your AUTOEXEC.BAT
+file.  This will automatically configure the CD-ROM reader when the computer  
+is booted.                                                                    
+                                                                              
+     Remember that the CD-ROM reader is assigned a drive name which you have  
+either chosen with the appropriate command line switch (/L:H assigns the CD-  
+ROM reader to drive H:) or allowed to default to the next available device    
+letter in your system.  Typical PC configurations will have two floppies (A:  
+and B:), and a hard disk (C:).  Put your drive at some letter higher than     
+that.  Remember that many DOS commands work on the CD-ROM but that it is a    
+read-only medium.  Some of the useful DOS functions are:                      
+                                                                              
+        DIR   - directory listing                                             
+        CHDIR - change directory (also CD)                                    
+        TYPE  - list the contents of a file on the screen; useful             
+                for normal text with <carriage return>, <line feed>           
+                delimiters                                                    
+        COPY  - copy file(s) to another device                                
+        PRINT - print file on hard copy device                                
+                                                                              
+     Notice that commands such as DEL and MKDIR are not available since the   
+CD-ROM is a read-only medium.  Furthermore, some compact disc software        
+packages will invoke screen plots that may depend on the DOS program          
+GRAPHICS.COM.  In this case, execute it in your AUTOEXEC.BAT file or before   
+you run the software package.                                                 
+                                                                              
+     The IHW CD-ROMs have been designed to allow maximum access to the data   
+using existing software developed within NASA, as well as user-supplied       
+programs.  In particular, each data file was originally supplied in the FITS  
+format, and also has a detached PDS label to describe the data structure.     
+Furthermore, the normal FITS files have had the headers placed in files (with 
+extension .HDR) separate from the data (.DAT, .IBG, .IMG, .TAB).  The         
+headers have been separated to allow unrestricted access to the data by       
+non-FITS programs.  The sizes of all header and data files have been preserved
+as integer multiples of 2880 bytes (required by FITS) in order to facilitate  
+the reconstruction of the original FITS bytestream by concatenating the data  
+file with the appropriate header file.                                        
+                                                                              
+                                                                              
+                                                                              
+3. DATA PRODUCTS ON THESE DISCS                                               
+                                                                              
+     The majority of the ground-based data is located in directories whose    
+organization is chronological.  The directory names themselves are based on   
+one or more parameters of time, the complete set being Year, Month, Day, and  
+UT Hour; the time referred to reflects the approximate beginning of the       
+directory's data contents (filenaming conventions are discussed in Section 5).
+We have restricted directories to a reasonable number of files while allowing 
+enough information for useful browsing; 256 was adopted as the desired maximum
+number, which includes datafiles, headers, and PDS labels. Given the large    
+variation of the temporal density of IHW observations throughout the          
+apparition, the "reasonable N" < 256 criterion resulted in directories        
+widely divergent in duration.  For example, all observations for 1983 were    
+deposited in one directory, whereas for 1986 April there were many days which 
+required directories only 3 hours wide (sample directory name:                
+Y1986\M04\D10\H18).  The smallest hourly subdivision is, in fact, 3 hours     
+(03,06,09,....hours UT).  No subdirectory was created for days on which data  
+were not submitted.  Across the entire set of ground-based data discs (Volumes
+19-23), the typical file count in a directory is 50, and the average byte     
+count is 1.0 Mbyte.                                                           
+                                                                              
+     Not all the IHW remote data on these discs (Volumes 19-23) reside        
+on one directory level, although the majority of them--those from six of the  
+Disciplines--do.  Those six Disciplines are:                                  
+                                                                              
+       o Infrared Studies                                                     
+       o Large-Scale Phenomena (browse images and dataless headers)           
+       o Near-Nucleus Studies                                                 
+       o Photometry and Polarimetry                                           
+       o Radio Studies                                                        
+       o Spectroscopy and Spectrophotometry                                   
+                                                                              
+The approach has been to include Halley datafiles (and headers and labels)    
+from these Disciplines in the appropriate chronological directory (e.g.,      
+Y1986\M04\D10\H18).                                                           
+                                                                              
+     The full-resolution images from the Large-Scale Phenomena (L-SP)         
+Discipline have been deposited on a different series of IHW discs--Volumes    
+1-18--in compressed form.  Details of the compression algorithm and the       
+accompanying FITS proposal are in the file FITSCOMP.TXT in the DOCUMENT       
+directory of those discs.  Descriptions of the discs' full contents and       
+structure, as well as the rationale for performing data compression, are to be
+found in the documentation on Volumes 1-18 and in the LS_PHEN.APX file in the 
+\DOCUMENT\APPENDIX directory of this disc.  A useful file which shows the time
+range of each L-SP compressed image disc is SUMINFO.TXT, located in the       
+DOCUMENT directory of Volume 18.  Inclusion of subsampled, "browse" versions  
+of the same L-SP images on these discs (Vols. 19-23) was thought to be        
+important for inter-disciplinary comparisons between all types of IHW data.   
+These images are restricted to a maximum of 256 one-byte pixels on a side, and
+preserve the original sampling geometry.  They may be especially important for
+"quick look" assessments of the full-resolution images, which are relatively  
+time-consuming to decompress.                                                 
+                                                                              
+     The data for three IHW Disciplines--Astrometry, Amateur Observations, and
+Meteor Studies--are stored in different locations on these discs (Volumes     
+19-23), as follows.  Astrometry and Amateur Observations are located one      
+directory level below the "main data level" discussed above (sample path for  
+Astrometry is: Y1985\M12\D12\H18\ASTROM), whereas the data for the Meteor     
+Studies Discipline are contained in 59 files in a dedicated directory on      
+Volume 23.  It is to be noted that on occasion, a high density of either      
+Astrometry or Amateur files drove the temporal widths of the "main data level"
+since the N(max)=256 criterion applied to the lowel levels (Astrometry and    
+Amateur) as well.                                                             
+                                                                              
+     Some Disciplines submitted supplemental data which include filter tables,
+non-comet images, flat fields, and laboratory spectra.  These files are stored
+in the CALIB directory of Volume 23, and the numeric part of their filename   
+begins at a higher number (4001) than does the actual Halley data (0001).  The
+reader should consult Section 5 for more details on filenaming.               
+                                                                              
+     A large number of scientists contributed to this archive project. They   
+are listed in the \DOCUMENT\OBSERVER directory of the these discs, by the IHW 
+Discipline to which they contributed data. The contributing observatories,    
+with their IHW system codes, are listed in the file OBSCODES.TXT (directory   
+\DOCUMENT\OBSVTRY of Volume 23).  Individual observers and their various      
+instruments are, of course, also identified in the FITS header that           
+accompanies the data.                                                         
+                                                                              
+                                                                              
+                                                                              
+4. SUPPLEMENTAL DIRECTORIES                                                   
+                                                                              
+     The volume and directory structure of this disc conform to the Level-1   
+standard specified by the ISO.  This format is widely accepted and used on a  
+variety of machines.  The AAREADME.TXT file in the root directory introduces  
+the user to the full extent of the archive and the contents of the individual 
+subdirectories.                                                               
+                                                                              
+     There are four directories (DOCUMENT, EPHEM, INDEX and SOFTWARE) on this 
+disc that contain supplementary files.  The DOCUMENT directory contains text  
+files that give the background to this CD-ROM project, present a general guide
+to its use, and detail experience with previous CD-ROM products, including a  
+test disc of comet Giacobini-Zinner data (also archived by the IHW) and two   
+test discs of Halley data (refer to VOLINFO.TXT).  A discussion of the FITS   
+and PDS formats and the metadata used specifically for the Halley data is     
+located in the files FITS_IHW.TXT and PDS_IHW.TXT.  This file (HALGUIDE.TXT)  
+and IMAGUIDE.TXT on Volumes 1-18 are meant to serve as general overviews of   
+the discs and their contents.  Documents in the APPENDIX subdirectory, written
+by the IHW Discipline Specialists, contain information on data collection,    
+subsequent processing steps, and archiving techniques, at the Discipline      
+level.                                                                        
+                                                                              
+     In the INDEX directory, tables of useful information have been indexed in
+various forms in order to allow automated searching of the data. The QUIK.IDX 
+index contains a selected set of mandatory FITS keywords from all Disciplines.
+On each of Volumes 19-23, QUIK.IDX includes only the observations on that     
+disc.  Volume 23 has an additional, "summary quick index", QUIK_SUM.IDX, which
+includes all observations contained in Volumes 19-23; the last field in       
+QUIK_SUM.IDX includes the Volume number.  A set of tables in the subdirectory 
+NETABLES contains the metadata/data from the proposed printed archive,        
+organized by network and subnetwork and chronologically ordered in each index.
+In this subdirectory, also, are more complete indices of FITS keywords for    
+five of the IHW Disciplines.  The filenames (Disciplines) are:  NETAMATV.IDX  
+(Amateur Observations), NETLARGE.IDX (Large-Scale Phenomena), NETMETR.IDX and 
+NETMETV.IDX (Meteor Studies), NETRADIO.IDX (Radio Science), and NETSPECT.IDX  
+(Spectroscopy and Spectrophotometry).  We constructed a separate index called 
+PATHTABL.IDX to specify the full path to each datafile; these are organized by
+disc, and a summary version is contained on Volume 23.  We attempted to make  
+all index tables transportable to relational DBMS by delimiting the tables and
+providing structure (.STR) and dBASE-compatible (.DBF) files. Further         
+information about IHW indices is contained in the file INDXINFO.TXT.          
+                                                                              
+     The SOFTWARE directory contains source code and executables for display  
+of imaging and spectral data, interpolation of ephemeris tables, reading of   
+FITS tables, and manipulation of metadata.  To be specific, IMDISP.EXE        
+contains various utilities for manipulating visual data on image display      
+devices; IMDISP was originally developed by the Planetary Data System (PDS) at
+the Jet Propulsion Laboratory (JPL), and has been augmented and improved by   
+them and by outside users.  The interpolation software is meant to be used on 
+the EPHEM.TAB file in the EPHEM directory; the algorithm uses values of       
+ephemeris data for 7 consecutive integral days to perform the interpolation.  
+The Fortran source code is called OBSNTERP.FOR, which we have compiled and    
+linked on VAX and PC computers; the resulting executables for VAX/VMS and     
+MS-DOS operating systems are VAXNTERP.EXE and PCNTERP.EXE, respectively.  Also
+provided on these discs is a "FITS Table Browser" called FTB.EXE, which was   
+developed by the Astronomical Data Center (ADC) of the National Space Science 
+Data Center (NSSDC).  Several other support programs for manipulating the     
+metadata--FITSUTIL, FITSXTND, FITS2TXT, and TXT2FITS--are also provided.  The 
+archive user should take note of the fact that on the L-SP compressed image   
+discs (Volumes 1-18), additional source code and executables exist for        
+compression and decompression of the large image files contained on those     
+discs.                                                                        
+                                                                              
+                                                                              
+                                                                              
+5. FILENAMING CONVENTIONS                                                     
+                                                                              
+     The convention for naming files on the IHW CD-ROMs was proposed by the   
+Lead Center and NASA/Goddard Space Flight Center (GSFC) personnel to include a
+unique data qualifier for the data.  Specifically, a set of subnet codes was  
+established to enable identification of the IHW Discipline/subdiscipline from 
+the filename itself.  A CD-ROM running number and file extension complete the 
+filename (example:  LSPN0059.IBG).  A short list organized by Discipline      
+and listing subnetwork names and letter codes is given below:                 
+                                                                              
+                                                                              
+  Discipline            Number    Subnet (Exp)   Subnet Code                  
+______________________________________________________________________        
+                                                                              
+ Astrometry                1           none         ASTR                      
+ Infrared Studies          2       Photometry       IRPH                      
+                                   Polarimetry      IRPOL                     
+                                   Spectroscopy     IRSP                      
+                                   Image            IRIM                      
+                                   Filter Table     IRFT                      
+                                   Filter Curve     IRFC                      
+ Large-Scale Phenomena     3          none          LSPN                      
+ Near Nucleus Studies      4          none          NNSN                      
+ Photometry Polarimetry    5       Broad Band Mag   PMAG                      
+                                   Narrow Band Flux PFLX                      
+                                   Polarimetry      PPOL                      
+                                   Stokes           PSTOKE                    
+ Radio Science             6       Continuum        RSCN                      
+                                   Occultation      RSOC                      
+                                   OH               RSOH                      
+                                   Radar            RSRDR                     
+                                   Spectral Line    RSSL                      
+ Spectroscopy Spectrophot  7           none         SPEC                      
+ Amateur Observations      8       Drawing          AMDR                      
+                                   Photography      AMPG                      
+                                   Spectroscopy     AMSP                      
+                                   Visual Magnitude AMV                       
+ Meteor Studies            9       Radar            MSNRDR                    
+                                   Visual Estimates MSNVIS                    
+______________________________________________________________________        
+                                                                              
+                                                                              
+Concerning the numeric portion of filenames, calibration files for IRIM, IRSP,
+LSPN, and SPEC begin at 4001, whereas the Halley data themselves for all      
+disciplines and subdisciplines start at 0001.                                 
+                                                                              
+     The International Halley Watch agreed early in the project that all data 
+would be submitted by the individual Disciplines to the JPL Lead Center using 
+the FITS format.  When the decision was made to distribute this information on
+CD-ROM, it was determined that the data had to have even broader              
+accessibility.  For this reason, the original FITS files, with contiguous     
+headers and data, were split into separate files. The original FITS byte      
+stream could then be recovered by concatenating the appropriate header and    
+data files.  The tabular data, even though presented as valid FITS data       
+records, are really just ASCII byte strings that can be exported to many      
+machines.  In addition, detached PDS labels were constructed to allow parallel
+definition of the data files for the Planetary Data System. (We thankfully    
+acknowledge the help of M. Martin, PDS, for assisting the IHW through version 
+2.0 of the Object Description Language to describe the SPECTRUM object.)      
+                                                                              
+     The file extensions follow suggestions by the Planetary Data System      
+(SPIDS v1.1) for tabular and image data, and are listed below:                
+                                                                              
+                                                                              
+                 .DAT - other non-image and non-tabular data                  
+                 .FIT - original FITS file                                    
+                 .HDR - FITS header records                                   
+                 .IBG - data records for subsampled browse image              
+                 .IMG - image data records                                    
+                 .LBL - detached PDS stream format                            
+                 .TAB - table data records as ASCII                           
+                                                                              
+                                                                              
+     The five PDS objects in this archive are FITS_LABEL (header), IMAGE,     
+TABLE, TEXT, and SPECTRUM; a label occurs for each datafile.  Our aim was to  
+construct a basic PDS label for each data file on the CD-ROM.   Files that    
+remain in the original FITS form do not have a PDS label; these can occur as  
+DOCUMENT files and datafiles for Comet Crommelin and Comet Giacobini-Zinner.  
+                                                                              
+     Inclusion of the PDS labels allows use of CD-ROM imaging software already
+available from JPL.  The PDS labels are text files, with lines terminated by  
+the <CR><LF> characters. The total size of the files is maintained in the     
+required SFDU_LABEL.                                                          
+                                                                              
+                                                                              
+                                                                              
+6. REFERENCES                                                                 
+                                                                              
+Martin, T., Martin, M., Braun, M., Johnson, T., Davis, R., and Mehlman, R.,   
+SPIDS: Standards for the Preparation and Interchange of Data Sets, JPL        
+D-4683: October 3, 1988.                                                      
+                                                                              
+"Information Processing -- Volume and File Structure of CD-ROM for            
+Information Interchange", Reference Number ISO 9660: 1988(E), Developed in    
+coordination with the National Information Standards Organization, National   
+Bureau of Standards, Administration 101, Library E-106, Gaithersburg, MD.     

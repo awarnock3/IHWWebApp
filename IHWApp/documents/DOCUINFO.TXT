@@ -1,0 +1,38 @@
+***** File DOCUINFO.TXT                                                       
+                                                                              
+     The DOCUMENT directory and its subdirectories contain most of the        
+documentation files related to the contents of this disc.  CDTREE.TXT and     
+DATATREE.TXT are highly useful files which show the directory structure of the
+disc.                                                                         
+                                                                              
+     The DOCUMENT directory has four subdirectories.  The first is \APPENDIX, 
+which contains a Preface, 9 Discipline Appendix text files (.APX extension),  
+and several supplemental files for the Spectroscopy and Spectrophotometry     
+Discipline.  The second subdirectory is \APPENDIX\SOL_ATLS, and it contains   
+two solar spectra supplied by the Spectroscopy and Spectrophotometry          
+Discipline.                                                                   
+                                                                              
+     The subdirectory \INTRODOC has copies of the short information files that
+are located in some of the other directories on this disc:                    
+                                                                              
+                                                                              
+ INTRODOC files         Original Directory                                    
+ --------------------------------------------------------                     
+ anctinfo.txt         hal_0020\ast_hist                                       
+ apndinfo.txt         hal_0020\document\appendix                              
+ atlsinfo.txt         hal_0020\document\appendix\sol_atls                     
+ docuinfo.txt         hal_0020\document                                       
+ ephinfo.txt          hal_0020\ephem                                          
+ ftbinfo.txt          hal_0020\software\ftb                                   
+ imdpinfo.txt         hal_0020\software\imdisp                                
+ indxinfo.txt         hal_0020\index                                          
+ itrpinfo.txt         hal_0020\software\interp                                
+ netinfo.txt          hal_0020\index\netables                                 
+ obsrinfo.txt         hal_0020\document\observer                              
+ softinfo.txt         hal_0020\software                                       
+ utilinfo.txt         hal_0020\software\utils                                 
+ --------------------------------------------------------                     
+                                                                              
+                                                                              
+     The fourth and last subdirectory within DOCUMENT is \OBSERVER, which     
+contains text files listing observers by IHW Discipline.                      

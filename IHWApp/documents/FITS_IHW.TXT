@@ -1,0 +1,77 @@
+***** File FITS_IHW.TXT                                                       
+                                                                              
+                                                                              
+                        FITS Format Information                               
+                                                                              
+                                                                              
+    All data were submitted to the International Halley Watch Lead Center on  
+magnetic tape, written in standard FITS format.  There are three primary      
+references to basic FITS (Wells et al, 1981) and its extensions (Greisen and  
+Harten, 1981, Harten et al, 1988).  Although commonly viewed as a magnetic    
+tape format, the actual FITS specifications can be interpreted to describe a  
+general byte stream.  As such, FITS files may be written on any storage       
+medium, including CD-ROM.  Note that there is no inherent record structure    
+called for in the FITS agreements, only a blocking structure for block        
+oriented media such as magnetic tape.                                         
+                                                                              
+    The basic FITS agreements call for only a few required keywords (SIMPLE,  
+BITPIX, NAXIS, END must be present; EXTEND may appear; keywords NAXIS1, ...,  
+NAXISn appear as defined by the value of NAXIS).  We have also followed       
+recommended conventions for the representation of values of keywords (dates in
+the format 'dd/mm/yy', SI units used where possible, etc.).  The IHW has      
+defined an additional set of mandatory keywords for all submissions to the    
+Lead Center.  These are presented in the table below:                         
+                                                                              
+                                                                              
+                                                                              
+    OBJECT   - Name of the object in the data file, a text string.            
+    FILE-NUM - Unique 6-digit number of the file submitted to the Lead Center.
+               The first digit identifies the discipline, the other digits are
+               assigned by the individual Disciplines, but must uniquely      
+               identify the file.                                             
+    DATE-OBS - UT Date of mid-observation, in the format 'dd/mm/yy'.          
+    TIME-OBS - UT Time of mid-observation, as fractional day.                 
+    DATE-REL - IHW internal release date for data, as date string.            
+    DISCIPLN - Name of the network submitting the file, a text string.        
+    LONG-OBS - Longitude of the submitting observatory, in the format         
+               'ddd/mm/ss', with degrees from 0 to 360, increasing in the     
+               eastward sense.                                                
+    LAT--OBS - Latitude of the submitting observatory, in the format          
+               'sdd/mm/ss'.                                                   
+    SYSTEM   - An 8-digit coded character string identifying the Discipline,  
+               observatory and instrument which supplied the data. The first  
+               character identifies the network, the next three identify the  
+               observatory (by IAU code number, where one is assigned, 500    
+               otherwise). The next four digits either identify the           
+               telescope/instrument combination (if there is an IAU number for
+               the observatory) or the country and observatory (if no IAU     
+               number).                                                       
+    OBSERVER - Name of the observer(s) who took the data, a text string. The  
+               notation "ET AL." indicates that there were more than two      
+               observers, and the names of the additional observers are given 
+               in a COMMENT later in the header, with the subkeyword "ADD.    
+               OBS."                                                          
+    SUBMITTR - Name of the person submitting the data to the Lead Center, a   
+               text string.                                                   
+    SPEC-EVT - A logical value indicating that the observation is a special   
+               event.  Either T or F.                                         
+    DAT-FORM - A character string defining the form of the data, e.g.,        
+               'ASCII', 'NODATA'.                                             
+                                                                              
+                                                                              
+                                                                              
+    The individual Disciplines have written appendices which describe the     
+keywords used in addition to the mandatory ones.  Refer to the text files in  
+the \DOCUMENT\APPENDIX directory on these discs.                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                REFERENCES                                    
+                                                                              
+Greisen, E. W. and Harten, R. H.: 1981, Astron. Astrophys. Suppl. Ser.        
+  44, 371.                                                                    
+Harten, R. H., Grosbol, P., Greisen, E. W. and Wells, D. C.: 1988,            
+  Astron. Astrophys. Suppl. Ser. 73, 365.                                     
+Wells, D. C., Greisen, E. W. and Harten, R. H.: 1981, Astron. Astrophys.      
+  Suppl. Ser. 44, 363.                                                        

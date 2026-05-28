@@ -1,0 +1,48 @@
+***** File OBSNTERP.TXT                                                       
+                                                                              
+                                                                              
+     The Fortran source code OBSNTERP.FOR is an interactive, seven-point      
+Lagrange interpolation program that will return ephemeris data for periodic   
+comet Halley over the interval November 26, 1981 through June 23, 1989, when  
+it is run on the table EPHEM.TAB (in the EPHEM directory).  VAX/VMS and MS-DOS
+executables of OBSNTERP are called VAXNTERP.EXE and PCNTERP.EXE, respectively;
+like OBSNTERP.FOR, they are stored in the \SOFTWARE\OBSNTERP directory of this
+disc.  To run the program, type PCNTERP <carriage return> (or VAXNTERP <cr>)  
+and respond to the prompts.  You can speed up the interpolation time by       
+shortening the data table to include only the interval that you require and by
+requesting output for dates in chronological order.  The information in the   
+data table was generated with IHW orbit number 61, which was based upon 7469  
+astrometric positions over the interval August 21, 1835 through January 9,    
+1989.   (Each line of the table is a fixed width of 110 characters plus <CR>  
+<LF>.)                                                                        
+                                                                              
+     The definition of each output quantity is given below:                   
+                                                                              
+Date:    Calendar date and Julian date (times in these ephemerides are        
+         universal times).                                                    
+RA, DEC: Geocentric right ascension and declination referred to the           
+         mean equator and equinox of 1950.0 - light time corrections          
+         have been applied.                                                   
+DELTA:   Geocentric distance of comet in AU.                                  
+DELDOT:  Geocentric velocity of comet in km/sec.                              
+R:       Heliocentric distance of comet in AU.                                
+RDOT:    Heliocentric velocity of comet in km/sec.                            
+THETA:   Sun-Earth-Comet angle in degrees.                                    
+BETA:    Sun-Comet-Earth angle in degrees.                                    
+MOON:    Comet-Earth-Moon angle in degrees.                                   
+PSANG:   Position angle of extended Sun-Comet vector.                         
+PSAMV:   Position angle of minus comet velocity vector.                       
+                                                                              
+(Position angles are measured east from north.)                               
+                                                                              
+                                                                              
+Ravenel N. Wimberly                                                           
+Astrometry Team Member                                                        
+Jet Propulsion Laboratory                                                     
+4800 Oak Grove Dr.                                                            
+Pasadena, CA 91109                                                            
+                                                                              
+                                                                              
+[NOTE:  this write-up by R. N. Wimberly was modified slightly to take account 
+of the generation at NASA/GSFC of executable modules of the source code       
+OBSNTERP.FOR. -- M. B. Niedner, Jr.]                                          

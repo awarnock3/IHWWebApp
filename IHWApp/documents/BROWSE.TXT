@@ -1,0 +1,54 @@
+***** File BROWSE.TXT                                                         
+                                                                              
+     Effective use of the 1,612 images contained on the IHW/Large-Scale       
+Phenomena (L-SP) compressed image CD-ROMs requires that the user of the discs 
+be able to "browse through the data" quickly to find those images and         
+intervals which are of high scientific interest.  Because of the long         
+decompression and transfer times of the full-resolution images with current   
+image display hardware, the goal of efficient browsing of the data can be met 
+only if the images are placed on the discs at least a second time, in either  
+subsampled or filtered form, and uncompressed.                                
+                                                                              
+     The browse images are actually stored in three places within the total   
+set of IHW CD-ROMs.  In addition to the subset of images stored in the BROWSE 
+directory of each IHW/L-SP compressed image CD-ROM (HAL_0001 - HAL_0018), the 
+entire set of 1,612 digital images exists on the last of the IHW/L-SP         
+dedicated discs (HAL_0018) in the "volume subdirectories" of the              
+SUMMARY\BROWSE directory (sample path is SUMMARY\BROWSE\HAL_0006). The browse 
+images are also interleaved with data from the other IHW disciplines in the   
+daily data subdirectories on these "mixed data" CD-ROMs (HAL_0019 - HAL_0023).
+                                                                              
+     A "browsed image" is one that has been generated from the original       
+uncompressed image. It has been subsampled and is no larger than 256 pixels in
+either dimension.  In addition, the digital data have been scaled into a      
+numerical range of 0 to 255 (one byte per pixel; the precision for most of the
+original images is 10 bits, requiring two bytes per pixel).  The BROWSE       
+directory of each L-SP compressed image CD-ROM contain datafiles, FITS        
+headers, and PDS labels for the compressed images on that CD-ROM;  this       
+includes both images of Comet Halley and of calibration objects.  Note that   
+the 1,612 total L-SP digital images (1,439 of the comet, 173 of calibration   
+objects) are deposited on multiple CD-ROMs "dedicated" to the L-SP imagery.   
+                                                                              
+     The browse data were obtained by taking the "n"th row and column for the 
+original image starting at row "n/2" and column "n/2".  The value for "n" was 
+determined from the larger of the two axes such that the quantity (original   
+length / n) was less than or equal to 256.  For the images which were         
+digitized at GSFC, the original densitometer values ranged between 0 and 1023.
+The density values in the images were divided by 4 in order to convert the    
+density to a single byte.  For those images digitized elsewhere, the density  
+scaling factor was chosen so that the density in the browse image was less    
+than or equal to 255.                                                         
+                                                                              
+     The FITS header records for the browse images have had their astrometric 
+information adjusted to reflect the change both in pixel spacing and image    
+origin.  Thus, should the user wish, (crude) astrometry can be performed with 
+the browse images.  In addition, HISTORY keywords have been inserted to       
+document the linear scale and density scale changes.  The creation of the     
+browse images was accomplished using the program MIDGET, which can be found as
+MIDGET.FOR in the SOFTWARE\BROWSE\FORTRAN directory of the compressed image   
+CD-ROMs.                                                                      
+                                                                              
+     The filename extension for the files of the browse data (.IBG = image,   
+.HDR = header, .LBL = PDS label) follow the IHW filename conventions.  To     
+reconstruct the original FITS byte stream, the .HDR and .IBG files for the    
+appropriate observation should be concatenated.                               

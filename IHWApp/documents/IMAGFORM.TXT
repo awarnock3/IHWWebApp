@@ -1,0 +1,101 @@
+***** File IMAGFORM.TXT                                                       
+                                                                              
+                                                                              
+                         Image Data Descriptions                              
+                                                                              
+                                                                              
+     The International Halley Watch agreed early in the project that all data 
+would be submitted from the individual Disciplines to the Lead Center using   
+the FITS format (Wells et al., 1981).  When the decision was made to          
+distribute this information on CD-ROM, it was determined that the data had to 
+have even broader accessibility.  For this reason the original FITS files,    
+with contiguous headers and data, were split into separate files              
+distinguishable by their filename extensions (.HDR for headers).  The file    
+sizes were preserved as multiples of 2880 bytes, allowing the original FITS   
+byte stream to be recovered by concatenating the appropriate header and       
+datafile.  PDS labels were constructed to allow definition of the datafiles   
+for the Planetary Data System.  For each datafile there must always be an     
+associated FITS header.                                                       
+                                                                              
+     The convention for naming files on the IHW CD-ROMs was proposed by the   
+Lead Center and NASA/Goddard Space Flight Center (GSFC) personnel to include a
+unique data qualifier for the data.  Specifically, a set of subnet codes was  
+established to enable identification of the IHW Discipline/subdiscipline from 
+the filename itself.  A CD-ROM running number and file extension complete the 
+filename (example:  LSPN0059.IBG).  A short list of this convention by        
+Discipline and subnet (or experiment) is given below for image data:          
+                                                                              
+                                                                              
+                                                                              
+  PDS Object              FITS  Discipline      Subnet  Extensions            
+ (description)         NAXIS =                   Code                         
+______________________________________________________________________        
+                                                                              
+image                      2    IR Studies       IRIM      .img               
+image (browse)             2          "          LSPN      .ibg               
+image                      2    Near Nucleus     NNSN      .img               
+image                      2    Radio Studies    RSCN      .img               
+image (multiple)           3          "          RSOC      .img               
+image (spectrum)           2    Spectroscopy     SPEC      .img               
+______________________________________________________________________        
+                                                                              
+                                                                              
+A table linking the subnet codes above and the subdiscipline names is given in
+Section 5 ('Filenaming Conventions') of the file HALGUIDE.TXT.  Concerning the
+numeric portion of filenames, calibration files for IRIM, LSPN, and SPEC begin
+at 4001, whereas the Halley data themselves for all disciplines and           
+subdisciplines start at 0001.                                                 
+                                                                              
+     The file extensions follow suggestions by the Planetary Data System      
+(SPIDS v1.1; Martin et al., 1988) for tabular and image data.  In addition,   
+for IHW FITS, the original headers and data were split into separate files,   
+with filename extensions as listed below.                                     
+                                                                              
+                                                                              
+                 .HDR - FITS header records                                   
+                 .IBG - data records for subsampled browse image              
+                 .IMG - image data records                                    
+                 .LBL - detached PDS stream format                            
+                                                                              
+                                                                              
+    These PDS labels are metadata (as headers describing data submitted to the
+archive). There has been no effort to duplicate the documentation contained in
+the full FITS headers because the PDS and FITS headers for a given data file  
+differ only in the filename extension.  Instead we have attempted to use the  
+power of the PDS label syntax to fully describe the data structures and thus  
+gain access to software by that group. Standards for the Preparation and      
+Interchange of Data Sets, Martin, T. Z., et al, Document D-4683, Jet          
+Propulsion Laboratory, California Institute of Technology, Pasadena, CA       
+document version 1.1 was the primary reference to the Object Description      
+Language (ODL) necessary to create the PDS labels.   (We acknowledge R. Borgen
+and M. Martin, PDS-CN, JPL, for assisting the IHW through version 2.0 of the  
+ODL implementation for SPECTRUM.)   The basic PDS descriptors such as         
+SFDU_LABEL, RECORD_TYPE, RECORD_BYTES, and FILE_RECORDS are explained in the  
+SPIDS document. The RECORD_TYPE for all data files is FIXED_LENGTH.   The PDS 
+labels have been formed as fixed length (78 byte) plus an embedded CR and LF. 
+                                                                              
+     In the case of images, we have included a new keyword describing the byte
+ordering of the data (MSB_INTEGER) required by FITS.  In PDS, images (.IMG,   
+.IBG) are in terms of LINES (FITS keyword NAXIS2) and SAMPLES (FITS keyword   
+NAXIS1), given knowledge of the SAMPLE_BITS (FITS keyword BITPIX), and are    
+easy for the split files.  The final form of the label for compressed images  
+is still under active discussion.  Unlike previous PDS efforts with compressed
+images, we chose not to compress the header (or label) and thus have included 
+a keyword to describe the type of compression (ENCODING_TYPE =                
+"PREVIOUS_PIXEL") used. The label for compressed images also contains         
+information to permit software to skip over the data if the decoding algorithm
+is unknown (ITEMS, ITEM_TYPE, and ITEM_BITS).   We use ODL to indicate various
+subclass structures for the data objects.  An example of this is the          
+DIFFERENCE modifier applied to IMAGE, yielding the keyword DIFFERENCE_IMAGE,  
+which indicates that a processing step was applied to the original image.     
+                                                                              
+                                                                              
+                                                                              
+REFERENCES                                                                    
+                                                                              
+Martin, T.Z., Martin, M.D., Davis, R.L., Mehlman, R., Braun, M., Johnson      
+M.: October 3, 1988, Standards for the Preparation and Interchange of         
+Data Sets, Version 1.1, JPL D-4683.                                           
+                                                                              
+Wells, D.C., Greisen, E.W., and Harten, R.H.: 1981, Astron. Astrophys.        
+Suppl. Ser. 44, 363.                                                          

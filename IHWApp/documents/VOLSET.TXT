@@ -1,0 +1,175 @@
+***** FIle VOLSET.TXT                                                         
+                                                                              
+This file contains a listing of the number of files and number of bytes for   
+each of the types of data within the data directories.  The break down is     
+by CD-ROM volume (HAL_0019 through HAL_0023) and letter code for the subnets. 
+This count does not include the separate meteor, ancient astrometry,          
+calibration, index, and other ancillary directories.                          
+                                                                              
+The net column gives the letter code of the CD-ROM file name.  There are      
+three pairs of columns following the net column one pair for the counts of    
+FITS header files, one pair for the counts of the PDS label files, and one    
+pair for the dat files without regard to the kind of data.                    
+                                                                              
+                                 HAL_0019                                     
+                                                                              
+      net      FITS HEADER        PDS LABEL            DATA                   
+          files      bytes   files     bytes   files     bytes                
+                                                                              
+      AST  2916     8398080  2916     3965760  2916     8398080               
+      IRI    47      210240    47       87360    47      446400               
+      IRP    77      924480    77      967120    77      244800               
+      IRP     6       69120     6       75840     6       17280               
+      IRS    11       63360    11       35760    11       31680               
+      LSP   490     3381120   490      792960   182     8922240               
+      NNS   469     2701440   469      900480   469   217995840               
+      PFL   488     4216320   488     5192320   488     1405440               
+      PMA   334     2885760   334     3540160   334      964800               
+      PPO    82      944640    82      984000    82      236160               
+      PST     0           0     0           0     0           0               
+      RSC    34      262080    34       59360    10     5267520               
+      RSO     5       43200     5       17680     5     4481280               
+      RSO   748     6635520   748     3179440   748    52280640               
+      RSR     1        8640     1        4640     1        2880               
+      RSS    66      561600    66      136000    32       92160               
+      SPE  1008     6477120  1008     2650640  1008   131071680               
+      AMD   420     1955520   420      604800     0           0               
+      AMP   395     2260800   395      568800     0           0               
+      AMS     2       11520     2        2880     0           0               
+      AMV  3303    38062080  3303    37257840  3303     9512640               
+                                                                              
+  TOTALS  10902    80072640 10902    61023840  9719   441371520               
+                                              31523   582468032               
+                                                                              
+                             HAL_0020                                         
+                                                                              
+      net      FITS HEADER        PDS LABEL            DATA                   
+          files      bytes   files     bytes   files     bytes                
+                                                                              
+      AST  1597     4599360  1597     2171920  1597     4599360               
+      IRI    27       89280    27       50000    27      308160               
+      IRP    38      455040    38      477280    38      109440               
+      IRP     2       23040     2       25280     2        5760               
+      IRS    19       95040    19       48400    11       31680               
+      LSP   708     5042880   708     1194320   370    14552640               
+      NNS   600     3456000   600     1152000   600   225524160               
+      PFL   144     1244160   144     1532160   144      414720               
+      PMA   170     1468800   170     1807360   170      489600               
+      PPO    32      368640    32      384000    32       92160               
+      PST     1       11520     1       12320     1        2880               
+      RSC     9       80640     9       38960     5     7787520               
+      RSO     1        8640     1        2080     1      308160               
+      RSO   353     3216960   353     1447200   353    35818560               
+      RSR     0           0     0           0     0           0               
+      RSS    54      446400    54      160640    28    39951360               
+      SPE   897     6125760   897     2406080   897    58970880               
+      AMD   425     2030400   425      612000     0           0               
+      AMP   517     2963520   517      744480     0           0               
+      AMS    24      138240    24       34560     0           0               
+      AMV  3267    37638720  3267    36851760  3267     9408960               
+                                                                              
+  TOTALS   8885    69503040  8885    51152800  7543   398376000               
+                                              25313   519031840               
+                                                                              
+                            HAL_0021                                          
+                                                                              
+      net      FITS HEADER        PDS LABEL            DATA                   
+          files      bytes   files     bytes   files     bytes                
+                                                                              
+      AST   726     2090880   726      987360   726     2090880               
+      IRI    11       63360    11       20640    11       43200               
+      IRP    64      740160    64      803840    64      195840               
+      IRP     2       23040     2       25280     2        5760               
+      IRS    37      172800    37       99520    23       66240               
+      LSP  1485    10863360  1485     2493680   742    33819840               
+      NNS  1035     5961600  1035     1987200  1035   372159360               
+      PFL  1110     9590400  1110    11810400  1110     3196800               
+      PMA    21      181440    21      221760    21       60480               
+      PPO    38      437760    38      456000    38      109440               
+      PST     5       57600     5       61600     5       14400               
+      RSC    49      423360    49       71040     1       34560               
+      RSO     0           0     0           0     0           0               
+      RSO   272     2520000   272     1067120   272      783360               
+      RSR     0           0     0           0     0           0               
+      RSS    49      411840    49      111520    32       92160               
+      SPE   556     4639680   556     1476080   556   104935680               
+      AMD   274     1134720   274      394560     0           0               
+      AMP   864     4769280   864     1244160     0           0               
+      AMS    13       74880    13       18720     0           0               
+      AMV  2209    25450560  2209    24917520  2209     6361920               
+                                                                              
+  TOTALS   8820    69606720  8820    48268000  6847   523969920               
+                                              24487   641844672               
+                                                                              
+                              HAL_0022                                        
+                                                                              
+      net      FITS HEADER        PDS LABEL            DATA                   
+          files      bytes   files     bytes   files     bytes                
+                                                                              
+      AST  1163     3349440  1163     1581680  1163     3365960               
+      IRI    10       51840    10       18640    10       77760               
+      IRP    54      622080    54      678240    54      155520               
+      IRP     4       46080     4       50560     4       11520               
+      IRS    17       95040    17       50160    14       40320               
+      LSP   695     4970880   695     1151920   315    15275520               
+      NNS   951     5477760   951     1825920   951   372228480               
+      PFL   758     6549120   758     8065120   758     2183040               
+      PMA   194     1676160   194     2060800   194      558720               
+      PPO    31      357120    31      372000    31       89280               
+      PST     3       34560     3       36960     3        8640               
+      RSC     5       40320     5        7200     0           0               
+      RSO     0           0     0           0     0           0               
+      RSO   284     2520000   284     1182080   284      817920               
+      RSR     0           0     0           0     0           0               
+      RSS    20      172800    20       48000    15       43200               
+      SPE   894     6511680   894     2340320   894   151865280               
+      AMD   175      734400   175      252000     0           0               
+      AMP   391     2168640   391      563040     0           0               
+      AMS     6       34560     6        8640     0           0               
+      AMV  2761    31812480  2761    31144080  2761     7951680               
+                                                                              
+  TOTALS   8416    67224960  8416    51437360  7452   554672832               
+                                              24284   673335168               
+                                                                              
+                           HAL_0023                                           
+                                                                              
+      net      FITS HEADER        PDS LABEL            DATA                   
+          files      bytes   files     bytes   files     bytes                
+                                                                              
+    ASTR     73      210240    73       99280    73      210240               
+    IRIM      0           0     0           0     0           0               
+    IRPH      4       46080     4       50240     4       23040               
+    IRPOL     0           0     0           0     0           0               
+    IRSP      0           0     0           0     0           0               
+    LSPN      5       43200     5        8400     3      196608               
+    NNSN    468     2695680   468      898560   468   443183104               
+    PFLX      0           0     0           0     0           0               
+    PMAG     25      216000    25      266000    25      102400               
+    PPOL      0           0     0           0     0           0               
+    PSTOKE    0           0     0           0     0           0               
+    RSCN      0           0     0           0     0           0               
+    RSOC      0           0     0           0     0           0               
+    RSOH      0           0     0           0     0           0               
+    RSRDR     0           0     0           0     0           0               
+    RSSL      0           0     0           0     0           0               
+    SPEC     13       74880    13       34320    13       86400               
+    AMDR      0           0     0           0     0           0               
+    AMPG      3       17280     3        4320     0           0               
+    AMSP      0           0     0           0     0           0               
+    AMV     101     1163520   101     1139280   101      290880               
+                                                                              
+ TOTALS     692     4466880   692     2500400   687   444092672               
+                                               2071   451059952               
+                                                                              
+The total file count and the total byte count for each disk as well as the    
+grand totals are shown below:                                                 
+                                                                              
+   disk      files            bytes                 Date Ranges               
+                                             from                   to        
+ HAL_0019     31,523    582,468,032    December 02, 1981    December 08, 1985 
+ HAL_0020     25,313    519,031,840    December 09, 1985    Feburary 09, 1986 
+ HAL_0021     24,487    641,844,672    Feburary 10, 1986    April    13, 1986 
+ HAL_0022     24,283    673,335,168    April    14, 1986    April    03, 1987 
+ HAL_0023      2,071    451,059,952    April    04, 1987    April    12, 1989 
+                                                                              
+             107,677  2,867,739,664                                           

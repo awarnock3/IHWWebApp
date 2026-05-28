@@ -1,0 +1,148 @@
+***** File SUMMARY.TXT                                                        
+                                                                              
+     The volume of ground-based Halley data archived by the nine IHW          
+Disciplines is sufficiently large that, even when the Large-Scale Phenomena   
+(L-SP) image arrays have been substantially subsampled, five CD-ROMs (IHW     
+Volumes 19-23) are required to hold the data.  The full-resolution L-SP images
+themselves take up 18 CD-ROMs (Volumes 1-18).  Not including the separate     
+header (extension=.HDR) and PDS label (.LBL) files, the number of datafiles on
+the so-called "mixed discs" (Volumes 19-23) is 37,844.  Due to the archiving  
+of multiple observations within FITS tables by some of the Disciplines, the   
+number of individual IHW observations is substantially greater than the file  
+count just mentioned, however.  The table below lists the number of           
+observations for each of the IHW Disciplines and sub-Disciplines:             
+                                                                              
+                                                                              
+                                                                              
+                	TABLE I                                                      
+                                                                              
+NUMBER OF INDIVIDUAL OBSERVATIONS FOR EACH IHW DISCIPLINE                     
+                                                                              
+DISCIPLINE                       Sub-DISCIPLINE  NUMBER                       
+                                                                              
+Astrometry                                        6475                        
+                                                                              
+Infrared Studies                                                              
+                                 Image              95                        
+                                 Photometry       2204                        
+                                 Polarimetry       137                        
+                                 Spectroscopy       84                        
+                                                                              
+Large-Scale Phenomena                             3383                        
+                                                                              
+Meteor Studies                                                                
+                                 Radar            6962                        
+                                 Visual           1624                        
+                                                                              
+Near Nucleus Studies                              3523                        
+                                                                              
+Photometry & Polarimetry                                                      
+                                 Broad Band       3318                        
+                                 Narrow Band     18495                        
+                                 Polarimetry       752                        
+                                 Stokes Parameter  164                        
+                                                                              
+Radio Studies                                                                 
+                                 Continuum          97                        
+                                 Occultation         6                        
+                                 OH (molecule)    1657                        
+                                 Radar               1                        
+                                 Spectral Line     189                        
+                                                                              
+Spectroscopy & Spectrophotometry                  3368                        
+                                                                              
+Amateur Observations                                                          
+                                 Drawing          1294                        
+                                 Photography      2170                        
+                                 Spectroscopy       45                        
+                                 Visual          11641                        
+                                                                              
+                                                                              
+     The actual number of files is larger than 37,844 because that count does 
+not include FITS headers and PDS label files.  There are 5468 "dataless"      
+observations (header and label files only), making the total data-related file
+count (2*5,468 + 3*32,376) = 108,064.  Also, there are 2717 directory files   
+not included in the counts.                                                   
+                                                                              
+     On these mixed discs (Volumes 19-23) the Halley and Halley-related data  
+are located in chronological directories.  The directory names are based on   
+date, specified by the year, month, UT day and hours; not all directory names 
+include all these time parameters.  The naming of data directories by time    
+means that the disc "time splits" can be shown by listing the first and last  
+data directories for each CD-ROM Volume:                                      
+                                                                              
+                                                                              
+         Chronological Range of "Mixed" CD-ROMs                               
+                                                                              
+disc          start date                  stop date                           
+                                                                              
+ 19                 /Y1981/             /Y1985/M12/D08/                       
+ 20         /Y1985/M12/D09/             /Y1986/M02/D09/                       
+ 21         /Y1986/M02/D10/             /Y1986/M04/D13/                       
+ 22         /Y1986/M04/D14/             /Y1987/M04/D03/                       
+ 23         /Y1987/M04/D04/             /Y1989/M04/D12/                       
+                                                                              
+                                                                              
+     Some Disciplines submitted non-Halley data, which include filter tables, 
+non-comet images, flat fields, and laboratory spectra.  While many of these   
+have been placed in the standard (chronologically-based) data directories,    
+they have also been located in separate directories on Volume 23:             
+specifically, CALIB and IR_FILTR.   Finally, Astrometry data sets for the     
+apparitions of 1835 and 1909 are contained in separate directories on Volumes 
+19-23, and the entire Meteor Studies Discipline dataset is contained in a     
+dedicated directory on Volume 23.                                             
+                                                                              
+     The IHW dataset collection includes images, spectra, data tables, textual
+descriptions, and indices; as indicated earlier, some "dataless" files only   
+point to existing observations but do not include data.  To provide the       
+Archive user the ability to conduct sophisticated searches based on time,     
+IHW Discipline, or any in a wide variety of FITS keywords, several types of   
+indices have been placed on these discs.  The so-called "Quick Look Indices", 
+whose files are named QUIK_0nn.* (where nn=19-23), contain all the mandatory  
+IHW keywords for each of the archived datafiles (including dataless); these   
+indices are located in the /INDEX directory on each disc, and corrected       
+versions of all five indices have been placed in the /SUMMARY/INDEX directory 
+of this disc (Volume 23).                                                     
+                                                                              
+     Several of the Disciplines wished to index more than just the mandatory  
+keyword set and constructed "Discipline-specific indices", which contain      
+entries for nearly all of the FITS keywords present in the respective headers.
+These indices, which bear the generic name NET*.*, are contained in the       
+/INDEX/NETABLES directory of each mixed disc, as are indices containing       
+parameters which may be published in the so-called "Printed Archive".  Of the 
+latter (Printed Archive) indices, there is with one exception (Radio Studies  
+Spectral Line index, which includes OH data) one index table per Discipline or
+sub-Discipline, and contained in some of these indices are actual data.  Thus,
+such indices are directly useable (without referring to the original          
+datafiles), to plot light curves, extract positions, and identify meteor      
+trails, for example.                                                          
+                                                                              
+     Production of these IHW CD-ROMs took place at the NASA/Goddard Space     
+Flight Center after all the IHW data were transferred from the IHW Lead Center
+at JPL to NASA/GSFC in 1990-1991.  The actual production benefited from a     
+number of factors:  use of the National Space Science Data Center's (NSSDC)   
+CD-ROM pre-mastering facility; a number of outside peer reviews of two        
+prototype test discs; and the generation of CD-ROM Write Once discs at the    
+Data Distribution Lab of the PDS at JPL.  A more complete discussion of how   
+the final CD-ROMs were made is contained in the files ACKNWLDG.TXT and        
+VOLINFO.TXT on this disc.                                                     
+                                                                              
+     Finally, there are two important printed volumes to mention.   The Comet 
+Halley Archive Summary Volume edited by Sekanina and Fry (1) contains chapters
+from each of the Discipline Specialist Teams describing the collection and    
+processing of the data.   Other articles enumerate activites associated with  
+actual production of the CD-ROMs, from which this discussion has been drawn. A
+second production (2) due out is the IHW Atlas of Large-Scale Phenomena       
+(Brandt, Niedner, and Rahe, 1992) that is being produced at the University of 
+Colorado/Laboratory for Atmospheric and Space Physics (a comet subnode of PDS 
+Small Bodies Node).  There has been no decision regarding an independent      
+Printed Archive volume(s); however, now that the data have been transferred to
+NASA/Goddard Space Flight Center (cf. ACKNWLDG.TXT and VOLINFO.TXT files on   
+this disc), there are renewed discussions to make a version of the Printed    
+Archive to complement the IHW CD-ROMs.                                        
+                                                                              
+1. Sekanina, Z. and Fry, L. (1991), The Comet Halley Archive Summary Volume,  
+JPL 400-450, Jet Propulsion Laboratory, Pasadena, California, August, 1991.   
+                                                                              
+2. Brandt, J. C., Niedner, M. B., and Rahe, J. (1992), IHW Atlas of           
+Large-Scale Phenomena, in press.                                              

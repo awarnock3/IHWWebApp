@@ -1,0 +1,106 @@
+***** File FITSFORM.TXT                                                       
+                                                                              
+                                                                              
+                         FITS Data Descriptions                               
+                                                                              
+                                                                              
+     The International Halley Watch agreed early in the project that all data 
+would be submitted from the individual Disciplines to the Lead Center using   
+the FITS format (Wells et al., 1981).  When the decision was made to          
+distribute this information on CD-ROM, it was determined that the data had to 
+have even broader accessibility.  For this reason the original FITS files,    
+with contiguous headers and data, were split into separate files              
+distinguishable by their filename extensions (.HDR for headers).  The file    
+sizes were preserved as multiples of 2880 bytes, allowing the original FITS   
+byte stream to be recovered by concatenating the appropriate header and       
+datafile.  PDS labels were constructed to allow definition of the datafiles   
+for the Planetary Data System.   For each datafile there must always be an    
+associated FITS header. In cases where no digital data had been supplied the  
+.HDR file carries information about upper limits, values reported by          
+observers, references gleaned from the literature, or the characteristics of  
+data in analog form. The table below identifies these "dataless" files and    
+provides the correspondence between file extension and types of data so that a
+concatenated file (.FIT) can be reconstructed.                                
+                                                                              
+     The convention for naming files on the IHW CD-ROMs was proposed by the   
+Lead Center and NASA/Goddard Space Flight Center (GSFC) personnel to include a
+unique data qualifier for the data.  Specifically, a set of subnet codes was  
+established to enable identification of the IHW Discipline/subdiscipline from 
+the filename itself.  A CD-ROM running number and file extension complete the 
+filename (example:  LSPN0059.IBG).  A short list of this convention by        
+Discipline and subnet (or experiment) is given below:                         
+                                                                              
+                                                                              
+  PDS Object              FITS  Discipline      Subnet    File Extensions     
+ (description)         NAXIS =                   Code     (.HDR+.EXT=.FIT)    
+_________________________________________________________________________     
+                                                                              
+text                       1    Astrometry       ASTR      .hdr  .dat         
+fits_label (no data)       0    IR Studies       IRSP      .hdr               
+table (filter)             0,2        "          IRFT      .hdr  .tab         
+table (photometry)         0,2        "          IRPH      .hdr  .tab         
+table (polarimetry)        0,2        "          IRPOL     .hdr  .tab         
+spectrum (filter)          2          "          IRFC      .hdr  .dat         
+spectrum                   2          "          IRSP      .hdr  .dat         
+image                      2          "          IRIM      .hdr  .img         
+fits_label (no data)       0    Large Scale Phen LSPN      .hdr               
+image(browse)              2          "          LSPN      .hdr  .ibg         
+image                      2    Near Nucleus     NNSN      .hdr  .img         
+table (narrow band)        0,2  Photometry Polar PFLX      .hdr  .tab         
+table (broad band)         0,2        "          PMAG      .hdr  .tab         
+table (polarization)       0,2        "          PPOL      .hdr  .tab         
+table (Stokes parameters)  0,2        "          PSTOKE    .hdr  .tab         
+fits_label (no data)       0    Radio Studies    RSCN      .hdr               
+fits_label (no data)       0          "          RSSL      .hdr               
+spectrum                   1          "          RSSL      .hdr  .dat         
+spectrum (multiple)     1 or 2        "          RSOH      .hdr  .dat         
+spectrum (multiple)        2          "          RSRDR     .hdr  .dat         
+image                      2          "          RSCN      .hdr  .img         
+image(multiple)            3          "          RSOC      .hdr  .img         
+spectrum (visibility)      6          "          RSCN      .hdr  .dat         
+spectrum (visibility)      6          "          RSOH      .hdr  .dat         
+spectrum (visibility)      6          "          RSSL      .hdr  .dat         
+spectrum                   1    Spectroscopy     SPEC      .hdr  .dat         
+spectral image qube        2          "          SPEC      .hdr  .dat         
+image (spectrum)           2          "          SPEC      .hdr  .img         
+fits_label (no data)       0    Amateur Studies  AMDR      .hdr               
+fits_label (no data)       0        "            AMPG      .hdr               
+fits_label (no data)       0        "            AMSP      .hdr               
+table (magnitude)          0,2      "            AMV       .hdr  .tab         
+table (radar)              0,2  Meteor Studies   MSNRDR    .hdr  .tab         
+table (visual)             0,2      "            MSNVIS    .hdr  .tab         
+_________________________________________________________________________     
+                                                                              
+A table linking the subnet codes above and the subdiscipline names is given in
+Section 5 ('Filenaming Conventions') of the file HALGUIDE.TXT.  Concerning the
+numeric portion of filenames, calibration files for IRIM, IRSP, LSPN, and SPEC
+begin at 4001, whereas the Halley data themselves for all disciplines and     
+subdisciplines start at 0001.                                                 
+                                                                              
+     The file extensions follow suggestions by the Planetary Data System      
+(SPIDS v1.1; Martin et al., 1988) for tabular and image data.  In addition,   
+for IHW FITS, the original headers and data were split into separate files,   
+with filename extensions as listed below.                                     
+                                                                              
+                 .DAT - other non-image and non-tabular data                  
+                 .FIT - original FITS file                                    
+                 .HDR - FITS header records                                   
+                 .IBG - data records for subsampled browse image              
+                 .IMG - image data records                                    
+                 .TAB - table data records as ASCII                           
+                                                                              
+     The five PDS objects in this archive are FITS_LABEL (header), IMAGE,     
+TABLE, TEXT, and SPECTRUM; a label occurs for each datafile.  Our aim was to  
+construct a basic PDS label for each data file on the CD-ROM.   Files that    
+remain in the original FITS form do not have a PDS label; these can occur as  
+DOCUMENT files and datafiles for Comet Crommelin and Comet Giacobini-Zinner.  
+                                                                              
+                                                                              
+REFERENCES                                                                    
+                                                                              
+Martin, T.Z., Martin, M.D., Davis, R.L., Mehlman, R., Braun, M., Johnson      
+M.: October 3, 1988, Standards for the Preparation and Interchange of         
+Data Sets, Version 1.1, JPL D-4683.                                           
+                                                                              
+Wells, D.C., Greisen, E.W., and Harten, R.H.: 1981, Astron. Astrophys.        
+Suppl. Ser. 44, 363.                                                          

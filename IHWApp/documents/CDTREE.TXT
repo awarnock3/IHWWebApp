@@ -1,0 +1,409 @@
+  |--AAREADME.TXT      Basic instructions and information for this CD-ROM                                                         
+  |--ACKNWLDG.TXT      Acknowledgements, History of IHW CD-ROM Production                                                         
+  |--VOLDESC.SFD       Volume descriptor file, required by NSSDCA                                                                 
+  |                                                                                                                               
+  |--AST_HIST       |--ANCTINFO.TXT      Describes contents of this directory                                                     
+  |                 |                                                                                                             
+  |                 |--Y1835_36.HDR      Ancient Astrometry for 1835 - 1836 apparition, FITS Header                               
+  |                 |--Y1835_36.LBL                         "                         , PDS  Label                                
+  |                 |--Y1835_36.TAB                         "                         , FITS Table                                
+  |                 |--Y1909_11.HDR      Ancient Astrometry for 1909 - 1911 apparition, FITS Header                               
+  |                 |--Y1909_11.LBL                         "                         , PDS  Label                                
+  |                 |--Y1909_11.TAB                         "                         , FITS Table                                
+  |                 |                                                                                                             
+  |                                                                                                                               
+  |--CALIB----------|--CALINFO.TXT       Describes the contents of this directory                                                 
+  |                 |                                                                                                             
+  |                 |--IRSTUD---------|--CALIB_IR.TXT     Description of Infrared Studies Discipline calibration data             
+  |                 |                 |                                                                                           
+  |                 |                 |--IRIM4001.*   \                                                                           
+  |                 |                 |    ..             Infrared calibration data (38*3 files)                                  
+  |                 |                 |--IRSP4009.*   /                                                                           
+  |                 |                                                                                                             
+  |                 |--LSPN-----------|--CALIB_LS.TXT     Description of Large-Scale Phenomena Discipline calibration data        
+  |                 |                 |                                                                                           
+  |                 |                 |--LSPN4001.*   \                                                                           
+  |                 |                 |      ..           Large-Scale Phenomena calibration data (173*3 files)                    
+  |                 |                 |--LSPN4173.*   /                                                                           
+  |                 |                                                                                                             
+  |                 |                                                                                                             
+  |                 |--SPECTR---------|--CALIB_SP.TXT     Description of Spectroscopy Discipline calibration data                 
+  |                 |                 |                                                                                           
+  |                 |                 |--HAL_0019------|--SPEC4001.*   \                                                          
+  |                 |                 |                |      ..          Spectroscopy calibration data (136*3 files)             
+  |                 |                 |                |--SPEC4136.*   /                                                          
+  |                 |                 |                |                                                                          
+  |                 |                 |                                                                                           
+  |                 |                 |--HAL_0020------|--SPEC4137.*   \                                                          
+  |                 |                 |                :      ..          Spectroscopy calibration data (138*3 files)             
+  |                 |                 |                |--SPEC4274.*   /                                                          
+  |                 |                 |                |                                                                          
+  |                 |                 |                                                                                           
+  |                 |                 |--HAL_0021------|--SPEC4275.*   \                                                          
+  |                 |                 |                :      ..          Spectroscopy calibration data (23*3 files)              
+  |                 |                 |                |--SPEC4297.*   /                                                          
+  |                 |                 |                |                                                                          
+  |                 |                 |                                                                                           
+  |                 |                 |--HAL_0022------|--SPEC4298.*   \                                                          
+  |                 |                 |                :      ..          Spectroscopy calibration data (132*3 files)             
+  |                 |                 |                |--SPEC4429.*   /                                                          
+  |                 |                 |                |                                                                          
+  |                 |                 |                                                                                           
+  |                 |                 |--HAL_0023------|--SPEC4430.*   \                                                          
+  |                 |                 |                :      ..          Spectroscopy calibration data (9*3 files)               
+  |                 |                 |                |--SPEC4438.*   /                                                          
+  |                 |                 |                |                                                                          
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                                                                                                                               
+  |                                                                                                                               
+  |--DOCUMENT       |--DOCUINFO.TXT      Describes contents of this directory                                                     
+  |                 |                                                                                                             
+  |                 |--ACKNWLDG.TXT      Acknowledgements, History of IHW CD-ROM Production                                       
+  |                 |--BROWSE.TXT        Describes the L-SP Browse images                                                         
+  |                 |--CDTREE.TXT        This file                                                                                
+  |                 |--DATATREE.TXT      Complete tree structure of the data files on this CD-ROM (HAL_0023)                      
+  |                 |--EPHEM.TXT         Describes P/Halley ephemeris generation and tables                                       
+  |                 |--FITSFORM.TXT      FITS Data descriptions                                                                   
+  |                 |--FITSHDRS.TXT      A sample of the FITS headers as used by the IHW Disciplines                              
+  |                 |--FITS_IHW.TXT      Description of IHW mandatory FITS keyword formats                                        
+  |                 |--HALGUIDE.TXT      Guide to the use of this CD-ROM                                                          
+  |                 |--HDRFORM.TXT       FITS Header descriptions                                                                 
+  |                 |--IMAGFORM.TXT      Image Data descriptions                                                                  
+  |                 |--LBLFORM.TXT       PDS Label descriptions                                                                   
+  |                 |--OBSNTERP.TXT      Description of the ephemeris interpolation program                                       
+  |                 |--PATHTABL.TXT      Description of the PATHTABL.* index files                                                
+  |                 |--PDSLABEL.TXT      PDS label templates                                                                      
+  |                 |--PDS_IHW.TXT       Listing of PDS label forms for IHW                                                       
+  |                 |--SPECFORM.TXT      Spectral Data descriptions                                                               
+  |                 |--TABLFORM.TXT      Table Data descriptions                                                                  
+  |                 |--TEXTFORM.TXT      Text Data descriptions                                                                   
+  |                 |--SUMMARY.TXT       Overview of IHW Archive                                                                  
+  |                 |--VOLINFO.TXT       Complete description of CD-ROM archive and its use                                       
+  |                 |--VOLSET.TXT        Discipline and Sub-Discipline file counts for CD-ROM volumes HAL_0019 - HAL_0023         
+  |                 |                                                                                                             
+  |                 |--APPENDIX       |--APNDINFO.TXT      Describes the contents of this directory                               
+  |                 |                 |                                                                                           
+  |                 |                 |--PREFACE.TXT       Preface written by Ray L. Newburn and Juergen Rahe                     
+  |                 |                 |                                                                                           
+  |                 |                 |--AMATEUR.APX       Amateur Discipline appendix                                            
+  |                 |                 |--ASTROM.APX        Astrometry Discipline appendix                                         
+  |                 |                 |--IR.APX            Infrared Studies Discipline appendix                                   
+  |                 |                 |--LS_PHEN.APX       Large-Scale Phenomena Discipline appendix                              
+  |                 |                 |--METEOR.APX        Meteor Studies Discipline appendix                                     
+  |                 |                 |--NEAR_NUC.APX      Near Nucleus Studies Discipline appendix                               
+  |                 |                 |--PHOTOM.APX        Photometry and Polarimetry Discipline appendix                         
+  |                 |                 |--RADIO.APX         Radio Science Discipline appendix                                      
+  |                 |                 |--SPECTR.APX        Spectroscopy and Spectrophotometry Discipline appendix                 
+  |                 |                 |                                                                                           
+  |                 |                 |--SP_CODE.IDX       Delimited table of Spectroscopy DISCODE keyword                        
+  |                 |                 |--SP_HIST.DAT       Histogram of observations for Spectroscopy Network                     
+  |                 |                 |                                                                                           
+  |                 |                 |--SOL_ATLS       |--ATLSINFO.TXT  Describes contents of this directory                     
+  |                 |                 |                 |                                                                         
+  |                 |                 |                 |--SOLATLS1.FIT  Solar atlas contributed by A'Hearn                       
+  |                 |                 |                 |--SOLATLS2.FIT  Solar atlas contributed by Kurucz                        
+  |                 |                 |                 |--SOLATLS3.FIT  Solar atlas contributed by Kurucz                        
+  |                 |                 |                 |                                                                         
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--INTRODOC       |--ANCTINFO.TXT      Describes the contents of AST_HIST directory                           
+  |                 |                 |--APNDINFO.TXT      Describes the contents of APPENDIX subdirectory                        
+  |                 |                 |--ATLSINFO.TXT      Describes the contents of SOL_ATLS subdirectory                        
+  |                 |                 |--BROWINFO.TXT      Describes the contents of BROWSE   subdirectory                        
+  |                 |                 |--CALINFO.TXT       Describes the contents of CALIB    directory                           
+  |                 |                 |--CMPRINFO.TXT      Describes the contents of COMPRESS subdirectory                        
+  |                 |                 |--DCMPINFO.TXT      Describes the contents of DECOMP   subdirectory                        
+  |                 |                 |--DOCUINFO.TXT      Describes the contents of DOCUMENT directory                           
+  |                 |                 |--EPHINFO.TXT       Describes the contents of EPHEM    directory                           
+  |                 |                 |--ERRSINFO.TXT      Describes the contents of ERRATA   subdirectory                        
+  |                 |                 |--FTBINFO.TXT       Describes the contents of FTB      subdirectory                        
+  |                 |                 |--IMDPINFO.TXT      Describes the contents of IMDISP   subdirectory                        
+  |                 |                 |--INDXINFO.TXT      Describes the contents of INDEX    directory                           
+  |                 |                 |--IRFINFO.TXT       Describes the contents of IR_FILTR directory                           
+  |                 |                 |--ITRPINFO.TXT      Describes the contents of OBSNTERP subdirectory                        
+  |                 |                 |--METINFO.TXT       Describes the contents of METEOR   directory                           
+  |                 |                 |--NETINFO.TXT       Describes the contents of NETABLES subdirectory                        
+  |                 |                 |--OBSRINFO.TXT      Describes the contents of OBSERVER subdirectory                        
+  |                 |                 |--OBSVINFO.TXT      Describes the contents of OBSVTORY subdirectory                        
+  |                 |                 |--OTHRINFO.TXT      Describes the contents of OTHER    subdirectory                        
+  |                 |                 |--SOFTINFO.TXT      Describes the contents of SOFTWARE directory                           
+  |                 |                 |--SUMINFO.TXT       Describes the contents of SUMMARY  directory                           
+  |                 |                 |--UTILINFO.TXT      Describes the contents of UTILS    subdirectory                        
+  |                 |                 |--NDXINFO.TXT       Describes the contents of INDEX    subdirectory                        
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--OBSERVER       |--OBSRINFO.TXT      Describes the contents of this directory                               
+  |                 |                 |                                                                                           
+  |                 |                 |--AON_OBSR.TXT      List of observers for Amateur Network                                  
+  |                 |                 |--AST_OBSR.TXT      List of observers for Astrometry Network                               
+  |                 |                 |--IRS_OBSR.TXT      List of observers for Infrared Network                                 
+  |                 |                 |--LSP_OBSR.TXT      List of observers for Large-Scale Phenomena Network                    
+  |                 |                 |--MSS_OBSR.TXT      List of observers for Meteor Network                                   
+  |                 |                 |--NNS_OBSR.TXT      List of observers for Near Nucleus Network                             
+  |                 |                 |--PPN_OBSR.TXT      List of observers for Photometry Network                               
+  |                 |                 |--RSN_OBSR.TXT      List of observers for Radio Network                                    
+  |                 |                 |--SSN_OBSR.TXT      List of observers for Spectroscopy Network                             
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--OBSVTORY       |--OBSVINFO.TXT      Describes the contents of this subdirectory                            
+  |                 |                 |                                                                                           
+  |                 |                 |--OBSCODES.TXT      Tables of Observatory information and System codes                     
+  |                 |                 |--COUNTRY.TXT       List of IHW Country codes                                              
+  |                 |                 |--IAU.TXT           List of IAU Observatory numbers                                        
+  |                 |                 |--NOIAU.TXT         List of IHW contributing facilities without IAU numbers                
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                                                                                                                               
+  |--EPHEM          |--EPHINFO.TXT       Describes the contents of this directory                                                 
+  |                 |                                                                                                             
+  |                 |--EPHEM.TAB         P/Halley Ephemeris table                                                                 
+  |                 |--EPHEM.TXT         Description of P/Halley ephemeris generation                                             
+  |                 |                                                                                                             
+  |                                                                                                                               
+  |--INDEX          |--INDXINFO.TXT      Describes the contents of this directory                                                 
+  |                 |                                                                                                             
+  |                 |--CDSTRUCT.DBF      CD-ROM structure file, DBASE information file                                            
+  |                 |--CDSTRUCT.HDR                "          , FITS Header                                                       
+  |                 |--CDSTRUCT.IDX                "          , DBASE delimited table                                             
+  |                 |--CDSTRUCT.LBL                "          , PDS Label                                                         
+  |                 |--CDSTRUCT.STR                "          , DBASE structure file                                              
+  |                 |--EPHEM.*           P/HALLEY ephemeris files (5 files)                                                       
+  |                 |--PATHTABL.*        CD-ROM path table files (5 files)                                                        
+  |                 |--QUIK_023.*        Quick Look table files (5 files)                                                         
+  |                 |--STRUCT.DBF        Empty structure file for use in Dbase IV                                                 
+  |                 |                                                                                                             
+  |                 |--NETABLES       |--NETINFO.TXT        Describes the contents of this directory                              
+  |                 |                 |                                                                                           
+  |                 |                 |--AM_DRAW.DBF        Printed Archive, Amateur Drawings, Dbase info. file                   
+  |                 |                 |--AM_DRAW.HDR                      "                  , FITS Header                        
+  |                 |                 |--AM_DRAW.LBL                      "                  , PDS  Label                         
+  |                 |                 |--AM_DRAW.IDX                      "                  , Dbase Table                        
+  |                 |                 |--AM_DRAW.STR                      "                  , Dbase Structure                    
+  |                 |                 |--AM_PHOTO.*         Printed Archive, Amateur Photographs                                  
+  |                 |                 |--AM_SPECT.*         Printed Archive, Amateur Spectra                                      
+  |                 |                 |--AM_VIS.*           Printed Archive, Amateur Visual observations                          
+  |                 |                 |--ASTROM.*           Printed Archive, Astrometry measurements                              
+  |                 |                 |--IR_IMAGE.*         Printed Archive, Infrared - 2-D Images                                
+  |                 |                 |--IR_PHOT.*          Printed Archive, Infrared - Photometric observations                  
+  |                 |                 |--IR_POL.*           Printed Archive, Infrared - Polarimetric observations                 
+  |                 |                 |--IR_SPECT.*         Printed Archive, Infrared - Spectral observations                     
+  |                 |                 |--LS_PHEN.*          Printed Archive, Large-Scale Phenomena observations                   
+  |                 |                 |--NEAR_NUC.*         Printed Archive, Near Nucleus observations                            
+  |                 |                 |--PHOT_FLX.*         Printed Archive, Photometry - Narrow band observations                
+  |                 |                 |--PHOT_MAG.*         Printed Archive, Photometry - Broad band observations                 
+  |                 |                 |--PHOT_POL.*         Printed Archive, Photometry - Polarimetric observations               
+  |                 |                 |--PHOT_STO.*         Printed Archive, Photometry - Stokes parameters observations          
+  |                 |                 |--RADIO_CN.*         Printed Archive, Radio - Continuum observations                       
+  |                 |                 |--RADIO_OC.*         Printed Archive, Radio - Occultation observations                     
+  |                 |                 |--RADIO_RR.*         Printed Archive, Radio - Radar observations                           
+  |                 |                 |--RADIO_SL.*         Printed Archive, Radio - Spectral line observations                   
+  |                 |                 |--SPECTR.*           Printed Archive, Spectroscopy observations                            
+  |                 |                 |                                                                                           
+  |                 |                 |--NETAMATV.*         Net-specific table, Amateur visual observations                       
+  |                 |                 |--NETLARGE.*         Net-specific table, Large-Scale Phenomena observations                
+  |                 |                 |--NETMETR.*          Net-specific table, Meteor - radar observations                       
+  |                 |                 |--NETMETV.*          Net-specific table, Meteor - visual observations                      
+  |                 |                 |--NETRADIO.*         Net-specific table, Radio observations                                
+  |                 |                 |--NETSPECT.*         Net-specific table, Spectroscopic observations                        
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                                                                                                                               
+  |                                                                                                                               
+  |--IR_FILTR-------|--IRFINFO.TXT      Describes the contents of this directory                                                  
+  |                 |                                                                                                             
+  |                 |--IRFC0001.*        46*3 files     \                                                                         
+  |                 |  IRFC0046.*                        \    Infrared filter curve data                                          
+  |                 |  IRFT0001.*        22*3 files      /                                                                        
+  |                 |  IRFT0022.*                       /                                                                         
+  |                 |                                                                                                             
+  |                                                                                                                               
+  |--METEOR---------|--METINFO.TXT       Describes the contents of this directory                                                 
+  |                 |                                                                                                             
+  |                 |--RADAR----------|--Y1984---------|--MSNRDR01.*  \                                                           
+  |                 |                 :                :                 Data tables for Meteor Studies Discipline, Radar Network 
+  |                 |                 |--Y1988---------|--MSNRDR50.*  /                                                           
+  |                 |                                                                                                             
+  |                 |--VISUAL---------|--Y1982---------|--MSNVIS01.*  \                                                           
+  |                 |                 |                |               \  Data tables for Meteor Studies Discipl., Visual Network 
+  |                                   :                                /                                                          
+  |                                   |--Y1987---------|--MSNVIS09.*  /                                                           
+  |                                   |                                                                                           
+  |                                                                                                                               
+  |                                                                                                                               
+  |--SOFTWARE       |--SOFTINFO.TXT      Describes the contents of this directory                                                 
+  |                 |                                                                                                             
+  |                 |--BROWSE---------|--BROWINFO.TXT     Describes the contents of this subdirectory                             
+  |                 |                 |                                                                                           
+  |                 |                 |--BROWSE.TXT       Explanation of MIDGET code (which creates L-SP browse images)           
+  |                 |                 |                                                                                           
+  |                 |                 |--MIDGET.FOR       Fortran source code                                                     
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--COMPRESS-------|--CMPRINFO.TXT     Describes the contents of this subdirectory                             
+  |                 |                 |                                                                                           
+  |                 |                 |--COMPRESS.TXT     Explanation of PACKER code (which compresses full-res. L-SP images)     
+  |                 |                 |                                                                                           
+  |                 |                 |--PACKER.FOR       Fortran source code                                                     
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--DECOMP---------|--DCMPINFO.TXT    Describes the contents of this subdirectory                              
+  |                 |                 |                                                                                           
+  |                 |                 |--DECOMP.C        \                                                                        
+  |                 |                 |  DO_DATA.C        \                                                                       
+  |                 |                 |  DO_DFILE.C        \                                                                      
+  |                 |                 |  DO_IFILE.C         \                                                                     
+  |                 |                 |  DO_OFILE.C          \                                                                    
+  |                 |                 |  HEADER.C             \                                                                   
+  |                 |                 |  MAKEFILE.C            \                                                                  
+  |                 |                 |  PCDECLSP.C                Mostly C-code modules for decompression of                     
+  |                 |                 |  PCDECLSP.COM          /    Large-Scale Phenomena compressed imagery                      
+  |                 |                 |  PCDECLSP.PRJ         /                                                                   
+  |                 |                 |  PCDECLSP.RSP        /                                                                    
+  |                 |                 |  PCDECLSP.TXT       /                                                                     
+  |                 |                 |  PUTKEY.C          /                                                                      
+  |                 |                 |  XTENSION.C       /                                                                       
+  |                 |                 |                                                                                           
+  |                 |                 |                                                                                           
+  |                 |                 |--PCDECLSP.EXE       MS-DOS executable decompression code                                  
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--OBSNTERP       |--ITRPINFO.TXT       Describes the contents of this subdirectory                           
+  |                 |                 |                                                                                           
+  |                 |                 |--OBSNTERP.TXT       Describes the ephemeris interpolation routine                         
+  |                 |                 |--VAXNTERP.EXE       VAX executable of the FORTRAN code                                    
+  |                 |                 |--PCNTERP.EXE        IBM PC MS-DOS executable of the FORTRAN code                          
+  |                 |                 |--OBSNTERP.FOR       7-point Lagrange interpolation program and associated subroutines     
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--FTB            |--FTBINFO.TXT        Describes the contents of this subdirectory                           
+  |                 |                 |                                                                                           
+  |                 |                 |--FTB.EXE            MS-DOS executable for the FITS Table Browser                          
+  |                 |                 |--FTBHELP.TXT        Internal Help file used by FTB                                        
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--IMDISP         |--IMDPINFO.TXT       Describes the contents of this subdirectory                           
+  |                 |                 |                                                                                           
+  |                 |                 |--CHANGES.DOC        History of changes made to IMDISP                                     
+  |                 |                 |--CONVERT.EXE        Pixel conversion program                                              
+  |                 |                 |--COPIN.EXE          Image copying program                                                 
+  |                 |                 |--CYCLE.BAT          PC MS-DOS batch file to color cycle each color palette                
+  |                 |                 |--IMDISP.DOC         User's guide for IMDISP version 7.7                                   
+  |                 |                 |--IMDISP.EXE         PC MS-DOS executable for IMDISP version 7.7                           
+  |                 |                 |--PAL.BAT            Batch file for displaying each color palette                          
+  |                 |                 |--PALETTES.ZIP       Compressed file of color palette collection                           
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--UTILS          |--UTILINFO.TXT       Describes the contents of this subdirectory                           
+  |                 |                 |                                                                                           
+  |                 |                 |--FITS2TXT.C         C code for the FITS2TXT utility                                       
+  |                 |                 |--FITS2TXT.COM       PC MS-DOS executable for FITS2TXT                                     
+  |                 |                 |--FITS2TXT.MAK       Make file for compiling FITS2TXT                                      
+  |                 |                 |                                                                                           
+  |                 |                 |--FITSXTND.C         C Code for the FITSXTND utility                                       
+  |                 |                 |--FITSXTND.EXE       PC MS-DOS executable for FITSXTND                                     
+  |                 |                 |--FITSXTND.MAK       Make file for compiling FITSXTND                                      
+  |                 |                 |                                                                                           
+  |                 |                 |--FITSUTIL.C         C code for the FITSUTIL utility                                       
+  |                 |                 |--FITSUTIL.EXE       PC MS-DOS executable for FITSUTIL                                     
+  |                 |                 |--FITSUTIL.TXT       Documentation describing FITSUTIL                                     
+  |                 |                 |                                                                                           
+  |                 |                 |--TXT2FITS.C         C code for the TXT2FITS utility                                       
+  |                 |                 |--TXT2FITS.COM       PC MS-DOS executable for TXT2FITS                                     
+  |                 |                 |--TXT2FITS.MAK       Make file for compiling TXT2FITS                                      
+  |                 |                 |                                                                                           
+  |                 |                 |--TEST.HDR           Sample FITS header                                                    
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                                                                                                                               
+  |                                                                                                                               
+  |--SUMMARY--------|--SUMINFO.TXT       Describes the contents of this directory                                                 
+  |                 |                                                                                                             
+  |                 |--ERRATA---------|--ERRSINFO.TXT       Describes the contents of this subdirectory                           
+  |                 |                 |                                                                                           
+  |                 |                 |--AMATEUR.TXT        Errata for Amateur Observations Discipline                            
+  |                 |                 |--ASTRMTRY.TXT       Errata, Astrometry Discipline                                         
+  |                 |                 |--DOCERRS.TXT        Errata for Documentation contained in HAL_0019--HAL_0022              
+  |                 |                 |--INDXERRS.TXT       Errata for Indices contained in HAL_0019--HAL_0022                    
+  |                 |                 |--INFRARED.TXT       Errata, Infrared Studies Discipline                                   
+  |                 |                 |--LS_PHEN.TXT        Errata, Large-Scale Phenomena Discipline                              
+  |                 |                 |--METEOR.TXT         Errata, Meteor Studies Discipline                                     
+  |                 |                 |--NEAR_NUC.TXT       Errata, Near Nucleus Studies Discipline                               
+  |                 |                 |--PHOTOM.TXT         Errata, Photometry & Polarimetry Discipline                           
+  |                 |                 |--RADIO.TXT          Errata, Radio Science Discipline                                      
+  |                 |                 |--SPECT.TXT          Errata, Spectroscopy & Spectrophotometry Discipline                   
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--INDEX----------|--NDXINFO.TXT        Describes the contents of this subdirectory                           
+  |                 |                 |                                                                                           
+  |                 |                 |--QUIK_019.*         Quick look table for HAL_0019 \     These are corrected files which   
+  |                 |                 |--QUIK_020.*         Quick look table for HAL_0020  \    supersede those on the individual 
+  |                 |                 |--QUIK_021.*         Quick look table for HAL_0021       discs.  If desired, they can be   
+  |                 |                 |--QUIK_022.*         Quick look table for HAL_0022  /    combined to make a global         
+  |                 |                 |--QUIK_023.*         Quick look table for HAL_0023 /     "Quick Look Index."               
+  |                 |                 |                                                                                           
+  |                 |                 |--PATH_019.*         PATHTABL for HAL_0019  \     These files could be                     
+  |                 |                 |--PATH_020.*         PATHTABL for HAL_0020   \    combined to create a                     
+  |                 |                 |--PATH_021.*         PATHTABL for HAL_0021        global path table for                    
+  |                 |                 |--PATH_022.*         PATHTABL for HAL_0022   /    use as a master index                    
+  |                 |                 |--PATH_023.*         PATHTABL for HAL_0023  /     of the data files.                       
+  |                 |                 |                                                                                           
+  |                 |                                                                                                             
+  |                 |--OTHER----------|--OTHRINFO.TXT       Describes content of this subdirectory                                
+  |                 |                 |                                                                                           
+  |                 |                 |--VOLD0019.TXT       Replacement for VOLDESC.SFD file on HAL_0019                          
+  |                 |                 |--VOLD0020.TXT       Replacement for VOLDESC.SFD file on HAL_0020                          
+  |                 |                 |--VOLD0021.TXT       Replacement for VOLDESC.SFD file on HAL_0021                          
+  |                 |                 |--VOLD0022.TXT       Replacement for VOLDESC.SFD file on HAL_0022                          
+  |                 |                 |                                                                                           
+  |                 |--SUMMARY.TXT                          Summarizes overall content of IHW Archive                             
+  |                                                                                                                               
+  |                                                                                                                               
+  |   ********************************************************************************                                            
+  |               FOR A COMPLETE TREE LISTING OF THE DATA DIRECTORIES, SEE THE FILE                                               
+  |               "DATATREE.TXT" IN THE DOCUMENT DIRECTORY.                                                                       
+  |   ********************************************************************************                                            
+  |                                                                                                                               
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                                                     
+                                                                                                                                  
+(FILE CODE WITH DISCIPLINE/SUBNETWORK DESIGNATIONS ORDERED BY IHW ID NUMBER)                                                      
+                                                                                                                                  
+      Discipline                 Number    Subnetwork         Letter Code                                                         
+                                                                                                                                  
+ Astrometry                        1           none              ASTR                                                             
+                                                                                                                                  
+ Infrared Studies                  2       Filter Curve          IRFC                                                             
+                                           Filter Table          IRFT                                                             
+                                           Image                 IRIM                                                             
+                                           Photometry            IRPH                                                             
+                                           Polarimetry           IRPOL                                                            
+                                           Spectroscopy          IRSP                                                             
+                                                                                                                                  
+ Large-Scale Phenomena             3          none               LSPN                                                             
+                                                                                                                                  
+ Near Nucleus Studies              4          none               NNSN                                                             
+                                                                                                                                  
+ Photometry & Polarimetry          5       Broad Band Magnitude  PMAG                                                             
+                                           Narrow Band Flux      PFLX                                                             
+                                           Polarimetry           PPOL                                                             
+                                           Stokes Parameters     PSTOKE                                                           
+                                                                                                                                  
+ Radio Science                     6       Continuum             RSCN                                                             
+                                           Occultation           RSOC                                                             
+                                           OH                    RSOH                                                             
+                                           Radar                 RSRDR                                                            
+                                           Spectral Line         RSSL                                                             
+                                                                                                                                  
+ Spectroscopy & Spectrophotometry  7           none              SPEC                                                             
+                                                                                                                                  
+ Amateur Observations              8       Drawing               AMDR                                                             
+                                           Photography           AMPG                                                             
+                                           Spectroscopy          AMSP                                                             
+                                           Visual Magnitude      AMV                                                              
+                                                                                                                                  
+                                                                                                                                  
+ Meteor                            9       Radar                 MSNRDR                                                           
+                                           Visual                MSNVIS                                                           
+                                                                                                                                  
+                                                                                                                                  
+                                                                                                                                  

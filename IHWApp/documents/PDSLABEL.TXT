@@ -1,0 +1,2526 @@
+***** File PDSLABEL.TXT                                                       
+                                                                              
+                                                                              
+     In each label, an IHW dataset has been identified according to PDS       
+guidelines as indicated by the DATA_SET_ID.  The correspondence of IHW        
+Disciplines (subnets) with a specific DATA_SET_ID is given below:             
+                                                                              
+                                                                              
+                                                                              
+                     PDS DATA_SET_IDS for Halley Archive                      
+                                                                              
+IHW Disc(Subnet Code)  Object               Data_set_id                       
+                                                                              
+LARGE-SCALE PHENOMENA  IMAGE      = "IHW-C-LSPN-2-DIDR-HALLEY-V1.0"         
+
+NEAR NUCLEUS           IMAGE      = "IHW-C-NNSN-3-EDR-HALLEY-V1.0"          
+
+SPECTROSCOPY           IMAGE      = "IHW-C-SPEC-2-EDR-HALLEY-V1.0"          
+
+SPECTROSCOPY           IMAGE      = "IHW-C-SPEC-3-DIDR-HALLEY-V1.0"         
+
+PHOTOM & POLAR(PMAG)   TABLE      = "IHW-C-PPMAG-3-RDR-HALLEY-V1.0"         
+
+PHOTOM & POLAR(PFLX)   TABLE      = "IHW-C-PPFLX-3-RDR-HALLEY-V1.0"         
+
+PHPOTOM & POLAR(PPOL)  TABLE      = "IHW-C-PPOL-3-RDR-HALLEY-V1.0"          
+
+PHOTOM & POLAR(PSTOKE) TABLE      = "IHW-C-PPSTOKE-3-RDR-HALLEY-V1.0"       
+
+METEOR(MSNRDR)         TABLE      = "IHW-C-MSNRDR-3-RDR-HALLEY-ETA-AQUAR-V1.0"
+METEOR(MSNRDR)         TABLE      = "IHW-C-MSNRDR-3-RDR-HALLEY-ORIONID-V1.0"
+
+METEOR(MSNVIS)         TABLE      = "IHW-C-MSNVIS-3-RDR-HALLEY-ETA-AQUAR-V1.0"
+METEOR(MSNVIS)         TABLE      = "IHW-C-MSNVIS-3-RDR-HALLEY-ORIONID-V1.0"
+
+AMATEUR(AMVIS)         TABLE      = "IHW-C-AMVIS-2-RDR-HALLEY-V1.0"         
+
+ASTROMETRY             TEXT       = "IHW-C-ASTR-2-EDR-HALLEY-V1.0"          
+
+                                                                              
+IR(IRIM)               IMAGE      = "IHW-C-IRIMAG-3-EDR-HALLEY-V1.0"        
+
+IR(IRSP)               SPECTRUM   = "IHW-C-IRSPEC-3-EDR-HALLEY-V1.0"        
+
+IR(IRFC)               SPECTRUM   = "IHW-C-IRFCURV-2-EDR-HALLEY-V1.0"       
+
+IR(IRPH)               TABLE      = "IHW-C-IRPHOT-3-RDR-HALLEY-V1.0"        
+
+IR(IRPOL)              TABLE      = "IHW-C-IRPOL-3-RDR-HALLEY-V1.0"         
+
+IR(IRFT)               TABLE      = "IHW-C-IRFTAB-3-RDR-HALLEY-V1.0"        
+
+RADIO(RSOC)            IMAGE      = "IHW-C-RSOC-3-EDR-HALLEY-V1.0"          
+
+RADIO(RSCN)            IMAGE      = "IHW-C-RSCN-3-EDR-HALLEY-V1.0"          
+
+RADIO(RSSL)            SPECTRUM   = "IHW-C-RSSL-3-EDR-HALLEY-V1.0"          
+
+RADIO(RSOH)            SPECTRUM   = "IHW-C-RSOH-3-EDR-HALLEY-V1.0"          
+
+RADIO(RSRDR)           SPECTRUM   = "IHW-C-RSRDR-3-EDR-HALLEY-V1.0"         
+
+RADIO(RSCN)            SPECTRUM   = "IHW-C-RSUV-2-EDR-HALLEY-V1.0"          
+
+RADIO(RSOH)            SPECTRUM   = "IHW-C-RSUV-2-EDR-HALLEY-V1.0"          
+
+RADIO(RSSL)            SPECTRUM   = "IHW-C-RSUV-2-EDR-HALLEY-V1.0"          
+
+SPECTROSCOPY           SPECTRUM   = "IHW-C-SPEC-3-EDR-HALLEY-V1.0"            
+                                                                              
+IR(IRSP)              FITS_LABEL  = "IHW-C-IRSPEC-N-NDR-HALLEY-V1.0"        
+
+LSPN                  FITS_LABEL  = "IHW-C-LSPN-N-NDR-HALLEY-V1.0"          
+
+RADIO(RSCN)           FITS_LABEL  = "IHW-C-RSCN-N-NDR-HALLEY-V1.0"          
+
+RADIO(RSSL)           FITS_LABEL  = "IHW-C-RSSL-N-NDR-HALLEY-V1.0"          
+
+AMATEUR(AMDR)         FITS_LABEL  = "IHW-C-AMDR-N-NDR-HALLEY-V1.0"          
+
+AMATEUR(AMPG)         FITS_LABEL  = "IHW-C-AMPG-N-NDR-HALLEY-V1.0"          
+
+AMATEUR(AMSP)         FITS_LABEL  = "IHW-C-!AMSP-N-NDR-HALLEY-V1.0"          
+                                                                              
+                                                                              
+A full set of the templates used for the PDS labels follows.   Please         
+note that these labels follow the general rules of v2.0 of the PDS            
+except in special cases of the SPECTRUM object (spectral_image_qube           
+and visibility_spectrum).   In addition, unit errors are evident,             
+e.g., meters for METER.                                                       
+                                                                              
+                                                                              
+                                                                              
+                    ASTROMETRY Discipline                                     
+                    _____________________                                     
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 80                                            
+FILE_RECORDS                  = 36                                            
+DATA_SET_ID                   = "IHW-C-ASTR-2-EDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "161680"                                      
+OBSERVATION_TIME              = 1986-03-11T18:08:10.754Z                      
+/*           Record Pointer to Major Object                          */       
+^TEXT                         = "ASTR0001.DAT"                                
+/*            Description of Object in File                          */       
+OBJECT                        = TEXT                                          
+ INTERCHANGE_FORMAT           = ASCII                                         
+ NOTE                         = "ASTROMETRY, OBSERVED POSITION                
+ PARAMETERS"                                                                  
+END_OBJECT                    = TEXT                                          
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+            INFRARED STUDIES/'Spectroscopy' Subdiscipline (IRSP)              
+                          (for case of No Data)                               
+            ____________________________________________________              
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000000001 = SFDU_LABEL                      
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 80                                            
+FILE_RECORDS                  = UNK                                           
+DATA_SET_ID                   = "IHW-C-IRSPEC-N-NDR-HALLEY-V1.0"              
+TARGET_NAME                   = "BETA_LEP"                                    
+OBSERVATION_ID                = "222184"                                      
+OBSERVATION_TIME              = 1985-12-23T08:34:04.800Z                      
+/*          Record Pointer to Major Object                           */       
+^FITS_LABEL                   = "IRSP4006.HDR"                                
+/*          Description of Object in File                            */       
+OBJECT                        = FITS_LABEL                                    
+ TYPE                         = FITS                                          
+ NOTE                         = "IR STUDIES, NO DIGITAL DATA FILE"            
+END_OBJECT                    = FITS_LABEL                                    
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+             INFRARED STUDIES/'Spectroscopy' Subdiscipline (IRSP)             
+             ____________________________________________________             
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 12                                            
+FILE_RECORDS                  = 53                                            
+DATA_SET_ID                   = "IHW-C-IRSPEC-3-EDR-HALLEY-V1.0"              
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "200002"                                      
+OBSERVATION_TIME              = 1986-03-12T03:10:20.789Z                      
+/*           Record Pointer to Major Object                          */       
+^SPECTRUM                     = "IRSP0001.DAT"                                
+/*            Description of Object in File                          */       
+OBJECT                        = SPECTRUM                                      
+ INTERCHANGE_FORMAT           = BINARY                                        
+ ROWS                         = 30                                            
+ ROW_BYTES                    = 12                                            
+ COLUMNS                      = 3                                             
+ NOTE                         = "IR STUDIES, WAVELENGTH-FLUX SPECTRUM"        
+ OBJECT                       = COLUMN                                        
+  NAME                        = WAVELENGTH                                    
+  UNIT                        = "MICRON"                                      
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 1                                             
+  BYTES                       = 4                                             
+  DESCRIPTION                 = "SCALE FACTOR IN FITS HEADER COMMENT"         
+  END_OBJECT                                                                  
+ OBJECT                       = COLUMN                                        
+  NAME                        = FLUX_PER_WAVELENGTH                           
+  UNIT                        = "WATT/CM**2/MICRON"                           
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 5                                             
+  BYTES                       = 4                                             
+  DESCRIPTION                 = "SCALE FACTOR IN FITS HEADER COMMENT"         
+  END_OBJECT                                                                  
+ OBJECT                       = COLUMN                                        
+  NAME                        = "ERROR"                                       
+  UNIT                        = "WATT/CM**2/MICRON"                           
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 9                                             
+  BYTES                       = 4                                             
+  DESCRIPTION                 = "SCALE FACTOR IN FITS HEADER COMMENT"         
+ END_OBJECT                                                                   
+END_OBJECT                    = SPECTRUM                                      
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+              INFRARED STUDIES/'Filter Table' (IRTF)                          
+              ______________________________________                          
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 80                                            
+FILE_RECORDS                  = 13                                            
+DATA_SET_ID                   = "IHW-C-IRFTAB-2-RDR-HALLEY-V1.0"              
+TARGET_NAME                   = "CALFILTER"                                   
+OBSERVATION_ID                = "229023"                                      
+/*           Record Pointer to Major Object                          */       
+^TABLE                        = "IRFT4001.TAB"                                
+/*            Description of Object in File                          */       
+OBJECT                        = TABLE                                         
+ ROWS                         = 13                                            
+ ROW_BYTES                    = 80                                            
+ INTERCHANGE_FORMAT           = ASCII                                         
+ COLUMNS                      = 8                                             
+ NOTE                         = "IR STUDIES, FILTER TABLE"                    
+ OBJECT                       = COLUMN                                        
+  NAME                        = "FLTRTABL"                                    
+  DATA_TYPE                   = CHARACTER                                     
+  START_BYTE                  = 2                                             
+  BYTES                       = 3                                             
+  FORMAT                      = A3                                            
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = "FLTRSET"                                     
+  DATA_TYPE                   = CHARACTER                                     
+  START_BYTE                  = 6                                             
+  BYTES                       = 18                                            
+  FORMAT                      = A18                                           
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = FILTER_NAME                                   
+  DATA_TYPE                   = CHARACTER                                     
+  START_BYTE                  = 25                                            
+  BYTES                       = 5                                             
+  FORMAT                      = A5                                            
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = "CTRWAVEL"                                    
+  DATA_TYPE                   = FLOAT                                         
+  START_BYTE                  = 31                                            
+  BYTES                       = 7                                             
+  UNIT                        = "MICRON"                                      
+  FORMAT                      = "E7.3"                                        
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = "EFFWAVEL"                                    
+  DATA_TYPE                   = FLOAT                                         
+  START_BYTE                  = 39                                            
+  BYTES                       = 7                                             
+  UNIT                        = "MICRON"                                      
+  FORMAT                      = "E7.3"                                        
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = BANDPASS                                      
+  DATA_TYPE                   = FLOAT                                         
+  START_BYTE                  = 47                                            
+  BYTES                       = 6                                             
+  UNIT                        = "MICRON"                                      
+  FORMAT                      = "E6.3"                                        
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = FILTER_TABLE_ID                               
+  DATA_TYPE                   = CHARACTER                                     
+  START_BYTE                  = 54                                            
+  BYTES                       = 16                                            
+  FORMAT                      = A16                                           
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+ NAME                         = COMMENT_NOTE                                  
+ DATA_TYPE                    = CHARACTER                                     
+ START_BYTE                   = 71                                            
+ BYTES                        = 10                                            
+ FORMAT                       = A10                                           
+ END_OBJECT                                                                   
+END_OBJECT                    = TABLE                                         
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+               INFRARED STUDIES/'Filter Curve' (IRFC)                         
+               ______________________________________                         
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 8                                             
+FILE_RECORDS                  = 47                                            
+DATA_SET_ID                   = "IHW-C-IRFCURV-2-EDR-HALLEY-V1.0"             
+TARGET_NAME                   = "CALFILTER"                                   
+OBSERVATION_ID                = "200003"                                      
+/*           Record Pointer to Major Object                          */       
+^SPECTRUM                     = "IRFC4001.DAT"                                
+/*            Description of Object in File                          */       
+OBJECT                        = SPECTRUM                                      
+ ROWS                         = 47                                            
+ ROW_BYTES                    = 8                                             
+ INTERCHANGE_FORMAT           = BINARY                                        
+ COLUMNS                      = 2                                             
+ NOTE                         = "IR STUDIES, FILTER CURVE TABLE"              
+ OBJECT                       = COLUMN                                        
+  NAME                        = WAVELENGTH                                    
+  UNIT                        = "MICRON"                                      
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 1                                             
+  BYTES                       = 4                                             
+  END_OBJECT                                                                  
+ OBJECT                       = COLUMN                                        
+  NAME                        = TRANSMITTANCE                                 
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 5                                             
+  BYTES                       = 4                                             
+ END_OBJECT                                                                   
+END_OBJECT                    = SPECTRUM                                      
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+           INFRARED STUDIES/'Polarimetry' Subdiscipline (IRPOL)               
+           ____________________________________________________               
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000000 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                = FIXED_LENGTH                                     
+RECORD_BYTES               = 80                                               
+FILE_RECORDS               = 14                                               
+DATA_SET_ID                = "IHW-C-IRPOL-3-RDR-HALLEY-V1.0"                  
+TARGET_NAME                = "HALLEY"                                         
+OBSERVATION_ID             = "200004"                                         
+OBSERVATION_TIME           = 1985-12-23T01:02:03.400Z                         
+/*           Record Pointer to Major Object                          */       
+^TABLE                     = "IRPOL01.TAB"                                    
+/*            Description of Object in File                          */       
+OBJECT                     = TABLE                                            
+ ROWS                      = 14                                               
+ ROW_BYTES                 = 80                                               
+ INTERCHANGE_FORMAT        = ASCII                                            
+ COLUMNS                   = 16                                               
+ NOTE                      = IR STUDIES, POLARIZATION TABLE"                  
+ OBJECT                    = COLUMN                                           
+  NAME                     = FILTER_NAME                                      
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 2                                                
+  BYTES                    = 5                                                
+  FORMAT                   = A5                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "NONAME"                                         
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 8                                                
+  BYTES                    = 1                                                
+  FORMAT                   = A1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = POLARIZATION_PERCENTAGE                          
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 9                                                
+  BYTES                    = 5                                                
+  UNIT                     = "PERCENT"                                        
+  FORMAT                   = "E5.2"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "ERROR"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 15                                               
+  BYTES                    = 4                                                
+  UNIT                     = "PERCENT"                                        
+  FORMAT                   = "E4.2"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "THETA"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 20                                               
+  BYTES                    = 3                                                
+  UNIT                     = "DEGREE"                                         
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "ERROR"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 24                                               
+  BYTES                    = 4                                                
+  UNIT                     = DEGREE                                           
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DIAPHRAGM_DIAMETER                               
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 29                                               
+  BYTES                    = 5                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = "E5.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "TIMEUT(H)"                                      
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 35                                               
+  BYTES                    = 2                                                
+  UNIT                     = HOUR                                             
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "TIMEUT(M)"                                      
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 37                                               
+  BYTES                    = 2                                                
+  UNIT                     = MINUTE                                           
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DURATION                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 40                                               
+  BYTES                    = 4                                                
+  UNIT                     = SECOND                                           
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = MIDPOINT_AIRMASS                                 
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 45                                               
+  BYTES                    = 4                                                
+  FORMAT                   = "E4.2"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "BMRHOOFF"                                       
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 50                                               
+  BYTES                    = 6                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = I6                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "BMPAOFF"                                        
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 57                                               
+  BYTES                    = 6                                                
+  UNIT                     = DEGREE                                           
+  FORMAT                   = I6                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = ORIGIN_ID                                        
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 64                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = FILTER_TABLE_NUMBER                              
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 67                                               
+  BYTES                    = 3                                                
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = COMMENT_NOTE                                     
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 71                                               
+  BYTES                    = 10                                               
+  FORMAT                   = A10                                              
+ END_OBJECT                                                                   
+END_OBJECT                 = TABLE                                            
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+          INFRARED STUDIES/'Photometry' Subdiscipline (IRPH)                  
+          __________________________________________________                  
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000000 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                = FIXED_LENGTH                                     
+RECORD_BYTES               = 80                                               
+FILE_RECORDS               = 13                                               
+DATA_SET_ID                = "IHW-C-IRPHOT-3-RDR-HALLEY-V1.0"                 
+TARGET_NAME                = "HALLEY"                                         
+OBSERVATION_ID             = "200005"                                         
+OBSERVATION_TIME           = 1986-03-02T10:10:10.000Z                         
+/*           Record Pointer to Major Object                          */       
+^TABLE                     = "IRPH0001.TAB"                                   
+/*            Description of Object in File                          */       
+OBJECT                     = TABLE                                            
+ ROWS                      = 13                                               
+ ROW_BYTES                 = 80                                               
+ INTERCHANGE_FORMAT        = ASCII                                            
+ COLUMNS                   = 16                                               
+ NOTE                      = "IR STUDIES, PHOTOMETRY TABLE"                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = FILTER_NAME                                      
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 2                                                
+  BYTES                    = 5                                                
+  FORMAT                   = A5                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "NONAME"                                         
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 8                                                
+  BYTES                    = 1                                                
+  FORMAT                   = A1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = MAGNITUDE                                        
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 9                                                
+  BYTES                    = 6                                                
+  UNIT                     = "MAG"                                            
+  FORMAT                   = "E6.2"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "ERROR"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 16                                               
+  BYTES                    = 4                                                
+  UNIT                     = "MAG"                                            
+  FORMAT                   = "E4.2"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DIAPHRAGM_DIAMETER                               
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 21                                               
+  BYTES                    = 5                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = "E5.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "TIMEUT(H)"                                      
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 27                                               
+  BYTES                    = 2                                                
+  UNIT                     = "HOUR"                                           
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "TIMEUT(M)"                                      
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 29                                               
+  BYTES                    = 2                                                
+  UNIT                     = "MINUTE"                                         
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DURATION                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 32                                               
+  BYTES                    = 4                                                
+  UNIT                     = "SECOND"                                         
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = MIDPOINT_AIRMASS                                 
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 37                                               
+  BYTES                    = 5                                                
+  FORMAT                   = "E5.3"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "CHOPDIST"                                       
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 43                                               
+  BYTES                    = 3                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "CHOPDIR"                                        
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 47                                               
+  BYTES                    = 2                                                
+  FORMAT                   = A2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "BMRHOOFF"                                       
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 50                                               
+  BYTES                    = 6                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = "E6.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "BMPAOFF"                                        
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 57                                               
+  BYTES                    = 6                                                
+  UNIT                     = "DEGREE"                                         
+  FORMAT                   = "E6.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = ORIGIN_ID                                        
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 64                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = FILTER_TABLE_NUMBER                              
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 67                                               
+  BYTES                    = 3                                                
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = COMMENT_NOTE                                     
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 71                                               
+  BYTES                    = 10                                               
+  FORMAT                   = A10                                              
+ END_OBJECT                                                                   
+END_OBJECT                 = TABLE                                            
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+            INFRARED STUDIES/'Image' Subdiscipline (IRIM)                     
+            _____________________________________________                     
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 56                                            
+FILE_RECORDS                  = 14                                            
+DATA_SET_PARAMETER_NAME       = DATA_NUMBER                                   
+DATA_SET_ID                   = "IHW-C-IRIMAG-3-EDR-HALLEY-V1.0"              
+TARGET_NAME                   = "BETA_PEG"                                    
+OBSERVATION_ID                = "223081"                                      
+OBSERVATION_TIME              = 1986-03-13T00:00:00.000Z                      
+START_TIME                    = 1986-03-13T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^IMAGE                        = "IRIM4025.IMG"                                
+/*            Description of Object in File                          */       
+OBJECT                        = IMAGE                                         
+ LINES                        = 14                                            
+ LINE_SAMPLES                 = 14                                            
+ SAMPLE_TYPE                  = MSB_INTEGER                                   
+ SAMPLE_BITS                  = 16                                            
+ DERIVED_MAXIMUM              = .25500000E+03                                 
+ DERIVED_MINIMUM              = 0.00000000E+00                                
+ OFFSET                       = 0.00000000E+00                                
+ SCALING_FACTOR               = .10000000E+01                                 
+ NOTE                         = "IR STUDIES, IMAGE"                           
+END_OBJECT                    = IMAGE                                         
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                  LARGE-SCALE PHENOMENA Discipline                            
+                       (for case of No Data)                                  
+                  ________________________________                            
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 80                                            
+FILE_RECORDS                  = UNK                                           
+DATA_SET_ID                   = "IHW-C-LSPN-N-NDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERTVATION_ID               = "302134"                                      
+OBSERVATION_TIME              = 1985-10-23T11:24:59.259Z                      
+/*   Record Pointer to Major Object                                  */       
+^FITS_LABEL                   = "LSPN0105.HDR"                                
+/*    Description of Object in File                                  */       
+OBJECT                        = FITS_LABEL                                    
+ TYPE                         = FITS                                          
+ NOTE                         = "LARGE SCALE PHEN, NON DIGITAL DATA"          
+END_OBJECT                    = FITS_LABEL                                    
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                  LARGE-SCALE PHENOMENA Discipline                            
+                  ________________________________                            
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 256                                           
+FILE_RECORDS                  = 114                                           
+DATA_SET_PARAMETER_NAME       = PHOTOGRAPHIC_DENSITY                          
+DATA_SET_ID                   = "IHW-C-LSPN-2-DIDR-HALLEY-V1.0"               
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "301121"                                      
+OBSERVATION_TIME              = 1986-03-13T02:10:59.952Z                      
+START_TIME                    = 1986-03-13T02:10:58.952Z                      
+/*           Record Pointer to Major Object                          */       
+^IMAGE                        = "LSPN0059.IBG"                                
+/*            Description of Object in File                          */       
+OBJECT                        = IMAGE                                         
+ LINES                        = 114                                           
+ LINE_SAMPLES                 = 256                                           
+ SAMPLE_TYPE                  = UNSIGNED_INTEGER                              
+ SAMPLE_BITS                  = 8                                             
+ DERIVED_MAXIMUM              = .25500000E+03                                 
+ DERIVED_MINIMUM              = 0.00000000E+00                                
+ OFFSET                       = 0.00000000E+00                                
+ SCALING_FACTOR               = 1.00000000E+01                                
+ NOTE                         = "LARGE SCALE PHEN, SUBSAMPLED IMAGE"          
+END_OBJECT                    = IMAGE                                         
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                  NEAR-NUCLEUS STUDIES Discipline                             
+                  _______________________________                             
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 640                                           
+FILE_RECORDS                  = 512                                           
+DATA_SET_PARAMETER_NAME       = RELATIVE_INTENSITY                            
+DATA_SET_ID                   = "IHW-C-NNSN-3-EDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "403001"                                      
+OBSERVATION_TIME              = 1986-02-27T02:43:43.185Z                      
+START_TIME                    = 1986-02-27T02:43:41.185Z                      
+/*           Record Pointer to Major Object                          */       
+^IMAGE                        = "NNSN1070.IMG"                                
+/*            Description of Object in File                          */       
+OBJECT                        = IMAGE                                         
+ LINES                        = 512                                           
+ LINE_SAMPLES                 = 320                                           
+ SAMPLE_TYPE                  = MSB_INTEGER                                   
+ SAMPLE_BITS                  = 16                                            
+ DERIVED_MAXIMUM              = .25500000E+03                                 
+ DERIVED_MINIMUM              = 0.00000000E+00                                
+ OFFSET                       = 0.00000000E+00                                
+ SCALING_FACTOR               = .10000000E+01                                 
+ NOTE                         = "NEAR NUCLEUS, IMAGE"                         
+END_OBJECT                    = IMAGE                                         
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+      PHOTOMETRY AND POLARIMETRY/'Broad Band Mag.' Subdiscipline (PMAG)       
+      _________________________________________________________________       
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000000 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                = FIXED_LENGTH                                     
+RECORD_BYTES               = 80                                               
+FILE_RECORDS               = 44                                               
+DATA_SET_ID                = "IHW-C-PPMAG-3-RDR-HALLEY-V1.0"                  
+TARGET_NAME                = "HALLEY"                                         
+OBSERVATION_ID             = "500001"                                         
+OBSERVATION_TIME           = 1986-03-10T15:14:57.836Z                         
+START_TIME                 = 1986-03-10T15:14:56.836Z                         
+/*           Record Pointer to Major Object                          */       
+^TABLE                     = "PMAG0001.TAB"                                   
+/*            Description of Object in File                          */       
+OBJECT                     = TABLE                                            
+ ROWS                      = 44                                               
+ ROW_BYTES                 = 80                                               
+ INTERCHANGE_FORMAT        = ASCII                                            
+ COLUMNS                   = 13                                               
+ NOTE                      = "PHOTOMETRY, BROAD BAND MAGNITUDE TABLE"         
+ OBJECT                    = COLUMN                                           
+  NAME                     = DAY_FRACTION                                     
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 1                                                
+  BYTES                    = 8                                                
+  FORMAT                   = "E8.5"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = ENTRY_NUMBER                                     
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 10                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = FILTER_NAME                                      
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 13                                               
+  BYTES                    = 4                                                
+  FORMAT                   = A4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = WAVELENGTH                                       
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 18                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ANGSTROM"                                       
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = BANDPASS                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 23                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ANGSTROM"                                       
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = LIMIT_FLAG                                       
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 28                                               
+  BYTES                    = 1                                                
+  FORMAT                   = A1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = MAGNITUDE                                        
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 30                                               
+  BYTES                    = 7                                                
+  UNIT                     = "MAGNITUDE"                                      
+  FORMAT                   = "E7.3"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "ERROR"                                          
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 38                                               
+  BYTES                    = 5                                                
+  UNIT                     = "MAGNITUDE"                                      
+  FORMAT                   = "E5.3"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DIAPHRAGM_DIAMETER                               
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 44                                               
+  BYTES                    = 5                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = "E5.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "RHO"                                            
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 50                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "THETA"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 55                                               
+  BYTES                    = 3                                                
+  UNIT                     = "DEGREE"                                         
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DURATION                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 59                                               
+  BYTES                    = 4                                                
+  UNIT                     = "SECOND"                                         
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = MIDPOINT_AIRMASS                                 
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 64                                               
+  BYTES                    = 5                                                
+  FORMAT                   = "E5.3"                                           
+ END_OBJECT                                                                   
+END_OBJECT                 = TABLE                                            
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+     PHOTOMETRY AND POLARIMETRY/'Narrowband Flux' Subdiscipline (PFLX)        
+     _________________________________________________________________        
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000000 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                = FIXED_LENGTH                                     
+RECORD_BYTES               = 80                                               
+FILE_RECORDS               = 13                                               
+DATA_SET_ID                = "IHW-C-PPFLX-3-RDR-HALLEY-V1.0"                  
+TARGET_NAME                = "HALLEY"                                         
+OBSERVATION_ID             = "560845"                                         
+OBSERVATION_TIME           = 1986-03-10T15:14:58.592Z                         
+START_TIME                 = 1986-03-10T15:14:56.592Z                         
+/*           Record Pointer to Major Object                          */       
+^TABLE                     = "PFLX0677.TAB"                                   
+/*            Description of Object in File                          */       
+OBJECT                     = TABLE                                            
+ ROWS                      = 7                                                
+ ROW_BYTES                 = 80                                               
+ INTERCHANGE_FORMAT        = ASCII                                            
+ COLUMNS                   = 13                                               
+ NOTE                      = "PHOTOMETRY, NARROW BAND FLUX TABLE"             
+ OBJECT                    = COLUMN                                           
+  NAME                     = DAY_FRACTION                                     
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 1                                                
+  BYTES                    = 8                                                
+  FORMAT                   = "E8.5"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = ENTRY_NUMBER                                     
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 10                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = FILTER_NAME                                      
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 13                                               
+  BYTES                    = 4                                                
+  FORMAT                   = A4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = WAVELENGTH                                       
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 18                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ANGSTROM"                                       
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = BANDPASS                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 23                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ANGSTROM"                                       
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = LIMIT_FLAG                                       
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 28                                               
+  BYTES                    = 1                                                
+  FORMAT                   = A1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = LOGFLUX                                          
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 30                                               
+  BYTES                    = 7                                                
+  UNIT                     = "LOG10[ERG/SEC/CM2(A)]"                          
+  FORMAT                   = "E7.3"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "ERROR"                                          
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 38                                               
+  BYTES                    = 5                                                
+  UNIT                     = "DEX"                                            
+  FORMAT                   = "E5.3"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DIAPHRAGM_DIAMETER                               
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 44                                               
+  BYTES                    = 5                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = "E5.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "RHO"                                            
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 50                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "THETA"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 55                                               
+  BYTES                    = 3                                                
+  UNIT                     = "DEGREE"                                         
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DURATION                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 59                                               
+  BYTES                    = 4                                                
+  UNIT                     = "SECOND"                                         
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = MIDPOINT_AIRMASS                                 
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 64                                               
+  BYTES                    = 5                                                
+  FORMAT                   = "E5."3                                           
+ END_OBJECT                                                                   
+END_OBJECT                 = TABLE                                            
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+        PHOTOMETRY AND POLARIMETRY/'Polarimetry' Subdiscipline (PPOL)         
+        _____________________________________________________________         
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000000 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                = FIXED_LENGTH                                     
+RECORD_BYTES               = 80                                               
+FILE_RECORDS               = 8                                                
+DATA_SET_ID                = "IHW-C-PPOL-3-RDR-HALLEY-V1.0"                   
+TARGET_NAME                = "HALLEY"                                         
+OBSERVATION_ID             = "500003"                                         
+OBSERVATION_TIME           = 1986-03-10T15:14:54.592Z                         
+START_TIME                 = 1986-03-10T15:14:56.592Z                         
+/*           Record Pointer to Major Object                          */       
+^TABLE                     = "PPOL0001.TAB"                                   
+/*            Description of Object in File                          */       
+OBJECT                     = TABLE                                            
+ ROWS                      = 8                                                
+ ROW_BYTES                 = 80                                               
+ INTERCHANGE_FORMAT        = ASCII                                            
+ COLUMNS                   = 15                                               
+ NOTE                      = "PHOTOMETRY, POLARIZATION TABLE"                 
+ OBJECT                    = COLUMN                                           
+  NAME                     = DAY_FRACTION                                     
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 1                                                
+  BYTES                    = 8                                                
+  FORMAT                   = "E8.5"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = ENTRY_NUMBER                                     
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 10                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = FILTER_NAME                                      
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 13                                               
+  BYTES                    = 4                                                
+  FORMAT                   = A4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = WAVELENGTH                                       
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 18                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ANGSTROM"                                       
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = BANDPASS                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 23                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ANGSTROM"                                       
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = POLARIZATION_TYPE                                
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 28                                               
+  BYTES                    = 2                                                
+  FORMAT                   = A2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = POLARIZATION_PERCENTAGE                          
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 31                                               
+  BYTES                    = 5                                                
+  UNIT                     = "PERCENT"                                        
+  FORMAT                   = "E5.2"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "ERROR"                                          
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 37                                               
+  BYTES                    = 5                                                
+  UNIT                     = "PERCENT"                                        
+  FORMAT                   = "E5.2"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = POLARIZATION_ANGLE                               
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 43                                               
+  BYTES                    = 5                                                
+  UNIT                     = "DEGREE"                                         
+  FORMAT                   = "E5.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "ERROR"                                          
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 49                                               
+  BYTES                    = 4                                                
+  UNIT                     = "DEGREE"                                         
+  FORMAT                   = "E4.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DIAPHRAGM_DIAMETER                               
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 54                                               
+  BYTES                    = 5                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = "E5.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "RHO"                                            
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 60                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "THETA"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 65                                               
+  BYTES                    = 3                                                
+  UNIT                     = "DEGREE"                                         
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DURATION                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 69                                               
+  BYTES                    = 4                                                
+  UNIT                     = "SECOND"                                         
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = MIDPOINT_AIRMASS                                 
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 74                                               
+  BYTES                    = 5                                                
+  FORMAT                   = "E5.3"                                           
+ END_OBJECT                                                                   
+END_OBJECT                 = TABLE                                            
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+         PHOTOMETRY AND POLARIMETRY/'Stokes' Subdiscipline (PSTOKE)           
+         __________________________________________________________           
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000000 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                = FIXED_LENGTH                                     
+RECORD_BYTES               = 120                                              
+FILE_RECORDS               = 1                                                
+DATA_SET_ID                = "IHW-C-PPSTOK-3-RDR-HALLEY-V1.0"                 
+TARGET_NAME                = "HALLEY"                                         
+OBSERVATION_ID             = "500005"                                         
+OBSERVATION_TIME           = 1986-03-10T15:14:50.592Z                         
+START_TIME                 = 1986-03-10T15:14:48.592Z                         
+/*           Record Pointer to Major Object                          */       
+^TABLE                     = "PSTOKE01.TAB"                                   
+/*            Description of Object in File                          */       
+OBJECT                     = TABLE                                            
+ ROWS                      = 1                                                
+ ROW_BYTES                 = 120                                              
+ INTERCHANGE_FORMAT        = ASCII                                            
+ COLUMNS                   = 16                                               
+ NOTE                      = "PHOTOMETRY, STOKES PARAMETER TABLE"             
+ OBJECT                    = COLUMN                                           
+  NAME                     = DAY_FRACTION                                     
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 1                                                
+  BYTES                    = 8                                                
+  FORMAT                   = "E8.5"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = ENTRY_NUMBER                                     
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 10                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = FILTER_NAME                                      
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 13                                               
+  BYTES                    = 4                                                
+  FORMAT                   = A4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = WAVELENGTH                                       
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 18                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ANGSTROM"                                       
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = BANDPASS                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 23                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ANGSTROM"                                       
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = Q_OVER_I                                         
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 28                                               
+  BYTES                    = 7                                                
+  FORMAT                   = "E7.4"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "ERROR"                                          
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 36                                               
+  BYTES                    = 6                                                
+  FORMAT                   = "E6.4"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = U_OVER_I                                         
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 43                                               
+  BYTES                    = 7                                                
+  FORMAT                   = "E7.4"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "ERROR"                                          
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 51                                               
+  BYTES                    = 6                                                
+  FORMAT                   = "E6.4"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = V_OVER_I                                         
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 58                                               
+  BYTES                    = 7                                                
+  FORMAT                   = "E7.4"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "ERROR"                                          
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 66                                               
+  BYTES                    = 6                                                
+  FORMAT                   = "E6.4"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DIAPHRAGM_DIAMETER                               
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 73                                               
+  BYTES                    = 5                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = "E5.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "RHO"                                            
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 79                                               
+  BYTES                    = 4                                                
+  UNIT                     = "ARCSEC"                                         
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "THETA"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 84                                               
+  BYTES                    = 3                                                
+  UNIT                     = "DEGREE"                                         
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DURATION                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 88                                               
+  BYTES                    = 4                                                
+  UNIT                     = "SECOND"                                         
+  FORMAT                   = I4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = MIDPOINT_AIRMASS                                 
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 93                                               
+  BYTES                    = 5                                                
+  FORMAT                   = "E5.3"                                           
+ END_OBJECT                                                                   
+END_OBJECT                 = TABLE                                            
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+             RADIO STUDIES/'Continuum' Subdiscipline (RSCN)                   
+                        (for case of No Data)                                 
+             ______________________________________________                   
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 80                                            
+FILE_RECORDS                  = UNK                                           
+DATA_SET_ID                   = "IHW-C-RSCN-N-NDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "600001"                                      
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*        Record Pointer to Major Object                             */       
+^FITS_LABEL                   = "RSCN0001.HDR"                                
+/*         Description of Object in File                             */       
+OBJECT                        = FITS_LABEL                                    
+ TYPE                         = FITS                                          
+ NOTE                         = "RADIO STUDIES, CONTINUUM, NO DIGITAL         
+ DATA FILE"                                                                   
+END_OBJECT                    = FITS_LABEL                                    
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+          RADIO STUDIES/'Spectral Line' Subdiscipline (RSSL)                  
+                       (for case of No Data)                                  
+          __________________________________________________                  
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 80                                            
+FILE_RECORDS                  = UNK                                           
+DATA_SET_ID                   = "IHW-C-RSSL-N-NDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "600002"                                      
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*        Record Pointer to Major Object                             */       
+^FITS_LABEL                   = "RSSL0001.HDR"                                
+/*         Description of Object in File                             */       
+OBJECT                        = FITS_LABEL                                    
+ TYPE                         = FITS                                          
+ NOTE                         = "RADIO STUDIES, SPECTRAL LINE, NO             
+ DIGITAL DATA FILE"                                                           
+END_OBJECT                    = FITS_LABEL                                    
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                 RADIO STUDIES/'OH' Subdiscipline (RSOH)                      
+                 _______________________________________                      
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 2                                             
+FILE_RECORDS                  = 128                                           
+DATA_SET_ID                   = "IHW-C-RSOH-3-EDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "600004"                                      
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^SPECTRUM                     = "RSOH0004.DAT"                                
+/*            Description of Object in File                          */       
+OBJECT                        = SPECTRUM                                      
+ ROWS                         = 128                                           
+ COLUMNS                      = 1                                             
+ INTERCHANGE_FORMAT           = BINARY                                        
+ NOTE                         = "RADIO STUDIES, OH, TOTAL INTENSITY           
+ SPECTRUM"                                                                    
+ OBJECT                       = COLUMN                                        
+  NAME                        = FLUX_DENSITY                                  
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 1                                             
+  BYTES                       = 2                                             
+  SAMPLING_PARAMETER_NAME     = VELO-COM                                      
+  MINIMUM_SAMPLING_PARAMETER  = -8428.161                                     
+  SAMPLING_PARAMETER_INTERVAL = 140.469                                       
+  SAMPLING_PARAMETER_UNIT     = "METERS/SECOND"                               
+  DERIVED_MAXIMUM             = .25500000E+03                                 
+  DERIVED_MINIMUM             = 0.00000000E+00                                
+  OFFSET                      = 0.00000000E+00                                
+  SCALING_FACTOR              = .10000000E+01                                 
+ END_OBJECT                                                                   
+END_OBJECT                    = SPECTRUM                                      
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+            RADIO STUDIES/'Spectral Line' Subdiscipline (RSSL)                
+            __________________________________________________                
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 2                                             
+FILE_RECORDS                  = 256                                           
+DATA_SET_ID                   = "IHW-C-RSSL-3-EDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "600006"                                      
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^SPECTRUM                     = "RSSL0002.DAT"                                
+/*            Description of Object in File                          */       
+OBJECT                        = SPECTRUM                                      
+ ROWS                         = 256                                           
+ COLUMNS                      = 1                                             
+ INTERCHANGE_FORMAT           = BINARY                                        
+ NOTE                         = "RADIO STUDIES, SPECTRAL LINE, TOTAL          
+ INTENSITY SPECTRUM"                                                          
+ OBJECT                       = COLUMN                                        
+  NAME                        = FLUX_DENSITY                                  
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 1                                             
+  BYTES                       = 2                                             
+  SAMPLING_PARAMETER_NAME     = VELO-COM                                      
+  MINIMUM_SAMPLING_PARAMETER  = -8428.161                                     
+  SAMPLING_PARAMETER_INTERVAL = 140.469                                       
+  SAMPLING_PARAMETER_UNIT     = "METERS/SECOND"                               
+  DERIVED_MAXIMUM             = .25500000E+03                                 
+  DERIVED_MINIMUM             = 0.00000000E+00                                
+  OFFSET                      = 0.00000000E+00                                
+  SCALING_FACTOR              = .10000000E+01                                 
+ END_OBJECT                                                                   
+END_OBJECT                    = SPECTRUM                                      
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+             RADIO STUDIES/'Spectral Line' Subdiscipline (RSSL)               
+                         (polarization spectrum)                              
+             __________________________________________________               
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 2                                             
+FILE_RECORDS                  = 240                                           
+DATA_SET_ID                   = "IHW-C-RSOH-3-EDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "600004"                                      
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^LHC_POLARIZATION_SPECTRUM    = "RSOH0003.DAT"                                
+^RHC_POLARIZATION_SPECTRUM    = ("RSOH0003.DAT",121)                          
+/*            Description of Object in File                          */       
+OBJECT                        = LHC_POLARIZATION_SPECTRUM                     
+ ROWS                         = 120                                           
+ COLUMNS                      = 1                                             
+ INTERCHANGE_FORMAT           = BINARY                                        
+ NOTE                         = "RADIO STUDIES, OH, LEFT HAND CIRCULAR        
+ POLARIZATION SPECTRUM"                                                       
+ OBJECT                       = COLUMN                                        
+  NAME                        = FLUX_DENSITY                                  
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 1                                             
+  BYTES                       = 2                                             
+  SAMPLING_PARAMETER_NAME     = VELO-COM                                      
+  MINIMUM_SAMPLING_PARAMETER  = -8428.161                                     
+  SAMPLING_PARAMETER_INTERVAL = 140.469                                       
+  SAMPLING_PARAMETER_UNIT     = "METERS/SECOND"                               
+  DERIVED_MAXIMUM             = .25500000E+03                                 
+  DERIVED_MINIMUM             = 0.00000000E+00                                
+  OFFSET                      = 0.00000000E+00                                
+  SCALING_FACTOR              = .10000000E+01                                 
+ END_OBJECT                   =                                               
+END_OBJECT                    = LHC_POLARIZATION_SPECTRUM                     
+OBJECT                        = RHC_POLARIZATION_SPECTRUM                     
+ ROWS                         = 120                                           
+ INTERCHANGE_FORMAT           = BINARY                                        
+ COLUMNS                      = 1                                             
+ NOTE                         = "RADIO STUDIES, OH, RIGHT HAND CIRCULAR       
+ POLARIZATION SPECTRUM"                                                       
+ OBJECT                       = COLUMN                                        
+  NAME                        = FLUX_DENSITY                                  
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 1                                             
+  BYTES                       = 2                                             
+  SAMPLING_PARAMETER_NAME     = VELO-COM                                      
+  MINIMUM_SAMPLING_PARAMETER  = -8428.161                                     
+  SAMPLING_PARAMETER_INTERVAL = 140.469                                       
+  SAMPLING_PARAMETER_UNIT     = "METERS/SECOND"                               
+  DERIVED_MAXIMUM             = .25500000E+03                                 
+  DERIVED_MINIMUM             = 0.00000000E+00                                
+  OFFSET                      = 0.00000000E+00                                
+  SCALING_FACTOR              = .10000000E+01                                 
+ END_OBJECT                                                                   
+END_OBJECT                    = RHC_POLARIZATION_SPECTRUM                     
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+               RADIO STUDIES/'Continuum' Subdiscipline (RSCN)                 
+               ______________________________________________                 
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 258                                           
+FILE_RECORDS                  = 127                                           
+DATA_SET_PARAMETER_NAME       = FLUX_DENSITY                                  
+DATA_SET_ID                   = "IHW-C-RSCN-3-EDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "600009"                                      
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^IMAGE                        = "RSCN0092.DAT"                                
+/*            Description of Object in File                          */       
+OBJECT                        = IMAGE                                         
+ LINES                        = 127                                           
+ LINE_SAMPLES                 = 127                                           
+ SAMPLE_TYPE                  = MSB_INTEGER                                   
+ SAMPLE_BITS                  = 16                                            
+ DERIVED_MAXIMUM              = .25500000E+03                                 
+ DERIVED_MINIMUM              = 0.00000000E+00                                
+ OFFSET                       = 0.00000000E+00                                
+ SCALING_FACTOR               = .10000000E+01                                 
+ NOTE                         = "RADIO STUDIES, CONTINUUM, IMAGE"             
+END_OBJECT                    = IMAGE                                         
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+             RADIO STUDIES/'Occultation' Subdiscipline (RSOC)                 
+             ________________________________________________                 
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 78                                            
+FILE_RECORDS                  = 16197                                         
+DATA_SET_PARAMETER_NAME       = "FLUX_DENSITY"                                
+DATA_SET_ID                   = "IHW-C-RSOC-3-EDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "600007"                                      
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^DIFFERENCE_IMAGE             = "RSOC0001.IMG"                                
+^BACKGROUND_IMAGE             = ("RSOC0001.IMG",5400)                         
+^COMET_IMAGE                  = ("RSOC0001.IMG",10799)                        
+/*            Description of Object in File                          */       
+OBJECT                        = DIFFERENCE_IMAGE                              
+ LINES                        = 5399                                          
+ LINE_SAMPLES                 = 39                                            
+ SAMPLE_TYPE                  = MSB_INTEGER                                   
+ SAMPLE_BITS                  = 16                                            
+ DERIVED_MAXIMUM              = .25500000E+03                                 
+ DERIVED_MINIMUM              = 0.00000000E+00                                
+ OFFSET                       = 0.00000000E+00                                
+ SCALING_FACTOR               = .10000000E+01                                 
+ NOTE                         = "RADIO STUDIES, DIFFERENCE IMAGE"             
+END_OBJECT                    = DIFFERENCE_IMAGE                              
+OBJECT                        = BACKGROUND_IMAGE                              
+ LINES                        = 5399                                          
+ LINE_SAMPLES                 = 39                                            
+ SAMPLE_TYPE                  = MSB_INTEGER                                   
+ SAMPLE_BITS                  = 16                                            
+ DERIVED_MAXIMUM              = .255000E+03                                   
+ DERIVED_MINIMUM              = 0.00000000E+00                                
+ OFFSET                       = 0.00000000E+00                                
+ SCALING_FACTOR               = .10000000E+01                                 
+ NOTE                         = "RADIO STUDIES, BACKGROUND IMAGE"             
+END_OBJECT                    = BACKGROUND_IMAGE                              
+OBJECT                        = COMET_IMAGE                                   
+ LINES                        = 5399                                          
+ LINE_SAMPLES                 = 39                                            
+ SAMPLE_TYPE                  = MSB_INTEGER                                   
+ SAMPLE_BITS                  = 16                                            
+ DERIVED_MAXIMUM              = .25500000E+03                                 
+ DERIVED_MINIMUM              = 0.00000000E+00                                
+ OFFSET                       = 0.00000000E+00                                
+ SCALING_FACTOR               = .10000000E+01                                 
+ NOTE                         = "RADIO STUDIES, OCCULTATION, COMET            
+ IMAGE"                                                                       
+END_OBJECT                    = COMET_IMAGE                                   
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+              RADIO STUDIES/'Radar' Subdiscipline (RSRDR)                     
+              ___________________________________________                     
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 2                                             
+FILE_RECORDS                  = 820                                           
+DATA_SET_ID                   = "IHW-C-RSRDR-3-EDR-HALLEY-V1.0"               
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "600008"                                      
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^RHC_POLARIZATION_SPECTRUM    = "RSRDR001.DAT"                                
+^LHC_POLARIZATION_SPECTRUM    = ("RSRDR001.DAT",411)                          
+/*            Description of Object in File                          */       
+OBJECT                        = RHC_POLARIZATION_SPECTRUM                     
+ ROWS                         = 410                                           
+ INTERCHANGE_FORMAT           = BINARY                                        
+ COLUMNS                      = 1                                             
+ NOTE                         = "RADIO STUDIES, RADAR, RIGHT HAND             
+ CIRCULAR POLARIZATION SPECTRUM"                                              
+ OBJECT                       = COLUMN                                        
+  NAME                        = STANDARD_DEVIATION                            
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 1                                             
+  BYTES                       = 2                                             
+  DESCRIPTION                 = "TRANSMITTED PULSES"                          
+  SAMPLING_PARAMETER_NAME     = FREQUENCY_OFFSET                              
+  MINIMUM_SAMPLING_PARAMETER  = -499.5938                                     
+  SAMPLING_PARAMETER_INTERVAL = 1.95312                                       
+  SAMPLING_PARAMETER_UNIT     = "HERTZ"                                       
+  DERIVED_MAXIMUM             = .25500000E+03                                 
+  DERIVED_MINIMUM             = 0.00000000E+00                                
+  OFFSET                      = 0.00000000E+00                                
+  SCALING_FACTOR              = .10000000E+01                                 
+ END_OBJECT                                                                   
+END_OBJECT                    = RHC_POLARIZATION_SPECTRUM                     
+OBJECT                        = LHC_POLARIZATION_SPECTRUM                     
+ ROWS                         = 410                                           
+ INTERCHANGE_FORMAT           = BINARY                                        
+ COLUMNS                      = 1                                             
+ NOTE                         = "RADIO STUDIES, RADAR, LEFT HAND              
+ CIRCULAR POLARIZATION SPECTRUM"                                              
+ OBJECT                       = COLUMN                                        
+  NAME                        = STANDARD_DEVIATION                            
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 1                                             
+  BYTES                       = 2                                             
+  DESCRIPTION                 = "ECHO PULSES"                                 
+  SAMPLING_PARAMETER_NAME     = FREQUENCY_OFFSET                              
+  MINIMUM_SAMPLING_PARAMETER  = -499.5983                                     
+  SAMPLING_PARAMETER_INTERVAL = 1.95312                                       
+  SAMPLING_PARAMETER_UNIT     = "HERTZ"                                       
+  DERIVED_MAXIMUM             = .25500000E+03                                 
+  DERIVED_MINIMUM             = 0.00000000E+00                                
+  OFFSET                      = 0.00000000E+00                                
+  SCALING_FACTOR              = .10000000E+01                                 
+ END_OBJECT                                                                   
+END_OBJECT                    = LHC_POLARIZATION_SPECTRUM                     
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                RADIO STUDIES/'OH' Subdiscipline (RSOH)                       
+                         (Visibility Data)                                    
+                _______________________________________                       
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 48                                            
+FILE_RECORDS                  = 1312                                          
+DATA_SET_ID                   = "IHW-C-RSUV-2-EDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "600005"                                      
+OBSERVATION_TIME              = 19800-00-00T00:00:00.000Z                     
+/*          Record Pointer to Major Object                           */       
+^SPECTRUM                     = "RSOH0001.DAT"                                
+/*          Description of Objects in File                           */       
+OBJECT                        = SPECTRUM                                      
+ ROWS                         = 1312                                          
+ ROW_BYTES                    = 48                                            
+ INTERCHANGE_FORMAT           = BINARY                                        
+ COLUMNS                      = 16                                            
+ NOTE                         = "VISIBILITY DATA IN UVFITS FORM"              
+ OBJECT                       = COLUMN                                        
+  NAME                        = UU_COMPONENT                                  
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 1                                             
+  BYTES                       = 2                                             
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = VV_COMPONENT                                  
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 3                                             
+  BYTES                       = 2                                             
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = WW_COMPONENT                                  
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 5                                             
+  BYTES                       = 2                                             
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = WIEGHT                                        
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 7                                             
+  BYTES                       = 2                                             
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = FLAG                                          
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 9                                             
+  BYTES                       = 2                                             
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = TIME1                                         
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 11                                            
+  BYTES                       = 2                                             
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = BASELINE                                      
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 13                                            
+  BYTES                       = 2                                             
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = RESERVED                                      
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 15                                            
+  BYTES                       = 2                                             
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = VISIBILITY                                    
+  ITEMS                       = 8                                             
+  ITEM_BYTES                  = 4                                             
+  ITEM_TYPE                   = INTEGER_COMPLEX                               
+  SAMPLING_PARAMETER_NAME     = FREQUENCY                                     
+  MINIMUM_SAMPLING_PARAMETER  = .1667348319E+10                               
+  SAMPLING_PARAMETER_INTERVAL = .5859375E+04                                  
+  SAMPLING_PARAMETER_UNIT     = "HERTZ"                                       
+  START_BYTE                  = 17                                            
+  DERIVED_MAXIMUM             = .25500000E+03                                 
+  DERIVED_MINIMUM             = 0.00000000E+00                                
+  OFFSET                      = 0.00000000E+00                                
+  SCALING_FACTOR              = .10000000E+01                                 
+ END_OBJECT                                                                   
+END_OBJECT                    = TABLE                                         
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+               SPECTROSCOPY AND SPECTROPHOTOMETRY Discipline                  
+                         (2-D Spectral Image)                                 
+               _____________________________________________                  
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*                  File Format and Length                           */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 4080                                          
+FILE_RECORDS                  = 220                                           
+DATA_SET_PARAMETER_NAME       = COUNT                                         
+DATA_SET_ID                   = "IHW-C-SPEC-2-EDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "703236"                                      
+START_TIME                    = 1986-04-14T17:12:04.000Z                      
+OBSERVATION_TIME              = 1986-04-14T17:13:04.480Z                      
+/*                       Record Pointer to Object                    */       
+^IMAGE                        = "SPEC0003.IMG"                                
+/*                  Description of Object in File                    */       
+OBJECT                        = IMAGE                                         
+ LINES                        = 220                                           
+ LINE_SAMPLES                 = 2040                                          
+ SAMPLE_TYPE                  = MSB_INTEGER                                   
+ SAMPLE_BITS                  = 16                                            
+ NOTE                         = "SPECTROSCOPY, 2-D SPECTRAL IMAGE"            
+ DERIVED_MAXIMUM              = 3.000000E+01                                  
+ DERIVED_MINIMUM              = 0.000000E+00                                  
+ OFFSET                       = 0.000000E+00                                  
+ SCALING_FACTOR               = 1.000000E+00                                  
+END_OBJECT                    = IMAGE                                         
+END                                                                           
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*                  File Format and Length                           */       
+RECORD_TYPE                   = FIXED_LEMGTH                                  
+RECORD_BYTES                  = 1214                                          
+FILE_RECORDS                  = 79                                            
+DATA_SET_ID                   = "IHW-C-SPEC-3-DIDR-HALLEY-V1.0"               
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = 704458"                                       
+OBSERVATION_TIME              = 1986-05-10T18:43:56.141Z                      
+START_TIME                    = 1986-05-10T18:43:54.141Z                      
+/*                       Record Pointer to Object                    */       
+^SPECTRAL_IMAGE_QUBE          = "SPEC0002.DAT"                                
+/*                   Description of Object in File                   */       
+OBJECT                        = SPECTRAL_IMAGE_QUBE                           
+ ITEM_TYPE                    = MSB_INTEGER                                   
+ ITEM_BYTES                   = 2                                             
+ BAND_STORAGE_TYPE            = BAND_SEQUENTIAL                               
+ NOTE                         = "SPECTROSCOPY, 2-D SPECTRUM"                  
+ AXES                         = 3                                             
+ SAMPLING_PATRAMETER_ITEMS    = (1,79,607)                                  
+
+ SAMPLING_PARAMETER_NAME      = (,SEPARATION,WAVELENGTH)                      
+ SAMPLING_PARAMETER_DESCRIPTION = (,"IS PROJECTED DISTANCE ON PLATE",)      
+
+ SAMPLING_PARAMETER_UNIT      = (,,ANGSTROM)                                  
+ SAMPLING_PARAMETER_INTERVAL  = (,0.025,3.91)                                 
+ MINIMUM_SAMPLING_PARAMETER   = (,1.05,5165)                                  
+ CORE_ITEMS                   = (1,79,607)                                    
+ CORE_NAME                    = "NON-STANDARD DATA NUMBER"                    
+ CORE_DESCRIPTION             = "VARIABLE (BUNIT) IS TRANSMISSION"            
+ DERIVED_MAXIMUM              = 1.220000E+03                                  
+ DERIVED_MINIMUM              = 0.000000E+00                                  
+ OFFSET                       = 0.000000E+00                                  
+ SCALING_FACTOR               = 6.250000E-02                                  
+END-OBJECT                    = SPECTRAL_IMAGE_QUBE                           
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+              SPECTROSCOPY AND SPECTROPHOTOMETRY Discipline                   
+                            (1-D Spectrum)                                    
+              _____________________________________________                   
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 4                                             
+FILE_RECORDS                  = 1189                                          
+DATA_SET_ID                   = "IHW-C-SPEC-3-EDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY"                                      
+OBSERVATION_ID                = "701272"                                      
+OBSERVATION_TIME              = 1986-04-14T10:40:58.892Z                      
+START_TIME                    = 1986-04-14T10:40:56.892Z                      
+/*           Record Pointer to Major Object                          */       
+^SPECTRUM                     = "SPEC0001.DAT"                                
+/*            Description of Object in File                          */       
+OBJECT                        = SPECTRUM                                      
+ ROWS                         = 1189                                          
+ COLUMNS                      = 1                                             
+ INTERCHANGE_FORMAT           = BINARY                                        
+ NOTE                         = "SPECTROSCOPY, 1-D SPECTRUM"                  
+ OBJECT                       = COLUMN                                        
+  NAME                        = COUNT                                         
+  DATA_TYPE                   = MSB_INTEGER                                   
+  START_BYTE                  = 1                                             
+  BYTES                       = 4                                             
+  SAMPLING_PARAMETER_NAME     = "WAVELENGTH"                                  
+  MINIMUM_SAMPLING_PARAMETER  = 3850                                          
+  SAMPLING_PARAMETER_INTERVAL = 0.032                                         
+  SAMPLING_PARAMETER_UNIT     = "ANGSTROM"                                    
+  DERIVED_MAXIMUM             = 1.220000E+03                                  
+  DERIVED_MINIMUM             = 0.000000E+00                                  
+  OFFSET                      = 0.000000E+00                                  
+  SCALING_FACTOR              = 6.250000E-02                                  
+ END_OBJECT                   = COLUMN                                        
+END_OBJECT                    = SPECTRUM                                      
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+         AMATEUR OBSERVATIONS/'Visual Magnitude' Subdiscipline (AMV)          
+         ___________________________________________________________          
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000000 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                = FIXED_LENGTH                                     
+RECORD_BYTES               = 71                                               
+FILE_RECORDS               = 1                                                
+DATA_SET_ID                = "IHW-C-AMVIS-3-RDR-HALLEY-V1.0"                  
+TARGET_NAME                = "HALLEY"                                         
+OBSERVATION_ID             = "8000001"                                        
+OBSERVATION_TIME           = 1900-00-00T00:00:00.000Z                         
+/*           Record Pointer to Major Object                          */       
+^TABLE                     = "AMV00001.TAB"                                   
+/*            Description of Object in File                          */       
+OBJECT                     = TABLE                                            
+ ROWS                      = 1                                                
+ ROW_BYTES                 = 71                                               
+ INTERCHANGE_FORMAT        = ASCII                                            
+ COLUMNS                   = 16                                               
+ NOTE                      = "AMATEUR, MAGNITUDE TABLE"                       
+ OBJECT                    = COLUMN                                           
+  NAME                     = MAGNITUDE_ESTIMATE_ID                            
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 1                                                
+  BYTES                    = 1                                                
+  FORMAT                   = A1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = COMA_MAGNITUDE                                   
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 3                                                
+  BYTES                    = 5                                                
+  FORMAT                   = A5                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = MAGNITUDE_NOTE                                   
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 8                                                
+  BYTES                    = 1                                                
+  FORMAT                   = A1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = CHART_ID                                         
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 10                                               
+  BYTES                    = 7                                                
+  FORMAT                   = A7                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = COMA_DIAMETER_1                                  
+  UNIT                     = ARCMIN                                           
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 18                                               
+  BYTES                    = 5                                                
+  FORMAT                   = "E5.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = COMA_DIAMETER_2                                  
+  UNIT                     = ARCMIN                                           
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 24                                               
+  BYTES                    = 5                                                
+  FORMAT                   = "E5.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DEGREE_OF_CONDSATION                             
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 30                                               
+  BYTES                    = 1                                                
+  FORMAT                   = I1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = LENGTH_OF_TAIL_1                                 
+  UNIT                     = DEGREE                                           
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 32                                               
+  BYTES                    = 5                                                
+  FORMAT                   = "E5.2"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = P_A_OF_TAIL_1                                    
+  UNIT                     = DEGREE                                           
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 38                                               
+  BYTES                    = 3                                                
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = LENGTH_OF_TAIL_2                                 
+  UNIT                     = DEGREE                                           
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 42                                               
+  BYTES                    = 5                                                
+  FORMAT                   = "E5.2"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = P_A_OF_TAIL_2                                    
+  UNIT                     = DEGREE                                           
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 48                                               
+  BYTES                    = 3                                                
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = LENGTH_OF_TAIL_3                                 
+  UNIT                     = DEGREE                                           
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 52                                               
+  BYTES                    = 5                                                
+  FORMAT                   = "E5.2"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = P_A_OF_TAIL_3                                    
+  UNIT                     = DEGREE                                           
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 58                                               
+  BYTES                    = 3                                                
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "LIMITING_MAGNITUDE"                             
+  DATA_TYPE                = FLOAT                                            
+  START_BYTE               = 62                                               
+  BYTES                    = 4                                                
+  FORMAT                   = "E4.1"                                           
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = SKY_INTERFERENCE_ID                              
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 66                                               
+  BYTES                    = 4                                                
+  FORMAT                   = A4                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = DARK_ADAPTED_FLAG                                
+  DATA_TYPE                = CHARACTER                                        
+  START_BYTE               = 71                                               
+  BYTES                    = 1                                                
+  FORMAT                   = A1                                               
+ END_OBJECT                                                                   
+END_OBJECT                 = TABLE                                            
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+            AMATEUR OBSERVATIONS/'Drawing' Subdiscipline (AMDR)               
+                           (no digital data)                                  
+            ___________________________________________________               
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 80                                            
+FILE_RECORDS                  = "UNK"                                         
+DATA_SET_ID                   = "IHW-C-AMDR-N-NDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY                                       
+OBSERVATION_ID                = "8000002"                                     
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^FITS_LABEL                   = "AMDR0001.HDR"                                
+/*            Description of Object in File                          */       
+OBJECT                        = FITS_LABEL                                    
+ TYPE                         = FITS                                          
+ NOTE                         = "AMATEUR, DRAWING, NO DIGITAL DATA            
+ FILE"                                                                        
+END_OBJECT                    = FITS_LABEL                                    
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+           AMATEUR OBSERVATIONS/'Photography' Subdiscipline (AMPG)            
+                           (no digital data)                                  
+           _______________________________________________________            
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 80                                            
+FILE_RECORDS                  = "UNK"                                         
+DATA_SET_ID                   = "IHW-C-AMPG-N-NDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY                                       
+OBSERVATION_ID                = "8000003"                                     
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^FITS_LABEL                   = "AMPG0001.HDR"                                
+/*            Description of Object in File                          */       
+OBJECT                        = FITS_LABEL                                    
+ TYPE                         = FITS                                          
+ NOTE                         = "AMATEUR, PHOTOGRAPHY, NO DIGITAL DATA        
+ FILE"                                                                        
+END_OBJECT                    = FITS_LABEL                                    
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+          AMATEUR OBSERVATIONS/'Spectroscopy' Subdiscipline (AMSP)            
+                          (no digital data)                                   
+          ________________________________________________________            
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 80                                            
+FILE_RECORDS                  = "UNK"                                         
+DATA_SET_ID                   = "IHW-C-AMSP-N-NDR-HALLEY-V1.0"                
+TARGET_NAME                   = "HALLEY                                       
+OBSERVATION_ID                = "8000004"                                     
+OBSERVATION_TIME              = 1900-00-00T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^FITS_LABEL                   = "AMSP0001.HDR"                                
+/*            Description of Object in File                          */       
+OBJECT                        = FITS_LABEL                                    
+ TYPE                         = FITS                                          
+ NOTE                         = "AMATEUR, SPECTROSCOPY, NO DIGITAL DATA       
+ FILE"                                                                        
+END_OBJECT                    = FITS_LABEL                                    
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+             METEOR STUDIES/'Radar' Subdiscipline (MSNRDR)                    
+             _____________________________________________                    
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000000 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                = FIXED_LENGTH                                     
+RECORD_BYTES               = 100                                              
+FILE_RECORDS               = 224                                              
+DATA_SET_ID                = "IHW-C-MSNRDR-3-RDR-HALLEY-ORIONID-V1.0"         
+TARGET_NAME                = "ORIONID"                                        
+OBSERVATION_ID             = "9000001"                                        
+OBSERVATION_TIME           = 1984-10-22T00:00:00.000Z                         
+/*           Record Pointer to Major Object                          */       
+^TABLE                     = "MSNRDR01.TAB"                                   
+/*            Description of Object in File                          */       
+OBJECT                     = TABLE                                            
+ ROWS                      = 224                                              
+ ROW_BYTES                 = 100                                              
+ INTERCHANGE_FORMAT        = ASCII                                            
+ COLUMNS                   = 35                                               
+ NOTE                      = "METEOR, RADAR PARAMETER TABLE"                  
+ OBJECT                    = COLUMN                                           
+  NAME                     = "YR"                                             
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 1                                                
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "MO"                                             
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 4                                                
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "DA"                                             
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 7                                                
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "HR"                                             
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 10                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = TOTAL_HOUR_COUNT                                 
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 13                                               
+  BYTES                    = 3                                                
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = ">1SEC"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 17                                               
+  BYTES                    = 3                                                
+  FORMAT                   = I3                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = ">8SEC"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 21                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "75_KM"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 24                                               
+  BYTES                    = 1                                                
+  FORMAT                   = I1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "85_KM"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 26                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "95_KM"                                          
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 29                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "105_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 32                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "115_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 35                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "125_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 38                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "135_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 41                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "145_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 44                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "155_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 47                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "165_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 50                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "175_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 53                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "185_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 56                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "195_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 59                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "205_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 62                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "215_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 65                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "225_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 68                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "235_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 71                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "245_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 74                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "255_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 77                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "265_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 80                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "275_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 83                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "285_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 86                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "295_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 89                                               
+  BYTES                    = 2                                                
+  FORMAT                   = I2                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "305_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 92                                               
+  BYTES                    = 1                                                
+  FORMAT                   = I1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "315_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 94                                               
+  BYTES                    = 1                                                
+  FORMAT                   = I1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "325_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 96                                               
+  BYTES                    = 1                                                
+  FORMAT                   = I1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "335_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 98                                               
+  BYTES                    = 1                                                
+  FORMAT                   = I1                                               
+ END_OBJECT                                                                   
+ OBJECT                    = COLUMN                                           
+  NAME                     = "345_KM"                                         
+  DATA_TYPE                = INTEGER                                          
+  START_BYTE               = 100                                              
+  BYTES                    = 1                                                
+  FORMAT                   = I1                                               
+ END_OBJECT                                                                   
+END_OBJECT                 = TABLE                                            
+END                                                                           
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+         METEOR STUDIES/'Visual Estimates' Subdiscipline (MSNVIS)             
+         ________________________________________________________             
+                                                                              
+                                                                              
+                                                                              
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL                         
+/*          File Format and Length                                   */       
+RECORD_TYPE                   = FIXED_LENGTH                                  
+RECORD_BYTES                  = 218                                           
+FILE_RECORDS                  = 40                                            
+DATA_SET_ID                   = "IHW-C-MSNVIS-3-RDR-HALLEY-ORIONID-V1.0"      
+TARGET_NAME                   = "ORIONID"                                     
+OBSERVATION_ID                = "9000002"                                     
+OBSERVATION_TIME              = 1984-10-22T00:00:00.000Z                      
+/*           Record Pointer to Major Object                          */       
+^TABLE                        = "MSNVIS06.TAB"                                
+/*            Description of Object in File                          */       
+OBJECT                        = TABLE                                         
+ ROWS                         = 218                                           
+ ROW_BYTES                    = 40                                            
+ INTERCHANGE_FORMAT           = ASCII                                         
+ COLUMNS                      = 10                                            
+ NOTE                         = "METEOR, VISUAL PARAMETER TABLE"              
+ OBJECT                       = COLUMN                                        
+  NAME                        = "YR"                                          
+  DATA_TYPE                   = INTEGER                                       
+  START_BYTE                  = 3                                             
+  BYTES                       = 2                                             
+  FORMAT                      = I2                                            
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = "MO"                                          
+  DATA_TYPE                   = INTEGER                                       
+  START_BYTE                  = 6                                             
+  BYTES                       = 2                                             
+  FORMAT                      = I2                                            
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = DAY_FRACTION                                  
+  DATA_TYPE                   = FLOAT                                         
+  START_BYTE                  = 10                                            
+  BYTES                       = 5                                             
+  FORMAT                      = "E5.2"                                        
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = NET_TIME                                      
+  DATA_TYPE                   = INTEGER                                       
+  START_BYTE                  = 16                                            
+  BYTES                       = 3                                             
+  FORMAT                      = I3                                            
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = OBSERVER_ID                                   
+  DATA_TYPE                   = INTEGER                                       
+  START_BYTE                  = 20                                            
+  BYTES                       = 3                                             
+  FORMAT                      = I3                                            
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = OBS_SITE_ID                                   
+  DATA_TYPE                   = INTEGER                                       
+  START_BYTE                  = 24                                            
+  BYTES                       = 3                                             
+  FORMAT                      = I3                                            
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = "F_STAR"                                      
+  DATA_TYPE                   = FLOAT                                         
+  START_BYTE                  = 29                                            
+  BYTES                       = 3                                             
+  FORMAT                      = "E3.1"                                        
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = "CLOUD"                                       
+  DATA_TYPE                   = INTEGER                                       
+  START_BYTE                  = 33                                            
+  BYTES                       = 2                                             
+  FORMAT                      = I2                                            
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = "NUM_SH"                                      
+  DATA_TYPE                   = INTEGER                                       
+  START_BYTE                  = 35                                            
+  BYTES                       = 2                                             
+  FORMAT                      = I2                                            
+ END_OBJECT                                                                   
+ OBJECT                       = COLUMN                                        
+  NAME                        = "NUM_NS"                                      
+  DATA_TYPE                   = INTEGER                                       
+  START_BYTE                  = 38                                            
+  BYTES                       = 2                                             
+  FORMAT                      = I3                                            
+ END_OBJECT                                                                   
+END_OBJECT                    = TABLE                                         
+END                                                                           

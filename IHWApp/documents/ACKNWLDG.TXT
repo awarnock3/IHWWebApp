@@ -1,0 +1,272 @@
+***** File ACKNWLDG.TXT                                                       
+                                                                              
+                                                                              
+                          ACKNOWLEDGEMENTS                                    
+        (A History of the Final Steps of IHW CD-ROM Production)               
+                                                                              
+                                                                              
+                                                                              
+     By now the story of the International Halley Watch (IHW) is well enough  
+known that I need not attempt any recounting of its entire history as far as  
+acknowledgements are concerned. Besides, that is not my place:  Ray L. Newburn
+and Juergen Rahe, the IHW Co-Leaders, have already described in print (the    
+so-called "IHW Summary Volume") much of what has transpired since the         
+late-1970s and early-1980s in the world of IHW.                               
+                                                                              
+     These Acknowledgements are concerned with the final steps of CD-ROM      
+preparation and production, steps which were largely taken by a handful of    
+individuals at the NASA/Goddard Space Flight Center, working in collaboration 
+with the IHW Lead Center (LC) at the Jet Propulsion Laboratory (JPL).  Let    
+those who are considering the assembly of a CD-ROM archive of this size (20+  
+volumes of data) be aware of this truth, which we have learned empirically:   
+depending on the nature of the data and on the diversity of data types, the   
+"job"--defined here as all efforts leading to the shipment of pre-mastered    
+tapes to a CD-ROM mastering vendor--may not be close to completion once all   
+the data have been received from the outside world.  That was certainly the   
+case in our situation.                                                        
+                                                                              
+     The simple truth is that if the goal is to create a useful archive, one  
+that is replete with searchable indices, tables of interest, software, and    
+lucid documentation, and, moreover, one which possesses a useful and efficient
+directory layout (or "CD tree"), then a very large amount of effort is        
+required.  It probably comes as no surprise to the reader that many revisions 
+of plan are encountered along the way, as a scheme which once seemed promising
+now looks like the course NOT to follow.                                      
+                                                                              
+    A point which cannot be emphasized enough is that for CD-ROMs, like IHW's,
+which contain a very large number of files and whose directories contain many 
+types of data originally resident on so many different magnetic tapes, the    
+data need to reside on a "mass storage system" immediately prior to ingestion 
+into the "pre-mastering workstation" (a device which converts data and files  
+to a format which a CD-ROM mastering vendor can use).  In other words:        
+transfer the original tapes into mass storage and organize the data there,    
+either writing output tapes or streaming the data directly to the workstation 
+by electronic means.  One advantage of this approach is that it is readily    
+adaptable to new technologies, such as 8mm exabyte tape and FTP file transfer.
+The other approach of creating multiply-interleaved magnetic tapes directly   
+from many input tapes (i.e., without intermediate storage) is not only        
+excessively time-consuming, but it is more error prone and less adaptable to  
+repeat attempts if something goes wrong the first time.                       
+                                                                              
+-------------------                                                           
+                                                                              
+     That NASA/GSFC became so involved in these last steps of IHW archive     
+production came about as a direct result of the points raised in the last two 
+paragraphs.  The brief history is this.  During 1986-89, the IHW Large-Scale  
+Phenomena (L-SP) Discipline, the digital data portion of which resided at     
+NASA/GSFC, was engaged in sending standardized, FITS-formatted data to the JPL
+LC (as were all the IHW Discipline Teams).  However, because of the enormous  
+disparity between the average file size for L-SP data (approx. 15 Mb) and     
+those of the other IHW Disciplines, it was decided in late-1987 that L-SP's   
+contribution to the IHW CD-ROM archive would reside on dedicated discs, and,  
+further, that in order to reduce the number of discs required the L-SP data   
+would be compressed by a factor of not less than two-to-one.  As a result of  
+follow-on studies conducted by Archibald ("Archie") Warnock III and Barbara B.
+Pfarr, both of STX Corp. and serving, respectively, as Senior Software        
+Specialist and Archive Manager for the L-SP Discipline Specialist Team, it was
+decided that "previous pixel compression" was not only conceptually simple to 
+end users but would yield 2:1 compression.  It became the technique of choice.
+                                                                              
+     A development parallel to these decisions about L-SP data was one        
+concerning the manner in which the IHW data were to be pre-mastered for       
+CD-ROM. Specifically, an agreement was reached between the IHW and NASA/GSFC's
+National Space Science Data Center (NSSDC) which allowed IHW's use of the     
+NSSDC's pre-mastering workstation for the entire set of CD-ROMs.  There were  
+several factors at work here, among them the obvious desirability from a      
+management/cost viewpoint of having a government facility (NASA/GSFC-NSSDC)   
+directly involved in the pre-mastering.  Not the least of the factors,        
+however, was the desire to continue Dr. Edwin J. Grayzeck's (then of          
+Interferometrics, Inc., and under contract to the NSSDC) connection with the  
+IHW CD-ROMs.  Ed had, for several years, been on my L-SP Discipline Specialist
+Team, and with time he had "branched out" into the larger arena of IHW CD-ROM 
+production.  The IHW, to which Ed had served as a consultant for CD-ROM work, 
+knew of his worth to project.  Indeed, many of us in the Discipline Specialist
+community received our "CD-ROM education" from Ed as a result of talks he gave
+at IHW meetings (Archie Warnock also possessed and communicated valuable      
+CD-ROM expertise to the IHW).                                                 
+                                                                              
+     Returning to the subject of the L-SP data, it was felt that, due to the  
+very unique nature of those data, the compression should take place at        
+NASA/GSFC following the completion of the microdensitometry effort.  In other 
+words, this very discipline-specific task should be done at the discipline    
+level.  We felt that this was "one more thing" that should NOT be added to    
+Mikael Aronsson (JPL/LC) and the LC's burden.  Besides, our manner of data    
+shipment to Mikael was one (uncompressed) image per magnetic tape, which had  
+resulted in over 1,500 tapes shipped between 1986 and 1989.  To ask Mikael,   
+who did not have access to a mass storage platform, to run our compression    
+code on files contained on 1,500 separate tapes, seemed "cruel and unusual."  
+We offered to do the job at GSFC and to do whatever was necessary to get the  
+files to Ed Grayzeck at NSSDC's pre-mastering workstation.                    
+                                                                              
+     It was at this point--the end of 1988 and the first half of 1989--that   
+NASA/GSFC/L-SP's Dr. Daniel A. Klinglesmith III, working closely with John M. 
+Bogert III (also of NASA/GSFC), made unique contributions to the L-SP effort  
+which were to have great value later on with the entire IHW dataset.  Dan and 
+John transferred the entire set of uncompressed L-SP imagery to NASA/GSFC's   
+IBM/3081 mass storage system (over 20 gigabytes of data), compressed the data 
+there, then wrote the compressed datafiles to magnetic output tapes in        
+chronological order (of observation date/time) and shipped them across GSFC to
+Ed.  In the process of setting up this "system," John and Dan also created    
+software which generated a set of on-line catalogs listing:  every datafile, a
+subset of the more important FITS keywords associated with each, and the      
+location of each file within the IBM "disk farm."                             
+                                                                              
+     At this point in the second half of 1989 we were, theoretically, ready to
+pre-master all 18 volumes of L-SP compressed images, but it was important to  
+create a "test disc" to ascertain, not only if the data preparation, disc     
+layout, and pre-mastering had been done correctly and intelligently, but also 
+what type of CD-ROM "performance" could be expected of a high-quality         
+mastering vendor. Toward this end, we (Ed, Dan, John, Archie, and I) created a
+"Halley Armada Test Disc" containing 80 compressed L-SP images spanning 1986  
+March 6-14 (Armada Week). The mastering vendor for this "one shot" venture was
+known to be at the top of the CD-ROM profession, and extensive testing of the 
+resulting disc by us and an outside testing company confirmed the disc's high 
+quality (low block linear error rates, etc.).  As important, we liked the     
+layout of the disc and decided to go forward with most of its features for the
+full set of 18 L-SP discs.  ["Armada" was actually the second IHW test disc:  
+the first one had been a disc containing IHW data on comet P/Giacobini-Zinner.
+The G-Z test disc--its history and purpose--is discussed more fully in the    
+VOLINFO.TXT text file in the DOCUMENT directory].                             
+                                                                              
+     [Something of an aside, perhaps, but I should nonetheless state that the 
+drawing-up of technical specifications, the writing of a "Request for         
+Proposal" (RFP), the actual selection of a CD-ROM mastering vendor, and the   
+writing of the Contract, were all aspects of the IHW CD-ROM work which        
+occurred at NASA/GSFC.  By agreement between Ray Newburn and me, I was in     
+charge of performing these tasks, including the judging of proposals and the  
+awarding of the Contract (out of funds shipped from JPL to NASA/GSFC).  My    
+primary interaction in all of this was with the NASA/GSFC Procurement Office, 
+and it is a pleasure to thank Ms. Cindy Tart; she was very patient with me    
+(explaining the vagaries of government procurement) and was as interested as  
+the IHW in securing the services of an excellent CD-ROM vendor.  We were      
+strongly guided by the high performance characteristics of the Armada Test    
+Disc.]                                                                        
+                                                                              
+-------------------                                                           
+                                                                              
+     Production of the 18 L-SP compressed image discs followed in fairly      
+routine order, Ed Grayzeck and an assistant doing the actual pre-mastering    
+from tapes created by Dan Klinglesmith and John Bogert.                       
+                                                                              
+     In the meantime, Mikael Aronsson at the JPL LC was working on the myriad 
+of tasks required for preparing the datafiles of the other IHW Disciplines,   
+datafiles which would reside on a shorter series of 5 "mixed discs."  The idea
+was that Ed Grayzeck would receive from Mikael chronologically-sorted magnetic
+tapes on which six of the IHW Disciplines' data would reside interleaved; this
+would include uncompressed, subsampled "browse versions" of the L-SP images   
+which we had shipped Mikael.  Three of the IHW Disciplines were to have their 
+data deposited on CD-ROM in different directory levels, and they could be     
+separately treated.  The tricky question was:  how does one interleave over   
+16,000 datafiles from 6 sets of input tapes (one set per Discipline) without  
+some form of mass storage?  The answer, of course, is that if enough tape     
+drives are available and if enough human intervention time is committed (for  
+tape mounts, monitoring/correction of media errors, tape drive breakdowns,    
+etc.), it can be done.                                                        
+                                                                              
+     At NASA/GSFC, we were concerned about the huge number of tasks which     
+confronted the JPL LC (especially Mikael).  The largest of these, undoubtedly,
+was the creation of interleaved datatapes in a many-tapes-to-tape operation   
+involving about 100 input tapes.  As a result of our L-SP work, which included
+all the tasks from initial archiving to actual disc production, we knew that  
+the mass storage techniques developed by Dan and John were very powerful when 
+applied to datasets like IHW's.  I made an appeal to Ray Newburn, which was   
+accepted, to have Mikael ship us the ENTIRE set of IHW data for ingestion into
+the NASA/GSFC IBM/3081 "mass store."  In other words, the final steps of data 
+preparation would take place at NASA/GSFC.  It is important to state, however,
+that this transfer allowed Mikael to concentrate on many other tasks such as  
+index construction, standardizing and re-formatting of Discipline Appendix    
+files, etc.                                                                   
+                                                                              
+-------------------                                                           
+                                                                              
+     Once the entire IHW dataset had been transferred and was on-line at      
+NASA/GSFC, a tripartite decision was made in late-1990--by NASA/GSFC, JPL, and
+the Small Bodies Node (SBN) of the Planetary Data System (PDS)--to create a   
+third IHW test disc, this one containing data from the entire IHW in much the 
+same structure as envisioned for the so-called "mixed discs" [Michael F.      
+A'Hearn is Node Manager of the SBN/PDS, and was a Discipline Specialist for   
+IHW].  The emphasis here was not at all on testing mastering quality (the     
+Contract having already been awarded), but on scrutinizing the characteristics
+of disc design and layout, these being, in contrast to the L-SP discs,        
+extremely complicated discs.  Further, there was the hope that any systematic 
+problems with subsets of data might surface in disc review and be correctable 
+before the final discs were made.  In addition (and finally), this disc would 
+test our ability to transfer files electronically to the pre-mastering        
+workstation via FTP (the Armada Disc was assembled from output tapes written  
+off the IBM mass storage device).  The plan was not just to examine the disc  
+ourselves, but to distribute copies to a handful (5-10) of outside reviewers. 
+Also sent out for review was the earlier L-SP "Armada Week" test disc.        
+                                                                              
+     Due to the exigencies of time, it was not possible to fabricate the "IHW 
+Test Disc" exactly according to the mixed disc design.  For example, PDS      
+labels were not included in this second test disc, and the documentation and  
+index tables were far from complete.  Although our reviewers did point out    
+these deficiencies to us, and had, in some cases, complaints about our        
+decision to split off FITS headers from the data, they generally were quite   
+favorable in their remarks about the test discs.  It is a pleasure now to     
+thank the following individuals, our "outside peer review panel":  Drs. Anita 
+Cochran (Univ. of Texas-Austin), Mike DiSanti and Susan Hoban (NASA/GSFC),    
+Michel Festou (Observatoire de Besancon), Barry Lutz and David Schleicher     
+(Lowell Observatory), Karen Meech (Univ. of Hawaii), and Al Schultz and Wayne 
+Kinzel (Space Telescope Inst.).  Disc reviews within the IHW community were   
+performed by M. A'Hearn, M. Aronsson, E. Grayzeck, D. Klinglesmith, R.        
+Newburn, M. Niedner, and A. Warnock.                                          
+                                                                              
+-------------------                                                           
+                                                                              
+     This brings the story nearly up-to-date (i.e., October 1991).  In the    
+last 12 months a great deal of work has been expended at NASA/GSFC (in        
+collaboration with the JPL LC) in:                                            
+                                                                              
+   o managing an IBM on-line archive consisting of (approx. 3x) 37,700        
+      datafiles (the FITS headers and PDS labels are distinct files separate  
+      from the data; "approx. 3x" because some files are "dataless",          
+      consisting of only headers and labels);                                 
+   o reviewing and revising the layout, or "CD tree," of the mixed discs;     
+   o writing software to analyze the temporal distribution of files across    
+      IHW disciplines, and creating CD-ROM data subdirectories of time widths 
+      which satisfy our chosen maximum number of files per directory, 256;    
+   o creating an intermediate "staging area" out of disk space on the         
+      Laboratory for Astronomy and Solar Physics' (LASP) VAX cluster, in order
+      to build the contents of individual CD-ROMs (in other words, the        
+      electronic data flow was:  IBM--VAX--workstation);                      
+   o responding to calls by the Discipline Specialists for error correction of
+      headers and data (hundreds of files across several of the disciplines), 
+      made possible by the headers/data being "on-line";                      
+   o creating searchable, delimited tables and indices from on-line headers   
+      and data;                                                               
+   o generating PDS labels for all datafiles;                                 
+   o writing/editing of documentation to allow the archive user to understand 
+      the disc contents and layout; and                                       
+   o frequent checking of procedures and products.                            
+                                                                              
+                                                                              
+     The above should be considered a partial list of the activities which    
+occurred even after the IHW data were deposited on the IBM mass store in the  
+late-summer of 1990.  If it is appropriate to single out a particular         
+individual within the last 8-12 months, then that person surely is Dan        
+Klinglesmith, who has been extremely active in all phases of the work.  This  
+is not to diminish anyone else, however:  we've all been very busy and are    
+eager to move on to other things!  I have truly lost track of the number of   
+IHW "planning sessions" attended by Dan, Ed, Archie, and me, and I'm equally  
+hazy about the number of e-mail messages swapped back and forth (it's LARGE,  
+and includes those sent by Mikael Aronsson, Ray Newburn, and Mike A'Hearn). On
+it goes....                                                                   
+                                                                              
+     We are nearing the end now, however.  Pre-mastering of the mixed discs   
+will start in earnest in a matter of weeks at most, and should be completed in
+several months.  Data preparation for the third series of IHW CD-ROMs, that of
+the "Space Data", is getting underway at the SBN/PDS, University of Maryland, 
+under the direction of Ed Grayzeck and Mike A'Hearn.                          
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+Malcolm B. Niedner, Jr.                                                       
+IHW Discipline Specialist for                                                 
+  Large-Scale Phenomena                                                       
+Laboratory for Astronomy and Solar Physics                                    
+NASA/Goddard Space Flight Center                                              
+Greenbelt, MD 20771   USA                                                     
+                                                                              
+October 2, 1991                                                               
