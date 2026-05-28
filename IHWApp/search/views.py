@@ -588,7 +588,12 @@ class AppDocumentViewerView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         file_path = resolve_app_document_path(kwargs['relative_path'])
-        file_data = read_text_file(file_path)
+
+        try:
+            file_data = read_text_file(file_path)
+        except OSError as exc:
+            # Common case when running under a different service user: the file exists but isn't readable.
+            raise Http404("Document not readable") from exc
 
         context['filename'] = file_path.name
         context['relative_path'] = file_path.relative_to(settings.APP_DOCUMENTS_ROOT).as_posix()
