@@ -1,7 +1,10 @@
 """
 Search views for IHW archive
 """
+from pathlib import Path
+import os
 from django.views.generic import FormView, ListView, DetailView, TemplateView
+from django.conf import settings
 from django.db.models import Q, F, OuterRef, Subquery, Exists
 from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import redirect
@@ -10,8 +13,67 @@ from core.models import IdxMetaCommon, IhwEphemeris, IhwFiles, IhwFileFilepath, 
 from core.fits_utils import read_fits_header, format_header_for_display, get_header_summary
 from core.archive_utils import is_archive_available, find_fits_header_file, find_pds_label_file
 from .forms import ObservationSearchForm
-import os
 from datetime import datetime
+
+
+def read_text_file(file_path):
+    """Read a file as text when possible, otherwise return a small hex preview."""
+    for encoding in ['utf-8', 'ascii', 'latin-1']:
+        try:
+            with open(file_path, 'r', encoding=encoding, errors='replace') as handle:
+                content = handle.read()
+            return {
+                'is_binary': False,
+                'content': content,
+                'total_lines': len(content.split('\n')),
+            }
+        except UnicodeDecodeError:
+            continue
+
+    with open(file_path, 'rb') as handle:
+        binary_content = handle.read(1024)
+
+    return {
+        'is_binary': True,
+        'binary_preview': binary_content.hex(),
+    }
+
+
+def get_app_documents():
+    """Return project-managed documentation files under APP_DOCUMENTS_ROOT."""
+    root = Path(settings.APP_DOCUMENTS_ROOT)
+    if not root.exists():
+        return []
+
+    documents = []
+    for file_path in sorted(path for path in root.rglob('*') if path.is_file()):
+        relative_path = file_path.relative_to(root)
+        if any(part.startswith('.') for part in relative_path.parts):
+            continue
+
+        documents.append({
+            'name': file_path.name,
+            'relative_path': relative_path.as_posix(),
+            'size': file_path.stat().st_size,
+        })
+
+    return documents
+
+
+def resolve_app_document_path(relative_path):
+    """Resolve a project document path and block traversal outside the docs root."""
+    documents_root = Path(settings.APP_DOCUMENTS_ROOT).resolve()
+    file_path = (documents_root / relative_path).resolve()
+
+    try:
+        file_path.relative_to(documents_root)
+    except ValueError as exc:
+        raise Http404("Document not found") from exc
+
+    if not file_path.is_file():
+        raise Http404("Document not found")
+
+    return file_path
 
 
 class SearchView(FormView):
@@ -473,8 +535,8 @@ class AboutView(TemplateView):
     template_name = 'about.html'
 
 
-class DocumentationView(ListView):
-    """Display all documentation files from the archive"""
+class TextFilesView(ListView):
+    """Display archive text files indexed in the database."""
     model = IhwFiles
     template_name = 'documentation.html'
     context_object_name = 'documents'
@@ -507,8 +569,43 @@ class DocumentationView(ListView):
         return context
 
 
+class DocumentationView(TemplateView):
+    """Display project-managed documents stored with the app."""
+    template_name = 'app_documentation.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['documents'] = get_app_documents()
+        context['documents_root'] = Path(settings.APP_DOCUMENTS_ROOT)
+        context['total_documents'] = len(context['documents'])
+        return context
+
+
+class AppDocumentViewerView(TemplateView):
+    """View a project-managed document from the app documents directory."""
+    template_name = 'app_file_viewer.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        file_path = resolve_app_document_path(kwargs['relative_path'])
+        file_data = read_text_file(file_path)
+
+        context['filename'] = file_path.name
+        context['relative_path'] = file_path.relative_to(settings.APP_DOCUMENTS_ROOT).as_posix()
+        context['full_path'] = str(file_path)
+        context['is_binary'] = file_data['is_binary']
+
+        if file_data['is_binary']:
+            context['binary_preview'] = file_data['binary_preview']
+        else:
+            context['file_content'] = file_data['content']
+            context['total_lines'] = file_data['total_lines']
+
+        return context
+
+
 class FileViewerView(TemplateView):
-    """Generic file viewer for documentation and other text files"""
+    """Generic file viewer for archive text files"""
     template_name = 'file_viewer.html'
     
     def get_context_data(self, **kwargs):
@@ -529,40 +626,22 @@ class FileViewerView(TemplateView):
         if not full_path or not os.path.exists(full_path):
             raise Http404("File not found in archive")
         
-        # Try to read the file
         try:
-            # Try common text encodings
-            for encoding in ['utf-8', 'ascii', 'latin-1']:
-                try:
-                    with open(full_path, 'r', encoding=encoding, errors='replace') as f:
-                        content = f.read()
-                    break
-                except UnicodeDecodeError:
-                    continue
-            else:
-                # If all encodings fail, read as binary and show hex
-                with open(full_path, 'rb') as f:
-                    binary_content = f.read(1024)  # First 1KB
-                context['is_binary'] = True
-                context['binary_preview'] = binary_content.hex()
-                context['file'] = file_obj
-                context['filename'] = os.path.basename(full_path)
-                context['full_path'] = full_path
-                return context
-            
-            # Split into lines for counting
-            lines = content.split('\n')
-            context['file_content'] = content
-            context['total_lines'] = len(lines)
-            
+            file_data = read_text_file(full_path)
         except Exception as e:
             raise Http404(f"Error reading file: {e}")
-        
+
         context['file'] = file_obj
         context['filename'] = os.path.basename(full_path)
         context['full_path'] = full_path
-        context['is_binary'] = False
-        
+        context['is_binary'] = file_data['is_binary']
+
+        if file_data['is_binary']:
+            context['binary_preview'] = file_data['binary_preview']
+        else:
+            context['file_content'] = file_data['content']
+            context['total_lines'] = file_data['total_lines']
+
         return context
 
 

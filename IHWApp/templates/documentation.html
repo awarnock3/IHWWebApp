@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Documentation Files - International Halley Watch{% endblock %}
+{% block title %}Text Files - International Halley Watch{% endblock %}
 
 {% block extra_css %}
 <!-- DataTables CSS -->
@@ -23,10 +23,10 @@
 
 {% block content %}
 <div class="mb-4">
-    <h2>📄 Archive Documentation Files</h2>
+    <h2>📄 Archive Text Files</h2>
     <p class="text-muted">
-        Technical documentation, catalogs, and guides from the International Halley Watch archive.
-        <strong>{{ total_documents }}</strong> document{{ total_documents|pluralize }} found.
+        Text files indexed from the International Halley Watch archive database.
+        <strong>{{ total_documents }}</strong> file{{ total_documents|pluralize }} found.
     </p>
     <p>
         <a href="{% url 'search:search' %}" class="btn btn-sm btn-outline-primary">
@@ -35,11 +35,14 @@
         <a href="{% url 'about' %}" class="btn btn-sm btn-outline-info ms-2">
             ℹ️ About the Archive
         </a>
+        <a href="{% url 'documentation' %}" class="btn btn-sm btn-outline-dark ms-2">
+            📚 Documentation
+        </a>
     </p>
     {% if not archive_available %}
     <div class="alert alert-warning">
         <strong>Archive Not Mounted:</strong> File paths are shown but files cannot be viewed. 
-        This interface shows what documentation exists in the database.
+        This interface shows what text files exist in the database.
     </div>
     {% endif %}
 </div>
@@ -103,7 +106,7 @@
             {% empty %}
             <tr>
                 <td colspan="5" class="text-center text-muted py-4">
-                    No documentation files found in the archive.
+                    No text files found in the archive.
                 </td>
             </tr>
             {% endfor %}

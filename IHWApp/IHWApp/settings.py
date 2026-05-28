@@ -184,6 +184,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # IHW Archive Configuration
 # Root path to the archive data files
 IHW_ARCHIVE_ROOT = os.environ.get('IHW_ARCHIVE_ROOT', '/data/working/IHWv2/data/')
+APP_DOCUMENTS_ROOT = Path(
+    os.environ.get('IHW_APP_DOCUMENTS_ROOT', BASE_DIR / 'documents')
+).resolve()
 
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

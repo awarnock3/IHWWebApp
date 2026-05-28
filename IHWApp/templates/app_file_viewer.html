@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}{{ filename }} - Documentation{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'search:search' %}">Search</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'documentation' %}">Documentation</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ filename }}</li>
+        </ol>
+    </nav>
+
+    <h2>📚 {{ filename }}</h2>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="mb-1"><strong>Relative Path:</strong></p>
+            <p class="font-monospace small text-muted">{{ relative_path }}</p>
+            <p class="mb-1"><strong>Full Path:</strong></p>
+            <p class="font-monospace small text-muted mb-0">{{ full_path }}</p>
+        </div>
+    </div>
+</div>
+
+{% if is_binary %}
+<div class="alert alert-warning">
+    <h5 class="alert-heading">⚠️ Binary File Detected</h5>
+    <p class="mb-0">This file could not be rendered as text. A hex preview is shown below.</p>
+</div>
+
+<div class="card">
+    <div class="card-header bg-dark text-white">
+        <h3 class="h5 mb-0">Binary Preview (First 1KB as Hex)</h3>
+    </div>
+    <div class="card-body">
+        <pre class="font-monospace small">{{ binary_preview }}</pre>
+    </div>
+</div>
+{% else %}
+<div class="card">
+    <div class="card-header bg-dark text-white">
+        <h3 class="h5 mb-0">File Contents</h3>
+        <small class="text-muted">{{ total_lines }} line{{ total_lines|pluralize }}</small>
+    </div>
+    <div class="card-body p-0">
+        <pre class="p-3 mb-0" style="max-height: 600px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 0.875rem; line-height: 1.4;">{{ file_content }}</pre>
+    </div>
+</div>
+{% endif %}
+
+<div class="mt-4">
+    <a href="{% url 'documentation' %}" class="btn btn-secondary">
+        ← Back to Documentation
+    </a>
+</div>
+{% endblock %}

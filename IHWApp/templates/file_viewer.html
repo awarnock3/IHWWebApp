@@ -7,7 +7,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'search:search' %}">Search</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'documentation' %}">Documentation</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'text-files' %}">Text Files</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ filename }}</li>
         </ol>
     </nav>
@@ -100,8 +100,8 @@
 {% endif %}
 
 <div class="mt-4">
-    <a href="{% url 'documentation' %}" class="btn btn-secondary">
-        ← Back to Documentation List
+    <a href="{% url 'text-files' %}" class="btn btn-secondary">
+        ← Back to Text Files
     </a>
 </div>
 

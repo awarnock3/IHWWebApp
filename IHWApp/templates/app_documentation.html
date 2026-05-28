@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Documentation - International Halley Watch{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h2>📚 Project Documentation</h2>
+    <p class="text-muted">
+        Text documents stored in the app-managed documents directory.
+        <strong>{{ total_documents }}</strong> file{{ total_documents|pluralize }} found.
+    </p>
+    <p class="font-monospace small text-muted mb-3">{{ documents_root }}</p>
+    <p>
+        <a href="{% url 'search:search' %}" class="btn btn-sm btn-outline-primary">
+            🔍 Search Observations
+        </a>
+        <a href="{% url 'text-files' %}" class="btn btn-sm btn-outline-secondary ms-2">
+            📄 Text Files
+        </a>
+        <a href="{% url 'about' %}" class="btn btn-sm btn-outline-info ms-2">
+            ℹ️ About the Archive
+        </a>
+    </p>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        {% if documents %}
+        <div class="list-group list-group-flush">
+            {% for doc in documents %}
+            <a href="{% url 'documentation-file' doc.relative_path %}"
+               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <span class="font-monospace small">{{ doc.relative_path }}</span>
+                <span class="text-muted small">{{ doc.size|filesizeformat }}</span>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info mb-0">
+            No project documentation files are in the documents directory yet.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

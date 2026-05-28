@@ -124,8 +124,12 @@
                 <h3 class="h5 text-info">📚 Additional Resources</h3>
                 <ul class="mb-0">
                     <li>
-                        <a href="{% url 'documentation' %}">Documentation Files</a> - 
-                        Technical documentation, catalogs, and guides from the original IHW archive
+                        <a href="{% url 'text-files' %}">Text Files</a> - 
+                        Text documents indexed from the original IHW archive
+                    </li>
+                    <li>
+                        <a href="{% url 'documentation' %}">Documentation</a> - 
+                        Project-managed notes and text documents stored in the app's documents directory
                     </li>
                     <li>
                         <a href="https://pds-smallbodies.astro.umd.edu/" target="_blank" rel="noopener">PDS Small Bodies Node</a> - 
@@ -156,8 +160,11 @@
             <a href="{% url 'search:search' %}" class="btn btn-primary">
                 🔍 Search the Archive
             </a>
-            <a href="{% url 'documentation' %}" class="btn btn-outline-secondary">
-                📄 View Documentation
+            <a href="{% url 'text-files' %}" class="btn btn-outline-secondary">
+                📄 View Text Files
+            </a>
+            <a href="{% url 'documentation' %}" class="btn btn-outline-dark">
+                📚 View Documentation
             </a>
         </div>
     </div>

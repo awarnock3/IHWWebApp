@@ -4,9 +4,11 @@ Unit tests for search forms and views
 from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 from datetime import date
+from pathlib import Path
 from search.forms import ObservationSearchForm
 from unittest.mock import patch, MagicMock
 from types import SimpleNamespace
+from tempfile import TemporaryDirectory
 
 
 class ObservationSearchFormTest(TestCase):
@@ -175,3 +177,58 @@ class ObservatoryDetailViewTest(TestCase):
         self.assertContains(response, 'Large-Scale Phenomena (LSPN)')
         self.assertContains(response, 'Photometry Flux (PFLX)')
         self.assertNotContains(response, 'Near-Nucleus Studies (NNSN)')
+
+
+class DocumentationViewTest(TestCase):
+    """Tests for project-managed documentation views."""
+
+    def setUp(self):
+        self.client = Client()
+
+    def test_documentation_page_lists_project_documents(self):
+        with TemporaryDirectory() as temp_dir:
+            docs_root = Path(temp_dir)
+            (docs_root / 'guide.txt').write_text('Guide overview', encoding='utf-8')
+            (docs_root / 'subdir').mkdir()
+            (docs_root / 'subdir' / 'notes.txt').write_text('Nested notes', encoding='utf-8')
+            (docs_root / '.gitkeep').write_text('', encoding='utf-8')
+
+            with override_settings(APP_DOCUMENTS_ROOT=docs_root):
+                response = self.client.get(reverse('documentation'))
+
+            self.assertEqual(response.status_code, 200)
+            self.assertContains(response, 'Project Documentation')
+            self.assertContains(response, 'guide.txt')
+            self.assertContains(response, 'subdir/notes.txt')
+            self.assertNotContains(response, '.gitkeep')
+
+    def test_documentation_file_viewer_renders_text_content(self):
+        with TemporaryDirectory() as temp_dir:
+            docs_root = Path(temp_dir)
+            (docs_root / 'guides').mkdir()
+            (docs_root / 'guides' / 'intro.txt').write_text(
+                'International Halley Watch notes',
+                encoding='utf-8',
+            )
+
+            with override_settings(APP_DOCUMENTS_ROOT=docs_root):
+                response = self.client.get(
+                    reverse(
+                        'documentation-file',
+                        kwargs={'relative_path': 'guides/intro.txt'},
+                    )
+                )
+
+            self.assertEqual(response.status_code, 200)
+            self.assertContains(response, 'guides/intro.txt')
+            self.assertContains(response, 'International Halley Watch notes')
+
+    def test_documentation_file_viewer_blocks_path_traversal(self):
+        with TemporaryDirectory() as temp_dir:
+            docs_root = Path(temp_dir)
+            (docs_root / 'guide.txt').write_text('Guide', encoding='utf-8')
+
+            with override_settings(APP_DOCUMENTS_ROOT=docs_root):
+                response = self.client.get('/documentation/../secret.txt/')
+
+            self.assertEqual(response.status_code, 404)

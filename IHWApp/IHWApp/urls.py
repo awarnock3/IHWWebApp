@@ -17,13 +17,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
-from search.views import AboutView, DocumentationView, FileViewerView
+from search.views import (
+    AboutView,
+    AppDocumentViewerView,
+    DocumentationView,
+    FileViewerView,
+    TextFilesView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', include('search.urls')),
     path('about/', AboutView.as_view(), name='about'),
+    path('text-files/', TextFilesView.as_view(), name='text-files'),
     path('documentation/', DocumentationView.as_view(), name='documentation'),
+    path(
+        'documentation/<path:relative_path>/',
+        AppDocumentViewerView.as_view(),
+        name='documentation-file',
+    ),
     path('file/<int:file_id>/', FileViewerView.as_view(), name='file-viewer'),
     path('', RedirectView.as_view(pattern_name='search:search', permanent=False)),
 ]
