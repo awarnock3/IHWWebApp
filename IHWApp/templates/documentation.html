@@ -18,6 +18,20 @@
     .dataTables_wrapper {
         overflow-x: visible !important;
     }
+
+    .filter-row select {
+        width: 100%;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+    }
+
+    .filter-row th {
+        padding: 0.5rem;
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+    }
 </style>
 {% endblock %}
 
@@ -38,6 +52,9 @@
         <a href="{% url 'documentation' %}" class="btn btn-sm btn-outline-dark ms-2">
             📚 Documentation
         </a>
+        <button id="clear-filters" class="btn btn-sm btn-outline-warning ms-2" style="display:none;">
+            Clear Filters
+        </button>
     </p>
     {% if not archive_available %}
     <div class="alert alert-warning">
@@ -56,6 +73,29 @@
                 <th>Subnet</th>
                 <th>Size</th>
                 <th>MD5</th>
+            </tr>
+        </thead>
+        <thead class="filter-row">
+            <tr>
+                <th></th>
+                <th>
+                    <select class="column-filter" data-column="1">
+                        <option value="">All Networks</option>
+                        {% for network in network_options %}
+                        <option value="{{ network }}">{{ network }}</option>
+                        {% endfor %}
+                    </select>
+                </th>
+                <th>
+                    <select class="column-filter" data-column="2">
+                        <option value="">All Subnets</option>
+                        {% for subnet in subnet_options %}
+                        <option value="{{ subnet }}">{{ subnet }}</option>
+                        {% endfor %}
+                    </select>
+                </th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -124,7 +164,7 @@
 <script>
 $(document).ready(function() {
     // Initialize DataTable
-    $('#docs-table').DataTable({
+    const table = $('#docs-table').DataTable({
         pageLength: 25,
         lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
         order: [[0, 'asc']],  // Sort by file path initially
@@ -133,6 +173,28 @@ $(document).ready(function() {
             { orderable: false, targets: [1, 2] }    // Network and subnet badges
         ]
     });
+
+    $('.column-filter').on('change', function() {
+        const columnIndex = $(this).data('column');
+        const value = $(this).val();
+        table.column(columnIndex).search(value).draw();
+        updateClearButton();
+    });
+
+    $('#clear-filters').on('click', function() {
+        $('.column-filter').val('');
+        table.columns([1, 2]).search('').draw();
+        updateClearButton();
+    });
+
+    function updateClearButton() {
+        const hasFilters = $('.column-filter').toArray().some((el) => $(el).val() !== '');
+        if (hasFilters) {
+            $('#clear-filters').show();
+            return;
+        }
+        $('#clear-filters').hide();
+    }
     
     // Initialize Bootstrap tooltips
     $('[title]').tooltip();

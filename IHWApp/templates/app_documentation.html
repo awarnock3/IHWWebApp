@@ -9,7 +9,7 @@
         Text documents stored in the app-managed documents directory.
         <strong>{{ total_documents }}</strong> file{{ total_documents|pluralize }} found.
     </p>
-    <p class="font-monospace small text-muted mb-3">{{ documents_root }}</p>
+    <p class="font-monospace small text-muted mb-3">{{ documents_root_display }}</p>
     <p>
         <a href="{% url 'search:search' %}" class="btn btn-sm btn-outline-primary">
             🔍 Search Observations

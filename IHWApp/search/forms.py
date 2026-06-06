@@ -107,6 +107,11 @@ class ObservationSearchForm(forms.Form):
                 "Please provide at least one search criterion: date range, solar distance, network, or observer"
             )
 
+        # If only start date is provided, default to single-day search.
+        if start_date and not end_date:
+            cleaned_data['end_date'] = start_date
+            end_date = start_date
+
         # Validate date range if both provided
         if start_date and end_date:
             if start_date > end_date:

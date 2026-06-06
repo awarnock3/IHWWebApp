@@ -35,11 +35,10 @@ class ObservationSearchFormTest(TestCase):
         self.assertIn('end_date', form.errors)
     
     def test_form_invalid_with_missing_dates(self):
-        """Test form is invalid without required dates"""
+        """Test form is invalid when no search criteria are provided"""
         form = ObservationSearchForm(data={})
         self.assertFalse(form.is_valid())
-        self.assertIn('start_date', form.errors)
-        self.assertIn('end_date', form.errors)
+        self.assertIn('__all__', form.errors)
     
     def test_form_invalid_with_end_before_start(self):
         """Test form validation catches end date before start date"""
@@ -82,6 +81,16 @@ class ObservationSearchFormTest(TestCase):
         self.assertTrue(form.is_valid())
         self.assertEqual(str(form.cleaned_data['start_date']), '1985-12-01')
         self.assertEqual(str(form.cleaned_data['end_date']), '1986-01-15')
+
+    def test_form_defaults_end_date_to_start_date(self):
+        """Test that missing end date defaults to start date for single-day search"""
+        form_data = {
+            'start_date': '1986-02-09',
+        }
+        form = ObservationSearchForm(data=form_data)
+        self.assertTrue(form.is_valid())
+        self.assertEqual(form.cleaned_data['start_date'], date(1986, 2, 9))
+        self.assertEqual(form.cleaned_data['end_date'], date(1986, 2, 9))
 
 
 class SearchViewTest(TestCase):
@@ -200,6 +209,8 @@ class DocumentationViewTest(TestCase):
             self.assertContains(response, 'Project Documentation')
             self.assertContains(response, 'guide.txt')
             self.assertContains(response, 'subdir/notes.txt')
+            self.assertContains(response, '$APP_ROOT/documents')
+            self.assertNotContains(response, str(docs_root))
             self.assertNotContains(response, '.gitkeep')
 
     def test_documentation_file_viewer_renders_text_content(self):
@@ -222,6 +233,8 @@ class DocumentationViewTest(TestCase):
             self.assertEqual(response.status_code, 200)
             self.assertContains(response, 'guides/intro.txt')
             self.assertContains(response, 'International Halley Watch notes')
+            self.assertContains(response, '$APP_ROOT/documents/guides/intro.txt')
+            self.assertNotContains(response, str(docs_root))
 
     def test_documentation_file_viewer_blocks_path_traversal(self):
         with TemporaryDirectory() as temp_dir:

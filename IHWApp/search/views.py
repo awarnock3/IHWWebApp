@@ -76,6 +76,14 @@ def resolve_app_document_path(relative_path):
     return file_path
 
 
+def build_display_path(root_alias, relative_path=None):
+    """Build a redacted path string for UI display."""
+    if not relative_path:
+        return root_alias
+    cleaned = str(relative_path).lstrip('/')
+    return f"{root_alias}/{cleaned}"
+
+
 class SearchView(FormView):
     """Main search page with form"""
     template_name = 'search/search.html'
@@ -544,7 +552,10 @@ class TextFilesView(ListView):
     def get_queryset(self):
         """Get all files where type='DOCUMENT'"""
         # Get documents with their paths
-        queryset = IhwFiles.objects.filter(type='DOCUMENT').select_related('subnet')
+        queryset = IhwFiles.objects.filter(type='DOCUMENT').select_related(
+            'subnet',
+            'subnet__discipline',
+        )
         
         # Annotate with file paths
         documents = []
@@ -564,6 +575,16 @@ class TextFilesView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['network_options'] = sorted({
+            doc.subnet.discipline.discipline
+            for doc in context['documents']
+            if getattr(doc, 'subnet', None) and getattr(doc.subnet, 'discipline', None)
+        })
+        context['subnet_options'] = sorted({
+            doc.subnet.subnet
+            for doc in context['documents']
+            if getattr(doc, 'subnet', None) and doc.subnet.subnet
+        })
         context['total_documents'] = len(context['documents'])
         context['archive_available'] = is_archive_available()
         return context
@@ -576,7 +597,7 @@ class DocumentationView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['documents'] = get_app_documents()
-        context['documents_root'] = Path(settings.APP_DOCUMENTS_ROOT)
+        context['documents_root_display'] = '$APP_ROOT/documents'
         context['total_documents'] = len(context['documents'])
         return context
 
@@ -597,7 +618,10 @@ class AppDocumentViewerView(TemplateView):
 
         context['filename'] = file_path.name
         context['relative_path'] = file_path.relative_to(settings.APP_DOCUMENTS_ROOT).as_posix()
-        context['full_path'] = str(file_path)
+        context['full_path_display'] = build_display_path(
+            '$APP_ROOT/documents',
+            context['relative_path'],
+        )
         context['is_binary'] = file_data['is_binary']
 
         if file_data['is_binary']:
@@ -638,7 +662,10 @@ class FileViewerView(TemplateView):
 
         context['file'] = file_obj
         context['filename'] = os.path.basename(full_path)
-        context['full_path'] = full_path
+        context['full_path_display'] = build_display_path(
+            '$ARCHIVE_ROOT',
+            file_obj.get_relative_path(),
+        )
         context['is_binary'] = file_data['is_binary']
 
         if file_data['is_binary']:
