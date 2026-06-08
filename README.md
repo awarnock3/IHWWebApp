@@ -42,6 +42,23 @@ The database schema is defined in `ihwdb2-schema-latest.sql` (MariaDB dump).
 
 Data files are stored at `/data/working/IHWv2/data`.
 
+## Halley Tracker Integration
+
+IHWWebApp consumes Halley Tracker as a separate, pinned dependency (single source of truth in the HalleyTracker repo).
+
+- Dependency is declared in `requirements.txt` as a pinned Git commit.
+- IHWWebApp keeps only a thin integration layer:
+  - `core/templatetags/halley_tracker_embed.py`
+  - Header placement in `IHWApp/templates/base.html`
+- HalleyTracker business logic stays out of IHWWebApp.
+
+Upgrade workflow:
+
+1. Pick a new HalleyTracker tag/commit.
+2. Update the `halley-tracker @ ...@<commit>` line in `requirements.txt`.
+3. Reinstall dependencies (`pip install -r requirements.txt`).
+4. Reload the app.
+
 ## Apache deployment
 
 This repository supports Apache + `mod_wsgi` deployment with runtime settings loaded from `/etc/ihwapp/ihwapp.env`. That keeps secrets out of the repo and makes it easier to move the app to another host.

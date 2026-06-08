@@ -1,3 +1,4 @@
+{% load halley_tracker_embed %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +40,58 @@
             opacity: 0.9;
             margin-top: 0.5rem;
         }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .header-brand {
+            min-width: 0;
+        }
+
+        .header-tracker {
+            margin-left: auto;
+            max-width: 470px;
+            width: 100%;
+        }
+
+        .header-tracker .halley-tracker {
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 10px;
+            padding: 0.75rem 0.9rem;
+            background: rgba(0, 0, 0, 0.18);
+            color: #fff;
+            text-align: right;
+        }
+
+        .header-tracker .halley-tracker h3 {
+            font-size: 1.05rem;
+            margin: 0 0 0.35rem;
+            font-weight: 500;
+        }
+
+        .header-tracker .halley-tracker p {
+            margin: 0.15rem 0;
+            font-size: 0.82rem;
+            line-height: 1.25;
+        }
+
+        @media (max-width: 991px) {
+            .header-inner {
+                flex-direction: column;
+            }
+
+            .header-tracker {
+                max-width: 100%;
+            }
+
+            .header-tracker .halley-tracker {
+                text-align: left;
+            }
+        }
         
         main {
             flex: 1;
@@ -73,8 +126,15 @@
 <body>
     <header>
         <div class="container">
-            <h1>🌠 International Halley Watch Archive</h1>
-            <p class="tagline">Observations from 1985-1986, preserved for 2061</p>
+            <div class="header-inner">
+                <div class="header-brand">
+                    <h1>🌠 International Halley Watch Archive</h1>
+                    <p class="tagline">Observations from 1985-1986, preserved for 2061</p>
+                </div>
+                <div class="header-tracker">
+                    {% halley_tracker_embed %}
+                </div>
+            </div>
         </div>
     </header>
     
